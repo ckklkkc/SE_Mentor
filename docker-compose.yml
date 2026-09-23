@@ -7,7 +7,7 @@ services:
       - "7687:7687" # Bolt 協定 (Python 連接用)
     environment:
       - NEO4J_AUTH=neo4j/tabotaidb
-      - NEO4J_PLUGINS=["apoc"]         # 自動安裝 APOC
+      - NEO4J_PLUGINS=["apoc"] # 自動安裝 APOC
       - NEO4J_dbms_security_procedures_unrestricted=apoc.*
       - NEO4J_dbms_security_procedures_allowlist=apoc.*
       - NEO4J_apoc_export_file_enabled=true
@@ -16,8 +16,19 @@ services:
       - NEO4J_server_memory_heap_initial__size=1G
       - NEO4J_server_memory_heap_max__size=2G
     volumes:
-      - ./data:/data  # 存資料庫文件
-      - ./logs:/logs  # 存日誌
-      - ./import:/import  # 用於導入文件
+      - ./data:/data # 存資料庫文件
+      - ./logs:/logs # 存日誌
+      - ./import:/import # 用於導入文件
       - ./plugins:/plugins
     restart: unless-stopped
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    container_name: se_mentor_mongodb
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongo_data:

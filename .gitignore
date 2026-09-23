@@ -213,3 +213,16 @@ neo4j_storage/
 md_files/
 tabotaienv/
 rag_eval/
+
+#Neo4j runtime data
+data/
+logs/
+import/
+plugins/
+
+#Database backups
+backups/
+*.dump
+
+#MongoDB runtime data
+mongo_data/

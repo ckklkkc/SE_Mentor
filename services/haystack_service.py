@@ -361,7 +361,7 @@ class VectorSearchFilter:
         # 向量檢索 + 過濾
         # run_question = f"關鍵字：{'、'.join(concepts)}\n問題：{question}"
         # print(f"[傳入的概念]: {concepts}")
-        embedding = self.embedder.run('、'.join(concepts[0]))['embedding']
+        embedding = self.embedder.run('、'.join(concepts))['embedding']
         docs = self.retriever.run(
             query_embedding=embedding,
             top_k=self.top_k,
@@ -454,7 +454,7 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
 
     # 關鍵字 + 圖譜中的 description
     pipeline.add_component("kw_prompt", kw_prompt_builder)
-    pipeline.add_component("kw_llm", AnthropicGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="claude-haiku-4-5"))
+    pipeline.add_component("kw_llm",   OpenAIGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="gpt-4o-mini"))
     pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
     pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question"]))
     pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini"))
@@ -605,7 +605,11 @@ def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
             "answer_prompt": {"question": question},
             # "vector_filter": {"question": question}
         },
-        include_outputs_from=["answer_llm", "desc_reasoner"]
+        include_outputs_from=[
+            "kw_llm",
+            "desc_reasoner",
+            "answer_llm"
+        ]
     )
     return result
 
@@ -796,7 +800,7 @@ async def filter_retrieval_test():
 
 if __name__ == '__main__':
     # 測試 func 用
-    question = "Flutter App 應支援哪些 Android 版本？"
+    question = "什麼是軟體測試？"
     vector_res = neo4j_retriever(question=question, group="測試組")
     for doc in vector_res["retriever"]["documents"]:
         print(doc.content)
