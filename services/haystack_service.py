@@ -610,7 +610,9 @@ def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
             "desc_reasoner",
             "answer_llm"
         ]
+
     )
+    print (f"[debug] neo4j_textbook_kg_retriever result: {result}")
     return result
 
 
