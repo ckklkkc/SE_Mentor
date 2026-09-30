@@ -496,9 +496,8 @@ def CRIT_check(question: str, bot_response: str) -> float:
 
     【分析步驟】
     1. 擷取與定義 (Definition)：從【機器人回答】中，精煉出其核心結論，並條列出數個獨立的支持理由 (r_n)。
-    2. 詰問與驗證 (Elenchus)：針對每一個理由，評估其推導至【使用者問題】(r => Ω) 的「邏輯有效性」與「來源可信度」。請給予 1 到 100 分的整數評分（100 分為最強）。
-    3. 辯證與反方意見 (Dialectic)：請針對上述最弱的論點，或者整體回答的盲點，提出一個具備建設性的反方意見 (r'，例如：遺漏的上下文、適用的極限條件)，並同樣給予 1 到 100 分的有效性與可信度評分。
-    4. 計算整體加權分數 (Crit Score)：根據所有理由的有效性與可信度，計算出一個整體的 CRIT 分數，範圍為 0 到 100 分。請使用以下公式：將所有正反方「邏輯有效性」*「來源可信度」相加後除以總數
+    2. 詰問與驗證 (Elenchus)：針對每一個理由，評估其推導至【使用者問題】(r => Ω) 的「邏輯有效性」與「來源可信度」。請給予 1 到 10 分的整數評分（10 分為最強）。
+    3. 辯證與反方意見 (Dialectic)：請針對上述最弱的論點，或者整體回答的盲點，提出一個具備建設性的反方意見 (r'，例如：遺漏的上下文、適用的極限條件)，並同樣給予 1 到 10 分的有效性與可信度評分。
     【輸出限制】
     請勿輸出任何解釋性文字或 Markdown 標記，必須嚴格遵守以下的純 JSON 格式直接輸出：
 
@@ -519,8 +518,7 @@ def CRIT_check(question: str, bot_response: str) -> float:
         "validity_score": 邏輯有效性評分 (1-10的整數),
         "credibility_score": 來源可信度評分 (1-10的整數),
         "justification": "給予此反方意見分數的原因"
-      },
-      "final_crit_score": 最終計算出的整體加權分數 (數值)
+      }
     }
     """
 
@@ -582,8 +580,16 @@ def CRIT_check(question: str, bot_response: str) -> float:
 
                 validity.append(counter.get('validity_score'))
                 credibility.append(counter.get('credibility_score'))
-                
-            final_score = float(parsed_result.get("final_crit_score", 0.0))
+
+            # 計算最終 CRIT 分數
+            temp_score = 0.0
+            for v, c in zip(validity, credibility):
+                temp_score= v * c + temp_score
+
+            if len(validity) > 0:
+                final_score = temp_score / len(validity)
+
+            # final_score = float(parsed_result.get("final_crit_score", 0.0))
             print(f"\n=> 最終 CRIT 總分: {final_score}")
             print("======================\n")
             
