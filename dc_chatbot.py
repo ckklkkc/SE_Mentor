@@ -632,7 +632,8 @@ async def course_qa(interaction: discord.Interaction, question: str):
 
         content = f"> {question}\n\n{response}"
         chatbot_timestamp = datetime.now()
-        await interaction.followup.send(content=content)    
+        await interaction.followup.send(content=content)
+        await interaction.followup.send(f"CRIT分數為：{crit_score}")
     except Exception as e:
         # 萬一生成失敗，發送錯誤訊息給使用者
         await interaction.followup.send(f"回答生成失敗：{e}")
