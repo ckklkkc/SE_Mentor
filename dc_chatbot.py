@@ -1,5 +1,6 @@
 import discord
 import asyncio, os
+import logging
 from functools import partial
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -557,7 +558,7 @@ async def quiz(
 
 @bot.tree.command(name="learning_profile", description="查看自己的學習紀錄與學習弱點")
 async def learning_profile(interaction: discord.Interaction):
-    await interaction.response.deferreturn(ephemeral=True)
+    await interaction.response.defer(ephemeral=True)
     try:
         embed, pain_points = await build_learning_profile_embed(interaction.user.id)
         view = LearningProfileView(interaction.user.id, pain_points)
@@ -697,17 +698,21 @@ async def upload_document(interaction: discord.Interaction, file: discord.Attach
     save_path = f"md_files\\groups\\{group}\\{file.filename}"
     await file.save(save_path)
 
-    suffix = Path(save_path).suffix.lower()
-    if suffix == ".pdf":
-        mk_file = file_processor.pdf2md(save_path)
-        save_path = f"md_files\\groups\\{group}\\{file.filename}".replace(".pdf", ".md")
-        with open(save_path, "w", encoding="utf-8") as f:
-            f.write(mk_file)
+    try:
+        if Path(save_path).suffix.lower() == ".pdf":
+            mk_file = await run_blocking(file_processor.pdf2md, save_path)
+            save_path = str(Path(save_path).with_suffix(".md"))
+            with open(save_path, "w", encoding="utf-8") as f:
+                f.write(mk_file)
 
-    # 建圖
-    await run_blocking(build_knowledge_graph, source_file=save_path, doc_type=doc_type.value, group=group, uploader=interaction.user.name)
-    # 向量
-    await haystack_service.upload_doc_2_vectordb(file_path=save_path, doc_type=doc_type.value, group_name=group, uploader=interaction.user.name)
+        # 建圖
+        await run_blocking(build_knowledge_graph, source_file=save_path, doc_type=doc_type.value, group=group, uploader=interaction.user.name)
+        # 向量
+        await haystack_service.upload_doc_2_vectordb(file_path=save_path, doc_type=doc_type.value, group_name=group, uploader=interaction.user.name)
+    except Exception:
+        logging.getLogger(__name__).exception("文件匯入失敗：%s", file.filename)
+        await interaction.followup.send(f"【{file.filename}】匯入失敗，請查看 Bot 主控台的錯誤紀錄。", ephemeral=True)
+        return
 
     await user.send(f"【{file.filename}】已成功匯入")
 
@@ -782,4 +787,10 @@ async def on_message(message):
 #     response_text = await neo4j_retriever(message.content)
 #     await message.channel.send(response_text)
 
-bot.run(config.DISCORD_TOKEN)
+if __name__ == "__main__":
+    try:
+        bot.run(config.DISCORD_TOKEN)
+    except (KeyboardInterrupt, asyncio.CancelledError):
+        # Ctrl+C may surface as CancelledError while the Discord gateway waits
+        # for the next WebSocket message, depending on the Python runtime.
+        print("SE Mentor 已停止。")

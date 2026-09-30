@@ -3,6 +3,7 @@ from typing import List, Dict
 
 from marker.converters.pdf import PdfConverter
 from marker.models import create_model_dict
+from surya.recognition.model.config import SuryaOCRConfig
 
 from langchain_opentutorial import set_env
 from langchain_text_splitters import (
@@ -28,6 +29,10 @@ set_env(
 )
 
 def pdf2md(file_path, chapter=None):
+    # SuryaOCRConfig requires encoder/decoder arguments. Transformers 4.57
+    # serializes it by first trying a no-argument default instance unless this
+    # flag is set; that raises KeyError('encoder') while loading the OCR model.
+    SuryaOCRConfig.has_no_defaults_at_init = True
     converter = PdfConverter(
         artifact_dict=create_model_dict(),
     )
