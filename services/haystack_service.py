@@ -484,6 +484,59 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
 
     return pipeline
 
+def CRIT_check(question: str, bot_response: str) -> float:
+    # CRIT 檢查
+    CRIT_prompt_template = """
+    你現在是一個具備嚴謹批判性思維的「邏輯驗證引擎」，負責執行 CRIT (Critical Reading Inquisitive Template) 演算法。你的任務是檢視【機器人回答】是否正面、有效且具備說服力地回答了【使用者問題】。
+    請根據以下四個步驟進行分析：
+
+    【輸入資訊】
+    * 使用者問題（結論目標 Ω）：{{question}}
+    * 機器人回答（待驗證文本 d）：{{bot_response}}
+
+    【分析步驟】
+    1. 擷取與定義 (Definition)：從【機器人回答】中，精煉出其核心結論，並條列出數個獨立的支持理由 (r_n)。
+    2. 詰問與驗證 (Elenchus)：針對每一個理由，評估其推導至【使用者問題】(r => Ω) 的「邏輯有效性」與「來源可信度」。請給予 1 到 10 分的整數評分（10 分為最強）。
+    3. 辯證與反方意見 (Dialectic)：請針對上述最弱的論點，或者整體回答的盲點，提出一個具備建設性的反方意見 (r'，例如：遺漏的上下文、適用的極限條件)，並同樣給予 1 到 10 分的有效性與可信度評分。
+
+    輸出限制】
+    將所有理由以及反方意見得分進行加權平均（邏輯有效性 * 來源可信度 / 總數），計算出整體的 CRIT 分數 (0~100 分)。
+    請勿輸出任何解釋性文字，必須嚴格遵守以下的 JSON 格式直接輸出最終分數：
+    {"crit_score": 最終計算出的數值}
+
+    """
+
+    pipeline = Pipeline()
+    
+    pipeline.add_component("crit_prompt", PromptBuilder(template=CRIT_prompt_template, required_variables=["question", "bot_response"]))
+    # 這裡使用 gpt-4o-mini 作為快速邏輯驗證引擎
+    pipeline.add_component("crit_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini"))
+    
+    pipeline.connect("crit_prompt.prompt", "crit_llm.prompt")
+
+    result = pipeline.run(
+        data={
+            "crit_prompt": {
+                "question": question, 
+                "bot_response": bot_response
+            }
+        }
+    )
+
+    llm_output_str = result["crit_llm"]["replies"][0]
+
+    clean_json = llm_output_str.strip('`').removeprefix('json').strip()
+
+    try:
+        parsed_result = json.loads(clean_json)
+        final_score = float(parsed_result.get("crit_score", 0.0))
+        print(f"[debug] CRIT 驗證分數: {final_score}")
+        return final_score
+    except json.JSONDecodeError as e:
+        print(f"[error] 無法解析 CRIT 輸出為 JSON: {llm_output_str}")
+        return 0.0
+
+
 # ----- task functions -----
 def neo4j_retriever(question: str, chapter: str = None, group: str = None) -> dict[str, Any]:
     # 教材向量檢索
