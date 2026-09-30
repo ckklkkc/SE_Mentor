@@ -502,8 +502,26 @@ def CRIT_check(question: str, bot_response: str) -> float:
     輸出限制】
     將所有理由以及反方意見得分進行加權平均（邏輯有效性 * 來源可信度 / 總數），計算出整體的 CRIT 分數 (0~100 分)。
     請勿輸出任何解釋性文字，必須嚴格遵守以下的 JSON 格式直接輸出最終分數：
-    {"crit_score": 最終計算出的數值}
-
+    {
+      "core_conclusion": "精煉出的核心結論",
+      "supporting_reasons": [
+        {
+          "id": "r1",
+          "content": "第一個支持理由的具體內容",
+          "validity_score": 邏輯有效性評分 (1-10的整數),
+          "credibility_score": 來源可信度評分 (1-10的整數),
+          "justification": "給予此分數的簡短原因"
+        }
+      ],
+      "counter_argument": {
+        "id": "r_prime",
+        "content": "反方意見或整體盲點",
+        "validity_score": 邏輯有效性評分 (1-10的整數),
+        "credibility_score": 來源可信度評分 (1-10的整數),
+        "justification": "給予此反方意見分數的原因"
+      },
+      "final_crit_score": 最終計算出的整體加權分數 (數值)
+    }
     """
 
     pipeline = Pipeline()
@@ -527,14 +545,45 @@ def CRIT_check(question: str, bot_response: str) -> float:
 
     clean_json = llm_output_str.strip('`').removeprefix('json').strip()
 
+
+    # try:
+    #     parsed_result = json.loads(clean_json)
+    #     final_score = float(parsed_result.get("crit_score", 0.0))
+    #     print(f"[debug] CRIT 驗證分數: {final_score}")
+    #     return final_score
+    # except json.JSONDecodeError as e:
+    #     print(f"[error] 無法解析 CRIT 輸出為 JSON: {llm_output_str}")
+    #     return 0.0
+
     try:
-        parsed_result = json.loads(clean_json)
-        final_score = float(parsed_result.get("crit_score", 0.0))
-        print(f"[debug] CRIT 驗證分數: {final_score}")
-        return final_score
+            parsed_result = json.loads(clean_json)
+            
+            print("\n=== CRIT 驗證報告 ===")
+            print(f"核心結論: {parsed_result.get('core_conclusion')}")
+            
+            print("\n[支持理由]")
+            for reason in parsed_result.get("supporting_reasons", []):
+                print(f"- {reason['id']}: {reason['content']}")
+                print(f"  > 有效性: {reason['validity_score']}, 可信度: {reason['credibility_score']}")
+                print(f"  > 評分理由: {reason['justification']}")
+                
+            counter = parsed_result.get("counter_argument", {})
+            if counter:
+                print("\n[反方意見/盲點]")
+                print(f"- {counter.get('id')}: {counter.get('content')}")
+                print(f"  > 有效性: {counter.get('validity_score')}, 可信度: {counter.get('credibility_score')}")
+                print(f"  > 評分理由: {counter.get('justification')}")
+                
+            final_score = float(parsed_result.get("final_crit_score", 0.0))
+            print(f"\n=> 最終 CRIT 總分: {final_score}")
+            print("======================\n")
+            
+            return final_score
+            
     except json.JSONDecodeError as e:
         print(f"[error] 無法解析 CRIT 輸出為 JSON: {llm_output_str}")
         return 0.0
+
 
 
 # ----- task functions -----
