@@ -454,7 +454,7 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
 
     # 關鍵字 + 圖譜中的 description
     pipeline.add_component("kw_prompt", kw_prompt_builder)
-    pipeline.add_component("kw_llm",   OpenAIGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="gpt-4o-mini"))
+    pipeline.add_component("kw_llm", AnthropicGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="claude-haiku-4-5"))
     pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
     pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question"]))
     pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini"))
@@ -483,6 +483,123 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     # pipeline.connect("answer_prompt.prompt", "answer_llm.prompt")
 
     return pipeline
+
+def CRIT_check(question: str, bot_response: str) -> float:
+    # CRIT 檢查
+    CRIT_prompt_template = """
+    你現在是一個具備嚴謹批判性思維的「邏輯驗證引擎」，負責執行 CRIT (Critical Reading Inquisitive Template) 演算法。你的任務是檢視【機器人回答】是否正面、有效且具備說服力地回答了【使用者問題】。
+    請根據以下四個步驟進行分析：
+
+    【輸入資訊】
+    * 使用者問題（結論目標 Ω）：{{question}}
+    * 機器人回答（待驗證文本 d）：{{bot_response}}
+
+    【分析步驟】
+    1. 擷取與定義 (Definition)：從【機器人回答】中，精煉出其核心結論，並條列出數個獨立的支持理由 (r_n)。
+    2. 詰問與驗證 (Elenchus)：針對每一個理由 r ，評估其推導至【使用者問題】(r => Ω) 的「邏輯有效性」與 r 的「來源可信度」。請給予 1 到 10 分的整數評分（10 分為最強）。
+    3. 辯證與反方意見 (Dialectic)：請針對上述最弱的論點，或者整體回答的盲點，在軟工領域提出一個具備建設性的反方意見 (r'，例如：遺漏的上下文、適用的極限條件)，評估其推導至【使用者問題】(r' => Ω) 的「邏輯有效性」與 r'的「來源可信度」並同樣給予 1 到 10 分。
+    【輸出限制】
+    請勿輸出任何解釋性文字或 Markdown 標記，必須嚴格遵守以下的純 JSON 格式直接輸出：
+
+    {
+      "core_conclusion": "精煉出的核心結論",
+      "supporting_reasons": [
+        {
+          "id": "r1",
+          "content": "第一個支持理由的具體內容",
+          "validity_score": 邏輯有效性評分 (1-10的整數),
+          "credibility_score": 來源可信度評分 (1-10的整數),
+          "justification": "給予此分數的簡短原因"
+        }
+      ],
+      "counter_argument": {
+        "id": "r_prime",
+        "content": "反方意見或整體盲點",
+        "validity_score": 邏輯有效性評分 (1-10的整數),
+        "credibility_score": 來源可信度評分 (1-10的整數),
+        "justification": "給予此反方意見分數的原因"
+      }
+    }
+    """
+
+    pipeline = Pipeline()
+    
+    pipeline.add_component("crit_prompt", PromptBuilder(template=CRIT_prompt_template, required_variables=["question", "bot_response"]))
+    # 這裡使用 gpt-4o-mini 作為快速邏輯驗證引擎
+    pipeline.add_component("crit_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini"))
+    
+    pipeline.connect("crit_prompt.prompt", "crit_llm.prompt")
+
+    result = pipeline.run(
+        data={
+            "crit_prompt": {
+                "question": question, 
+                "bot_response": bot_response
+            }
+        }
+    )
+
+    llm_output_str = result["crit_llm"]["replies"][0]
+
+    clean_json = llm_output_str.strip('`').removeprefix('json').strip()
+
+
+    # try:
+    #     parsed_result = json.loads(clean_json)
+    #     final_score = float(parsed_result.get("crit_score", 0.0))
+    #     print(f"[debug] CRIT 驗證分數: {final_score}")
+    #     return final_score
+    # except json.JSONDecodeError as e:
+    #     print(f"[error] 無法解析 CRIT 輸出為 JSON: {llm_output_str}")
+    #     return 0.0
+
+    try:
+            parsed_result = json.loads(clean_json)
+
+            validity = []
+            credibility = []
+            
+            print("\n=== CRIT 驗證報告 ===")
+            print(f"核心結論: {parsed_result.get('core_conclusion')}")
+            
+            print("\n[支持理由]")
+            for reason in parsed_result.get("supporting_reasons", []):
+                print(f"- {reason['id']}: {reason['content']}")
+                print(f"  > 有效性: {reason['validity_score']}, 可信度: {reason['credibility_score']}")
+                print(f"  > 評分理由: {reason['justification']}")
+
+                validity.append(reason['validity_score'])
+                credibility.append(reason['credibility_score'])
+                
+            counter = parsed_result.get("counter_argument", {})
+            if counter:
+                print("\n[反方意見/盲點]")
+                print(f"- {counter.get('id')}: {counter.get('content')}")
+                print(f"  > 有效性: {counter.get('validity_score')}, 可信度: {counter.get('credibility_score')}")
+                print(f"  > 評分理由: {counter.get('justification')}")
+
+                validity.append(counter.get('validity_score'))
+                credibility.append(counter.get('credibility_score'))
+
+            # 計算最終 CRIT 分數
+            temp_score = 0.0
+            for v, c in zip(validity, credibility):
+                temp_score= v * c + temp_score
+
+            if len(validity) > 0:
+                final_score = temp_score / len(validity)
+
+            # final_score = float(parsed_result.get("final_crit_score", 0.0))
+            print(f"\n=> 最終 CRIT 總分: {final_score}")
+            print("======================\n")
+            
+            return final_score
+            
+    except json.JSONDecodeError as e:
+        print(f"[error] 無法解析 CRIT 輸出為 JSON: {llm_output_str}")
+        return 0.0
+
+
 
 # ----- task functions -----
 def neo4j_retriever(question: str, chapter: str = None, group: str = None) -> dict[str, Any]:
@@ -610,7 +727,9 @@ def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
             "desc_reasoner",
             "answer_llm"
         ]
+
     )
+
     return result
 
 

@@ -70,6 +70,191 @@ class Neo4jImporter:
             self.driver.close()
             logger.info("Neo4j connection closed")
 
+    def upload_textbook_analysis(self, analysis, analysis_id: str) -> bool:
+        """上傳細粒度教材分析；新內容一律以 pending 狀態進入圖譜。"""
+        if not self.driver:
+            logger.error("Neo4j driver is not connected")
+            return False
+
+        try:
+            chapters = []
+            points = []
+            relations = []
+            targets = []
+            point_evidence = []
+            target_evidence = []
+
+            for chapter in analysis.chapters:
+                chapters.append({
+                    "id": chapter.id,
+                    "title": chapter.title,
+                    "order": chapter.order,
+                })
+                for point in chapter.knowledge_points:
+                    points.append({
+                        "id": point.id,
+                        "chapter_id": chapter.id,
+                        "name": point.name,
+                        "description": point.description,
+                    })
+                    for evidence in point.evidence:
+                        point_evidence.append({
+                            "point_id": point.id,
+                            "chunk_id": evidence.chunk_id,
+                            "heading_path": evidence.heading_path,
+                            "quote": evidence.quote,
+                        })
+                for relation in chapter.relations:
+                    relations.append(relation.model_dump())
+                for target in chapter.assessment_targets:
+                    targets.append({
+                        "id": target.id,
+                        "chapter_id": chapter.id,
+                        "title": target.title,
+                        "objective": target.objective,
+                        "discrimination": target.discrimination,
+                        "common_misconceptions": target.common_misconceptions,
+                        "knowledge_point_ids": target.knowledge_point_ids,
+                    })
+                    for chunk_id in target.evidence_chunk_ids:
+                        target_evidence.append({
+                            "target_id": target.id,
+                            "chunk_id": chunk_id,
+                        })
+
+            with self.driver.session(database=self.database) as session:
+                for label in ["Textbook", "Chapter", "KnowledgePoint", "AssessmentTarget", "SourceChunk"]:
+                    session.run(
+                        f"CREATE CONSTRAINT {label.lower()}_id_unique IF NOT EXISTS "
+                        f"FOR (n:{label}) REQUIRE n.id IS UNIQUE"
+                    )
+
+                session.run(
+                    """
+                    MERGE (book:Textbook {id: $textbook_id})
+                    SET book.title = $title,
+                        book.source_file = $source_file,
+                        book.analysis_id = $analysis_id,
+                        book.review_status = 'pending'
+                    WITH book
+                    UNWIND $chapters AS row
+                    MERGE (chapter:Chapter {id: row.id})
+                    SET chapter.title = row.title, chapter.order = row.order,
+                        chapter.analysis_id = $analysis_id,
+                        chapter.review_status = 'pending'
+                    MERGE (book)-[:HAS_CHAPTER]->(chapter)
+                    """,
+                    textbook_id=analysis.textbook_id,
+                    title=analysis.title,
+                    source_file=analysis.source_file,
+                    analysis_id=analysis_id,
+                    chapters=chapters,
+                )
+                session.run(
+                    """
+                    UNWIND $points AS row
+                    MATCH (chapter:Chapter {id: row.chapter_id})
+                    MERGE (point:KnowledgePoint {id: row.id})
+                    SET point.name = row.name, point.description = row.description,
+                        point.analysis_id = $analysis_id,
+                        point.review_status = 'pending'
+                    MERGE (chapter)-[:HAS_KNOWLEDGE_POINT]->(point)
+                    """,
+                    points=points,
+                    analysis_id=analysis_id,
+                )
+                session.run(
+                    """
+                    UNWIND $evidence AS row
+                    MATCH (point:KnowledgePoint {id: row.point_id})
+                    MERGE (chunk:SourceChunk {id: row.chunk_id})
+                    SET chunk.heading_path = row.heading_path,
+                        chunk.analysis_id = $analysis_id,
+                        chunk.review_status = 'pending'
+                    MERGE (point)-[rel:EVIDENCED_BY]->(chunk)
+                    SET rel.quote = row.quote
+                    """,
+                    evidence=point_evidence,
+                    analysis_id=analysis_id,
+                )
+                session.run(
+                    """
+                    UNWIND $relations AS row
+                    MATCH (source:KnowledgePoint {id: row.source_id})
+                    MATCH (target:KnowledgePoint {id: row.target_id})
+                    MERGE (source)-[rel:KNOWLEDGE_RELATION {
+                        relation_type: row.relation_type,
+                        analysis_id: $analysis_id
+                    }]->(target)
+                    SET rel.description = row.description,
+                        rel.review_status = 'pending'
+                    """,
+                    relations=relations,
+                    analysis_id=analysis_id,
+                )
+                session.run(
+                    """
+                    UNWIND $targets AS row
+                    MATCH (chapter:Chapter {id: row.chapter_id})
+                    MERGE (assessment:AssessmentTarget {id: row.id})
+                    SET assessment.title = row.title,
+                        assessment.objective = row.objective,
+                        assessment.discrimination = row.discrimination,
+                        assessment.common_misconceptions = row.common_misconceptions,
+                        assessment.analysis_id = $analysis_id,
+                        assessment.review_status = 'pending'
+                    MERGE (chapter)-[:HAS_ASSESSMENT_TARGET]->(assessment)
+                    WITH assessment, row
+                    UNWIND row.knowledge_point_ids AS point_id
+                    MATCH (point:KnowledgePoint {id: point_id})
+                    MERGE (assessment)-[:ASSESSES]->(point)
+                    """,
+                    targets=targets,
+                    analysis_id=analysis_id,
+                )
+                session.run(
+                    """
+                    UNWIND $evidence AS row
+                    MATCH (assessment:AssessmentTarget {id: row.target_id})
+                    MATCH (chunk:SourceChunk {id: row.chunk_id})
+                    MERGE (assessment)-[:EVIDENCED_BY]->(chunk)
+                    """,
+                    evidence=target_evidence,
+                )
+            logger.info("Uploaded textbook analysis %s", analysis_id)
+            return True
+        except Exception as e:
+            logger.error("Fail to upload textbook analysis to Neo4j: %s", e)
+            return False
+
+    def update_textbook_analysis_status(self, analysis_id: str, status: str) -> bool:
+        """將同一分析批次的節點與知識關係同步為教師審核結果。"""
+        if status not in {"approved", "rejected"}:
+            raise ValueError("status must be approved or rejected")
+        if not self.driver:
+            logger.error("Neo4j driver is not connected")
+            return False
+        try:
+            with self.driver.session(database=self.database) as session:
+                session.run(
+                    """
+                    MATCH (node)
+                    WHERE node.analysis_id = $analysis_id
+                    SET node.review_status = $status
+                    WITH count(node) AS nodes
+                    MATCH ()-[rel:KNOWLEDGE_RELATION]->()
+                    WHERE rel.analysis_id = $analysis_id
+                    SET rel.review_status = $status
+                    RETURN nodes, count(rel) AS relationships
+                    """,
+                    analysis_id=analysis_id,
+                    status=status,
+                ).consume()
+            return True
+        except Exception as e:
+            logger.error("Fail to update textbook review status: %s", e)
+            return False
+
     def upload_textbook_triples(self, triple_list: TripleList, source_file: str) -> bool:
         try:
             with self.driver.session() as session:

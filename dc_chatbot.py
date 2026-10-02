@@ -1,5 +1,6 @@
 import discord
 import asyncio, os
+import logging
 from functools import partial
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -12,7 +13,11 @@ from opencc import OpenCC
 from utils import file_processor
 from services import haystack_service, quiz_generator_kg
 from services.kg_constructor import KGConstructor
-from database.mongo_controller import LearningProfile, StudentProfile, QuizAttempt, ChatLogs, LogInfo, init_mongo
+from services.textbook_analyzer import TextbookAnalyzer
+from database.mongo_controller import (
+    DiagnosisQuiz, LearningProfile, StudentProfile, QuizAttempt, QuizResponse,
+    TargetEvidence, TextbookAnalysis, ChatLogs, LogInfo, init_mongo,
+)
 from database.neo4j_importer import Neo4jImporter, TripleList, EntityList, Entity
 import config, prompts, common
 
@@ -37,6 +42,7 @@ async def run_blocking(func, *args, **kwargs):
     return await loop.run_in_executor(executor, partial(func, *args, **kwargs))
 
 QUIZ_MODE_LABELS = {
+    "reviewed": "教師審核題庫",
     "bank": "題庫",
     "realtime": "即時",
     "personalized": "個人化",
@@ -57,6 +63,21 @@ def _compact_list(items: list[str], empty_text: str = "目前沒有紀錄", limi
     if len(unique_items) > limit:
         text += f"\n…另有 {len(unique_items) - limit} 項"
     return text[:1024]
+
+
+def split_discord_text(text: str, limit: int = 1800) -> list[str]:
+    """優先在換行處切割，避免超過 Discord 單則訊息限制。"""
+    chunks: list[str] = []
+    remaining = text
+    while remaining:
+        split_at = min(len(remaining), limit)
+        if split_at < len(remaining):
+            boundary = remaining.rfind("\n", 0, split_at)
+            if boundary > limit // 2:
+                split_at = boundary
+        chunks.append(remaining[:split_at].strip())
+        remaining = remaining[split_at:].strip()
+    return [chunk for chunk in chunks if chunk]
 
 async def build_learning_profile_embed(user_id: int) -> tuple[discord.Embed, list[str]]:
     """整理學生目前的學習歷程，用於 /learning_profile 與弱點更新後刷新畫面。"""
@@ -234,7 +255,7 @@ class LearningProfileView(discord.ui.View):
 
 # ----- Button UI -----
 class QuizView(discord.ui.View):
-    def __init__(self, questions: list, user_id: int, user_name: str, mode: str = "mixed"):
+    def __init__(self, questions: list, user_id: int, user_name: str, mode: str = "reviewed"):
         super().__init__(timeout=180)
         self.user_id = user_id
         self.user_name = user_name
@@ -243,6 +264,7 @@ class QuizView(discord.ui.View):
         self.answer_history = ""
         self.learning_pp = list()
         self.learned_concepts = list()
+        self.responses: list[QuizResponse] = []
         self.index = 0
         self.score = 0
 
@@ -289,14 +311,21 @@ class QuizView(discord.ui.View):
                 if pain_points:
                     print("原本的弱點：", pain_points)
                     # 取得原本不會但已經會的概念
-                    learned = [c for c in concepts if c in pain_points]
+                    learned = [
+                        pain_point
+                        for pain_point in pain_points
+                        if any(
+                            pain_point == concept or pain_point.startswith(f"{concept}：")
+                            for concept in concepts
+                        )
+                    ]
                     print("原本不會但已經會：", learned)
 
                     # 從學習弱點中移除已學會的概念
                     pain_points = [pp for pp in pain_points if pp not in learned]
 
                     print("修正後的弱點：", pain_points)
-                    learned_concepts.extend(learned)
+                    learned_concepts.extend(concepts)
                     profile.pain_points = pain_points
                     profile.learned = list(set(learned_concepts))
 
@@ -357,6 +386,12 @@ class QuizView(discord.ui.View):
                 name=self.user_name,
             ).insert()
 
+        correct_targets = [
+            response.assessment_target for response in self.responses if response.is_correct
+        ]
+        wrong_targets = [
+            response.assessment_target for response in self.responses if not response.is_correct
+        ]
         await QuizAttempt(
             student=student,
             mode=self.mode,
@@ -364,7 +399,59 @@ class QuizView(discord.ui.View):
             total_questions=len(self.questions),
             correct_concepts=list(dict.fromkeys(self.learned_concepts)),
             wrong_concepts=list(dict.fromkeys(self.learning_pp)),
+            correct_targets=list(dict.fromkeys(correct_targets)),
+            wrong_targets=list(dict.fromkeys(wrong_targets)),
+            responses=self.responses,
         ).insert()
+
+        profile = await LearningProfile.find_one(
+            LearningProfile.student.discord_id == self.user_id,
+            fetch_links=True,
+        )
+        if not profile:
+            profile = await LearningProfile(student=student).insert()
+
+        evidence_by_id = {
+            item.assessment_target_id: item for item in (profile.target_evidence or [])
+        }
+        for response in self.responses:
+            target_id = response.assessment_target_id or f"legacy:{response.assessment_target}"
+            evidence = evidence_by_id.get(target_id)
+            if not evidence:
+                evidence = TargetEvidence(
+                    assessment_target_id=target_id,
+                    label=response.assessment_target,
+                )
+                evidence_by_id[target_id] = evidence
+            if response.is_correct:
+                evidence.correct_count += 1
+            else:
+                evidence.wrong_count += 1
+                if response.misconception:
+                    evidence.misconceptions = list(dict.fromkeys(
+                        evidence.misconceptions + [response.misconception]
+                    ))
+            evidence.updated_at = datetime.now()
+        profile.target_evidence = list(evidence_by_id.values())
+        await profile.save()
+
+    @staticmethod
+    def _target_label(question) -> str:
+        return getattr(question, "assessment_target", None) or question.concept
+
+    @staticmethod
+    def _option_misconception(question, choice: int) -> str | None:
+        for diagnosis in getattr(question, "option_diagnoses", []) or []:
+            option_index = (
+                diagnosis.option_index if hasattr(diagnosis, "option_index")
+                else diagnosis.get("option_index")
+            )
+            if option_index == choice:
+                return (
+                    diagnosis.misconception if hasattr(diagnosis, "misconception")
+                    else diagnosis.get("misconception")
+                )
+        return None
 
     async def check_answer(self, interaction: discord.Interaction, choice: int):
         # Discord component interaction 必須在約 3 秒內 ACK。
@@ -373,15 +460,33 @@ class QuizView(discord.ui.View):
         await interaction.response.defer()
 
         question = self.questions[self.index]
+        target_label = self._target_label(question)
+        target_id = getattr(question, "assessment_target_id", None)
+        misconception = self._option_misconception(question, choice)
+        is_correct = choice == question.answer
+        self.responses.append(
+            QuizResponse(
+                question_id=str(question.id) if getattr(question, "id", None) else None,
+                assessment_target_id=target_id,
+                assessment_target=target_label,
+                selected_option=choice,
+                correct_option=question.answer,
+                is_correct=is_correct,
+                misconception=misconception if not is_correct else None,
+            )
+        )
         # 檢查答案並記錄答錯題目
-        if choice == question.answer:
+        if is_correct:
             self.score += 1
             self.answer_history = self.answer_history + f"- 第{self.index+1}題：✓\n    - 題目：{question.question}\n    - 正確答案：{question.options[question.answer]}\n"
-            self.learned_concepts.append(self.questions[self.index].concept)
+            self.learned_concepts.append(target_label)
         else:
             analysis = self.questions[self.index].analysis
             self.answer_history = self.answer_history + f"- 第{self.index+1}題：✕\n    - 題目：{question.question}\n    - 正確答案：{question.options[question.answer]}\n    - 你的答案：{question.options[choice]}\n    - 解析：{analysis}\n"
-            self.learning_pp.append(self.questions[self.index].concept)
+            weakness = target_label
+            if misconception:
+                weakness = f"{target_label}：{misconception}"
+            self.learning_pp.append(weakness)
 
         self.index += 1
 
@@ -511,16 +616,50 @@ def build_knowledge_graph(source_file: str, doc_type: str, group: str, uploader:
     finally:
         importer.close()
 
+
+def upload_textbook_analysis_to_neo4j(analysis: TextbookAnalysis) -> bool:
+    importer = Neo4jImporter(
+        uri=common.NEO4J_URI,
+        username="neo4j",
+        password=config.NEO4J_PASSWORD,
+    )
+    try:
+        return bool(
+            importer.connect()
+            and importer.upload_textbook_analysis(analysis, str(analysis.id))
+        )
+    finally:
+        importer.close()
+
+
+def update_textbook_review_in_neo4j(analysis_id: str, status: str) -> bool:
+    importer = Neo4jImporter(
+        uri=common.NEO4J_URI,
+        username="neo4j",
+        password=config.NEO4J_PASSWORD,
+    )
+    try:
+        return bool(
+            importer.connect()
+            and importer.update_textbook_analysis_status(analysis_id, status)
+        )
+    finally:
+        importer.close()
+
+
+def is_teacher(interaction: discord.Interaction) -> bool:
+    permissions = getattr(interaction.user, "guild_permissions", None)
+    return interaction.user.id in developers or bool(
+        permissions and permissions.manage_guild
+    )
+
 # ----- Slash Command -----
 
 @bot.tree.command(name="quiz", description="開始測驗")
-@app_commands.describe(mode="選擇題目來源；未指定時使用混合模式")
+@app_commands.describe(mode="學生測驗只會使用教師已核准的題目")
 @app_commands.choices(
     mode=[
-        app_commands.Choice(name="混合：題庫 + 個人化/即時", value="mixed"),
-        app_commands.Choice(name="題庫：MongoDB 既有題目", value="bank"),
-        app_commands.Choice(name="即時：教材 RAG + LLM 重新出題", value="realtime"),
-        app_commands.Choice(name="個人化：依過往課程 QA / 學習弱點", value="personalized"),
+        app_commands.Choice(name="教師審核題庫", value="reviewed"),
     ]
 )
 async def quiz(
@@ -529,7 +668,7 @@ async def quiz(
 ):
     await interaction.response.defer(ephemeral=True)
     try:
-        selected_mode = mode.value if mode else "mixed"
+        selected_mode = mode.value if mode else "reviewed"
         question_list, source_message = await quiz_generator_kg.get_quizzes(
             mode=selected_mode,
             user_id=interaction.user.id,
@@ -557,7 +696,7 @@ async def quiz(
 
 @bot.tree.command(name="learning_profile", description="查看自己的學習紀錄與學習弱點")
 async def learning_profile(interaction: discord.Interaction):
-    await interaction.response.deferreturn(ephemeral=True)
+    await interaction.response.defer(ephemeral=True)
     try:
         embed, pain_points = await build_learning_profile_embed(interaction.user.id)
         view = LearningProfileView(interaction.user.id, pain_points)
@@ -625,9 +764,14 @@ async def course_qa(interaction: discord.Interaction, question: str):
     try:
         llm_result = await run_blocking(haystack_service.neo4j_textbook_kg_retriever, question) #不要讓一個學生的問題卡住整個 Discord Bot
         response = cc.convert(llm_result['answer_llm']['replies'][0])
+
+        crit_score = await run_blocking(haystack_service.CRIT_check, question, response)
+        print(f"CRIT分數為：{crit_score}")
+
         content = f"> {question}\n\n{response}"
         chatbot_timestamp = datetime.now()
-        await interaction.followup.send(content=content)    
+        await interaction.followup.send(content=content)
+        await interaction.followup.send(f"CRIT分數為：{crit_score}")
     except Exception as e:
         # 萬一生成失敗，發送錯誤訊息給使用者
         await interaction.followup.send(f"回答生成失敗：{e}")
@@ -664,6 +808,248 @@ async def course_qa(interaction: discord.Interaction, question: str):
             ]
         ).insert()
 
+@bot.tree.command(name="upload_textbook", description="上傳教材並建立待審知識點與評量目標")
+@app_commands.describe(file="教材 PDF 或 Markdown")
+async def upload_textbook(interaction: discord.Interaction, file: discord.Attachment):
+    if not is_teacher(interaction):
+        await interaction.response.send_message("只有教師或伺服器管理員可以匯入教材。", ephemeral=True)
+        return
+
+    suffix = Path(file.filename).suffix.lower()
+    if suffix not in {".pdf", ".md", ".markdown"}:
+        await interaction.response.send_message("只支援 PDF、.md 或 .markdown 教材。", ephemeral=True)
+        return
+
+    await interaction.response.defer(ephemeral=True)
+    textbook_dir = Path("md_files") / "textbooks"
+    textbook_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    original_path = textbook_dir / f"{timestamp}_{Path(file.filename).name}"
+    await file.save(str(original_path))
+
+    try:
+        if suffix == ".pdf":
+            markdown = await run_blocking(file_processor.pdf2md, str(original_path))
+            markdown_path = original_path.with_suffix(".md")
+            markdown_path.write_text(markdown, encoding="utf-8")
+        else:
+            markdown_path = original_path
+            markdown = markdown_path.read_text(encoding="utf-8")
+
+        analyzer = TextbookAnalyzer()
+        analysis = await run_blocking(
+            analyzer.analyze,
+            markdown,
+            markdown_path.name,
+            interaction.user.name,
+        )
+        await analysis.insert()
+        uploaded = await run_blocking(upload_textbook_analysis_to_neo4j, analysis)
+        if not uploaded:
+            analysis.review_note = "Neo4j 寫入失敗，請檢查服務後重新上傳。"
+            await analysis.save()
+            raise RuntimeError("教材分析已保存，但 Neo4j 寫入失敗")
+
+        point_count = sum(len(chapter.knowledge_points) for chapter in analysis.chapters)
+        target_count = sum(len(chapter.assessment_targets) for chapter in analysis.chapters)
+        await interaction.followup.send(
+            f"教材分析完成，狀態為待審。\n"
+            f"分析 ID：`{analysis.id}`\n"
+            f"章節：{len(analysis.chapters)}；知識點：{point_count}；評量目標：{target_count}\n"
+            "請先用 `/inspect_textbook` 檢視，再用 `/review_textbook` 核准或退回；"
+            "未核准內容不會用於出題。",
+            ephemeral=True,
+        )
+    except Exception as exc:
+        logging.getLogger(__name__).exception("教材匯入失敗：%s", file.filename)
+        await interaction.followup.send(f"教材匯入失敗：{exc}", ephemeral=True)
+
+
+@bot.tree.command(name="inspect_textbook", description="檢視待審教材的知識點與評量目標")
+@app_commands.describe(analysis_id="教材分析 ID", chapter_order="章節順序；預設顯示第 1 章")
+async def inspect_textbook(
+    interaction: discord.Interaction,
+    analysis_id: str,
+    chapter_order: app_commands.Range[int, 1, 999] = 1,
+):
+    if not is_teacher(interaction):
+        await interaction.response.send_message("只有教師或伺服器管理員可以檢視教材分析。", ephemeral=True)
+        return
+    await interaction.response.defer(ephemeral=True)
+    try:
+        analysis = await TextbookAnalysis.get(analysis_id)
+        if not analysis:
+            raise ValueError("找不到指定的教材分析")
+        chapter = next(
+            (item for item in analysis.chapters if item.order == chapter_order),
+            None,
+        )
+        if not chapter:
+            raise ValueError(f"找不到第 {chapter_order} 章；共有 {len(analysis.chapters)} 章")
+        lines = [
+            f"教材：{analysis.title}｜狀態：{analysis.review_status}",
+            f"第 {chapter.order} 章：{chapter.title} (`{chapter.id}`)",
+            "\n【細粒度知識點】",
+        ]
+        for point in chapter.knowledge_points:
+            evidence = "；".join(item.quote for item in point.evidence if item.quote)
+            lines.append(
+                f"- `{point.id}` {point.name}\n  {point.description}"
+                + (f"\n  證據：{evidence[:300]}" if evidence else "")
+            )
+        lines.append("\n【評量目標】")
+        for target in chapter.assessment_targets:
+            lines.append(
+                f"- `{target.id}` {target.title}\n"
+                f"  能力：{target.objective}\n"
+                f"  鑑別：{target.discrimination}\n"
+                f"  迷思：{'；'.join(target.common_misconceptions)}"
+            )
+        for chunk in split_discord_text("\n".join(lines)):
+            await interaction.followup.send(chunk, ephemeral=True)
+    except Exception as exc:
+        await interaction.followup.send(f"教材分析讀取失敗：{exc}", ephemeral=True)
+
+
+@bot.tree.command(name="review_textbook", description="審核教材知識點與評量目標批次")
+@app_commands.describe(analysis_id="upload_textbook 回傳的分析 ID", decision="審核結果", note="審核備註")
+@app_commands.choices(
+    decision=[
+        app_commands.Choice(name="核准", value="approved"),
+        app_commands.Choice(name="退回", value="rejected"),
+    ]
+)
+async def review_textbook(
+    interaction: discord.Interaction,
+    analysis_id: str,
+    decision: app_commands.Choice[str],
+    note: str | None = None,
+):
+    if not is_teacher(interaction):
+        await interaction.response.send_message("只有教師或伺服器管理員可以審核教材。", ephemeral=True)
+        return
+    await interaction.response.defer(ephemeral=True)
+    try:
+        analysis = await TextbookAnalysis.get(analysis_id)
+        if not analysis:
+            raise ValueError("找不到指定的教材分析")
+        updated = await run_blocking(
+            update_textbook_review_in_neo4j,
+            str(analysis.id),
+            decision.value,
+        )
+        if not updated:
+            raise RuntimeError("Neo4j 審核狀態更新失敗")
+        analysis.review_status = decision.value
+        analysis.review_note = note
+        analysis.reviewed_by = interaction.user.name
+        analysis.reviewed_at = datetime.now()
+        await analysis.save()
+        await interaction.followup.send(
+            f"教材分析 `{analysis.id}` 已{('核准' if decision.value == 'approved' else '退回')}。",
+            ephemeral=True,
+        )
+    except Exception as exc:
+        await interaction.followup.send(f"審核失敗：{exc}", ephemeral=True)
+
+
+@bot.tree.command(name="generate_quiz_drafts", description="依核准評量目標產生待審題目")
+@app_commands.describe(count="產生題數（1-10）", chapter_id="可選：只使用指定章節")
+async def generate_quiz_drafts(
+    interaction: discord.Interaction,
+    count: app_commands.Range[int, 1, 10] = 5,
+    chapter_id: str | None = None,
+):
+    if not is_teacher(interaction):
+        await interaction.response.send_message("只有教師或伺服器管理員可以產生題目草稿。", ephemeral=True)
+        return
+    await interaction.response.defer(ephemeral=True)
+    try:
+        drafts = await quiz_generator_kg.generate_quiz_drafts(count, chapter_id)
+        lines = [f"- `{draft.id}`：{draft.question[:80]}" for draft in drafts]
+        await interaction.followup.send(
+            "已建立待審題目；學生尚無法看到。\n" + "\n".join(lines) +
+            "\n請先用 `/inspect_quiz` 檢視，再用 `/review_quiz` 逐題核准或退回。",
+            ephemeral=True,
+        )
+    except Exception as exc:
+        logging.getLogger(__name__).exception("題目草稿生成失敗")
+        await interaction.followup.send(f"題目草稿生成失敗：{exc}", ephemeral=True)
+
+
+@bot.tree.command(name="inspect_quiz", description="檢視診斷題草稿與選項迷思映射")
+@app_commands.describe(question_id="題目草稿 ID")
+async def inspect_quiz(interaction: discord.Interaction, question_id: str):
+    if not is_teacher(interaction):
+        await interaction.response.send_message("只有教師或伺服器管理員可以檢視題目。", ephemeral=True)
+        return
+    await interaction.response.defer(ephemeral=True)
+    try:
+        question = await DiagnosisQuiz.get(question_id)
+        if not question:
+            raise ValueError("找不到指定題目")
+        diagnoses = {
+            item.option_index: item for item in (question.option_diagnoses or [])
+        }
+        option_lines = []
+        for index, option in enumerate(question.options):
+            diagnosis = diagnoses.get(index)
+            marker = "（正確）" if index == question.answer else ""
+            misconception = diagnosis.misconception if diagnosis else None
+            option_lines.append(
+                f"{chr(65 + index)}. {option} {marker}"
+                + (f"\n   迷思：{misconception}" if misconception else "")
+            )
+        text = (
+            f"狀態：{question.review_status}\n"
+            f"評量目標：{question.assessment_target or question.concept} "
+            f"(`{question.assessment_target_id or 'legacy'}`)\n\n"
+            f"題目：{question.question}\n" + "\n".join(option_lines) +
+            f"\n\n解析：{question.analysis}\n"
+            f"知識點 IDs：{', '.join(question.knowledge_point_ids)}\n"
+            f"來源 chunks：{', '.join(question.source_chunk_ids)}"
+        )
+        for chunk in split_discord_text(text):
+            await interaction.followup.send(chunk, ephemeral=True)
+    except Exception as exc:
+        await interaction.followup.send(f"題目讀取失敗：{exc}", ephemeral=True)
+
+
+@bot.tree.command(name="review_quiz", description="審核單一診斷題目")
+@app_commands.describe(question_id="題目草稿 ID", decision="審核結果", note="審核備註")
+@app_commands.choices(
+    decision=[
+        app_commands.Choice(name="核准", value="approved"),
+        app_commands.Choice(name="退回", value="rejected"),
+    ]
+)
+async def review_quiz(
+    interaction: discord.Interaction,
+    question_id: str,
+    decision: app_commands.Choice[str],
+    note: str | None = None,
+):
+    if not is_teacher(interaction):
+        await interaction.response.send_message("只有教師或伺服器管理員可以審核題目。", ephemeral=True)
+        return
+    await interaction.response.defer(ephemeral=True)
+    try:
+        question = await DiagnosisQuiz.get(question_id)
+        if not question:
+            raise ValueError("找不到指定題目")
+        question.review_status = decision.value
+        question.review_note = note
+        question.reviewed_by = interaction.user.name
+        question.reviewed_at = datetime.now()
+        await question.save()
+        await interaction.followup.send(
+            f"題目 `{question.id}` 已{('核准' if decision.value == 'approved' else '退回')}。",
+            ephemeral=True,
+        )
+    except Exception as exc:
+        await interaction.followup.send(f"題目審核失敗：{exc}", ephemeral=True)
+
+
 @bot.tree.command(name="upload_document", description="上傳專案文件")
 @app_commands.describe(file="請選擇文件", doc_type="請選擇文件類型", group="請輸入組別或代號")
 @app_commands.choices(
@@ -697,17 +1083,21 @@ async def upload_document(interaction: discord.Interaction, file: discord.Attach
     save_path = f"md_files\\groups\\{group}\\{file.filename}"
     await file.save(save_path)
 
-    suffix = Path(save_path).suffix.lower()
-    if suffix == ".pdf":
-        mk_file = file_processor.pdf2md(save_path)
-        save_path = f"md_files\\groups\\{group}\\{file.filename}".replace(".pdf", ".md")
-        with open(save_path, "w", encoding="utf-8") as f:
-            f.write(mk_file)
+    try:
+        if Path(save_path).suffix.lower() == ".pdf":
+            mk_file = await run_blocking(file_processor.pdf2md, save_path)
+            save_path = str(Path(save_path).with_suffix(".md"))
+            with open(save_path, "w", encoding="utf-8") as f:
+                f.write(mk_file)
 
-    # 建圖
-    await run_blocking(build_knowledge_graph, source_file=save_path, doc_type=doc_type.value, group=group, uploader=interaction.user.name)
-    # 向量
-    await haystack_service.upload_doc_2_vectordb(file_path=save_path, doc_type=doc_type.value, group_name=group, uploader=interaction.user.name)
+        # 建圖
+        await run_blocking(build_knowledge_graph, source_file=save_path, doc_type=doc_type.value, group=group, uploader=interaction.user.name)
+        # 向量
+        await haystack_service.upload_doc_2_vectordb(file_path=save_path, doc_type=doc_type.value, group_name=group, uploader=interaction.user.name)
+    except Exception:
+        logging.getLogger(__name__).exception("文件匯入失敗：%s", file.filename)
+        await interaction.followup.send(f"【{file.filename}】匯入失敗，請查看 Bot 主控台的錯誤紀錄。", ephemeral=True)
+        return
 
     await user.send(f"【{file.filename}】已成功匯入")
 
@@ -782,4 +1172,10 @@ async def on_message(message):
 #     response_text = await neo4j_retriever(message.content)
 #     await message.channel.send(response_text)
 
-bot.run(config.DISCORD_TOKEN)
+if __name__ == "__main__":
+    try:
+        bot.run(config.DISCORD_TOKEN)
+    except (KeyboardInterrupt, asyncio.CancelledError):
+        # Ctrl+C may surface as CancelledError while the Discord gateway waits
+        # for the next WebSocket message, depending on the Python runtime.
+        print("SE Mentor 已停止。")

@@ -24,4 +24,6 @@ dependencies = [
     "opencc==1.4.0",
     "ragas==0.0.22",
     "sentence-transformers==5.6.0",
+    # Marker 1.5.5 / Surya 0.12.1 predate newer Transformers model initialization.
+    "transformers==4.48.3",
 ]

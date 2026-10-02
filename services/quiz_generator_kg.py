@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field, field_validator
 from database.neo4j_importer import Neo4jImporter
 from database.mongo_controller import (
     DiagnosisQuiz,
+    OptionDiagnosis,
     init_mongo,
     LearningProfile,
     ChatLogs,
@@ -47,12 +48,24 @@ class Question(BaseModel):
     answer: int = Field(ge=0, le=3)
     analysis: str
     concept: str
+    knowledge_point_ids: list[str] = Field(default_factory=list)
+    assessment_target_id: str | None = None
+    assessment_target: str | None = None
+    option_diagnoses: list[OptionDiagnosis] = Field(default_factory=list)
+    source_chunk_ids: list[str] = Field(default_factory=list)
 
     @field_validator("options")
     @classmethod
     def validate_options(cls, value: list[str]) -> list[str]:
         if len(value) != 4:
             raise ValueError("每題必須恰好有 4 個選項")
+        return value
+
+    @field_validator("option_diagnoses")
+    @classmethod
+    def validate_option_diagnoses(cls, value: list[OptionDiagnosis]) -> list[OptionDiagnosis]:
+        if value and sorted(item.option_index for item in value) != [0, 1, 2, 3]:
+            raise ValueError("option_diagnoses 必須完整對應 0、1、2、3 四個選項")
         return value
 
 
@@ -217,6 +230,101 @@ def find_relevant_kg_concepts(keywords: list[str], limit: int = 10) -> list[str]
     return names
 
 
+def get_approved_assessment_documents(
+    count: int = 5,
+    chapter_id: str | None = None,
+) -> list[Document]:
+    """取得教師核准的評量目標，以及其知識點、關係與教材證據。"""
+    cypher = """
+    MATCH (assessment:AssessmentTarget {review_status: 'approved'})
+    MATCH (chapter:Chapter)-[:HAS_ASSESSMENT_TARGET]->(assessment)
+    WHERE $chapter_id IS NULL OR chapter.id = $chapter_id
+    MATCH (assessment)-[:ASSESSES]->(point:KnowledgePoint {review_status: 'approved'})
+    OPTIONAL MATCH (point)-[knowledge_rel:KNOWLEDGE_RELATION]-(related:KnowledgePoint)
+    WHERE knowledge_rel.review_status = 'approved'
+    OPTIONAL MATCH (point)-[evidence_rel:EVIDENCED_BY]->(chunk:SourceChunk)
+    WITH assessment, chapter,
+         collect(DISTINCT {
+             id: point.id, name: point.name, description: point.description
+         }) AS points,
+         collect(DISTINCT {
+             source: startNode(knowledge_rel).name,
+             relation_type: knowledge_rel.relation_type,
+             target: endNode(knowledge_rel).name,
+             description: knowledge_rel.description
+         }) AS relations,
+         collect(DISTINCT {
+             chunk_id: chunk.id, quote: evidence_rel.quote,
+             heading_path: chunk.heading_path
+         }) AS evidence
+    RETURN assessment.id AS target_id,
+           assessment.title AS title,
+           assessment.objective AS objective,
+           assessment.discrimination AS discrimination,
+           assessment.common_misconceptions AS misconceptions,
+           chapter.id AS chapter_id,
+           chapter.title AS chapter_title,
+           points, relations, evidence
+    ORDER BY rand()
+    LIMIT $limit
+    """
+    docs: list[Document] = []
+    with _kg_driver() as driver:
+        with driver.session(database="neo4j") as session:
+            records = session.run(
+                cypher,
+                chapter_id=chapter_id,
+                limit=max(1, int(count)),
+            )
+            for record in records:
+                points = [point for point in (record["points"] or []) if point.get("id")]
+                relations = [
+                    relation for relation in (record["relations"] or [])
+                    if relation.get("target") and relation.get("relation_type")
+                ]
+                evidence = [
+                    item for item in (record["evidence"] or []) if item.get("chunk_id")
+                ]
+                lines = [
+                    f"【評量目標 ID】{record['target_id']}",
+                    f"【章節】{record['chapter_title']}",
+                    f"【目標】{record['title']}",
+                    f"【可觀察能力】{record['objective']}",
+                    f"【鑑別重點】{record['discrimination']}",
+                    f"【常見迷思】{'；'.join(record['misconceptions'] or [])}",
+                    "【知識點】",
+                ]
+                lines.extend(
+                    f"- {point['id']}｜{point['name']}：{point.get('description') or ''}"
+                    for point in points
+                )
+                if relations:
+                    lines.append("【知識關係】")
+                    lines.extend(
+                        f"- {rel['source']} --{rel['relation_type']}--> {rel['target']}："
+                        f"{rel.get('description') or ''}"
+                        for rel in relations
+                    )
+                if evidence:
+                    lines.append("【教材證據】")
+                    lines.extend(
+                        f"- {item['chunk_id']}｜{item.get('quote') or ''}"
+                        for item in evidence
+                    )
+                docs.append(
+                    Document(
+                        content="\n".join(lines),
+                        meta={
+                            "assessment_target_id": record["target_id"],
+                            "chapter_id": record["chapter_id"],
+                            "knowledge_point_ids": [point["id"] for point in points],
+                            "source_chunk_ids": [item["chunk_id"] for item in evidence],
+                        },
+                    )
+                )
+    return docs
+
+
 def _get_quiz_pipeline() -> Pipeline:
     """Lazy init，避免每次 /quiz 都重新載入 embedding model。"""
     global _quiz_pipeline
@@ -240,10 +348,13 @@ def _get_quiz_pipeline() -> Pipeline:
 3. 每題必須恰好 4 個選項。
 4. answer 必須使用 0、1、2、3 表示正確選項索引，分別對應 A、B、C、D。
 5. 每題都要提供 analysis，說明為何正確答案正確，並簡要指出其他選項的問題。
-6. concept 填入該題主要評量的軟體工程概念。
-7. 不可把學生過去問過的問題原句直接改成選擇題；要根據教材重新設計具有鑑別度的新題目。
-8. 不可使用 Context 無法支持的知識。
-9. 使用台灣繁體中文。
+6. 每題只能對應一個 Context 中明列的評量目標。assessment_target_id 必須原樣填入；
+   assessment_target 填目標名稱；knowledge_point_ids 與 source_chunk_ids 也只能填 Context 中的 ID。
+7. 四個選項應用來辨識學生對知識點關係／差異的理解。option_diagnoses 必須依序對應四個選項；
+   正確選項的 misconception 填 null，錯誤選項則填具體錯誤推理，不可只寫「觀念不清」。
+8. concept 保留作為相容欄位，填入精確的知識點名稱，不可只填章節大標題。
+9. 不可把學生過去問過的問題原句直接改成選擇題；要根據教材重新設計具有鑑別度的新題目。
+10. 不可使用 Context 無法支持的知識，且使用台灣繁體中文。
 
 Context:
 {% for document in documents %}
@@ -379,6 +490,62 @@ async def generate_realtime_quizzes(count: int = 5) -> list[Question]:
     return await asyncio.to_thread(_generate_realtime_quizzes_sync, count)
 
 
+def _generate_quiz_drafts_sync(count: int = 5, chapter_id: str | None = None) -> list[Question]:
+    documents = get_approved_assessment_documents(count=count, chapter_id=chapter_id)
+    if len(documents) < count:
+        raise ValueError(
+            f"只有 {len(documents)} 個已核准評量目標，少於要求的 {count} 個；"
+            "請先審核教材分析"
+        )
+    target_ids = {doc.meta["assessment_target_id"] for doc in documents}
+    questions = _run_generation(
+        documents=documents,
+        focus="每個評量目標各生成一題，用選項區分具體迷思與正確理解。",
+        student_context="無；這是教師審核前的題目草稿。",
+        count=count,
+    )
+    for question in questions:
+        if question.assessment_target_id not in target_ids:
+            raise ValueError("LLM 回傳了 Context 以外的 assessment_target_id")
+        source = next(
+            doc for doc in documents
+            if doc.meta["assessment_target_id"] == question.assessment_target_id
+        )
+        valid_points = set(source.meta["knowledge_point_ids"])
+        valid_chunks = set(source.meta["source_chunk_ids"])
+        if not question.knowledge_point_ids or not set(question.knowledge_point_ids) <= valid_points:
+            raise ValueError("LLM 回傳了評量目標以外的 knowledge_point_ids")
+        if not question.source_chunk_ids or not set(question.source_chunk_ids) <= valid_chunks:
+            raise ValueError("LLM 回傳了評量目標以外的 source_chunk_ids")
+        if len(question.option_diagnoses) != 4:
+            raise ValueError("題目缺少四個選項的診斷映射")
+        for diagnosis in question.option_diagnoses:
+            if diagnosis.option_index == question.answer and diagnosis.misconception:
+                raise ValueError("正確選項不可標記 misconception")
+            if diagnosis.option_index != question.answer and not diagnosis.misconception:
+                raise ValueError("每個錯誤選項都必須標記具體 misconception")
+    return questions
+
+
+async def generate_quiz_drafts(
+    count: int = 5,
+    chapter_id: str | None = None,
+) -> list[DiagnosisQuiz]:
+    """依核准評量目標產生待審題目，不會直接提供給學生。"""
+    questions = await asyncio.to_thread(_generate_quiz_drafts_sync, count, chapter_id)
+    drafts = [
+        DiagnosisQuiz(
+            **question.model_dump(),
+            chapter=chapter_id or "cross-chapter",
+            review_status="pending",
+        )
+        for question in questions
+    ]
+    if drafts:
+        await DiagnosisQuiz.insert_many(drafts)
+    return drafts
+
+
 async def _get_student_quiz_context(user_id: int, recent_limit: int = 8) -> tuple[str, str, str, int]:
     """取得最近課程 QA、目前學習弱點，以及使用者已主動標記克服的弱點。"""
     chat_logs = await ChatLogs.find_one(
@@ -510,18 +677,21 @@ async def upload_quiz_to_mongo():
 
 
 async def get_bank_quizzes(count: int = 5) -> list[DiagnosisQuiz]:
-    """從 MongoDB 題庫抽題。"""
+    """只從教師已核准的 MongoDB 題庫抽題。"""
     selected_chapters = random.sample(CHAPTERS, k=min(count, len(CHAPTERS)))
     questions: list[DiagnosisQuiz] = []
 
     for chapter in selected_chapters:
-        quiz_list = await DiagnosisQuiz.find({"chapter": chapter}).to_list()
+        quiz_list = await DiagnosisQuiz.find({
+            "chapter": chapter,
+            "review_status": "approved",
+        }).to_list()
         if quiz_list:
             questions.append(random.choice(quiz_list))
 
     # 若某章沒有題目，從所有現有題庫補滿。
     if len(questions) < count:
-        all_quizzes = await DiagnosisQuiz.find_all().to_list()
+        all_quizzes = await DiagnosisQuiz.find({"review_status": "approved"}).to_list()
         used_ids = {str(q.id) for q in questions}
         candidates = [q for q in all_quizzes if str(q.id) not in used_ids]
         need = min(count - len(questions), len(candidates))
@@ -529,7 +699,9 @@ async def get_bank_quizzes(count: int = 5) -> list[DiagnosisQuiz]:
             questions.extend(random.sample(candidates, need))
 
     if len(questions) < count:
-        raise ValueError(f"MongoDB 題庫只有 {len(questions)} 題可用，無法組成 {count} 題測驗")
+        raise ValueError(
+            f"教師已核准題庫只有 {len(questions)} 題，無法組成 {count} 題測驗"
+        )
 
     return questions[:count]
 
@@ -542,7 +714,10 @@ async def get_quizzes(mode: str, user_id: int, count: int = 5) -> tuple[list, st
       - personalized: 根據學生 course QA + pain points
       - mixed: 題庫 2 題 + 個人化/即時 3 題
     """
-    mode = (mode or "mixed").lower()
+    mode = (mode or "reviewed").lower()
+
+    if mode == "reviewed":
+        return await get_bank_quizzes(count), "審核題庫：所有題目皆已經教師核准"
 
     if mode == "bank":
         return await get_bank_quizzes(count), "題庫模式：從 MongoDB 既有題庫抽題"
