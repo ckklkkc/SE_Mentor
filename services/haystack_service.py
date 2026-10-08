@@ -526,7 +526,11 @@ def CRIT_check(question: str, bot_response: str) -> float:
     
     pipeline.add_component("crit_prompt", PromptBuilder(template=CRIT_prompt_template, required_variables=["question", "bot_response"]))
     # 這裡使用 gpt-4o-mini 作為快速邏輯驗證引擎
-    pipeline.add_component("crit_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini"))
+    pipeline.add_component("crit_llm", OpenAIGenerator(
+                                            api_key=Secret.from_env_var("OPENAI_API_KEY"), 
+                                            model="gpt-4o-mini"),
+                                            generation_kwargs={"temperature": 0.0 }
+                            )
     
     pipeline.connect("crit_prompt.prompt", "crit_llm.prompt")
 
