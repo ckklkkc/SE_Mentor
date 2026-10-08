@@ -529,7 +529,7 @@ def CRIT_check(question: str, bot_response: str) -> float:
     pipeline.add_component("crit_llm", OpenAIGenerator(
                                             api_key=Secret.from_env_var("OPENAI_API_KEY"), 
                                             model="gpt-4o-mini",
-                                            generation_kwargs={"temperature": 0.0 })
+                                            generation_kwargs={"temperature": 0.3 })
                             )
     
     pipeline.connect("crit_prompt.prompt", "crit_llm.prompt")
