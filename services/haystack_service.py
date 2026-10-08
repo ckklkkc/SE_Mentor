@@ -503,7 +503,7 @@ def CRIT_check(question: str, bot_response: str) -> float:
     請勿輸出任何解釋性文字或 Markdown 標記，必須嚴格遵守以下的純 JSON 格式直接輸出：
 
     {
-      "core_conclusion": "精煉出的核心結論",
+      "core_conclusion": "{{bot_response}}",
       "supporting_reasons": [
         {
           "id": "r1",
