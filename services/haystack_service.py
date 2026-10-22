@@ -785,13 +785,13 @@ def handle_user_question(question: str):
         })
 
     node_similarity_list = sorted(node_similarity_list, key=lambda x: x["similarity"], reverse=True)
-    print(f"[debug] 節點相似度排序結果: {node_similarity_list}")
+    print(f"[debug] 節點相似度的排序結果: {node_similarity_list}")
 
     # ==========================================================
     # 根據相似度分佈，執行「前端模糊問題三路分流」
     # ==========================================================    
 
-    valid_nodes = [item for item in node_similarity_list if item["similarity"] >= 0.6]
+    # valid_nodes = [item for item in node_similarity_list if item["similarity"] >= 0.6]
 
     
     
