@@ -162,6 +162,7 @@ class DescriptionBasedReasoning:
                     UNWIND keywords AS keyword
                     MATCH (entity)
                     WHERE apoc.text.fuzzyMatch(entity.name, keyword)
+                    OPTIONAL MATCH (entity)<-[:包含於|是]-(child)
                     OPTIONAL MATCH (entity)-[rel]-(neighbor)
                     RETURN 
                         entity as entity,
@@ -171,6 +172,7 @@ class DescriptionBasedReasoning:
                         neighbor.name AS neighborName,
                         neighbor.description AS neighborDesc,
                         labels(neighbor)[0] AS neighborLabel
+                        collect(child.name) AS childNodes
                     LIMIT 20;
                     """
                     result = list(session.run(cypher, keywords=kw_list))
