@@ -717,7 +717,7 @@ def neo4j_generate_notes(concept: str) -> str:
 # ----- user question handler -----
 def handle_user_question(question: str):
     user_question_template = """
-        請根據以下 Neo4j Schema 替使用者的問題生成 3 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+        請根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
         
             【Schema 資訊】
             - Labels: Concept, Technology, Methodology
