@@ -625,7 +625,7 @@ async def course_qa(interaction: discord.Interaction, question: str):
 
     try:
 
-        llm_keywords = await run_blocking(haystack_service.handle_user_question, question)
+        # llm_keywords = await run_blocking(haystack_service.handle_user_question, question)
 
         llm_result = await run_blocking(haystack_service.neo4j_textbook_kg_retriever, question) #不要讓一個學生的問題卡住整個 Discord Bot
         response = cc.convert(llm_result['answer_llm']['replies'][0])
