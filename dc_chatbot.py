@@ -624,11 +624,16 @@ async def course_qa(interaction: discord.Interaction, question: str):
     print(f"使用者【{interaction.user.name}】已使用課程問答！")
 
     try:
+
+        llm_keywords = await run_blocking(haystack_service.handle_user_question, question)
+
         llm_result = await run_blocking(haystack_service.neo4j_textbook_kg_retriever, question) #不要讓一個學生的問題卡住整個 Discord Bot
         response = cc.convert(llm_result['answer_llm']['replies'][0])
 
         crit_score = await run_blocking(haystack_service.CRIT_check, question, response)
         print(f"CRIT分數為：{crit_score}")
+
+
 
         content = f"> {question}\n\n{response}"
         chatbot_timestamp = datetime.now()

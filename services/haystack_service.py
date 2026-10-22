@@ -4,6 +4,7 @@ from pathlib import Path
 
 import inspect
 
+import difflib
 import anthropic
 from opencc import OpenCC
 from haystack import Document, Pipeline, component
@@ -127,9 +128,10 @@ class DescriptionBasedReasoning:
     def __init__(self, uri, user, password):
         self.driver = GraphDatabase.driver(uri, auth=(user, password))
 
-    @component.output_types(knowledge_base=str)
+    @component.output_types(knowledge_base=str, matched_nodes=List[str])
     def run(self, keywords: str, group_id: str = None):  
         kw_list = keywords.split("、")
+
         print(f"[keywords]: {kw_list}")  
 
         with self.driver.session() as session:
@@ -171,14 +173,21 @@ class DescriptionBasedReasoning:
                         labels(neighbor)[0] AS neighborLabel
                     LIMIT 20;
                     """
-                    result = session.run(cypher, keywords=kw_list)
+                    result = list(session.run(cypher, keywords=kw_list))
+
                 knowledge_text = self._format_knowledge(result)
+
+                matched_node_names = list({record["entity"]["name"] for record in result if record["entity"]})
+                
                 # records = [str(record.data()) for record in result]
                 if not knowledge_text:
                     return {"knowledge_base": "查無資料"}
                 
                 print(f"[debug] knowledge text: \n{knowledge_text}")
-                return {"knowledge_base": knowledge_text}
+                return {
+                    "knowledge_base": knowledge_text,
+                    "matched_nodes": matched_node_names
+                    }
             
             except Exception as e:
                 print(f"[error] Cypher 執行錯誤: {str(e)}")
@@ -503,7 +512,7 @@ def CRIT_check(question: str, bot_response: str) -> float:
     請勿輸出任何解釋性文字或 Markdown 標記，必須嚴格遵守以下的純 JSON 格式直接輸出：
 
     {
-      "core_conclusion": "{{bot_response}}",
+      "core_conclusion": "請在此填入精煉出的核心結論",
       "supporting_reasons": [
         {
           "id": "r1",
@@ -705,6 +714,91 @@ def neo4j_generate_notes(concept: str) -> str:
 
     return result
 
+# ----- user question handler -----
+def handle_user_question(question: str):
+    user_question_template = """
+        請根據以下 Neo4j Schema 替使用者的問題生成 3 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+        
+            【Schema 資訊】
+            - Labels: Concept, Technology, Methodology
+            - Properties: name, source_files, description
+            - Relationships: 是, 包含於, 實作, 使用, 操作, 依賴, 改善, 解決
+        
+            使用者的問題: {{question}}
+            生成的關鍵字:
+        """
+    
+    pipeline = Pipeline()
+        
+    pipeline.add_component("user_question_prompt", PromptBuilder(template=user_question_template, required_variables=["question"]))
+        # 這裡使用 gpt-4o-mini 作為快速邏輯驗證引擎
+    pipeline.add_component("user_question_llm", OpenAIGenerator(
+                                            api_key=Secret.from_env_var("OPENAI_API_KEY"), 
+                                            model="gpt-4o-mini",
+                                            generation_kwargs={"temperature": 0.3 })
+                            )
+    pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
+
+        
+    pipeline.connect("user_question_prompt.prompt", "user_question_llm.prompt")
+    pipeline.connect("user_question_llm.replies", "desc_reasoner.keywords")
+
+
+    #再來是將候選關鍵字與圖譜關鍵字比較
+    result = pipeline.run(
+        data={
+            "user_question_prompt": {"question": question},
+        },
+        include_outputs_from=[
+            "user_question_llm",
+            "desc_reasoner"
+        ]
+    
+    )
+
+    # 這裡的 llm_output_keywords 是使用者問題生成的關鍵字列表，desc_keywords 是圖譜中匹配到的節點名稱列表
+    llm_output_keywords = [
+    k.strip() for k in result["user_question_llm"]["replies"][0].split("、") if k.strip()
+    ]
+    desc_keywords = result["desc_reasoner"]["matched_nodes"]
+
+    print(f"[debug] LLM 生成關鍵字: {llm_output_keywords}")
+    print(f"[debug] 圖譜匹配節點: {desc_keywords}")
+
+    node_similarity_list = []
+
+    for node in desc_keywords:
+        # 計算該圖譜節點與所有 LLM 關鍵字的相似度，取最高分者作為該節點的代表分數
+        best_score = 0.0
+        best_matched_kw = ""
+    
+        for kw in llm_output_keywords:
+            score = difflib.SequenceMatcher(None, kw, node).ratio()
+            if score > best_score:
+                best_score = score
+                best_matched_kw = kw
+            
+        node_similarity_list.append({
+            "node_name": node,
+            "matched_llm_kw": best_matched_kw,
+            "similarity": round(best_score, 3)
+        })
+
+    node_similarity_list = sorted(node_similarity_list, key=lambda x: x["similarity"], reverse=True)
+    print(f"[debug] 節點相似度排序結果: {node_similarity_list}")
+
+    # ==========================================================
+    # 根據相似度分佈，執行「前端模糊問題三路分流」
+    # ==========================================================    
+
+    valid_nodes = [item for item in node_similarity_list if item["similarity"] >= 0.6]
+
+    
+    
+    
+    
+   
+
 def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
     # 教材知識圖譜檢索
     keyword_prompt_template = """
@@ -736,6 +830,72 @@ def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
     )
 
     return result
+
+# def neo4j_textbook_kg_retriever_ver2(question: str) -> dict[str, Any]:
+#     # 教材知識圖譜檢索
+#    router_kw_prompt_template = """
+#     你是一位專業的軟體工程知識圖譜路由代理（Routing Agent）。
+#     你的任務是分析【學生問題】的真實意圖，並嚴格從提供的【知識圖譜現有節點列表】中，挑選出最相關的 Top-5 候選節點，同時評估每個節點的「意圖匹配信心度（1~10分）」。
+
+#     【知識圖譜現有節點列表】
+#     {{node_list}}
+
+#     【學生問題】
+#     {{question}}
+
+#     【挑選與評分規則（極重要，請嚴格遵守）】
+#     1. 絕對錨定：你挑出的 `node_name` 必須 100% 一字不差地存在於【知識圖譜現有節點列表】中，嚴禁自行發明或修改詞彙。
+#     2. 固定數量：請固定輸出 5 個候選節點，並依照 `confidence` 由高至低排序。
+#     3. 信心度評分量表 (Rubrics)：
+#     - 9~10分（唯一精準命中）：學生問題非常明確地指名該概念，且詢問意圖單一，無其他競爭節點能取代。
+#     - 7~8分（高度相關 / 並列競爭）：問題屬於跨概念比較、詢問高階應用，或者問題稍嫌廣泛，導致有 2~3 個子概念節點「同時」符合該問題的潛在意圖（此時請給這些競爭節點相近的 7~8 分，切勿強行替學生決定唯一高分）。
+#     - 5~6分（極度廣泛 / 歧義過大）：學生只問了一個涵蓋整章節的籠統大詞（如只問「測試」、「開發」），導致有 4 個以上的節點都勉強沾邊。
+#     - 1~4分（代名詞缺失 / 低度相關）：問題嚴重缺乏主詞（如「這要怎麼改？」、「有缺什麼嗎？」），或與軟體工程教材無直接關聯，僅為勉強湊滿 5 個而挑選的次要節點。
+
+#     【參考範例 (Few-Shot Examples)】
+#     * 範例一（明確問題 -> 第一名極高分，與第二名差距 >= 3 分）：
+#     問題：「請問 Git 發生合併衝突時該怎麼解決？」
+#     輸出節點與分數：[{"node_name": "合併衝突", "confidence": 10}, {"node_name": "Git", "confidence": 6}, {"node_name": "分支", "confidence": 5}, {"node_name": "遠端儲存庫", "confidence": 4}, {"node_name": "版本控制", "confidence": 2}]
+
+#     * 範例二（輕微模糊 -> 前 2~3 名同為 7~8 分，差距極小）：
+#     問題：「在敏捷開發中，我們應該怎麼規劃測試？」
+#     輸出節點與分數：[{"node_name": "敏捷開發", "confidence": 8}, {"node_name": "系統測試", "confidence": 8}, {"node_name": "測試案例", "confidence": 7}, {"node_name": "極限編程", "confidence": 5}, {"node_name": "Scrum", "confidence": 4}]
+
+#     * 範例三（極度模糊 -> 缺乏具體目標，全體 <= 5 分；或大詞導致 4 個以上同為 6~7 分）：
+#     問題：「我的系統設計有沒有什麼缺少的？」
+#     輸出節點與分數：[{"node_name": "系統設計", "confidence": 4}, {"node_name": "需求文件", "confidence": 4}, {"node_name": "軟體開發", "confidence": 3}, {"node_name": "架構設計", "confidence": 2}, {"node_name": "測試案例", "confidence": 1}]
+
+#     【輸出格式限制】
+#     請勿輸出任何解釋性文字或 Markdown 標記（如 ```json ），必須嚴格輸出以下 JSON 格式：
+#     {
+#         "reasoning": "請用一句話簡述：該問題是目標明確、涵蓋 2~3 個子概念，還是過於籠統缺乏主詞",
+#         "candidates": [
+#             {"node_name": "節點1", "confidence": 9},
+#             {"node_name": "節點2", "confidence": 5},
+#             {"node_name": "節點3", "confidence": 4},
+#             {"node_name": "節點4", "confidence": 2},
+#             {"node_name": "節點5", "confidence": 1}
+#         ]
+#     }
+#     """
+
+#     pipeline = _build_kg_pipeline(PromptBuilder(template=router_kw_prompt_template, required_variables=["question"]))
+
+#     result = pipeline.run(
+#         data={
+#             "kw_prompt": {"question": question},
+#             "answer_prompt": {"question": question},
+#             # "vector_filter": {"question": question}
+#         },
+#         include_outputs_from=[
+#             "kw_llm",
+#             "desc_reasoner",
+#             "answer_llm"
+#         ]
+
+#     )
+
+#     return result
 
 
 def build_entity_index(uri: str, user: str, password: str, group_id: str) -> Dict[str, List[str]]:
