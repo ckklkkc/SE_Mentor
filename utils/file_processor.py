@@ -1,9 +1,6 @@
 import re
+from pathlib import Path
 from typing import List, Dict
-
-from marker.converters.pdf import PdfConverter
-from marker.models import create_model_dict
-from surya.recognition.model.config import SuryaOCRConfig
 
 from langchain_opentutorial import set_env
 from langchain_text_splitters import (
@@ -17,6 +14,11 @@ from pydantic import BaseModel, Field
 
 from config import OPENAI_API_KEY, LANGCHAIN_API_KEY
 from common import FILEPATH
+from services.image_captioning import (
+    ImageCaptionSettings,
+    enrich_markdown_with_marker_images,
+)
+from services.pdf_visuals import enrich_pdf_visuals
 
 set_env(
     {
@@ -28,7 +30,41 @@ set_env(
     }
 )
 
-def pdf2md(file_path, chapter=None):
+def _marker_output(rendered):
+    """相容 Marker 1.x 不同 patch 版本的輸出物件。"""
+    # Marker 1.5.x 的公開範例以 text_from_rendered 同時取得 Markdown 與圖片。
+    # 舊 patch 版若沒有這個 helper，才退回原本專案使用的 rendered 屬性。
+    try:
+        from marker.output import text_from_rendered
+    except (ImportError, AttributeError):
+        return getattr(rendered, "markdown", ""), getattr(rendered, "images", {}) or {}
+
+    markdown_output, _, images = text_from_rendered(rendered)
+    return markdown_output, images or {}
+
+
+def pdf2md(
+    file_path,
+    chapter=None,
+    *,
+    image_output_dir: str | Path | None = None,
+    image_markdown_prefix: str | None = None,
+    image_manifest_path: str | Path | None = None,
+    describe_images: bool | None = None,
+    image_provider: str | None = None,
+    image_model: str | None = None,
+    fail_on_image_error: bool | None = None,
+    pdf_backend: str | None = None,
+    document_type: str | None = None,
+):
+    import config
+    backend = (pdf_backend or getattr(config, "PDF_CONVERTER_BACKEND", "marker")).lower()
+    if backend not in {"marker", "docling"}:
+        raise ValueError("PDF_CONVERTER_BACKEND 只支援 marker 或 docling")
+    from marker.converters.pdf import PdfConverter
+    from marker.models import create_model_dict
+    from surya.recognition.model.config import SuryaOCRConfig
+
     # SuryaOCRConfig requires encoder/decoder arguments. Transformers 4.57
     # serializes it by first trying a no-argument default instance unless this
     # flag is set; that raises KeyError('encoder') while loading the OCR model.
@@ -37,7 +73,124 @@ def pdf2md(file_path, chapter=None):
         artifact_dict=create_model_dict(),
     )
     rendered = converter(file_path)
-    markdown_output = rendered.markdown
+    markdown_output, images = _marker_output(rendered)
+    if backend == "docling":
+        if image_output_dir is None:
+            # No asset destination means there is nothing for the image-only
+            # Docling stage to add. Marker remains the complete text output.
+            return markdown_output
+        from services.docling_pdf import convert_docling_pdf
+
+        assets = Path(image_output_dir)
+        settings = ImageCaptionSettings.from_config(
+            enabled=describe_images,
+            provider=image_provider,
+            model=image_model,
+            fail_on_error=fail_on_image_error,
+        )
+        markdown_output, manifest = convert_docling_pdf(
+            file_path,
+            markdown_output,
+            assets_dir=assets,
+            markdown_assets_path=image_markdown_prefix or assets.name,
+            settings=settings,
+            manifest_path=image_manifest_path,
+            python_path=getattr(config, "PDF_DOCLING_PYTHON", None),
+            document_type=document_type,
+        )
+        slide = manifest.get("slide_layout")
+        if slide:
+            print(
+                "逐頁投影片處理："
+                f"{slide['page_count']} 頁；標題 {slide['page_count']} 個；"
+                f"條列 {slide['bullet_count']} 項；表格 {slide['table_count']} 個；"
+                f"完整網址 {slide['url_count']} 個；"
+                f"完整內容圖片 {manifest['described_count']} 個"
+                f"（待查核 {manifest['review_required_count']}）；"
+                f"失敗 {manifest['failed_count']} 頁"
+            )
+            fallback_pages = [
+                str(page["page"])
+                for page in manifest.get("pages", [])
+                if any("改用頁面座標裁切" in warning
+                       for warning in page.get("warnings", []))
+            ]
+            if fallback_pages:
+                print(
+                    "PDF 原圖抽取不相容，已成功改用頁面座標裁切：第 "
+                    + "、".join(fallback_pages)
+                    + " 頁"
+                )
+            failed_pages = [
+                page for page in manifest.get("pages", []) if page.get("errors")
+            ]
+            if failed_pages:
+                print("圖片處理失敗頁明細：")
+                for page in failed_pages[:10]:
+                    details = "；".join(
+                        f"{error.get('stage', 'unknown')}: {error.get('error', '')}"
+                        for error in page["errors"]
+                    )
+                    print(f"  第 {page['page']} 頁：{details}")
+        else:
+            print(
+                "Marker＋Docling 圖片處理："
+                "保留 Marker 文字、標題與表格；"
+                f"Docling 圖片區塊 {manifest['docling_region_count']} 個；"
+                f"輸出圖例 {manifest['described_count']} 個"
+                f"（待查核 {manifest['review_required_count']}）；"
+                f"保留分頁界線 {manifest['page_boundary_count']} 個；"
+                f"失敗 {manifest['failed_count']} 頁"
+            )
+        return markdown_output
+    if image_output_dir is not None:
+        assets_dir = Path(image_output_dir)
+        settings = ImageCaptionSettings.from_config(
+            enabled=describe_images,
+            provider=image_provider,
+            model=image_model,
+            fail_on_error=fail_on_image_error,
+        )
+        kwargs = dict(
+            assets_dir=assets_dir,
+            markdown_assets_path=image_markdown_prefix or assets_dir.name,
+            settings=settings,
+            manifest_path=(
+                Path(image_manifest_path) if image_manifest_path is not None else None
+            ),
+        )
+        if settings.enabled:
+            markdown_output, manifest = enrich_pdf_visuals(
+                file_path,
+                markdown_output,
+                document_type=document_type,
+                **kwargs,
+            )
+            print(
+                "PDF 圖例處理："
+                f"逐頁掃描 {manifest['scanned_count']} 頁；"
+                f"文字區塊 {manifest['layout_counts']['bullet_text']}、"
+                f"表格 {manifest['layout_counts']['table']}；"
+                f"辨識 {manifest['selected_count']} 個圖例區塊；"
+                f"輸出 {manifest['described_count']} 個圖例；"
+                f"圖意待查核 {manifest['review_required_count']} 個；"
+                f"排除結尾裝飾頁 {manifest['excluded_closing_count']} 頁；"
+                f"排除 {manifest['filtered_count']} 個重複或非圖例結果；"
+                f"超出處理上限 {manifest['limited_count']} 頁；"
+                f"失敗 {manifest['failed_count']} 頁"
+            )
+        else:
+            markdown_output, manifest = enrich_markdown_with_marker_images(
+                markdown_output,
+                images,
+                document_type=document_type,
+                **kwargs,
+            )
+            print(
+                "Marker 圖片處理："
+                f"保存 {manifest['image_count']} 張；"
+                "未啟用頁級圖例判讀"
+            )
     return markdown_output
     # output_name = f"md_files\\{chapter}_markdown.md"
     # with open(output_name, "w", encoding="utf-8") as f:

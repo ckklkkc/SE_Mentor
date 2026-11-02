@@ -1,0 +1,6 @@
+# Install in .venv-docling, separate from Marker/Surya's Transformers pin.
+# OCR and table reconstruction are intentionally disabled: Marker owns both.
+docling==2.140.0
+docling-core==2.102.0
+docling-ibm-models==4.0.3
+docling-parse==7.22.3

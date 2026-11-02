@@ -1,0 +1,1438 @@
+[
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "可瀏覽菜單、下訂單、進行客製化選擇、查看訂單狀態、累積點數及評價的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "負責管理菜單、接單、設定套餐、查看統計報表等後台管理操作的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "註冊或登入後瀏覽菜單、自訂餐點、預約取餐時間、使用會員點數折抵、查看訂單進度，取餐後可評價的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "以老闆帳號登入後台，接受或拒絕訂單、更新製作進度，管理餐點、套餐與營業設定，查看銷售統計的系統管理者角色"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統瀏覽餐點並選擇早餐的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要瀏覽餐點名稱及價格，以便於選擇想要的早餐",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-01"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要瀏覽餐點名稱及價格，以便於選擇想要的早餐"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統進行飲料點餐的消費者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要選擇飲料冰熱，以便於取得符合偏好的餐點",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-02"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要選擇飲料冰熱，以便於取得符合偏好的餐點。Iteration 1 為飲料冰熱下拉選單；Iteration 2 由 FR-3 擴充。"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統進行點餐與購買的終端使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要加入餐點及調整數量，以便於核對欲購買品項與金額",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-03"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要加入餐點及調整數量，以便於核對欲購買品項與金額"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-4"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統進行點餐的終端使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要確認明細後送出訂單並取得序號，以便於完成點餐並辨識自己的訂單",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-04"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要確認明細後送出訂單並取得序號，以便於完成點餐並辨識自己的訂單。此為 Iteration 1 故事；Iteration 2 取號時點依 FR-5 變更。"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-5"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "負責管理後台及出餐進度的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為老闆，我想要查看製作清單並標記完成，以便於管理出餐進度",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-05"
+      },
+      {
+        "key": "description",
+        "value": "作為老闆，我想要查看製作清單並標記完成，以便於管理出餐進度。Iteration 1 無登入；現行後台需老闆權限。測試方法：顧客送單後確認清單出現對應品項及客製資訊，標記完成後確認狀態變更。"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統瀏覽菜單、客製餐點、送出訂單及追蹤狀態的使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "負責接單、管理菜單、更新製作進度及查看營運統計的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "菜單瀏覽",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-01"
+      },
+      {
+        "key": "description",
+        "value": "使用者可瀏覽菜單內容，屬於 Iteration 1 / MVP 核心功能"
+      }
+    ]
+  },
+  {
+    "name": "基礎客製",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-02"
+      },
+      {
+        "key": "description",
+        "value": "使用者可對餐點進行基礎客製化，屬於 Iteration 1 / MVP 核心功能"
+      }
+    ]
+  },
+  {
+    "name": "購物車",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-03"
+      },
+      {
+        "key": "description",
+        "value": "使用者可管理購物車內容，屬於 Iteration 1 / MVP 核心功能"
+      }
+    ]
+  },
+  {
+    "name": "確認送出取號",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-04"
+      },
+      {
+        "key": "description",
+        "value": "使用者確認訂單並送出取號，屬於 Iteration 1 / MVP 核心功能；Iteration 2 改為老闆接單後取號"
+      }
+    ]
+  },
+  {
+    "name": "製作清單與狀態變更",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-05"
+      },
+      {
+        "key": "description",
+        "value": "店家可查看製作清單並更新訂單狀態，屬於 Iteration 1 / MVP 核心功能"
+      }
+    ]
+  },
+  {
+    "name": "顧客狀態追蹤",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-06"
+      },
+      {
+        "key": "description",
+        "value": "顧客可追蹤訂單製作狀態，屬於 Iteration 1 / MVP 核心功能"
+      }
+    ]
+  },
+  {
+    "name": "帳號與權限",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-07"
+      },
+      {
+        "key": "description",
+        "value": "系統支援帳號管理與角色權限控制，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "菜單與套餐維護",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-08"
+      },
+      {
+        "key": "description",
+        "value": "店家可維護菜單與套餐內容，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "選項群組與加價",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-09"
+      },
+      {
+        "key": "description",
+        "value": "系統支援選項群組設定及加價功能，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "預約與點數",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-10"
+      },
+      {
+        "key": "description",
+        "value": "使用者可進行預約下單並使用點數折抵，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "接單與逾時管理",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-11"
+      },
+      {
+        "key": "description",
+        "value": "老闆可接受或拒絕訂單，並管理逾時情況，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "即時通知",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-12"
+      },
+      {
+        "key": "description",
+        "value": "系統提供即時通知功能，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "評價",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-13"
+      },
+      {
+        "key": "description",
+        "value": "顧客可對訂單或餐點進行評價，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "營運設定與統計",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-14"
+      },
+      {
+        "key": "description",
+        "value": "老闆可進行營運設定並查看統計數據，屬於 Iteration 2 功能"
+      }
+    ]
+  },
+  {
+    "name": "歷史訂單與營收報表",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-15"
+      },
+      {
+        "key": "description",
+        "value": "使用者可查看歷史訂單紀錄及營收報表，屬於 Future Scope 規劃功能"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "在餐飲系統中下訂單並等待取餐的使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要查看自己的訂單製作狀態，以便於掌握何時可取餐",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-06"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要查看自己的訂單製作狀態，以便於掌握何時可取餐。Iteration 1 使用輪詢；Iteration 2 使用 SSE。"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "可自行註冊或使用第三方登入的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "獨立角色，擁有後台功能存取權限，顧客無法呼叫其API"
+      }
+    ]
+  },
+  {
+    "name": "帳號登入",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-1"
+      },
+      {
+        "key": "description",
+        "value": "顧客可自行註冊（帳號3–20個英數字或底線、密碼至少6字元、暱稱），也可使用GitHub、Google第三方登入；老闆為獨立角色，後台所有功能的API都會在伺服器端驗證角色，顧客無法呼叫"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "顧客"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統進行訂餐、預約取餐、使用會員功能及評分的一般使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "管理餐點、套餐、訂單、營業設定及查看統計的店家管理者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要註冊或登入帳號，以便於保存個人訂單並使用會員功能",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-07"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要註冊或登入帳號，以便於保存個人訂單並使用會員功能"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-1"
+      }
+    ]
+  },
+  {
+    "name": "作為老闆，我想要維護餐點與套餐，以便於即時呈現店內供應內容",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-08"
+      },
+      {
+        "key": "description",
+        "value": "作為老闆，我想要維護餐點與套餐，以便於即時呈現店內供應內容"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-2、FR-11、FR-12"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要選擇可加價的單選或複選選項，以便於清楚訂購客製餐點",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-09"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要選擇可加價的單選或複選選項，以便於清楚訂購客製餐點"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-3、FR-4"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要預約取餐並使用點數折抵，以便於安排取餐時間並使用會員優惠",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-10"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要預約取餐並使用點數折抵，以便於安排取餐時間並使用會員優惠"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-5、FR-6"
+      }
+    ]
+  },
+  {
+    "name": "作為老闆，我想要接受或拒絕訂單並管理製作進度，以便於依產能安排出餐",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-11"
+      },
+      {
+        "key": "description",
+        "value": "作為老闆，我想要接受或拒絕訂單並管理製作進度，以便於依產能安排出餐"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-9、FR-10"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要收到訂單狀態變更通知，以便於及時掌握接單與取餐進度",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-12"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要收到訂單狀態變更通知，以便於及時掌握接單與取餐進度"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-7"
+      }
+    ]
+  },
+  {
+    "name": "作為顧客，我想要為訂單餐點評分與留言，以便於提供用餐回饋",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-13"
+      },
+      {
+        "key": "description",
+        "value": "作為顧客，我想要為訂單餐點評分與留言，以便於提供用餐回饋"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-8"
+      }
+    ]
+  },
+  {
+    "name": "作為老闆，我想要調整營業設定並查看統計，以便於管理營運與銷售表現",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-14"
+      },
+      {
+        "key": "description",
+        "value": "作為老闆，我想要調整營業設定並查看統計，以便於管理營運與銷售表現"
+      },
+      {
+        "key": "req_reference",
+        "value": "FR-13、FR-14"
+      }
+    ]
+  },
+  {
+    "name": "作為老闆，我想要查詢歷史訂單與更完整營收報表，以便於回顧長期營運情形",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "US-15"
+      },
+      {
+        "key": "description",
+        "value": "作為老闆，我想要查詢歷史訂單與更完整營收報表，以便於回顧長期營運情形"
+      }
+    ]
+  },
+  {
+    "name": "菜單瀏覽",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-2"
+      },
+      {
+        "key": "description",
+        "value": "依分類展示餐點與套餐，顯示照片、名稱、單價、平均評分，以及「本月熱門」標籤（本月銷量前3名）。點選餐點可查看說明、客製選項、星等分布與顧客評論。"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "客製化選項選擇",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-3"
+      },
+      {
+        "key": "description",
+        "value": "每道餐點可有多組選項群組，選擇方式分三種：單選（必選）、單選（可不選）、複選。選項可加價，加入訂單按鈕即時顯示含加價的金額。套餐會列出內含每一項餐點的選項，加料費用加在套餐價格上。"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "購物車管理",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-4"
+      },
+      {
+        "key": "description",
+        "value": "即時計算小計與總額；調整數量（＋／－），減到0即移除。相同餐點但選項不同，會分成不同品項。餐點被老闆下架時，購物車自動移除該品項。"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "預約取餐與送出訂單",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-5"
+      },
+      {
+        "key": "description",
+        "value": "只能在營業時間內下單（預設06:00–21:00，老闆可修改或臨時暫停接單）。取餐時間以5分鐘為單位，需在下單後至少15分鐘，且不晚於打烊時間。送出前跳出確認視窗，列出明細、點數折抵與合計。送出後顯示訂購成功，取餐序號在老闆接單時才產生。"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "會員點數",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-6"
+      },
+      {
+        "key": "description",
+        "value": "取餐完成後每消費30元獲得1點（門檻老闆可調）。下單時可用點數折抵，1點=1元，折抵金額不會超過訂單小計。訂單被拒絕或取消時，退回已使用的點數；老闆取消已取餐訂單時，同時扣回該筆訂單獲得的點數。"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "訂單狀態追蹤與通知",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-7"
+      },
+      {
+        "key": "description",
+        "value": "「我的訂單」以進度條顯示：待接單→已接單→製作完成→已取餐。老闆接單、餐點完成、訂單被拒絕或取消時，畫面跳出提示並播放提示音；分頁在背景時顯示瀏覽器通知。顧客在「待接單」階段可自行取消訂單。"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "評價",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-8"
+      },
+      {
+        "key": "description",
+        "value": "餐點完成後，可對訂單內每項餐點打0–5顆星並留言（最多200字，可不填）。每筆訂單只能評價一次。"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統瀏覽菜單、下單、追蹤訂單狀態、進行評價及使用會員點數的使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "管理菜單、接單、設定營業時間與點數門檻的系統管理角色"
+      }
+    ]
+  },
+  {
+    "name": "在雙方約定測試環境、10個同時登入使用者下，100次菜單請求至少95次於2秒內完成回應",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "PERF-01"
+      },
+      {
+        "key": "description",
+        "value": "在雙方約定測試環境、10個同時登入使用者下，100次菜單請求至少95次於2秒內完成回應；測試方式為記錄/api/menu請求送出至回應完成時間及錯誤率"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "在同一環境、10條SSE連線下，100次訂單狀態變更至少95次於2秒內更新顧客畫面",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "PERF-02"
+      },
+      {
+        "key": "description",
+        "value": "在同一環境、10條SSE連線下，100次訂單狀態變更至少95次於2秒內更新顧客畫面；測試方式為記錄伺服器完成狀態變更至畫面更新時間"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "在同一環境、10個同時登入使用者下，100次有效送單至少95次於3秒內顯示結果，且每次僅建立一張訂單",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "PERF-03"
+      },
+      {
+        "key": "description",
+        "value": "在同一環境、10個同時登入使用者下，100次有效送單至少95次於3秒內顯示結果，且每次僅建立一張訂單；測試方式為記錄確認送出至顯示成功時間，核對訂單紀錄"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "易用性",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-01"
+      },
+      {
+        "key": "description",
+        "value": "系統易用性非功能需求，依 UI-03～UI-05 核對可點選選項、一頁購物車及序號可辨識性；量化可用性標準待提供"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "SSE 即時更新與自動重連",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-02"
+      },
+      {
+        "key": "description",
+        "value": "系統需支援 SSE 即時更新與自動重連，同時開啟顧客及老闆視窗變更狀態，模擬斷線再恢復，檢查重連與資料一致性"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "跨裝置支援",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-03"
+      },
+      {
+        "key": "description",
+        "value": "系統需支援跨裝置操作，依 UI-09 檢查卡片、滑動與核心操作；原文稱已實測，但未提供測試紀錄"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "密碼與登入 cookie",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-04"
+      },
+      {
+        "key": "description",
+        "value": "系統需以 scrypt 加鹽儲存密碼，並設置 HttpOnly、SameSite=Lax 與 7 天期限的登入 cookie"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "寫入 API 與金額驗證",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-05"
+      },
+      {
+        "key": "description",
+        "value": "系統需對寫入 API 進行金額驗證，測試非 JSON 請求、竄改金額、數量 0／21、非法取餐時間及超額折抵均依規則處理"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "圖片上傳限制",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-06"
+      },
+      {
+        "key": "description",
+        "value": "系統需限制圖片上傳格式、2 MB 邊界、超限檔案及使用隨機檔名"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "HTML 跳脫",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-07"
+      },
+      {
+        "key": "description",
+        "value": "系統需對使用者輸入進行 HTML 跳脫，以含 HTML 標記之文字測試畫面以文字呈現，不執行標記"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "登入失敗鎖定",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-08"
+      },
+      {
+        "key": "description",
+        "value": "同裝置同帳號在 10 分鐘內登入失敗 5 次後鎖定 10 分鐘；裝置識別方式待提供"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "資料完整性與舊版轉換",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NFR-09"
+      },
+      {
+        "key": "description",
+        "value": "系統需確保資料完整性並支援舊版格式轉換，以測試資料模擬寫入中斷及舊格式啟動，確認原檔完整與轉換結果"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "餐廳後台管理者，負責管理訂單、餐點、套餐及營業設定的角色"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "下訂單並取餐的消費者角色"
+      }
+    ]
+  },
+  {
+    "name": "新訂單即時推播到後台，並有提示音與閃爍標示",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-9"
+      },
+      {
+        "key": "description",
+        "value": "新訂單即時推播到後台，並有提示音與閃爍標示"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "版面分為待接單、製作清單、待取餐、今日已結束；製作清單依取餐時間排序",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-9"
+      },
+      {
+        "key": "description",
+        "value": "訂單管理版面分為「待接單」「製作清單」「待取餐」「今日已結束」四區，製作清單依取餐時間排序"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "可接受或拒絕訂單，拒絕時須填寫原因並顯示給顧客",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-9"
+      },
+      {
+        "key": "description",
+        "value": "老闆可接受或拒絕訂單，拒絕時須填寫拒絕原因並將原因顯示給顧客"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "接單後依序按製作完成、已取餐；任何未結束的訂單老闆都能取消",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-9"
+      },
+      {
+        "key": "description",
+        "value": "接單後老闆可依序標記「製作完成」「已取餐」，任何未結束的訂單老闆都能取消"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "待接單訂單距離取餐10分鐘內卡片顯示紅色提醒",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-9"
+      },
+      {
+        "key": "description",
+        "value": "待接單訂單距離取餐時間10分鐘內，訂單卡片會顯示紅色提醒"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "取餐時間到仍是待接單的訂單系統自動取消並退回點數通知顧客",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-10"
+      },
+      {
+        "key": "description",
+        "value": "取餐時間到了仍是「待接單」的訂單，系統每30秒檢查一次並自動取消、退回點數，並通知顧客"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "老闆無法接受取餐時間已過的訂單",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-10"
+      },
+      {
+        "key": "description",
+        "value": "老闆無法接受取餐時間已過的訂單"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "餐點的新增、編輯、刪除、上下架管理",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-11"
+      },
+      {
+        "key": "description",
+        "value": "餐點支援新增、編輯、刪除、上下架；欄位含名稱、單價、分類、說明、照片、客製選項群組"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "一道餐點最多6組選項群組每組最多12個選項",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-11"
+      },
+      {
+        "key": "description",
+        "value": "一道餐點最多6組客製選項群組，每組最多12個選項"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "照片在瀏覽器先縮圖再上傳；被套餐使用的餐點無法刪除需先改套餐或改為下架",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-11"
+      },
+      {
+        "key": "description",
+        "value": "餐點照片在瀏覽器先縮圖再上傳；被套餐引用的餐點無法直接刪除，需先修改套餐或將餐點改為下架"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "套餐管理：設定套餐名稱、價格、內含餐點與數量、照片、說明、上下架",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-12"
+      },
+      {
+        "key": "description",
+        "value": "設定套餐名稱、價格、內含餐點與數量、照片、說明、上下架；後台顯示單點合計作為對照"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "營業設定：設定營業時間、臨時暫停接單、會員點數門檻",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-13"
+      },
+      {
+        "key": "description",
+        "value": "老闆可設定營業時間、臨時暫停接單及會員點數門檻"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "銷售統計可切換今日、本月、全部並顯示多項營業數據",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-14"
+      },
+      {
+        "key": "description",
+        "value": "可切換今日、本月、全部時段；顯示有效訂單數、營業額、平均客單價、點數折抵總額、各分類餐點銷售排行（份數與金額）、各狀態訂單數"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "餐點評價表顯示平均星數、評價數、各星等分布",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-14"
+      },
+      {
+        "key": "description",
+        "value": "銷售統計中包含餐點評價表，顯示平均星數、評價數及各星等分布"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "可送出訂單、查看我的訂單、取消訂單及送出評價的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "可管理訂單、餐點、套餐、營業設定及查看統計資料的系統管理者角色"
+      }
+    ]
+  },
+  {
+    "name": "登入者",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "已登入系統的使用者，可使用即時推播功能"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用系統瀏覽菜單、下訂單、使用點數折抵的消費者角色"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用後台管理系統接單、更新訂單狀態及查看銷售統計的店家管理者角色"
+      }
+    ]
+  },
+  {
+    "name": "取餐後可評價",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "description",
+        "value": "角色取餐後可對餐點進行評價，評價開放時點以取餐後為準"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "餐點完成後開放評價",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-8"
+      },
+      {
+        "key": "description",
+        "value": "餐點製作完成後開放評價功能，評價開放時點以餐點完成為準"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "老闆取消已取餐訂單的點數回收",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-6"
+      },
+      {
+        "key": "description",
+        "value": "老闆可取消已取餐訂單並觸發點數回收機制"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "老闆"
+      }
+    ]
+  },
+  {
+    "name": "未結束訂單可取消",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "FR-9"
+      },
+      {
+        "key": "description",
+        "value": "未結束的訂單可執行取消操作，須確認允許範圍、狀態轉換及統計處理"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      }
+    ]
+  },
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "負責管理訂單、可取消已取餐訂單並觸發點數回收的系統使用者角色"
+      }
+    ]
+  }
+]

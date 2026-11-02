@@ -71,59 +71,52 @@ class Neo4jImporter:
             logger.info("Neo4j connection closed")
 
     def upload_textbook_analysis(self, analysis, analysis_id: str) -> bool:
-        """上傳細粒度教材分析；新內容一律以 pending 狀態進入圖譜。"""
+        """上傳 CourseUnit/Section 細粒度教材分析。"""
         if not self.driver:
             logger.error("Neo4j driver is not connected")
             return False
 
         try:
-            chapters = []
+            sections = [section.model_dump() for section in analysis.sections]
             points = []
-            relations = []
+            relations = [relation.model_dump() for relation in analysis.relations]
             targets = []
             point_evidence = []
             target_evidence = []
 
-            for chapter in analysis.chapters:
-                chapters.append({
-                    "id": chapter.id,
-                    "title": chapter.title,
-                    "order": chapter.order,
+            for point in analysis.knowledge_points:
+                points.append({
+                    "id": point.id,
+                    "section_ids": point.section_ids,
+                    "name": point.name,
+                    "description": point.description,
                 })
-                for point in chapter.knowledge_points:
-                    points.append({
-                        "id": point.id,
-                        "chapter_id": chapter.id,
-                        "name": point.name,
-                        "description": point.description,
+                for evidence in point.evidence:
+                    point_evidence.append({
+                        "point_id": point.id,
+                        "chunk_id": evidence.chunk_id,
+                        "heading_path": evidence.heading_path,
+                        "quote": evidence.quote,
                     })
-                    for evidence in point.evidence:
-                        point_evidence.append({
-                            "point_id": point.id,
-                            "chunk_id": evidence.chunk_id,
-                            "heading_path": evidence.heading_path,
-                            "quote": evidence.quote,
-                        })
-                for relation in chapter.relations:
-                    relations.append(relation.model_dump())
-                for target in chapter.assessment_targets:
-                    targets.append({
-                        "id": target.id,
-                        "chapter_id": chapter.id,
-                        "title": target.title,
-                        "objective": target.objective,
-                        "discrimination": target.discrimination,
-                        "common_misconceptions": target.common_misconceptions,
-                        "knowledge_point_ids": target.knowledge_point_ids,
+            for target in analysis.assessment_targets:
+                targets.append({
+                    "id": target.id,
+                    "section_ids": target.section_ids,
+                    "title": target.title,
+                    "objective": target.objective,
+                    "discrimination": target.discrimination,
+                    "common_misconceptions": target.common_misconceptions,
+                    "knowledge_point_ids": target.knowledge_point_ids,
+                    "review_status": target.review_status,
+                })
+                for chunk_id in target.evidence_chunk_ids:
+                    target_evidence.append({
+                        "target_id": target.id,
+                        "chunk_id": chunk_id,
                     })
-                    for chunk_id in target.evidence_chunk_ids:
-                        target_evidence.append({
-                            "target_id": target.id,
-                            "chunk_id": chunk_id,
-                        })
 
             with self.driver.session(database=self.database) as session:
-                for label in ["Textbook", "Chapter", "KnowledgePoint", "AssessmentTarget", "SourceChunk"]:
+                for label in ["CourseUnit", "Section", "KnowledgePoint", "AssessmentTarget", "SourceChunk"]:
                     session.run(
                         f"CREATE CONSTRAINT {label.lower()}_id_unique IF NOT EXISTS "
                         f"FOR (n:{label}) REQUIRE n.id IS UNIQUE"
@@ -131,34 +124,39 @@ class Neo4jImporter:
 
                 session.run(
                     """
-                    MERGE (book:Textbook {id: $textbook_id})
-                    SET book.title = $title,
-                        book.source_file = $source_file,
-                        book.analysis_id = $analysis_id,
-                        book.review_status = 'pending'
-                    WITH book
-                    UNWIND $chapters AS row
-                    MERGE (chapter:Chapter {id: row.id})
-                    SET chapter.title = row.title, chapter.order = row.order,
-                        chapter.analysis_id = $analysis_id,
-                        chapter.review_status = 'pending'
-                    MERGE (book)-[:HAS_CHAPTER]->(chapter)
+                    MERGE (unit:CourseUnit {id: $course_unit_id})
+                    SET unit.title = $title,
+                        unit.source_file = $source_file,
+                        unit.analysis_id = $analysis_id,
+                        unit.review_status = 'pending'
+                    WITH unit
+                    UNWIND $sections AS row
+                    MERGE (section:Section {id: row.id})
+                    SET section.title = row.title, section.order = row.order,
+                        section.content_type = row.content_type,
+                        section.included_in_assessment = row.included_in_assessment,
+                        section.exclusion_reason = row.exclusion_reason,
+                        section.analysis_id = $analysis_id,
+                        section.review_status = 'pending'
+                    MERGE (unit)-[:HAS_SECTION]->(section)
                     """,
-                    textbook_id=analysis.textbook_id,
-                    title=analysis.title,
+                    course_unit_id=analysis.course_unit_id,
+                    title=analysis.course_unit_title,
                     source_file=analysis.source_file,
                     analysis_id=analysis_id,
-                    chapters=chapters,
+                    sections=sections,
                 )
                 session.run(
                     """
                     UNWIND $points AS row
-                    MATCH (chapter:Chapter {id: row.chapter_id})
                     MERGE (point:KnowledgePoint {id: row.id})
                     SET point.name = row.name, point.description = row.description,
                         point.analysis_id = $analysis_id,
                         point.review_status = 'pending'
-                    MERGE (chapter)-[:HAS_KNOWLEDGE_POINT]->(point)
+                    WITH point, row
+                    UNWIND row.section_ids AS section_id
+                    MATCH (section:Section {id: section_id})
+                    MERGE (section)-[:COVERS]->(point)
                     """,
                     points=points,
                     analysis_id=analysis_id,
@@ -195,16 +193,18 @@ class Neo4jImporter:
                 session.run(
                     """
                     UNWIND $targets AS row
-                    MATCH (chapter:Chapter {id: row.chapter_id})
                     MERGE (assessment:AssessmentTarget {id: row.id})
                     SET assessment.title = row.title,
                         assessment.objective = row.objective,
                         assessment.discrimination = row.discrimination,
                         assessment.common_misconceptions = row.common_misconceptions,
                         assessment.analysis_id = $analysis_id,
-                        assessment.review_status = 'pending'
-                    MERGE (chapter)-[:HAS_ASSESSMENT_TARGET]->(assessment)
+                        assessment.review_status = row.review_status
                     WITH assessment, row
+                    UNWIND row.section_ids AS section_id
+                    MATCH (section:Section {id: section_id})
+                    MERGE (section)-[:HAS_ASSESSMENT_TARGET]->(assessment)
+                    WITH DISTINCT assessment, row
                     UNWIND row.knowledge_point_ids AS point_id
                     MATCH (point:KnowledgePoint {id: point_id})
                     MERGE (assessment)-[:ASSESSES]->(point)
@@ -240,7 +240,11 @@ class Neo4jImporter:
                     """
                     MATCH (node)
                     WHERE node.analysis_id = $analysis_id
-                    SET node.review_status = $status
+                    SET node.review_status = CASE
+                        WHEN node:AssessmentTarget AND node.review_status = 'rejected'
+                        THEN 'rejected'
+                        ELSE $status
+                    END
                     WITH count(node) AS nodes
                     MATCH ()-[rel:KNOWLEDGE_RELATION]->()
                     WHERE rel.analysis_id = $analysis_id
@@ -253,6 +257,28 @@ class Neo4jImporter:
             return True
         except Exception as e:
             logger.error("Fail to update textbook review status: %s", e)
+            return False
+
+    def update_assessment_target_status(self, target_id: str, status: str) -> bool:
+        if status not in {"approved", "rejected"}:
+            raise ValueError("status must be approved or rejected")
+        if not self.driver:
+            logger.error("Neo4j driver is not connected")
+            return False
+        try:
+            with self.driver.session(database=self.database) as session:
+                result = session.run(
+                    """
+                    MATCH (target:AssessmentTarget {id: $target_id})
+                    SET target.review_status = $status
+                    RETURN count(target) AS updated
+                    """,
+                    target_id=target_id,
+                    status=status,
+                ).single()
+            return bool(result and result["updated"])
+        except Exception as e:
+            logger.error("Fail to update assessment target review status: %s", e)
             return False
 
     def upload_textbook_triples(self, triple_list: TripleList, source_file: str) -> bool:
@@ -315,7 +341,7 @@ class Neo4jImporter:
     def upload_doc_triples(self, triple_list: TripleList, source_file: str, doc_type: str, group: str, uploader: str) -> bool:
         try:
             with self.driver.session() as session:
-                labels = ["Requirement", "Service", "SystemComponent", "API", "TestCase", "Actor", "General", "Technology", "Methodology", "Concept"]
+                labels = ["Requirement", "UserStory", "Service", "SystemComponent", "API", "TestCase", "Actor", "General", "Technology", "Methodology", "Concept"]
                 for label in labels:
                     session.run(f"""
                     CREATE CONSTRAINT {label.lower()}_group_name_unique IF NOT EXISTS 
@@ -353,14 +379,16 @@ class Neo4jImporter:
                 UNWIND $batch AS row
                 CALL (row) {
                     WITH row
-                    CALL apoc.merge.node([row.subject.label], {name: row.subject.name, group: $group, uploader: $uploader}, {}, {}) YIELD node AS sNode
+                    CALL apoc.merge.node([row.subject.label], {name: row.subject.name, group: $group}, {}, {}) YIELD node AS sNode
                     SET sNode += row.subject.props_dict
+                    SET sNode.uploader = $uploader
                     SET sNode.source_files = apoc.coll.toSet(coalesce(sNode.source_files, []) + $source_file)
                     SET sNode.doc_type = apoc.coll.toSet(coalesce(sNode.doc_type, []) + $doc_type)
 
                     WITH sNode, row
-                    CALL apoc.merge.node([row.object.label], {name: row.object.name, group: $group, uploader: $uploader}, {}, {}) YIELD node AS oNode
+                    CALL apoc.merge.node([row.object.label], {name: row.object.name, group: $group}, {}, {}) YIELD node AS oNode
                     SET oNode += row.object.props_dict
+                    SET oNode.uploader = $uploader
                     SET oNode.source_files = apoc.coll.toSet(coalesce(oNode.source_files, []) + $source_file)
                     SET oNode.doc_type = apoc.coll.toSet(coalesce(oNode.doc_type, []) + $doc_type)
 
@@ -384,7 +412,7 @@ class Neo4jImporter:
     def upload_entities(self, entity_list: EntityList, source_file: str, doc_type: str, group: str, uploader: str) -> bool:
         try:
             with self.driver.session() as session:
-                labels = ["Requirement", "Service", "SystemComponent", "API", "TestCase", "Actor", "General", "Technology", "Methodology", "Concept"]
+                labels = ["Requirement", "UserStory", "Service", "SystemComponent", "API", "TestCase", "Actor", "General", "Technology", "Methodology", "Concept"]
                 for label in labels:
                     session.run(f"""
                     CREATE CONSTRAINT {label.lower()}_group_name_unique IF NOT EXISTS 
@@ -401,6 +429,11 @@ class Neo4jImporter:
 
                     item["props_dict"] = self.convert_properties_to_dict(item.get("properties") or [])
 
+                    # Re-importing an SRD must be able to clear an obsolete
+                    # traceability value instead of keeping the old property.
+                    if item["label"] == "UserStory":
+                        item["props_dict"].setdefault("req_reference", [])
+
                     # reference = item["props_dict"].get("req_reference")
                     # if reference:
                     #     reference_list = [r.strip() for r in reference.split(',')]
@@ -412,8 +445,9 @@ class Neo4jImporter:
                 UNWIND $batch AS row
                 CALL (row) {
                     WITH row
-                    CALL apoc.merge.node([row.label], {name: row.name, group: $group, uploader: $uploader}, {}, {}) YIELD node AS node
+                    CALL apoc.merge.node([row.label], {name: row.name, group: $group}, {}, {}) YIELD node AS node
                     SET node += row.props_dict
+                    SET node.uploader = $uploader
                     SET node.source_files = apoc.coll.toSet(coalesce(node.source_files, []) + $source_file)
                     SET node.doc_type = apoc.coll.toSet(coalesce(node.doc_type, []) + $doc_type)
 
@@ -429,6 +463,96 @@ class Neo4jImporter:
         except Exception as e:
             logger.error(f"Fail to upload to Neo4j: {e}")
             return False
+
+    def replace_project_relationships(
+        self,
+        group: str,
+        relation_types: list[str],
+    ) -> bool:
+        """Delete derived project relations before rebuilding them.
+
+        Nodes and cross-document properties are preserved. This removes stale
+        ``滿足``／``操作`` edges created by a previous SRD import so corrected
+        traceability does not coexist with old, incorrect relationships.
+        """
+        allowed = {"滿足", "操作", "實作需求", "驗證"}
+        selected = list(dict.fromkeys(
+            relation for relation in relation_types if relation in allowed
+        ))
+        if not selected:
+            return True
+        try:
+            with self.driver.session(database=self.database) as session:
+                result = session.run(
+                    """
+                    MATCH (left)-[rel]->(right)
+                    WHERE left.group = $group
+                      AND right.group = $group
+                      AND type(rel) IN $relation_types
+                    DELETE rel
+                    RETURN count(rel) AS deleted
+                    """,
+                    group=group,
+                    relation_types=selected,
+                ).single()
+                logger.info(
+                    "Removed %s stale project relationships for group %s",
+                    result["deleted"] if result else 0,
+                    group,
+                )
+                return True
+        except Exception as exc:
+            logger.error("Fail to replace project relationships: %s", exc)
+            return False
+
+    def project_graph_stats(
+        self,
+        group: str,
+        doc_type: str,
+        source_file: str,
+    ) -> dict:
+        """Verify the nodes written for this source and group relationships."""
+        try:
+            with self.driver.session(database=self.database) as session:
+                node_records = session.run(
+                    """
+                    MATCH (n)
+                    WHERE n.group = $group
+                      AND $doc_type IN coalesce(n.doc_type, [])
+                      AND $source_file IN coalesce(n.source_files, [])
+                    UNWIND labels(n) AS label
+                    RETURN label, count(DISTINCT n) AS count
+                    ORDER BY label
+                    """,
+                    group=group,
+                    doc_type=doc_type,
+                    source_file=source_file,
+                )
+                labels = {
+                    record["label"]: record["count"] for record in node_records
+                }
+                relation_records = session.run(
+                    """
+                    MATCH (left)-[rel]->(right)
+                    WHERE left.group = $group AND right.group = $group
+                    RETURN type(rel) AS relation, count(rel) AS count
+                    ORDER BY relation
+                    """,
+                    group=group,
+                )
+                relationships = {
+                    record["relation"]: record["count"]
+                    for record in relation_records
+                }
+                return {
+                    "node_count": sum(labels.values()),
+                    "nodes_by_label": labels,
+                    "relationship_count": sum(relationships.values()),
+                    "relationships_by_type": relationships,
+                }
+        except Exception as exc:
+            logger.error("Fail to verify project graph: %s", exc)
+            raise RuntimeError("專案知識圖譜寫入後驗證失敗") from exc
         
     def convert_properties_to_dict(self, properties_list):
         """把 properties 轉成 dict，同 key 多值時變成 list"""
