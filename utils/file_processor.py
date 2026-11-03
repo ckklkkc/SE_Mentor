@@ -2,6 +2,10 @@ import re
 from pathlib import Path
 from typing import List, Dict
 
+from marker.converters.pdf import PdfConverter
+from marker.models import create_model_dict
+from surya.recognition.model.config import SuryaOCRConfig
+
 from langchain_opentutorial import set_env
 from langchain_text_splitters import (
     MarkdownHeaderTextSplitter,
@@ -30,41 +34,7 @@ set_env(
     }
 )
 
-def _marker_output(rendered):
-    """相容 Marker 1.x 不同 patch 版本的輸出物件。"""
-    # Marker 1.5.x 的公開範例以 text_from_rendered 同時取得 Markdown 與圖片。
-    # 舊 patch 版若沒有這個 helper，才退回原本專案使用的 rendered 屬性。
-    try:
-        from marker.output import text_from_rendered
-    except (ImportError, AttributeError):
-        return getattr(rendered, "markdown", ""), getattr(rendered, "images", {}) or {}
-
-    markdown_output, _, images = text_from_rendered(rendered)
-    return markdown_output, images or {}
-
-
-def pdf2md(
-    file_path,
-    chapter=None,
-    *,
-    image_output_dir: str | Path | None = None,
-    image_markdown_prefix: str | None = None,
-    image_manifest_path: str | Path | None = None,
-    describe_images: bool | None = None,
-    image_provider: str | None = None,
-    image_model: str | None = None,
-    fail_on_image_error: bool | None = None,
-    pdf_backend: str | None = None,
-    document_type: str | None = None,
-):
-    import config
-    backend = (pdf_backend or getattr(config, "PDF_CONVERTER_BACKEND", "marker")).lower()
-    if backend not in {"marker", "docling"}:
-        raise ValueError("PDF_CONVERTER_BACKEND 只支援 marker 或 docling")
-    from marker.converters.pdf import PdfConverter
-    from marker.models import create_model_dict
-    from surya.recognition.model.config import SuryaOCRConfig
-
+def pdf2md(file_path, chapter=None):
     # SuryaOCRConfig requires encoder/decoder arguments. Transformers 4.57
     # serializes it by first trying a no-argument default instance unless this
     # flag is set; that raises KeyError('encoder') while loading the OCR model.
