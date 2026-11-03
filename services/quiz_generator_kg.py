@@ -10,6 +10,8 @@ from pydantic import BaseModel, Field, field_validator
 from database.neo4j_importer import Neo4jImporter
 from database.mongo_controller import (
     DiagnosisQuiz,
+    OptionDiagnosis,
+    TextbookAnalysis,
     init_mongo,
     LearningProfile,
     ChatLogs,
@@ -23,6 +25,7 @@ from haystack.dataclasses import ChatMessage
 from haystack.components.builders import ChatPromptBuilder
 from haystack.components.generators.chat import OpenAIChatGenerator
 from neo4j import GraphDatabase
+from services.textbook_analyzer import textbook_analysis_validation_errors
 
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
@@ -47,12 +50,24 @@ class Question(BaseModel):
     answer: int = Field(ge=0, le=3)
     analysis: str
     concept: str
+    knowledge_point_ids: list[str] = Field(default_factory=list)
+    assessment_target_id: str | None = None
+    assessment_target: str | None = None
+    option_diagnoses: list[OptionDiagnosis] = Field(default_factory=list)
+    source_chunk_ids: list[str] = Field(default_factory=list)
 
     @field_validator("options")
     @classmethod
     def validate_options(cls, value: list[str]) -> list[str]:
         if len(value) != 4:
             raise ValueError("每題必須恰好有 4 個選項")
+        return value
+
+    @field_validator("option_diagnoses")
+    @classmethod
+    def validate_option_diagnoses(cls, value: list[OptionDiagnosis]) -> list[OptionDiagnosis]:
+        if value and sorted(item.option_index for item in value) != [0, 1, 2, 3]:
+            raise ValueError("option_diagnoses 必須完整對應 0、1、2、3 四個選項")
         return value
 
 
@@ -62,6 +77,11 @@ class QuestionList(BaseModel):
 
 _quiz_pipeline: Optional[Pipeline] = None
 _pipeline_lock = threading.Lock()
+QUIZ_GENERATION_BATCH_SIZE = 5
+
+
+class QuizCoverageError(ValueError):
+    """LLM 題目數量或評量目標覆蓋不完整。"""
 
 
 def get_core_nodes(chapter: str, limit: int = 5) -> list[str]:
@@ -217,6 +237,159 @@ def find_relevant_kg_concepts(keywords: list[str], limit: int = 10) -> list[str]
     return names
 
 
+def get_approved_assessment_documents(
+    analysis_id: str,
+    count: int | None = 5,
+    chapter_id: str | None = None,
+    target_ids: list[str] | None = None,
+) -> list[Document]:
+    """取得教師核准的評量目標，以及其知識點、關係與教材證據。"""
+    cypher = """
+    MATCH (assessment:AssessmentTarget {review_status: 'approved'})
+    MATCH (section)-[:HAS_ASSESSMENT_TARGET]->(assessment)
+    WHERE assessment.analysis_id = $analysis_id
+      AND section.analysis_id = $analysis_id
+      AND (section:Section OR section:Chapter)
+      AND ($chapter_id IS NULL OR section.id = $chapter_id)
+      AND ($target_ids IS NULL OR assessment.id IN $target_ids)
+    OPTIONAL MATCH (unit:CourseUnit)-[:HAS_SECTION]->(section)
+    WITH assessment, collect(DISTINCT section) AS sections,
+         head(collect(DISTINCT unit.title)) AS course_unit_title
+    MATCH (assessment)-[:ASSESSES]->(point:KnowledgePoint {review_status: 'approved'})
+    OPTIONAL MATCH (point)-[knowledge_rel:KNOWLEDGE_RELATION]-(related:KnowledgePoint)
+    WHERE knowledge_rel IS NULL OR (
+        knowledge_rel.review_status = 'approved'
+        AND related.review_status = 'approved'
+    )
+    OPTIONAL MATCH (point)-[evidence_rel:EVIDENCED_BY]->(chunk:SourceChunk)
+    WHERE chunk IS NULL OR chunk.review_status = 'approved'
+    WITH assessment, sections, course_unit_title,
+         collect(DISTINCT {
+             id: point.id, name: point.name, description: point.description
+         }) AS points,
+         collect(DISTINCT {
+             source: startNode(knowledge_rel).name,
+             relation_type: knowledge_rel.relation_type,
+             target: endNode(knowledge_rel).name,
+             description: knowledge_rel.description
+         }) AS relations,
+         collect(DISTINCT {
+             chunk_id: chunk.id, quote: evidence_rel.quote,
+             heading_path: chunk.heading_path
+         }) AS evidence
+    RETURN assessment.id AS target_id,
+           assessment.title AS title,
+           assessment.objective AS objective,
+           assessment.discrimination AS discrimination,
+           assessment.common_misconceptions AS misconceptions,
+           [section IN sections | section.id] AS section_ids,
+           [section IN sections | section.title] AS section_titles,
+           course_unit_title,
+           points, relations, evidence
+    ORDER BY rand()
+    LIMIT $limit
+    """
+    docs: list[Document] = []
+    with _kg_driver() as driver:
+        with driver.session(database="neo4j") as session:
+            records = session.run(
+                cypher,
+                analysis_id=analysis_id,
+                chapter_id=chapter_id,
+                target_ids=target_ids,
+                limit=max(1, int(count or 10000)),
+            )
+            for record in records:
+                points = [point for point in (record["points"] or []) if point.get("id")]
+                relations = [
+                    relation for relation in (record["relations"] or [])
+                    if relation.get("target") and relation.get("relation_type")
+                ]
+                evidence = [
+                    item for item in (record["evidence"] or []) if item.get("chunk_id")
+                ]
+                lines = [
+                    f"【評量目標 ID】{record['target_id']}",
+                    f"【CourseUnit】{record['course_unit_title'] or '舊版教材'}",
+                    f"【Section】{'、'.join(record['section_titles'] or [])}",
+                    f"【目標】{record['title']}",
+                    f"【可觀察能力】{record['objective']}",
+                    f"【鑑別重點】{record['discrimination']}",
+                    f"【常見迷思】{'；'.join(record['misconceptions'] or [])}",
+                    "【知識點】",
+                ]
+                lines.extend(
+                    f"- {point['id']}｜{point['name']}：{point.get('description') or ''}"
+                    for point in points
+                )
+                if relations:
+                    lines.append("【知識關係】")
+                    lines.extend(
+                        f"- {rel['source']} --{rel['relation_type']}--> {rel['target']}："
+                        f"{rel.get('description') or ''}"
+                        for rel in relations
+                    )
+                if evidence:
+                    lines.append("【教材證據】")
+                    lines.extend(
+                        f"- {item['chunk_id']}｜{item.get('quote') or ''}"
+                        for item in evidence
+                    )
+                docs.append(
+                    Document(
+                        content="\n".join(lines),
+                        meta={
+                            "assessment_target_id": record["target_id"],
+                            "assessment_target_title": record["title"],
+                            "section_ids": record["section_ids"] or [],
+                            "section_titles": record["section_titles"] or [],
+                            "course_unit_title": record["course_unit_title"],
+                            "analysis_id": analysis_id,
+                            "knowledge_point_ids": [point["id"] for point in points],
+                            "source_chunk_ids": [item["chunk_id"] for item in evidence],
+                        },
+                    )
+                )
+    return docs
+
+
+def canonicalize_question_provenance(
+    question: Question,
+    source_meta: dict,
+) -> Question:
+    """ID provenance 以 KG 評量目標為準，不信任 LLM 複製出的識別碼。
+
+    LLM 只負責題幹、選項、解析與迷思文字。評量目標已經在 KG 中定義了
+    knowledge_point_ids 與 source_chunk_ids，重新讓模型抄寫只會增加格式錯誤，
+    不會增加任何資訊。
+    """
+    point_ids = list(dict.fromkeys(source_meta.get("knowledge_point_ids") or []))
+    chunk_ids = list(dict.fromkeys(source_meta.get("source_chunk_ids") or []))
+    if not point_ids:
+        raise ValueError("評量目標在 KG 中沒有綁定知識點")
+    if not chunk_ids:
+        raise ValueError("評量目標在 KG 中沒有綁定教材證據")
+
+    valid_points = set(point_ids)
+    diagnoses = [
+        diagnosis.model_copy(update={
+            "knowledge_point_id": (
+                diagnosis.knowledge_point_id
+                if diagnosis.knowledge_point_id in valid_points
+                else None
+            ),
+        })
+        for diagnosis in question.option_diagnoses
+    ]
+    return question.model_copy(update={
+        "assessment_target_id": source_meta["assessment_target_id"],
+        "assessment_target": source_meta.get("assessment_target_title"),
+        "knowledge_point_ids": point_ids,
+        "source_chunk_ids": chunk_ids,
+        "option_diagnoses": diagnoses,
+    })
+
+
 def _get_quiz_pipeline() -> Pipeline:
     """Lazy init，避免每次 /quiz 都重新載入 embedding model。"""
     global _quiz_pipeline
@@ -240,10 +413,13 @@ def _get_quiz_pipeline() -> Pipeline:
 3. 每題必須恰好 4 個選項。
 4. answer 必須使用 0、1、2、3 表示正確選項索引，分別對應 A、B、C、D。
 5. 每題都要提供 analysis，說明為何正確答案正確，並簡要指出其他選項的問題。
-6. concept 填入該題主要評量的軟體工程概念。
-7. 不可把學生過去問過的問題原句直接改成選擇題；要根據教材重新設計具有鑑別度的新題目。
-8. 不可使用 Context 無法支持的知識。
-9. 使用台灣繁體中文。
+6. 每題只能對應一個 Context 中明列的評量目標。assessment_target_id 必須原樣填入；
+   assessment_target 填目標名稱；knowledge_point_ids 與 source_chunk_ids 也只能填 Context 中的 ID。
+7. 四個選項應用來辨識學生對知識點關係／差異的理解。option_diagnoses 必須依序對應四個選項；
+   正確選項的 misconception 填 null，錯誤選項則填具體錯誤推理，不可只寫「觀念不清」。
+8. concept 保留作為相容欄位，填入精確的知識點名稱，不可只填章節大標題。
+9. 不可把學生過去問過的問題原句直接改成選擇題；要根據教材重新設計具有鑑別度的新題目。
+10. 不可使用 Context 無法支持的知識，且使用台灣繁體中文。
 
 Context:
 {% for document in documents %}
@@ -287,7 +463,7 @@ def _parse_questions(result: dict, expected_count: int) -> list[Question]:
 
     parsed = QuestionList.model_validate(payload)
     if len(parsed.questions) < expected_count:
-        raise ValueError(
+        raise QuizCoverageError(
             f"LLM 只生成 {len(parsed.questions)} 題，少於要求的 {expected_count} 題"
         )
     return parsed.questions[:expected_count]
@@ -377,6 +553,263 @@ def _generate_realtime_quizzes_sync(count: int = 5) -> list[Question]:
 
 async def generate_realtime_quizzes(count: int = 5) -> list[Question]:
     return await asyncio.to_thread(_generate_realtime_quizzes_sync, count)
+
+
+def _generate_quiz_drafts_sync(
+    count: int,
+    analysis_id: str,
+    chapter_id: str | None = None,
+    target_ids: list[str] | None = None,
+    variant_number: int = 1,
+) -> tuple[list[Question], list[Document]]:
+    documents = get_approved_assessment_documents(
+        count=count,
+        analysis_id=analysis_id,
+        chapter_id=chapter_id,
+        target_ids=target_ids,
+    )
+    if len(documents) < count:
+        raise ValueError(
+            f"只有 {len(documents)} 個已核准評量目標，少於要求的 {count} 個；"
+            "請先審核教材分析"
+        )
+
+    def validate_target_coverage(
+        questions: list[Question],
+        source_documents: list[Document],
+    ) -> None:
+        expected_ids = {
+            document.meta["assessment_target_id"]
+            for document in source_documents
+        }
+        actual_ids = [question.assessment_target_id for question in questions]
+        if len(actual_ids) != len(source_documents):
+            raise QuizCoverageError(
+                f"LLM 生成 {len(actual_ids)} 題，但本批需要 {len(source_documents)} 題"
+            )
+        if len(set(actual_ids)) != len(actual_ids):
+            raise QuizCoverageError("LLM 對同一評量目標生成了重複題目")
+        if set(actual_ids) != expected_ids:
+            raise QuizCoverageError("LLM 未針對本批每個評量目標各生成一題")
+
+    def normalize_and_validate_batch(
+        batch_questions: list[Question],
+        source_documents: list[Document],
+    ) -> list[Question]:
+        validate_target_coverage(batch_questions, source_documents)
+        source_by_target = {
+            document.meta["assessment_target_id"]: document
+            for document in source_documents
+        }
+        normalized: list[Question] = []
+        for question in batch_questions:
+            source = source_by_target[question.assessment_target_id]
+            question = canonicalize_question_provenance(question, source.meta)
+            if len(question.option_diagnoses) != 4:
+                raise QuizCoverageError("題目缺少四個選項的診斷映射")
+            for diagnosis in question.option_diagnoses:
+                if diagnosis.option_index == question.answer and diagnosis.misconception:
+                    raise QuizCoverageError("正確選項不可標記 misconception")
+                if diagnosis.option_index != question.answer and not diagnosis.misconception:
+                    raise QuizCoverageError("每個錯誤選項都必須標記具體 misconception")
+            normalized.append(question)
+        return normalized
+
+    def generate_batch(source_documents: list[Document]) -> list[Question]:
+        target_ids = [
+            document.meta["assessment_target_id"]
+            for document in source_documents
+        ]
+        try:
+            batch_questions = _run_generation(
+                documents=source_documents,
+                focus=(
+                    f"這是平行題第 {variant_number} 版。每個評量目標各生成一題，"
+                    "用不同情境與選項區分具體迷思與正確理解。"
+                    f"必須恰好覆蓋這些 ID，且每個 ID 只能出現一次：{', '.join(target_ids)}"
+                ),
+                student_context="無；這是教師審核前的題目草稿。",
+                count=len(source_documents),
+            )
+            return normalize_and_validate_batch(batch_questions, source_documents)
+        except QuizCoverageError as exc:
+            if len(source_documents) == 1:
+                raise QuizCoverageError(
+                    f"評量目標 {target_ids[0]} 無法產生完整題目：{exc}"
+                ) from exc
+            print(
+                f"[quiz_generator] 本批 {len(source_documents)} 題生成不完整，"
+                f"改為逐評量目標重試：{exc}"
+            )
+
+        recovered: list[Question] = []
+        for document in source_documents:
+            recovered.extend(generate_batch([document]))
+        return recovered
+
+    target_ids = {doc.meta["assessment_target_id"] for doc in documents}
+    questions: list[Question] = []
+    for start in range(0, len(documents), QUIZ_GENERATION_BATCH_SIZE):
+        batch = documents[start:start + QUIZ_GENERATION_BATCH_SIZE]
+        print(
+            f"[quiz_generator] 正在生成第 {start + 1}～"
+            f"{start + len(batch)} 題，共 {len(documents)} 題"
+        )
+        questions.extend(generate_batch(batch))
+
+    question_target_ids = [question.assessment_target_id for question in questions]
+    if len(set(question_target_ids)) != len(question_target_ids):
+        raise ValueError("LLM 對同一評量目標生成了重複題目")
+    if set(question_target_ids) != target_ids:
+        raise ValueError("LLM 未針對每個指定評量目標各生成一題")
+    for question in questions:
+        if question.assessment_target_id not in target_ids:
+            raise ValueError("LLM 回傳了 Context 以外的 assessment_target_id")
+    return questions, documents
+
+
+async def generate_quiz_drafts(
+    analysis_id: str,
+    count: int = 5,
+    chapter_id: str | None = None,
+) -> list[DiagnosisQuiz]:
+    """依核准評量目標產生待審題目，不會直接提供給學生。"""
+    analysis = await TextbookAnalysis.get(analysis_id)
+    if not analysis:
+        raise ValueError("找不到指定的教材分析")
+    if analysis.review_status != "approved":
+        raise ValueError("教材分析尚未核准，不能生成題目")
+    validation_errors = textbook_analysis_validation_errors(analysis)
+    if validation_errors:
+        raise ValueError(
+            "教材分析品質檢查未通過，請重新匯入教材："
+            + "；".join(validation_errors)
+        )
+
+    questions, documents = await asyncio.to_thread(
+        _generate_quiz_drafts_sync,
+        count,
+        str(analysis.id),
+        chapter_id,
+        None,
+        1,
+    )
+    sources = {
+        document.meta["assessment_target_id"]: document
+        for document in documents
+    }
+    drafts: list[DiagnosisQuiz] = []
+    for question in questions:
+        source = sources[question.assessment_target_id]
+        existing_variants = await DiagnosisQuiz.find({
+            "source_analysis_id": str(analysis.id),
+            "assessment_target_id": question.assessment_target_id,
+            "review_status": {"$ne": "rejected"},
+        }).to_list()
+        variant_number = max(
+            (item.variant_number for item in existing_variants),
+            default=0,
+        ) + 1
+        draft = DiagnosisQuiz(
+            **question.model_dump(),
+            chapter=analysis.course_unit_title or analysis.title,
+            source_analysis_id=str(analysis.id),
+            course_unit_id=analysis.course_unit_id or analysis.textbook_id,
+            course_unit_title=analysis.course_unit_title or analysis.title,
+            section_ids=source.meta["section_ids"],
+            variant_number=variant_number,
+            review_status="pending",
+        )
+        # Beanie insert_many 不會保證將 inserted_ids 回填到原物件；逐題 insert
+        # 可讓 CLI 立即顯示可供 show-quiz/review-quiz 使用的真正題目 ID。
+        await draft.insert()
+        drafts.append(draft)
+    return drafts
+
+
+async def generate_course_unit_bank(
+    analysis_id: str,
+    items_per_target: int = 2,
+) -> list[DiagnosisQuiz]:
+    """把每個已核准目標補到指定的 2～3 題平行題，不重複無限追加。"""
+    if items_per_target not in {2, 3}:
+        raise ValueError("items_per_target 必須是 2 或 3")
+    analysis = await TextbookAnalysis.get(analysis_id)
+    if not analysis:
+        raise ValueError("找不到指定的教材分析")
+    if analysis.review_status != "approved":
+        raise ValueError("CourseUnit 尚未核准，不能建立題庫")
+    validation_errors = textbook_analysis_validation_errors(analysis)
+    if validation_errors:
+        raise ValueError("教材分析品質檢查未通過：" + "；".join(validation_errors))
+
+    approved_ids = [
+        target.id
+        for target in analysis.assessment_targets
+        if target.review_status == "approved"
+    ]
+    if not approved_ids:
+        raise ValueError("沒有已核准的評量目標")
+
+    existing = await DiagnosisQuiz.find({
+        "source_analysis_id": str(analysis.id),
+        "review_status": {"$ne": "rejected"},
+    }).to_list()
+    counts = {target_id: 0 for target_id in approved_ids}
+    max_variants = {target_id: 0 for target_id in approved_ids}
+    existing_stems = set()
+    for question in existing:
+        if question.assessment_target_id in counts:
+            counts[question.assessment_target_id] += 1
+            max_variants[question.assessment_target_id] = max(
+                max_variants[question.assessment_target_id],
+                question.variant_number,
+            )
+            existing_stems.add(question.question.strip())
+
+    created: list[DiagnosisQuiz] = []
+    while True:
+        missing_ids = [
+            target_id for target_id in approved_ids
+            if counts[target_id] < items_per_target
+        ]
+        if not missing_ids:
+            break
+        current_variant = min(max_variants[target_id] + 1 for target_id in missing_ids)
+        questions, documents = await asyncio.to_thread(
+            _generate_quiz_drafts_sync,
+            len(missing_ids),
+            str(analysis.id),
+            None,
+            missing_ids,
+            current_variant,
+        )
+        sources = {
+            document.meta["assessment_target_id"]: document
+            for document in documents
+        }
+        for question in questions:
+            target_id = question.assessment_target_id
+            if question.question.strip() in existing_stems:
+                raise ValueError(f"評量目標 {target_id} 生成了重複題幹，請重新執行")
+            source = sources[target_id]
+            variant = max_variants[target_id] + 1
+            draft = DiagnosisQuiz(
+                **question.model_dump(),
+                chapter=analysis.course_unit_title or analysis.title,
+                source_analysis_id=str(analysis.id),
+                course_unit_id=analysis.course_unit_id or analysis.textbook_id,
+                course_unit_title=analysis.course_unit_title or analysis.title,
+                section_ids=source.meta["section_ids"],
+                variant_number=variant,
+                review_status="pending",
+            )
+            await draft.insert()
+            created.append(draft)
+            existing_stems.add(draft.question.strip())
+            counts[target_id] += 1
+            max_variants[target_id] = variant
+    return created
 
 
 async def _get_student_quiz_context(user_id: int, recent_limit: int = 8) -> tuple[str, str, str, int]:
@@ -507,98 +940,6 @@ async def upload_quiz_to_mongo():
 
     if diagnosis_quizzes:
         await DiagnosisQuiz.insert_many(diagnosis_quizzes)
-
-
-async def get_bank_quizzes(count: int = 5) -> list[DiagnosisQuiz]:
-    """從 MongoDB 題庫抽題。"""
-    selected_chapters = random.sample(CHAPTERS, k=min(count, len(CHAPTERS)))
-    questions: list[DiagnosisQuiz] = []
-
-    for chapter in selected_chapters:
-        quiz_list = await DiagnosisQuiz.find({"chapter": chapter}).to_list()
-        if quiz_list:
-            questions.append(random.choice(quiz_list))
-
-    # 若某章沒有題目，從所有現有題庫補滿。
-    if len(questions) < count:
-        all_quizzes = await DiagnosisQuiz.find_all().to_list()
-        used_ids = {str(q.id) for q in questions}
-        candidates = [q for q in all_quizzes if str(q.id) not in used_ids]
-        need = min(count - len(questions), len(candidates))
-        if need > 0:
-            questions.extend(random.sample(candidates, need))
-
-    if len(questions) < count:
-        raise ValueError(f"MongoDB 題庫只有 {len(questions)} 題可用，無法組成 {count} 題測驗")
-
-    return questions[:count]
-
-
-async def get_quizzes(mode: str, user_id: int, count: int = 5) -> tuple[list, str]:
-    """
-    mode:
-      - bank: MongoDB 固定題庫
-      - realtime: 即時 RAG + LLM
-      - personalized: 根據學生 course QA + pain points
-      - mixed: 題庫 2 題 + 個人化/即時 3 題
-    """
-    mode = (mode or "mixed").lower()
-
-    if mode == "bank":
-        return await get_bank_quizzes(count), "題庫模式：從 MongoDB 既有題庫抽題"
-
-    if mode == "realtime":
-        try:
-            return await generate_realtime_quizzes(count), "即時模式：本次由教材 RAG + LLM 重新生成"
-        except Exception as e:
-            print(f"[quiz_generator] realtime failed, fallback to bank: {e}")
-            return await get_bank_quizzes(count), "即時生成失敗，已自動改用 MongoDB 題庫"
-
-    if mode == "personalized":
-        try:
-            questions, qa_count = await generate_personalized_quizzes(user_id, count)
-            return questions, f"個人化模式：依最近 {qa_count} 筆課程 QA／學習弱點生成"
-        except Exception as e:
-            print(f"[quiz_generator] personalized failed, fallback to realtime: {e}")
-            try:
-                questions = await generate_realtime_quizzes(count)
-                return questions, "目前缺少可用的個人化資料，已改用即時生成模式"
-            except Exception as rt_e:
-                print(f"[quiz_generator] realtime fallback failed: {rt_e}")
-                return await get_bank_quizzes(count), "個人化與即時生成失敗，已改用 MongoDB 題庫"
-
-    if mode == "mixed":
-        bank_count = min(2, count)
-        generated_count = count - bank_count
-        bank_questions = await get_bank_quizzes(bank_count)
-
-        generated_questions: list = []
-        source_text = ""
-        if generated_count > 0:
-            try:
-                generated_questions, qa_count = await generate_personalized_quizzes(
-                    user_id, generated_count
-                )
-                source_text = f"其中 {generated_count} 題依最近 {qa_count} 筆課程 QA／學習弱點生成"
-            except Exception as e:
-                print(f"[quiz_generator] mixed personalized failed, use realtime: {e}")
-                try:
-                    generated_questions = await generate_realtime_quizzes(generated_count)
-                    source_text = f"其中 {generated_count} 題為本次即時生成"
-                except Exception as rt_e:
-                    print(f"[quiz_generator] mixed realtime failed, use all bank: {rt_e}")
-                    return await get_bank_quizzes(count), "個人化與即時生成失敗，已全部改用 MongoDB 題庫"
-
-        questions = bank_questions + generated_questions
-        random.shuffle(questions)
-        return questions, f"混合模式：{bank_count} 題 MongoDB 題庫；{source_text}"
-
-    raise ValueError(f"未知的 quiz mode: {mode}")
-
-
-# 相容舊名稱與舊呼叫方式
-async def get_quizes() -> list:
-    return await get_bank_quizzes(5)
 
 
 if __name__ == "__main__":

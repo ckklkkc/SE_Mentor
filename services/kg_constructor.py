@@ -153,9 +153,60 @@ class KGConstructor:
             item = raw.model_dump()
             item["label"] = str(raw.label.value)
             props = item.get("properties")
-            item["properties_dict"] = {prop["key"]: prop["value"] for prop in props} if props else {}
+            properties_dict = {}
+            for prop in props or []:
+                key, value = prop["key"], prop["value"]
+                if key not in properties_dict:
+                    properties_dict[key] = value
+                elif isinstance(properties_dict[key], list):
+                    properties_dict[key].append(value)
+                else:
+                    properties_dict[key] = [properties_dict[key], value]
+            item["properties_dict"] = properties_dict
             entity_list.append(item)
         return entity_list
+
+    @staticmethod
+    def _normalized_identifier(value) -> str:
+        return re.sub(r"\s+", "", str(value or "")).upper()
+
+    @staticmethod
+    def _reference_values(value) -> list[str]:
+        values = value if isinstance(value, list) else [value]
+        references = []
+        for raw in values:
+            references.extend(
+                part.strip()
+                for part in re.split(r"[,，、;；]", str(raw or ""))
+                if part.strip()
+            )
+        return list(dict.fromkeys(references))
+
+    @staticmethod
+    def _actor_values(value) -> list[str]:
+        values = value if isinstance(value, list) else [value]
+        actors = []
+        for raw in values:
+            actors.extend(
+                part.strip()
+                for part in re.split(r"[,，、/／;；]|(?:與|和|及)", str(raw or ""))
+                if part.strip()
+            )
+        return list(dict.fromkeys(actors))
+
+    @staticmethod
+    def _deduplicate_entities(entities: list[dict], identity_key: str | None) -> list[dict]:
+        deduplicated = []
+        seen = set()
+        for entity in entities:
+            props = entity.get("properties_dict", {})
+            identity = props.get(identity_key) if identity_key else entity.get("name")
+            marker = str(identity or entity.get("name", "")).strip().casefold()
+            if not marker or marker in seen:
+                continue
+            seen.add(marker)
+            deduplicated.append(entity)
+        return deduplicated
 
     def get_specific_entity_by_label(self, entity_list: dict, label: str) -> list:
         """取得指定標籤的所有實體"""
@@ -197,72 +248,57 @@ class KGConstructor:
         
         return entity_dict
 
-    def match_us_to_fr_v2(self, raw_entity_list: EntityList) -> tuple[list, list]:
-        """LLM 去配對功能需求與使用者故事"""
+    def match_us_to_fr_v2(self, raw_entity_list: EntityList) -> tuple[list, list, list]:
+        """以文件中的明確 ID 建立可驗證的需求追溯。
+
+        不再用語意相似度猜測 ``req_reference``。若使用者故事已明列 Reference，
+        或 us_id 與需求 req_id 完全相同，才建立關係；其他可能關聯留給
+        ``/project_qa`` 分析，不寫成知識圖譜事實。
+        """
 
         # 把 EntityList 轉為 dictionary
         entity_list = self.convert_props_to_dict(raw_entity_list)
-        print(len(entity_list))
+        print(f"[SRD 追溯] 抽取實體總數：{len(entity_list)}")
 
         # 取得使用者故事及需求
         us_list = self.get_specific_entity_by_label(entity_list, "UserStory")
         fr_list = self.get_specific_entity_by_label(entity_list, "Requirement")
+        actor_list = self.get_specific_entity_by_label(entity_list, "Actor")
+        us_list = self._deduplicate_entities(us_list, "us_id")
+        fr_list = self._deduplicate_entities(fr_list, "req_id")
+        actor_list = self._deduplicate_entities(actor_list, None)
         print("us list: ", len(us_list))
         print("fr list: ", len(fr_list))
+        requirement_ids = {
+            self._normalized_identifier(fr["properties_dict"].get("req_id")):
+            str(fr["properties_dict"].get("req_id")).strip()
+            for fr in fr_list
+            if fr["properties_dict"].get("req_id")
+        }
 
-        llm_matches = list()
+        match_list = []
+        for index, us_obj in enumerate(us_list, start=1):
+            props = us_obj["properties_dict"]
+            explicit_refs = self._reference_values(props.get("req_reference"))
+            valid_refs = [
+                requirement_ids[self._normalized_identifier(ref)]
+                for ref in explicit_refs
+                if self._normalized_identifier(ref) in requirement_ids
+            ]
+            us_id = self._normalized_identifier(props.get("us_id"))
+            if us_id and us_id in requirement_ids:
+                # When both tables use the same ID, that is the strongest
+                # traceability evidence. Do not retain a different reference
+                # that an extraction model may have inferred from nearby text.
+                valid_refs = [requirement_ids[us_id]]
+            valid_refs = list(dict.fromkeys(valid_refs))
+            print(
+                f"[{index}/{len(us_list)}] ID 配對："
+                f"{props.get('us_id', '?')} -> {valid_refs or '未明列對應需求'}"
+            )
+            match_list.append({"us": us_obj, "us_req_ids": valid_refs})
 
-        # 遍歷比較少的清單
-        if len(fr_list) < len(us_list):
-            for i, fr in enumerate(fr_list):
-                print(f"[{i}/{len(fr_list)}] 配對中")
-                # 遍歷功能需求讓 LLM 去配對對應的使用者故事
-                llm_result = self.match_fr_and_us_llm({'fr': fr, 'candidates': us_list}, prompts.MATCH_FR_2_US_PROMPT, True)
-                # print(llm_result)
-                llm_matches.append(llm_result)
-        else:
-            for i, us in enumerate(us_list):
-                print(f"[{i}/{len(us_list)}] 配對中")
-                # 遍歷讓使用者故事 LLM 去配對對應的功能需求
-                llm_result = self.match_fr_and_us_llm({'us': us, 'candidates': fr_list}, prompts.MATCH_US_2_FR_PROMPT, False)
-                # print(llm_result)
-                llm_matches.append(llm_result)
-        
-        match_list = list()
-        if llm_matches:
-            match_dict = list()
-            for case in llm_matches:
-                # 把 EntityList 轉為字典
-                match_dict.extend(self.convert_props_to_dict(case))
-
-            # print(match_dict)
-
-            for match in match_dict:
-                if match['properties_dict'].get('us_id'):   # 判斷是否是使用者故事
-                    us_obj = match
-
-                    if not match['properties_dict'].get('req_reference'):
-                        continue
-
-                    if 'req_reference_list' not in us_obj:
-                        us_obj['req_reference_list'] = []
-                    # 紀錄該使用者故事對應的功能需求編號
-                    us_obj['req_reference_list'].append(match['properties_dict']['req_reference'])
-
-                    if 'req_reference' not in us_obj['properties_dict']:
-                        us_obj['properties_dict']['req_reference'] = []
-
-                    elif isinstance(us_obj['properties_dict']['req_reference'], str):
-                        us_obj['properties_dict']['req_reference'] = [us_obj['properties_dict']['req_reference']]
-
-                    us_obj['properties_dict']['req_reference'].append(match['properties_dict']['req_reference'])
-                    
-                    match_list.append({
-                        'us': us_obj,
-                        'us_req_ids': us_obj['req_reference_list']
-                    })
-
-        return match_list, fr_list
+        return match_list, fr_list, actor_list
 
     def create_actor_relationships(self, raw_entity_list: list) -> list:
         """建立操作角色跟功能需求的三元組"""
@@ -270,25 +306,70 @@ class KGConstructor:
 
         # 取得所有操作角色 (標籤為 Actor)
         known_actors = self.get_specific_entity_by_label(entity_list, "Actor")
-        known_actors = set(actor["name"] for actor in known_actors)
+        known_actors = sorted(
+            {actor["name"].strip() for actor in known_actors if actor["name"].strip()},
+            key=lambda value: (-len(value), value),
+        )
         print("Actors: ", known_actors)
 
         fr_list = self.get_specific_entity_by_label(entity_list, "Requirement")
         print("fr list: ", len(fr_list))
         
         actor_relations = list()
-        
+        seen_relations = set()
+        requirements_by_id = {
+            self._normalized_identifier(fr["properties_dict"].get("req_id")): fr
+            for fr in fr_list
+            if fr["properties_dict"].get("req_id")
+        }
+
+        def add_relation(actor: str, requirement: dict) -> None:
+            actor = actor.strip()
+            marker = (actor.casefold(), requirement["name"].casefold())
+            if not actor or marker in seen_relations:
+                return
+            seen_relations.add(marker)
+            actor_relations.append({
+                "subject": {"name": actor, "label": "Actor"},
+                "relation": {
+                    "name": "操作",
+                    "description": f"{actor}可執行「{requirement['name']}」",
+                },
+                "object": {"name": requirement["name"], "label": "Requirement"},
+            })
+
         for fr in fr_list:
-            # 從功能需求中抓到操作角色
-            fr_actor = self.extract_actor(fr['properties_dict']['description'], known_actors)
-            
-            if fr_actor:
-                # 紀錄三元組「操作角色-操作->功能需求」
-                actor_relations.append({
-                    "subject": {"name": fr_actor, "label": "Actor"},
-                    "relation": {"name": "操作", "description": f"{fr_actor}可執行「{fr['name']}」"},
-                    "object": {"name": fr['name'], "label": "Requirement"}
-                })
+            props = fr["properties_dict"]
+            explicit_actors = self._actor_values(
+                props.get("actor") or props.get("actors") or ""
+            )
+            if explicit_actors:
+                for fr_actor in explicit_actors:
+                    add_relation(fr_actor, fr)
+            else:
+                evidence_text = " ".join([
+                    fr.get("name", ""),
+                    str(props.get("description", "")),
+                ])
+                for fr_actor in known_actors:
+                    if fr_actor in evidence_text:
+                        add_relation(fr_actor, fr)
+
+        for us in self.get_specific_entity_by_label(entity_list, "UserStory"):
+            props = us["properties_dict"]
+            story_text = " ".join([us.get("name", ""), str(props.get("description", ""))])
+            actor = self.extract_actor(story_text, known_actors)
+            if not actor:
+                match = re.search(r"(?:作為|身為)(?:一位)?([^，,。]+)", story_text)
+                actor = match.group(1).strip() if match else None
+            if not actor:
+                continue
+            for req_id in self._reference_values(props.get("req_reference")):
+                requirement = requirements_by_id.get(
+                    self._normalized_identifier(req_id)
+                )
+                if requirement:
+                    add_relation(actor, requirement)
         
         return actor_relations
 
@@ -336,6 +417,8 @@ class KGConstructor:
 
     def entities_extraction_pipeline(self, document_contents: list, doc_type: str, prompt: str, group: str):
         """文件實體抽取流程"""
+        output_dir = Path("files") / "doc" / group
+        output_dir.mkdir(parents=True, exist_ok=True)
         list_of_EntityList = list()
         with ThreadPoolExecutor(max_workers=3) as executor:
             future_to_doc = {executor.submit(self.entities_extraction_with_properties, prompt, content): content for content in document_contents}
@@ -350,7 +433,7 @@ class KGConstructor:
                     print(f"文件實體抽取 Exception: {e}")
 
         data_to_save = [t.model_dump(mode="json") for entities in list_of_EntityList for t in entities.entities]
-        with open(f"files\\doc\\{group}\\doc_entities_{doc_type.lower()}.json", 'w', encoding="utf-8") as f:
+        with (output_dir / f"doc_entities_{doc_type.lower()}.json").open('w', encoding="utf-8") as f:
             json.dump(data_to_save, f, indent=2, ensure_ascii=False)
 
         print("文件實體抽取完成")
@@ -360,49 +443,19 @@ class KGConstructor:
 
     def match_fr_to_us_pipeline(self, entity_list: EntityList, group: str) -> EntityList:
         """配對功能需求跟使用者故事的流程"""
-        llm_matches, fr_list = self.match_us_to_fr_v2(entity_list)
-        seen_us_ids = set()
-        confident_us = list()
-        idx = dict()
-        i = 0
-        
-        for match in llm_matches:
-            us_dict = match['us'].copy()  # 重要：要 copy，不要直接改原物件
-            us_id = us_dict['properties_dict']['us_id']
-            
-            if us_id not in seen_us_ids:
-                # 把累積的 req_ids 正式加入 properties
-                self.add_req_reference_to_properties(us_dict, match['us_req_ids'])
-                
-                confident_us.append(us_dict)
-                idx[us_id] = i
-                seen_us_ids.add(us_id)
-                i += 1
-            else:
-                for req_id in match['us_req_ids']:
-                    confident_us[idx[us_id]]['properties'].append({
-                        'key': 'req_reference',
-                        'value': req_id
-                    })
+        output_dir = Path("files") / "doc" / group
+        output_dir.mkdir(parents=True, exist_ok=True)
+        matches, fr_list, actor_list = self.match_us_to_fr_v2(entity_list)
+        user_stories = []
+        for match in matches:
+            us_dict = match['us'].copy()
+            self.add_req_reference_to_properties(us_dict, match['us_req_ids'])
+            user_stories.append(us_dict)
 
-        for us in confident_us:
-            existing_refs = set()   # 移除重複的 req_reference
-            deduplicated_props = []
-            
-            for prop in us['properties']:
-                if prop['key'] == 'req_reference':
-                    if prop['value'] not in existing_refs:
-                        deduplicated_props.append(prop)
-                        existing_refs.add(prop['value'])
-                else:
-                    deduplicated_props.append(prop)
-            
-            us['properties'] = deduplicated_props
-
-        confident_us_entities = [Entity(**item) for item in confident_us]
+        actor_entities = [Entity(**item) for item in actor_list]
+        user_story_entities = [Entity(**item) for item in user_stories]
         fr_list_entities = [Entity(**item) for item in fr_list]
-
-        data_to_upload = confident_us_entities + fr_list_entities
+        data_to_upload = actor_entities + user_story_entities + fr_list_entities
 
         for i, d in enumerate(data_to_upload):
             print(f"[{i+1}/{len(data_to_upload)}]:\n{d}")
@@ -412,7 +465,7 @@ class KGConstructor:
 
         # 保存
         data_to_save = [data.model_dump() for data in data_to_upload]
-        with open(f"files\\doc\\{group}\\doc_entities_pairs_srd.json", 'w', encoding="utf-8") as f:
+        with (output_dir / "doc_entities_pairs_srd.json").open('w', encoding="utf-8") as f:
             json.dump(data_to_save, f, indent=2, ensure_ascii=False)
 
         return entity_list

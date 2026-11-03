@@ -1,0 +1,604 @@
+[
+  {
+    "name": "老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "北寧路早餐店系統中負責修改餐點、管理訂單的店家角色"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "北寧路早餐店系統中負責瀏覽菜單、送出訂單的消費者角色（主要為學生）"
+      }
+    ]
+  },
+  {
+    "name": "使用者",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "一般使用者角色，參與登入、菜單瀏覽、訂單等流程"
+      }
+    ]
+  },
+  {
+    "name": "顧客",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "顧客角色，負責瀏覽菜單、提交訂單、查看訂單狀態等操作"
+      }
+    ]
+  },
+  {
+    "name": "店主",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "店主角色，負責管理訂單、設定菜單、查看統計資料等操作"
+      }
+    ]
+  },
+  {
+    "name": "使用者",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "能登入平台、瀏覽菜單、管理購物車及查看餐點製作進度的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "店家老闆",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "能管理即時訂單、上架與編輯餐點資訊的店家管理者角色"
+      }
+    ]
+  },
+  {
+    "name": "作為一位使用者，我能登入平台（或使用 Google 帳號快速登入），以便識別身分並記錄訂單資訊",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "USR-01"
+      },
+      {
+        "key": "description",
+        "value": "使用者能登入平台或使用 Google 帳號快速登入，以便識別身分並記錄訂單資訊"
+      }
+    ]
+  },
+  {
+    "name": "作為一位使用者，我能瀏覽菜單，以便了解餐點資訊與價格",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "MEN-01"
+      },
+      {
+        "key": "description",
+        "value": "使用者能瀏覽菜單，了解餐點資訊與價格，操作應直覺且資訊不具誤導性"
+      }
+    ]
+  },
+  {
+    "name": "作為一位使用者，我能將多項商品加入購物車並進行管理，以便同時訂購多樣餐點",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "MEN-02"
+      },
+      {
+        "key": "description",
+        "value": "使用者能將多項商品加入購物車並進行管理，支援儲存多筆餐點、刪除及顯示更新資訊"
+      }
+    ]
+  },
+  {
+    "name": "作為一位店家老闆，我能管理即時訂單，以便控制出餐進度",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "MAN-01"
+      },
+      {
+        "key": "description",
+        "value": "店家老闆能管理即時訂單，包括接受、拒絕訂單並更新訂單狀態以控制出餐進度"
+      }
+    ]
+  },
+  {
+    "name": "作為一位店家老闆，我能上架與編輯餐點資訊，以便維護菜單內容",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "MAN-02"
+      },
+      {
+        "key": "description",
+        "value": "店家老闆能新增自定義餐點、上傳圖片與設定描述及價格，以維護菜單內容"
+      }
+    ]
+  },
+  {
+    "name": "作為一位使用者，我能查看餐點製作進度，以便掌握取餐時間",
+    "label": "UserStory",
+    "properties": [
+      {
+        "key": "us_id",
+        "value": "STA-01"
+      },
+      {
+        "key": "description",
+        "value": "使用者能查看餐點製作進度，當餐點接受、拒絕或準備完成時系統顯示狀態變化"
+      }
+    ]
+  },
+  {
+    "name": "系統必須能夠承受午餐尖峰時段約 150 人同時線上使用而不當機",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NF-01"
+      },
+      {
+        "key": "description",
+        "value": "系統必須能夠承受午餐尖峰時段約 150 人同時線上使用而不當機"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "系統必須能夠在尖峰時段於 5 秒內載入所有頁面與菜單資訊",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NF-02"
+      },
+      {
+        "key": "description",
+        "value": "系統必須能夠在尖峰時段於 5 秒內載入所有頁面與菜單資訊"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "系統必須正確儲存菜單資料、銷售記錄、評分與評論達 2 個月",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NF-03"
+      },
+      {
+        "key": "description",
+        "value": "系統必須正確儲存菜單資料、銷售記錄、評分與評論達 2 個月"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "系統不得遺失已儲存的菜單資料、銷售記錄、評分與評論（保存期限為 2 個月）",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NF-04"
+      },
+      {
+        "key": "description",
+        "value": "系統不得遺失已儲存的菜單資料、銷售記錄、評分與評論，保存期限為 2 個月"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "購物車應能夠儲存並容納單次點購最多 100 種餐點選項",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NF-05"
+      },
+      {
+        "key": "description",
+        "value": "購物車應能夠儲存並容納單次點購最多 100 種餐點選項"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "訂單狀態確認更新後，系統應於 5 秒內完成前端畫面的同步更新",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "NF-06"
+      },
+      {
+        "key": "description",
+        "value": "訂單狀態確認更新後，系統應於 5 秒內完成前端畫面的同步更新"
+      },
+      {
+        "key": "req_category",
+        "value": "非功能需求"
+      }
+    ]
+  },
+  {
+    "name": "店家",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "使用專屬管理帳號密碼驗證登入後台，負責管理訂單、菜單、統計報表及套餐組合的系統角色"
+      }
+    ]
+  },
+  {
+    "name": "消費者",
+    "label": "Actor",
+    "properties": [
+      {
+        "key": "description",
+        "value": "可使用第三方登入（Google 帳號）登入，進行菜單瀏覽、下單、評論等操作的系統使用者角色"
+      }
+    ]
+  },
+  {
+    "name": "登入驗證",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "USR-01"
+      },
+      {
+        "key": "description",
+        "value": "顧客可選擇使用第三方登入（Google 帳號）登入，店家則使用專屬管理帳號密碼驗證登入後台"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "店家"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "菜單瀏覽",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MEN-01"
+      },
+      {
+        "key": "description",
+        "value": "檢視直觀、易讀且正確的菜單類別與餐點內容"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "購物車",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MEN-02"
+      },
+      {
+        "key": "description",
+        "value": "提供購物車以暫存使用者訂單，使用者可同時訂購多項餐點並調整數量"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "取餐時間",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MEN-03"
+      },
+      {
+        "key": "description",
+        "value": "提供選擇預定取餐時間的功能"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "菜單評分",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MEN-04"
+      },
+      {
+        "key": "description",
+        "value": "顯示餐點推薦度與平均星等"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "店家"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "菜單評論",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MEN-05"
+      },
+      {
+        "key": "description",
+        "value": "顯示當前餐點的使用者評價與評論內容"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "店家"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "訂單狀態",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "STA-01"
+      },
+      {
+        "key": "description",
+        "value": "顯示訂單當前狀態（等待接單、已接受、已拒絕、準備完成）"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "即時通知",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "STA-02"
+      },
+      {
+        "key": "description",
+        "value": "於訂單狀態變更時發送即時通知"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "發表評分",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "REV-01"
+      },
+      {
+        "key": "description",
+        "value": "徵求使用者對餐點的星等評分回饋"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "發表評論",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "REV-02"
+      },
+      {
+        "key": "description",
+        "value": "提供關於餐點的文字評論輸入框"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "消費者"
+      }
+    ]
+  },
+  {
+    "name": "訂單控制",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MAN-01"
+      },
+      {
+        "key": "description",
+        "value": "即時接收顧客訂單，進行接單、拒絕或更新出餐進度狀態"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "店家"
+      }
+    ]
+  },
+  {
+    "name": "菜單上架",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MAN-02"
+      },
+      {
+        "key": "description",
+        "value": "新增、修改或下架菜單及其相關資訊（圖片、名稱、描述、價格）"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "店家"
+      }
+    ]
+  },
+  {
+    "name": "月度統計",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MAN-03"
+      },
+      {
+        "key": "description",
+        "value": "檢視每月銷售報表（總收入、最高評價餐點、各餐點銷售額）"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "店家"
+      }
+    ]
+  },
+  {
+    "name": "套餐組合",
+    "label": "Requirement",
+    "properties": [
+      {
+        "key": "req_id",
+        "value": "MAN-04"
+      },
+      {
+        "key": "description",
+        "value": "從現有餐點菜單中建立組合套餐與優惠價格"
+      },
+      {
+        "key": "req_category",
+        "value": "功能需求"
+      },
+      {
+        "key": "actor",
+        "value": "店家"
+      }
+    ]
+  }
+]
