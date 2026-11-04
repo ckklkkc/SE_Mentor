@@ -854,57 +854,6 @@ async def course_qa(interaction: discord.Interaction, question: str):
             ]
         ).insert()
 
-@bot.tree.command(name="upload_document", description="上傳專案文件")
-@app_commands.describe(file="請選擇文件", doc_type="請選擇文件類型", group="請輸入組別或代號")
-@app_commands.choices(
-    doc_type=[
-        app_commands.Choice(name="需求文件", value="SRD"),
-        app_commands.Choice(name="設計文件", value="SDD"),
-        app_commands.Choice(name="測試文件", value="STD"),
-    ]
-)
-async def upload_document(interaction: discord.Interaction, file: discord.Attachment, doc_type: app_commands.Choice[str], group: str):
-    # await interaction.response.defer(ephemeral=True)
-    await interaction.response.send_message("文件處理中，約需 2-10 分鐘，請稍後。\n處理完成會進行通知。")
-    user = interaction.user
-
-    student = await StudentProfile.find_one(StudentProfile.discord_id == user.id)
-    if not student:
-        student = await StudentProfile(
-            discord_id=user.id,
-            name=user.name,
-            group=group
-        ).insert()
-    else:
-        student.group = group
-        await student.save()
-
-
-    # 儲存檔案
-    file_path = f"md_files\\groups\\{group}"
-    if not os.path.isdir(file_path):
-        os.makedirs(file_path)
-    save_path = f"md_files\\groups\\{group}\\{file.filename}"
-    await file.save(save_path)
-
-    try:
-        if Path(save_path).suffix.lower() == ".pdf":
-            mk_file = await run_blocking(file_processor.pdf2md, save_path)
-            save_path = str(Path(save_path).with_suffix(".md"))
-            with open(save_path, "w", encoding="utf-8") as f:
-                f.write(mk_file)
-
-        # 建圖
-        await run_blocking(build_knowledge_graph, source_file=save_path, doc_type=doc_type.value, group=group, uploader=interaction.user.name)
-        # 向量
-        await haystack_service.upload_doc_2_vectordb(file_path=save_path, doc_type=doc_type.value, group_name=group, uploader=interaction.user.name)
-    except Exception:
-        logging.getLogger(__name__).exception("文件匯入失敗：%s", file.filename)
-        await interaction.followup.send(f"【{file.filename}】匯入失敗，請查看 Bot 主控台的錯誤紀錄。", ephemeral=True)
-        return
-
-    await user.send(f"【{file.filename}】已成功匯入")
-
 @bot.event
 async def setup_hook():
     await init_mongo("TABotAI_quiz")
