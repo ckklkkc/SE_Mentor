@@ -142,15 +142,8 @@ class DescriptionBasedReasoning:
                     WITH $keywords AS keywords
                     UNWIND keywords AS keyword
                     MATCH (entity)
-                    WHERE entity.group = $group
-                      AND (
-                        apoc.text.fuzzyMatch(coalesce(entity.name, ''), keyword)
-                        OR toLower(coalesce(entity.req_id, '')) = toLower(keyword)
-                        OR toLower(coalesce(entity.us_id, '')) = toLower(keyword)
-                        OR toLower(coalesce(entity.tc_id, '')) = toLower(keyword)
-                      )
+                    WHERE apoc.text.fuzzyMatch(entity.name, keyword) and entity.group = $group
                     OPTIONAL MATCH (entity)-[rel]-(neighbor)
-                    WHERE neighbor IS NULL OR neighbor.group = $group
                     RETURN 
                         entity as entity,
                         labels(entity)[0] AS entityLabel,
@@ -159,7 +152,7 @@ class DescriptionBasedReasoning:
                         neighbor.name AS neighborName,
                         neighbor.description AS neighborDesc,
                         labels(neighbor)[0] AS neighborLabel
-                    LIMIT 40;
+                    LIMIT 20;
                     """
                     result = session.run(cypher, keywords=kw_list, group=group_id)
                 # 跑教材檢索
@@ -168,21 +161,15 @@ class DescriptionBasedReasoning:
                     WITH $keywords AS keywords
                     UNWIND keywords AS keyword
                     MATCH (entity)
-                    WHERE (entity:KnowledgePoint OR entity:AssessmentTarget)
-                      AND entity.review_status = 'approved'
-                      AND apoc.text.fuzzyMatch(
-                          coalesce(entity.name, entity.title, ''),
-                          keyword
-                    )
+                    WHERE apoc.text.fuzzyMatch(entity.name, keyword)
                     OPTIONAL MATCH (entity)-[rel]-(neighbor)
-                    WHERE neighbor IS NULL OR neighbor.review_status = 'approved'
                     RETURN 
                         entity as entity,
                         labels(entity)[0] AS entityLabel,
                         type(rel) AS relationType,
-                        coalesce(rel.description, rel.quote) AS relationDesc,
-                        coalesce(neighbor.name, neighbor.title, neighbor.id) AS neighborName,
-                        coalesce(neighbor.description, rel.quote) AS neighborDesc,
+                        rel.description AS relationDesc,
+                        neighbor.name AS neighborName,
+                        neighbor.description AS neighborDesc,
                         labels(neighbor)[0] AS neighborLabel
                     LIMIT 20;
                     """
@@ -901,17 +888,16 @@ def handle_user_question(question: str):
 def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
     # 教材知識圖譜檢索
     keyword_prompt_template = """
-    請根據以下 Neo4j Schema 替使用者的問題生成 2 至 3 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
-
-    【Schema 資訊】
-    - Labels: KnowledgePoint, AssessmentTarget
-    - Properties: name, title, objective, discrimination, description
-    - Relationships: HAS_ASSESSMENT_TARGET, ASSESSES, KNOWLEDGE_RELATION, EVIDENCED_BY
-    - 只會檢索教師審核通過（review_status = approved）的教材內容
-
-    使用者的問題: {{question}}
-    生成的關鍵字:
-    """
+        請根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+        
+            【Schema 資訊】
+            - Labels: Concept, Technology, Methodology
+            - Properties: name, source_files, description
+            - Relationships: 是, 包含於, 實作, 使用, 操作, 依賴, 改善, 解決
+        
+            使用者的問題: {{question}}
+            生成的關鍵字:
+        """
 
     pipeline = _build_kg_pipeline(PromptBuilder(template=keyword_prompt_template, required_variables=["question"]))
 
