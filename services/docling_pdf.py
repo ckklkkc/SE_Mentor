@@ -86,9 +86,18 @@ def _merge_native_image_regions(
                 if _overlap_ratio(bbox, region.bbox) > .5
             ]
             if matches:
-                # Docling already found this composition. Keep its visual bbox;
-                # the native detector is primarily a fallback for missed pages
-                # such as page 29 and must not regress an existing good crop.
+                largest = max(matches, key=lambda r: (r.bbox[2]-r.bbox[0]) * (r.bbox[3]-r.bbox[1]))
+                vector_area = (bbox[2]-bbox[0]) * (bbox[3]-bbox[1])
+                existing_area = max(1, (largest.bbox[2]-largest.bbox[0]) * (largest.bbox[3]-largest.bbox[1]))
+                if vector_area > existing_area * 1.2:
+                    # A partial Docling box can omit the outer tool/label
+                    # columns of a native vector composition.
+                    largest.bbox = bbox
+                    largest.reason = "PDF native vector composition (expanded Docling crop)"
+                    for region in matches:
+                        if region is not largest and _overlap_ratio(bbox, region.bbox) > .8:
+                            layout.regions.remove(region)
+                    stats["vector_overridden"] += 1
                 stats["vector_matched"] += 1
             else:
                 layout.regions.append(LayoutRegion(
@@ -108,6 +117,14 @@ def _merge_native_image_regions(
                     # Small icons embedded inside one vector infographic belong
                     # to the complete composition; never shrink it to one icon.
                     stats["image_covered_by_vector"] += 1
+                    continue
+                native_area = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1])
+                region_area = max(1, (matches[0].bbox[2] - matches[0].bbox[0])
+                                  * (matches[0].bbox[3] - matches[0].bbox[1]))
+                if native_area < region_area * .5:
+                    # A tiny tool/icon inside a complete composition is not
+                    # an exact replacement for that composition's geometry.
+                    matches[0].reason = "PDF composite figure containing native images"
                     continue
                 # Native PDF image geometry is more exact than Docling's visual
                 # block, so use it to avoid including adjacent bullets/URLs.
