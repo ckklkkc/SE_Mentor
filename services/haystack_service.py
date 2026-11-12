@@ -162,6 +162,12 @@ class DescriptionBasedReasoning:
                     UNWIND keywords AS keyword
                     MATCH (entity)
                     WHERE apoc.text.fuzzyMatch(entity.name, keyword)
+                    OR entity.name CONTAINS keyword
+                    OR keyword CONTAINS entity.name
+
+                    WITH DISTINCT entity
+                    LIMIT 10
+
                     OPTIONAL MATCH (entity)-[rel]-(neighbor)
                     RETURN 
                         entity as entity,
@@ -171,7 +177,7 @@ class DescriptionBasedReasoning:
                         neighbor.name AS neighborName,
                         neighbor.description AS neighborDesc,
                         labels(neighbor)[0] AS neighborLabel
-                    LIMIT 20;
+                    LIMIT 50;
                     """
                     result = list(session.run(cypher, keywords=kw_list))
 
