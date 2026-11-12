@@ -552,7 +552,7 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     pipeline.add_component("kw_llm", AnthropicGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="claude-haiku-4-5"))
     pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
     pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question"]))
-    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini"))
+    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini",generation_kwargs={"temperature": 0.3 }))
 
     pipeline.connect("kw_prompt.prompt", "kw_llm.prompt")
     pipeline.connect("kw_llm.replies", "desc_reasoner.keywords")
@@ -888,7 +888,7 @@ def handle_user_question(question: str):
 def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
     # 教材知識圖譜檢索
     keyword_prompt_template = """
-        請根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+        請根據以下 Neo4j Schema 替使用者的問題生成 3 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
         
             【Schema 資訊】
             - Labels: Concept, Technology, Methodology
