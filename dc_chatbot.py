@@ -636,7 +636,7 @@ async def upload_document(
     try:
         # Lazy import keeps the normal Discord teaching runtime lightweight.
         from services.content_authoring import ingest_hackmd_project_document
-        from services.document_image_quality_old import ProjectImageQualityError
+        from services.document_image_quality import ProjectImageQualityError
         from services.hackmd_document import HackMDImportError
 
         quality_error_types = (ProjectImageQualityError,)
