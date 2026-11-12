@@ -19,7 +19,9 @@ import prompts
 from database.mongo_controller import DiagnosisQuiz, TextbookAnalysis
 from database.neo4j_importer import Neo4jImporter, TripleList
 from services.kg_constructor import KGConstructor
-from services.document_image_quality import validate_project_image_conversion
+from services.document_image_quality import (
+    validate_project_image_conversion, validate_textbook_image_conversion,
+)
 from services.hackmd_document import prepare_hackmd_markdown
 from services.project_security import validate_project_document_source
 from services.textbook_analyzer import (
@@ -157,6 +159,8 @@ async def ingest_textbook(
         fail_on_image_error=fail_on_image_error,
         pdf_backend=pdf_backend,
     )
+    if Path(source).suffix.lower() == ".pdf":
+        validate_textbook_image_conversion(markdown_path)
     analyzer = TextbookAnalyzer()
     analysis = await asyncio.to_thread(
         analyzer.analyze,

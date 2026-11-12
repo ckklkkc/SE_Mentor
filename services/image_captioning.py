@@ -173,6 +173,76 @@ class Captioner(Protocol):
     ) -> ImageDescription: ...
 
 
+CAPTION_LEVEL_RULES = """
+所有說明以台灣繁體中文撰寫；visible_text 保留原圖語言及原字，不翻譯。
+先完成基本描述，再判斷教學用途：
+1. description 必須以具體物件、外觀、位置、動作或結構，讓未看到圖的人理解畫面。
+   照片、插畫即使沒有可讀文字、無法確認教學用途，也必須提供純圖片描述。
+2. 流程圖、架構圖、對照圖、看板：relationships 必須列出可見的方向、先後、回返、
+   包含、配對或欄位歸屬；不是只列名詞。沒有畫出的箭頭不得自行補上。
+   先區分節點與連線：沿著每條線追蹤實際起點及箭頭尖端所在的終點。箭頭旁的倍率、
+   動作、條件通常是連線標籤，不可把標籤誤當另一個節點。雙向箭頭須分清往返方向。
+   一列步驟下方另有產物時，除步驟先後外也要記錄每一組步驟與產物的對應。
+3. visible_text 只逐字抄錄原圖真的印出的字。辨識出的自行車、汽車等物件名稱寫在
+   description，不可假稱圖片印有那些文字。小字讀不到不妨礙保留清楚的整體描述。
+4. context_connection 才連接章節、圖片前文與後文，指出圖片具體輔助哪個概念。
+   必須區分可見事實與上下文支持的類比；沒有足夠依據就留空，不能為了補教學用途猜測。
+   照片可能是教材類比或操作情境，不能僅因為不是流程圖就斷言毫無教學用途。
+5. meaning 與 teaching_points 不可加入圖片或前後文未支持的通則。箭頭方向、關鍵
+   配對不明屬重大疑義；只有不影響整體理解的小字疑義才屬輕微。
+6. 所有文字欄位填入本圖實際內容，不得照抄欄位名稱、格式說明或使用樣板答案。
+""".strip()
+
+
+def image_description_contract(schema: type[ImageDescription] = ImageDescription) -> str:
+    """Describe output types without a fill-in-the-blank example to copy."""
+    fields = []
+    for name, field in schema.model_json_schema().get("properties", {}).items():
+        kind = field.get("type") or "/".join(
+            variant.get("type", "") for variant in field.get("anyOf", [])
+        )
+        if kind == "array":
+            kind = "字串陣列"
+        choices = "；僅可使用 " + "、".join(field["enum"]) if "enum" in field else ""
+        fields.append(f"- {name}：{kind}{choices}")
+    return (
+        "只回傳一層 JSON 資料物件，下列名稱全部是最外層欄位；"
+        "不要輸出 properties、schema、type 或 required 等規格外殼。"
+        "confidence 無論其他欄位是否為空，都必須提供 0～1 的實際數字。所有欄位都應回傳，"
+        "沒有證據的可選說明用空字串，沒有項目的陣列用 []，無疑義用 null。\n"
+        + "\n".join(fields)
+    )
+
+
+def _caption_structure_reasons(description: ImageDescription) -> list[str]:
+    """Reject known empty templates and missing relation structure, not absent OCR."""
+    reasons = []
+    placeholders = {
+        "經核對的圖意", "經核對的圖片意義", "與本文的連接", "與本文的具體連接",
+        "具體的圖片說明", "圖片表達的概念用途", "圖片內直接可見的教學資訊",
+        "圖片說明", "圖片描述", "圖意", "這是範例", "這是流程圖", "這是一張照片",
+    }
+    for field in ("description", "meaning", "context_connection"):
+        value = getattr(description, field).strip().rstrip("。.!！")
+        if value in placeholders:
+            reasons.append(f"{field} 使用樣板文字，缺少本圖具體內容")
+    if description.description.strip() and not re.search(r"[\u3400-\u9fff]", description.description):
+        reasons.append("內容說明未使用繁體中文")
+    kind = description.image_type.casefold()
+    relation_types = (
+        "流程", "架構", "關係", "對照", "分類", "四象限", "看板", "故事地圖",
+        "flow", "architecture", "diagram", "graph", "kanban", "board",
+    )
+    if any(token in kind for token in relation_types) and not description.relationships:
+        reasons.append("關係型圖片缺少元素順序、方向、配對或歸屬關係")
+    if description.uncertainty and any(term in description.uncertainty for term in (
+        "箭頭方向不明", "箭頭方向無法", "無法確認箭頭", "無法判斷箭頭",
+        "無法確認對應", "配對不明",
+    )):
+        reasons.append("關鍵箭頭或配對疑義影響核心意思")
+    return reasons
+
+
 def _document_guidance(document_type: str | None) -> str:
     guidance = {
         "SRD": (
@@ -199,6 +269,7 @@ def _model_prompt(
     context: str,
     source_name: str,
     document_type: str | None = None,
+    complete: bool = False,
 ) -> str:
     is_project_document = (document_type or "").strip().upper() in {
         "SRD", "SDD", "STD"
@@ -253,6 +324,7 @@ Markdown、RAG 與知識圖譜使用的台灣繁體中文說明。
     teaching_points、context_connection、document_facts、confidence、uncertainty、
     uncertainty_severity、affects_core_meaning。
 {purpose_rules}
+{CAPTION_LEVEL_RULES}
 
 來源圖片：{source_name}
 文件分析規則：{_document_guidance(document_type)}
@@ -338,7 +410,7 @@ def _uncertainty_severity(value: Any, uncertainty: str | None) -> str:
     else:
         severity = "minor" if uncertainty else "none"
     if not uncertainty:
-        return "none"
+        return "major" if severity == "major" else "none"
     return severity
 
 
@@ -398,6 +470,10 @@ def _normalize_description_payload(payload: Mapping[str, Any]) -> ImageDescripti
         normalized.get("context_connection") or ""
     ).strip()
     uncertainty = normalized.get("uncertainty")
+    if isinstance(uncertainty, list):
+        uncertainty = "；".join(_list_of_strings(uncertainty)) or None
+    elif uncertainty in ("[]", "null", "None"):
+        uncertainty = None
     normalized["uncertainty"] = (
         None
         if uncertainty is None or uncertainty == ""
@@ -411,8 +487,6 @@ def _normalize_description_payload(payload: Mapping[str, Any]) -> ImageDescripti
     )
     if normalized["uncertainty_severity"] == "major":
         normalized["affects_core_meaning"] = True
-    if normalized["uncertainty_severity"] == "none":
-        normalized["affects_core_meaning"] = False
     if not normalized["image_type"]:
         raise ValueError("圖片模型未回傳 image_type")
     if not normalized["description"]:
@@ -520,6 +594,10 @@ def _description_quality_reasons(
 ) -> tuple[list[str], list[str]]:
     review_reasons: list[str] = []
     blocking_reasons: list[str] = []
+    if not description.description.strip():
+        blocking_reasons.append("資訊圖片缺少內容說明")
+    if description.affects_core_meaning or description.uncertainty_severity == "major":
+        blocking_reasons.append("圖片核心意思尚未確認")
     if description.confidence < min_confidence:
         blocking_reasons.append(
             f"轉述信心 {description.confidence:.0%} 低於門檻 {min_confidence:.0%}"
@@ -536,7 +614,7 @@ def _description_quality_reasons(
         ):
             blocking_reasons.append(uncertainty_reason)
     if description.image_type != "裝飾圖":
-        if not (
+        if _project_document_type(document_type) and not (
             description.visible_text
             or description.relationships
             or description.document_facts
@@ -589,6 +667,7 @@ def _description_quality_reasons(
                     "圖片事實包含原圖說明與可見文字未支持的技術名稱："
                     + "、".join(ungrounded)
                 )
+    blocking_reasons.extend(_caption_structure_reasons(description))
     review_reasons = list(dict.fromkeys([*review_reasons, *blocking_reasons]))
     return review_reasons, list(dict.fromkeys(blocking_reasons))
 
@@ -721,133 +800,149 @@ class ExternalMultimodalCaptioner:
         source_name: str,
     ) -> ImageDescription:
         base_prompt = _model_prompt(context, source_name, self.document_type)
-        causes: list[str] = []
-        best_description: ImageDescription | None = None
-        best_reasons: list[str] = []
-        best_blocking_reasons: list[str] = []
-        final_stage = "api_request"
+        return query_image_description(
+            self, image_path, base_prompt, settings=self.settings,
+            document_type=self.document_type,
+            max_tokens=2200 if _project_document_type(self.document_type) else 1400,
+        )
 
-        for attempt in range(1, self.settings.max_attempts + 1):
-            prompt = base_prompt
-            if causes:
-                prompt += (
-                    "\n\n前一次結果未通過自動檢查。請重新檢視原圖並完整回傳所有固定欄位；"
-                    "陣列欄位不得為 null，confidence 必須是 0～1 數字。"
-                    f"前次問題：{causes[-1][:300]}"
-                )
-            try:
-                payload = self.query_image_json(
-                    image_path,
-                    prompt,
-                    max_tokens=(
-                        2200
-                        if (self.document_type or "").upper()
-                        in {"SRD", "SDD", "STD"}
-                        else 1400
-                    ),
-                )
-                description = _normalize_description_payload(payload)
-                if (self.document_type or "").upper() in {"SRD", "SDD", "STD"}:
-                    description = description.model_copy(
-                        update={"teaching_points": []}
-                    )
-                review_reasons, blocking_reasons = _description_quality_reasons(
-                    description,
-                    min_confidence=self.settings.min_confidence,
-                    document_type=self.document_type,
-                )
-                completeness_reasons = [
-                    reason
-                    for reason in blocking_reasons
-                    if (
-                        "未擷取" in reason
-                        or "缺少" in reason
-                        or "應留給專案問答" in reason
-                        or "未支持的技術名稱" in reason
-                    )
-                ]
-                best_description = description
-                best_reasons = review_reasons
-                best_blocking_reasons = blocking_reasons
-                if not completeness_reasons:
-                    self.last_diagnostics = {
-                        "attempts": attempt,
-                        "recovered_after_retry": attempt > 1,
-                        "review_reasons": review_reasons,
-                        "blocking_reasons": blocking_reasons,
-                        "errors": causes,
-                    }
-                    return description
-                final_stage = "semantic_quality"
-                causes.append("；".join(completeness_reasons))
-            except Exception as exc:
-                if isinstance(exc, json.JSONDecodeError) or "JSON" in str(exc):
-                    final_stage = "json_decode"
-                elif isinstance(exc, (ValidationError, ValueError, TypeError)):
-                    final_stage = "schema_validation"
-                else:
-                    final_stage = "api_request"
-                message = re.sub(r"\s+", " ", str(exc)).strip()
-                causes.append(f"{type(exc).__name__}: {message}"[:500])
 
-                status_code = getattr(exc, "status_code", None)
-                # Authentication, permission, and ordinary bad-request errors
-                # will not improve after a delay. Schema/JSON errors are safe
-                # to retry with a corrective instruction.
+def query_image_description(
+    analyzer, image_path: Path, base_prompt: str, *, settings: ImageCaptionSettings,
+    document_type: str | None = None, schema: type[ImageDescription] = ImageDescription,
+    max_tokens: int = 1400,
+    validate_result=None,
+) -> ImageDescription:
+    """Shared bounded retry/normalization policy; retain schema-specific fields."""
+    causes: list[str] = []
+    best_description: ImageDescription | None = None
+    best_reasons: list[str] = []
+    best_blocking_reasons: list[str] = []
+    final_stage = "api_request"
+
+    for attempt in range(1, settings.max_attempts + 1):
+        prompt = base_prompt
+        if causes:
+            prompt += (
+                "\n\n前一次結果未通過自動檢查。請重新檢視原圖並完整回傳所有固定欄位；"
+                "陣列欄位不得為 null，confidence 必須是 0～1 數字。"
+                f"前次問題：{causes[-1][:300]}"
+            )
+        try:
+            payload = analyzer.query_image_json(
+                image_path,
+                prompt,
+                max_tokens=max_tokens,
+            )
+            normalized = _normalize_description_payload(payload)
+            description = schema.model_validate({**payload, **normalized.model_dump()})
+            if (document_type or "").upper() in {"SRD", "SDD", "STD"}:
+                description = description.model_copy(
+                    update={"teaching_points": []}
+                )
+            review_reasons, blocking_reasons = _description_quality_reasons(
+                description,
+                min_confidence=settings.min_confidence,
+                document_type=document_type,
+            )
+            structural_reasons = _caption_structure_reasons(description)
+            if validate_result is not None:
+                structural_reasons.extend(validate_result(description))
+            blocking_reasons = list(dict.fromkeys([*blocking_reasons, *structural_reasons]))
+            review_reasons = list(dict.fromkeys([*review_reasons, *blocking_reasons]))
+            completeness_reasons = structural_reasons + [
+                reason
+                for reason in blocking_reasons
                 if (
-                    final_stage == "api_request"
-                    and isinstance(status_code, int)
-                    and status_code in {400, 401, 403, 404}
-                ):
-                    break
-
-            if attempt < self.settings.max_attempts:
-                time.sleep(
-                    self.settings.retry_base_seconds * (2 ** (attempt - 1))
+                    "未擷取" in reason
+                    or "缺少" in reason
+                    or "應留給專案問答" in reason
+                    or "未支持的技術名稱" in reason
                 )
+            ]
+            best_description = description
+            best_reasons = review_reasons
+            best_blocking_reasons = blocking_reasons
+            if not completeness_reasons:
+                analyzer.last_diagnostics = {
+                    "attempts": attempt,
+                    "recovered_after_retry": attempt > 1,
+                    "review_reasons": review_reasons,
+                    "blocking_reasons": blocking_reasons,
+                    "errors": causes,
+                }
+                return description
+            final_stage = "semantic_quality"
+            causes.append("；".join(completeness_reasons))
+        except Exception as exc:
+            if isinstance(exc, json.JSONDecodeError) or "JSON" in str(exc):
+                final_stage = "json_decode"
+            elif isinstance(exc, (ValidationError, ValueError, TypeError)):
+                final_stage = "schema_validation"
+            else:
+                final_stage = "api_request"
+            message = re.sub(r"\s+", " ", str(exc)).strip()
+            causes.append(f"{type(exc).__name__}: {message}"[:500])
 
-        if best_description is not None:
-            best_description, meaning_fallback_applied = (
-                _descriptive_meaning_fallback(
+            status_code = getattr(exc, "status_code", None)
+            # Authentication, permission, and ordinary bad-request errors
+            # will not improve after a delay. Schema/JSON errors are safe
+            # to retry with a corrective instruction.
+            if (
+                final_stage == "api_request"
+                and isinstance(status_code, int)
+                and status_code in {400, 401, 403, 404}
+            ):
+                break
+
+        if attempt < settings.max_attempts:
+            time.sleep(
+                settings.retry_base_seconds * (2 ** (attempt - 1))
+            )
+
+    if best_description is not None:
+        best_description, meaning_fallback_applied = (
+            _descriptive_meaning_fallback(
+                best_description,
+                document_type=document_type,
+            )
+        )
+        if meaning_fallback_applied:
+            best_reasons, best_blocking_reasons = (
+                _description_quality_reasons(
                     best_description,
-                    document_type=self.document_type,
+                    min_confidence=settings.min_confidence,
+                    document_type=document_type,
                 )
             )
-            if meaning_fallback_applied:
-                best_reasons, best_blocking_reasons = (
-                    _description_quality_reasons(
-                        best_description,
-                        min_confidence=self.settings.min_confidence,
-                        document_type=self.document_type,
-                    )
-                )
-                best_reasons = list(dict.fromkeys([
-                    *best_reasons,
-                    "圖片表達意義由已驗證的內容說明自動補全",
-                ]))
-            self.last_diagnostics = {
-                "attempts": min(self.settings.max_attempts, len(causes) + 1),
-                "recovered_after_retry": False,
-                "meaning_fallback_applied": meaning_fallback_applied,
-                "review_reasons": best_reasons,
-                "blocking_reasons": best_blocking_reasons,
-                "errors": causes,
-            }
-            return best_description
-
-        self.last_diagnostics = {
-            "attempts": max(1, len(causes)),
+            best_reasons = list(dict.fromkeys([
+                *best_reasons,
+                "圖片表達意義由已驗證的內容說明自動補全",
+            ]))
+        analyzer.last_diagnostics = {
+            "attempts": attempt,
             "recovered_after_retry": False,
-            "failure_stage": final_stage,
+            "meaning_fallback_applied": meaning_fallback_applied,
+            "review_reasons": best_reasons,
+            "blocking_reasons": best_blocking_reasons,
             "errors": causes,
         }
-        detail = causes[-1] if causes else "未知錯誤"
-        raise ImageCaptioningError(
-            f"圖片描述在 {final_stage} 階段失敗：{detail}",
-            stage=final_stage,
-            attempts=max(1, len(causes)),
-            causes=causes,
-        )
+        return best_description
+
+    analyzer.last_diagnostics = {
+        "attempts": max(1, len(causes)),
+        "recovered_after_retry": False,
+        "failure_stage": final_stage,
+        "errors": causes,
+    }
+    detail = causes[-1] if causes else "未知錯誤"
+    raise ImageCaptioningError(
+        f"圖片描述在 {final_stage} 階段失敗：{detail}",
+        stage=final_stage,
+        attempts=max(1, len(causes)),
+        causes=causes,
+    )
+
 
 
 def _safe_filename(source_key: str, index: int) -> str:
@@ -931,11 +1026,14 @@ def _description_markdown(
     *,
     context_label: str | None = None,
     document_type: str | None = None,
+    complete: bool = False,
 ) -> str:
     is_project_document = (document_type or "").upper() in {"SRD", "SDD", "STD"}
     visible_text_limit = 60 if is_project_document else 20
     relationship_limit = 40 if is_project_document else 10
     fact_limit = 30 if is_project_document else 10
+    if complete:
+        visible_text_limit = relationship_limit = fact_limit = None
     lines = [
         "> **AI 圖片轉述（請與原圖一併查核）**  ",
         f"> **圖片來源：** {source_key}  ",
@@ -965,7 +1063,7 @@ def _description_markdown(
     if description.teaching_points and not is_project_document:
         lines.append(
             "> **教學重點：** "
-            + "；".join(description.teaching_points[:5])
+            + "；".join(description.teaching_points[:None if complete else 5])
             + "  "
         )
     if description.document_facts:
@@ -1109,7 +1207,7 @@ def enrich_markdown_with_marker_images(
             description = ImageDescription.model_validate(existing["description"])
             return (
                 f"{image_markdown}\n\n"
-                f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type)}"
+                f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type, complete=not document_type)}"
             )
         if not settings.enabled:
             record["status"] = "preserved_description_disabled"
@@ -1216,7 +1314,7 @@ def enrich_markdown_with_marker_images(
             record["analysis_eligible"] = not record["blocks_ingestion"]
             return (
                 f"{image_markdown}\n\n"
-                f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type)}"
+                f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type, complete=not document_type)}"
             )
         except Exception as exc:
             record["status"] = "description_failed"
@@ -1283,7 +1381,7 @@ def enrich_markdown_with_marker_images(
             })
             return (
                 f"{image_markdown}\n\n"
-                f"{_description_markdown(pending, record['source_key'], context_label=context_label, document_type=document_type)}"
+                f"{_description_markdown(pending, record['source_key'], context_label=context_label, document_type=document_type, complete=not document_type)}"
             )
 
     enriched = IMAGE_PATTERN.sub(replace_image, markdown)
