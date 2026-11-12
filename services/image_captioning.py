@@ -202,7 +202,13 @@ def image_description_contract(schema: type[ImageDescription] = ImageDescription
             variant.get("type", "") for variant in field.get("anyOf", [])
         )
         if kind == "array":
-            kind = "字串陣列"
+            items = field.get("items", {})
+            kind = "物件陣列" if "$ref" in items else "字串陣列"
+            if "$ref" in items:
+                definition = schema.model_json_schema().get("$defs", {}).get(items["$ref"].split("/")[-1], {})
+                for child, spec in definition.get("properties", {}).items():
+                    choices = "／".join(spec.get("enum", []))
+                    fields.append(f"  {name} 每項的 {child}：{choices or spec.get('type', 'string')}")
         choices = "；僅可使用 " + "、".join(field["enum"]) if "enum" in field else ""
         fields.append(f"- {name}：{kind}{choices}")
     return (
@@ -234,7 +240,8 @@ def _caption_structure_reasons(description: ImageDescription) -> list[str]:
         "flow", "architecture", "diagram", "graph", "kanban", "board",
     )
     if any(token in kind for token in relation_types) and not description.relationships:
-        reasons.append("關係型圖片缺少元素順序、方向、配對或歸屬關係")
+        if not getattr(description, "allow_visual_fallback", False):
+            reasons.append("關係型圖片缺少元素順序、方向、配對或歸屬關係")
     if description.uncertainty and any(term in description.uncertainty for term in (
         "箭頭方向不明", "箭頭方向無法", "無法確認箭頭", "無法判斷箭頭",
         "無法確認對應", "配對不明",
@@ -670,6 +677,15 @@ def _description_quality_reasons(
     blocking_reasons.extend(_caption_structure_reasons(description))
     review_reasons = list(dict.fromkeys([*review_reasons, *blocking_reasons]))
     return review_reasons, list(dict.fromkeys(blocking_reasons))
+
+
+def _basic_description_quality_reasons(description: ImageDescription, *, min_confidence: float):
+    """Judge the visual layer independently of graph/context completeness."""
+    visual = description.model_copy(update={
+        "image_type": "照片", "relationships": [], "meaning": "",
+        "context_connection": "", "teaching_points": [], "document_facts": [],
+    })
+    return _description_quality_reasons(visual, min_confidence=min_confidence, document_type=None)
 
 
 def _parse_json_object(text: str) -> dict[str, Any]:

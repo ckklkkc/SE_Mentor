@@ -24,6 +24,8 @@ from services.image_captioning import (
     query_image_description,
     CAPTION_LEVEL_RULES,
     image_description_contract,
+    _basic_description_quality_reasons,
+    _project_document_type,
 )
 
 
@@ -783,12 +785,16 @@ def _enrich_from_document(
                                         raise
                                     text_verification = "failed"
                                     diagnostics["verification"] = dict(getattr(analyzer, "last_diagnostics", {}))
-                                    description = description.model_copy(update={
-                                        "confidence": min(description.confidence, 0.5),
-                                        "uncertainty": "複核未通過；保留初稿供人工查核，不納入教材分析。",
-                                        "uncertainty_severity": "major",
-                                        "affects_core_meaning": True,
-                                    })
+                                    if _project_document_type(document_type):
+                                        description = description.model_copy(update={
+                                            "confidence": min(description.confidence, 0.5),
+                                            "uncertainty": "複核未通過；保留初稿供人工查核，不納入教材分析。",
+                                            "uncertainty_severity": "major", "affects_core_meaning": True,
+                                        })
+                                    else:
+                                        # Keep the model score and original uncertainty;
+                                        # an unavailable reviewer is not 50% visual accuracy.
+                                        record["warnings"].append("複核服務未完成，保留未驗證初稿供查核")
                         elif preserve_all_images and review.description.strip():
                             # 完整內容模式不在轉檔階段判斷重要性。模型即使認為是
                             # 純文字、表格或裝飾，仍保留原圖及其實際描述，交由後續
@@ -861,7 +867,23 @@ def _enrich_from_document(
                             description, min_confidence=settings.min_confidence,
                             document_type=document_type,
                         )
-                        if review.content_category == "diagram" and not description.relationships:
+                        verification = diagnostics.get("verification", {})
+                        layered = verification.get("policy") == "layered_v3"
+                        textbook = not _project_document_type(document_type)
+                        relation_pending = textbook and (
+                            verification.get("relation_status") == "needs_review"
+                            or (not layered and bool(description.relationships))
+                        )
+                        if textbook:
+                            review_reasons, blocking_reasons = _basic_description_quality_reasons(
+                                description, min_confidence=settings.min_confidence,
+                            )
+                            if relation_pending:
+                                review_reasons.append("基本畫面已保留；部分圖形關係未取得一致證據，需查核")
+                                blocking_reasons.append("圖形關係未完成查核，不納入知識圖譜")
+                            if verification.get("ocr_status") == "needs_review":
+                                review_reasons.append("複核新增的圖中文字未取得交叉一致，未寫入正式圖說")
+                        if not textbook and review.content_category == "diagram" and not description.relationships:
                             blocking_reasons.append("圖形關係描述未完成")
                         if not settings.enabled:
                             blocking_reasons.append("未啟用圖片描述")
@@ -890,16 +912,25 @@ def _enrich_from_document(
                             "source": candidate["source"],
                             "object_id": candidate.get("object_id"),
                             "pixel_size": list(crop.size),
-                            "needs_review": bool(review_reasons) or not analysis_eligible,
+                            "needs_review": (bool(review_reasons) or review_failed
+                                             or text_verification == "failed" or not settings.enabled or limit_reached)
+                                            if textbook else bool(review_reasons) or not analysis_eligible,
                             "review_reasons": review_reasons,
                             "blocking_reasons": blocking_reasons,
                             "diagnostics": diagnostics,
+                            "verification_policy": "layered_v3" if layered else "legacy",
+                            "quality_layers": {
+                                "basic": verification.get("basic_status", "unverified"),
+                                "relations": verification.get("relation_status", "unverified"),
+                                "context": verification.get("context_status", "unconfirmed"),
+                                "ocr": verification.get("ocr_status", "unverified"),
+                            },
                             "description_levels": {
-                                "visual_description": not any(
+                                "visual_description": verification.get("basic_status") == "checked" if layered else not any(
                                     "樣板" in reason or "內容說明" in reason
                                     for reason in blocking_reasons
                                 ) and bool(description.description.strip()) and not review_failed,
-                                "relationships": bool(description.relationships),
+                                "relationships": bool(description.relationships) and not relation_pending,
                                 "context_connection": bool(description.context_connection.strip())
                                     and not any("context_connection" in reason for reason in blocking_reasons),
                             },
@@ -922,6 +953,10 @@ def _enrich_from_document(
                                 context_label=context_label,
                                 document_type=document_type, complete=True,
                             )
+                            + ("\n> **關係查核狀態：** 尚有未確認關係；本文僅保留交叉一致的關係，其餘見圖片紀錄。  "
+                               if relation_pending else "")
+                            + ("\n> **驗證狀態：** 複核未完成，以上為未驗證初稿。  "
+                               if textbook and text_verification == "failed" else "")
                         )
                         described_count += 1
                     except Exception as exc:
@@ -984,6 +1019,18 @@ def _enrich_from_document(
         "rechecked_count": sum(bool(item.get("layout_rechecked")) for item in records),
         "described_count": described_count,
         "review_required_count": sum(figure["needs_review"] for item in records for figure in item["figures"]),
+        "basic_checked_count": sum(
+            figure.get("quality_layers", {}).get("basic") == "checked"
+            for item in records for figure in item["figures"]
+        ),
+        "relation_review_required_count": sum(
+            figure.get("quality_layers", {}).get("relations") == "needs_review"
+            for item in records for figure in item["figures"]
+        ),
+        "excluded_from_analysis_count": sum(
+            figure.get("review_content_category") in {"plain_text", "decoration"}
+            for item in records for figure in item["figures"]
+        ),
         "excluded_closing_count": sum(item["status"] == "excluded_closing" for item in records),
         "failed_count": sum(bool(item["errors"]) for item in records),
         "limited_count": sum(

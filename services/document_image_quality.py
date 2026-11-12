@@ -35,13 +35,34 @@ def validate_textbook_image_conversion(markdown_path: str | Path) -> None:
                 category = figure.get("review_content_category", figure.get("category"))
                 if category == "decoration":
                     continue
-                from services.image_captioning import ImageDescription, _description_quality_reasons
+                from services.image_captioning import (
+                    ImageDescription, _description_quality_reasons, _basic_description_quality_reasons,
+                )
                 try:
                     description = ImageDescription.model_validate(figure.get("description"))
-                    reasons = _description_quality_reasons(
-                        description, min_confidence=float(manifest.get("min_confidence", .75)),
-                        document_type=None,
-                    )[1]
+                    if figure.get("verification_policy") == "layered_v3":
+                        reasons = _basic_description_quality_reasons(
+                            description, min_confidence=float(manifest.get("min_confidence", .75)),
+                        )[1]
+                        layers = figure.get("quality_layers", {})
+                        ledger = (figure.get("diagnostics", {}).get("verification", {}))
+                        approved = [item.get("text") for item in ledger.get("relation_details", [])
+                                    if item.get("status") == "consistent"]
+                        if layers.get("basic") != "checked":
+                            reasons.append("基本圖片描述未通過查核")
+                        if layers.get("relations") not in {"consistent", "not_applicable"}:
+                            reasons.append("圖片關係仍待查核")
+                        if description.relationships != approved:
+                            reasons.append("圖片關係與核對紀錄不一致")
+                        if description.visible_text != ledger.get("accepted_visible_text", []):
+                            reasons.append("圖中文字與核對紀錄不一致")
+                        if description.context_connection != ledger.get("approved_context_connection", ""):
+                            reasons.append("教學連接與核對紀錄不一致")
+                    else:
+                        reasons = _description_quality_reasons(
+                            description, min_confidence=float(manifest.get("min_confidence", .75)),
+                            document_type=None,
+                        )[1]
                 except (ValueError, TypeError):
                     reasons = ["缺少有效圖片描述"]
                 if not figure.get("analysis_eligible", False) or reasons:
