@@ -4,6 +4,7 @@ from typing import List, Dict
 
 from marker.converters.pdf import PdfConverter
 from marker.models import create_model_dict
+from marker.output import text_from_rendered
 from surya.recognition.model.config import SuryaOCRConfig
 
 from langchain_opentutorial import set_env
@@ -16,6 +17,7 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
+import config
 from config import OPENAI_API_KEY, LANGCHAIN_API_KEY
 from common import FILEPATH
 from services.image_captioning import (
@@ -34,7 +36,25 @@ set_env(
     }
 )
 
-def pdf2md(file_path, chapter=None):
+def pdf2md(
+    file_path,
+    chapter=None,
+    *,
+    image_output_dir=None,
+    image_markdown_prefix=None,
+    image_manifest_path=None,
+    describe_images=None,
+    image_provider=None,
+    image_model=None,
+    fail_on_image_error=None,
+    pdf_backend=None,
+    document_type=None,
+):
+    backend = str(
+        pdf_backend or getattr(config, "PDF_CONVERTER_BACKEND", "marker")
+    ).strip().lower()
+    if backend not in {"marker", "docling"}:
+        raise ValueError(f"Unsupported PDF backend: {backend}")
     # SuryaOCRConfig requires encoder/decoder arguments. Transformers 4.57
     # serializes it by first trying a no-argument default instance unless this
     # flag is set; that raises KeyError('encoder') while loading the OCR model.
@@ -43,7 +63,7 @@ def pdf2md(file_path, chapter=None):
         artifact_dict=create_model_dict(),
     )
     rendered = converter(file_path)
-    markdown_output, images = _marker_output(rendered)
+    markdown_output, _, images = text_from_rendered(rendered)
     if backend == "docling":
         if image_output_dir is None:
             # No asset destination means there is nothing for the image-only
