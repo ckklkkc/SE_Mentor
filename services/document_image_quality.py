@@ -10,6 +10,64 @@ class ProjectImageQualityError(RuntimeError):
     """The converted document still contains images unsafe for analysis."""
 
 
+class TextbookImageQualityError(RuntimeError):
+    """A PDF textbook must not be analyzed with incomplete visual evidence."""
+
+
+def validate_textbook_image_conversion(markdown_path: str | Path) -> None:
+    """Check both PDF-figure and legacy Marker manifests before any LLM/DB work."""
+    markdown_path = Path(markdown_path)
+    manifest_path = markdown_path.with_name(f"{markdown_path.stem}_images.json")
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if not isinstance(manifest, dict) or not (
+            isinstance(manifest.get("pages"), list)
+            or isinstance(manifest.get("images"), list)
+        ):
+            raise ValueError("缺少 pages/images 紀錄")
+        blocking = []
+        for page in manifest.get("pages", []):
+            number = page.get("page", "?")
+            # A failed layout may have no regions; that is not proof of no images.
+            if page.get("errors") or page.get("status") in {"analysis_failed", "partial_failure"}:
+                blocking.append(f"第 {number} 頁：圖片定位、描述或複核失敗")
+            for figure in page.get("figures", []):
+                category = figure.get("review_content_category", figure.get("category"))
+                if category == "decoration":
+                    continue
+                from services.image_captioning import ImageDescription, _description_quality_reasons
+                try:
+                    description = ImageDescription.model_validate(figure.get("description"))
+                    reasons = _description_quality_reasons(
+                        description, min_confidence=float(manifest.get("min_confidence", .75)),
+                        document_type=None,
+                    )[1]
+                except (ValueError, TypeError):
+                    reasons = ["缺少有效圖片描述"]
+                if not figure.get("analysis_eligible", False) or reasons:
+                    reasons = "、".join(reasons or figure.get("blocking_reasons") or ["尚未通過圖片品質檢查"])
+                    blocking.append(f"第 {number} 頁 {figure.get('path', category)}：{reasons}")
+            if "超出圖例轉述上限" in page.get("warnings", []):
+                blocking.append(f"第 {number} 頁：超出圖片描述上限")
+        # Retain legacy Marker failure/occurrence handling without changing the
+        # existing SRD/SDD/STD gate or its public exception contract.
+        if manifest.get("images"):
+            try:
+                validate_project_image_conversion(markdown_path)
+            except ProjectImageQualityError as exc:
+                blocking.append(str(exc))
+        if blocking:
+            raise TextbookImageQualityError(
+                "教材圖片尚未通過檢查，已停止教材分析與知識圖譜建立："
+                + "；".join(dict.fromkeys(blocking))
+                + f"。請查看 {manifest_path.name}，修正後重新匯入。"
+            )
+    except (OSError, ValueError, TypeError, AttributeError) as exc:
+        raise TextbookImageQualityError(
+            f"找不到或無法讀取有效圖片轉換紀錄 {manifest_path.name}；已停止教材分析。"
+        ) from exc
+
+
 def _inline_code(value: object) -> str:
     """Keep Discord from extending a raw URL into the following punctuation."""
     return f"`{str(value).replace('`', '')}`"
