@@ -895,6 +895,7 @@ def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
     # 教材知識圖譜檢索
     keyword_prompt_template = """
         請根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+        此外，請執行術語標準化：先移除專有名詞中不必要的中英空白；若遇到希臘字母或特殊符號相關術語（如 alpha、beta），請同時輸出符號版與英文版關鍵字。
         
             【Schema 資訊】
             - Labels: Concept, Technology, Methodology
