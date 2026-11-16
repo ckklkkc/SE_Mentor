@@ -190,6 +190,7 @@ class DescriptionBasedReasoning:
                     return {"knowledge_base": "查無資料"}
                 
                 print(f"[debug] knowledge text: \n{knowledge_text}")
+                print(f"[debug] knowledge text: \n{knowledge_text}")
                 return {
                     "knowledge_base": knowledge_text,
                     "matched_nodes": matched_node_names
@@ -558,7 +559,7 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     pipeline.add_component("kw_llm", AnthropicGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="claude-haiku-4-5"))
     pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
     pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question"]))
-    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini",generation_kwargs={"temperature": 0.3 }))
+    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini",generation_kwargs={"temperature": 0.2 }))
 
     pipeline.connect("kw_prompt.prompt", "kw_llm.prompt")
     pipeline.connect("kw_llm.replies", "desc_reasoner.keywords")
