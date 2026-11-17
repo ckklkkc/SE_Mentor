@@ -252,3 +252,49 @@ async def init_mongo(database_name):
   await init_beanie(database=database, document_models=[DiagnosisQuiz, TextbookAnalysis, StudentProfile, LearningProfile, QuizAttempt, ChatLogs])
   # collection = client["<collection name>"]
   return client
+
+async def get_recent_chat_history_str(
+    discord_id: int,
+    agent_type: Literal["course", "project"] = "course",
+    limit: int = 10,
+    timeout_minutes: int = 60,
+    max_reply_chars: int = 200
+) -> str:
+    """
+    透過 discord_id 讀取最近 N 筆對話紀錄，並直接格式化為給 LLM 參考的純文字
+    """
+    # 查學生檔案
+    student = await StudentProfile.find_one(StudentProfile.discord_id == discord_id)
+    if not student:
+        return "（無先前對話紀錄）"
+
+    # $slice: -limit 直接在資料庫層截取最後 10 筆，避免撈出整包歷史
+    log_field = "course_logs" if agent_type == "course" else "project_logs"
+    collection = ChatLogs.get_motor_collection()
+    doc = await collection.find_one(
+        {"student.$id": student.id},
+        {log_field: {"$slice": -limit}, "_id": 0}
+    )
+
+    if not doc or not doc.get(log_field):
+        return "（無先前對話紀錄）"
+
+    # 過濾超時對話並截斷過長的機器人舊回答
+    cutoff_time = datetime.now() - timedelta(minutes=timeout_minutes)
+    lines = []
+    turn = 1
+
+    for log in doc[log_field]:
+        user_ts = log.get("user_timestamp")
+        if isinstance(user_ts, datetime) and user_ts < cutoff_time:
+            continue
+
+        u_text = log.get("user_content", "").strip()
+        b_text = log.get("chatbot_response", "").strip()
+        if len(b_text) > max_reply_chars:
+            b_text = b_text[:max_reply_chars] + "...（後略）"
+
+        lines.append(f"[第 {turn} 輪]\n學生：{u_text}\n助教：{b_text}")
+        turn += 1
+
+    return "\n".join(lines) if lines else "（無近期有效對話紀錄）"
