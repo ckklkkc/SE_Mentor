@@ -24,6 +24,7 @@ from services.project_security import (
 from database.mongo_controller import (
     LearningProfile, StudentProfile, QuizAttempt, QuizResponse,
     TargetEvidence, ChatLogs, LogInfo, init_mongo,
+    get_recent_chat_history_str
 )
 import config, prompts
 
@@ -806,7 +807,10 @@ async def course_qa(interaction: discord.Interaction, question: str):
 
         # llm_keywords = await run_blocking(haystack_service.handle_user_question, question)
 
-        llm_result = await run_blocking(haystack_service.neo4j_textbook_kg_retriever, question) #不要讓一個學生的問題卡住整個 Discord Bot
+        chat_history_str = await get_recent_chat_history_str(discord_id = interaction.user.id, agent_type="course", limit=10)
+
+
+        llm_result = await run_blocking(haystack_service.neo4j_textbook_kg_retriever, question, chat_history_str) #不要讓一個學生的問題卡住整個 Discord Bot
         response = cc.convert(llm_result['answer_llm']['replies'][0])
 
         # crit_score = await run_blocking(haystack_service.CRIT_check, question, response)
