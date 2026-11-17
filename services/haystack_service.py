@@ -915,7 +915,7 @@ def neo4j_textbook_kg_retriever(question: str, chat_history: str = "(無)") -> d
     result = pipeline.run(
         data={
             "kw_prompt": {"question": question},
-            "answer_prompt": {"question": question},
+            "answer_prompt": {"question": question, "chat_history": chat_history},
             # "vector_filter": {"question": question}
         },
         include_outputs_from=[
