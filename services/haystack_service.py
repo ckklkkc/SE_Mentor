@@ -539,7 +539,10 @@ def _build_retriever_pipeline(prompt_builder: ChatPromptBuilder) -> Pipeline:
 
 def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     answer_prompt_template = """
-    你是一位專業的軟體工程教學助教。請根據以下檢索到的資料，用台灣繁體中文回答學生的問題。
+    你是一位專業的軟體工程教學助教。請根據以下檢索到的資料以及聊天記錄，用台灣繁體中文回答學生的問題。
+
+    【聊天記錄】
+    {{chat_history}}
 
     【資料】
     {{documents}}
@@ -558,7 +561,7 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     pipeline.add_component("kw_prompt", kw_prompt_builder)
     pipeline.add_component("kw_llm", AnthropicGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="claude-haiku-4-5"))
     pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
-    pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question"]))
+    pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question", "chat_history"]))
     pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini",generation_kwargs={"temperature": 0.2 }))
 
     pipeline.connect("kw_prompt.prompt", "kw_llm.prompt")
@@ -892,7 +895,7 @@ def handle_user_question(question: str):
     
    
 
-def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
+def neo4j_textbook_kg_retriever(question: str, chat_history: str = "(無)") -> dict[str, Any]:
     # 教材知識圖譜檢索
     keyword_prompt_template = """
         請根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
@@ -907,7 +910,7 @@ def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
             生成的關鍵字:
         """
 
-    pipeline = _build_kg_pipeline(PromptBuilder(template=keyword_prompt_template, required_variables=["question"]))
+    pipeline = _build_kg_pipeline(PromptBuilder(template=keyword_prompt_template, required_variables=["question", "chat_history"]))
 
     result = pipeline.run(
         data={
