@@ -1,0 +1,1388 @@
+[
+  {
+    "_id": {
+      "$oid": "d5d7b2fbdaac13abf362822e"
+    },
+    "question": "團隊採用物件導向設計、Git 與 Scrum。三者依序最適合歸在哪些類別？",
+    "options": [
+      "方法、工具、流程",
+      "流程、工具、方法",
+      "工具、方法、流程",
+      "方法、流程、工具"
+    ],
+    "answer": 0,
+    "analysis": "物件導向設計指導如何設計；Git 提供版本控制支援；Scrum 組織團隊的開發活動。\n\nA：正確。\nB：把開發流程與設計方法互換。\nC：把設計方法與支援工具互換。\nD：把版本控制工具當成流程。",
+    "concept": "方法、工具與流程",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:001",
+    "assessment_target": "方法、工具與流程",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:001",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:001",
+        "misconception": "把開發流程與設計方法互換"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:001",
+        "misconception": "把設計方法與支援工具互換"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:001",
+        "misconception": "把版本控制工具當成流程"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:003",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:004"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        3,
+        4
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "物件導向設計指導如何設計；Git 提供版本控制支援；Scrum 組織團隊的開發活動。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "a32639b4f0d0528e5e0164ba"
+    },
+    "question": "專案反覆超支，客戶直到交付前才補充關鍵需求，團隊仍維持原交期。最直接應處理哪個問題？",
+    "options": [
+      "沒有採用執行速度更快的程式語言",
+      "部署主機的運算資源規劃不足",
+      "開發者沒有進行足夠的語法檢查",
+      "需求不明與不切實際的時程壓力"
+    ],
+    "answer": 3,
+    "analysis": "教材列出模糊需求、不切實際的期限及不確定因素為軟體危機的重要成因。\n\nA：把程式語言更換當成需求問題解方。\nB：未依題幹證據區分需求管理與部署效能問題。\nC：把需求與時程問題主要歸因於語法錯誤。\nD：正確。",
+    "concept": "軟體危機的成因",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:002",
+    "assessment_target": "軟體危機的成因",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:002",
+        "misconception": "把程式語言更換當成需求問題解方"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:002",
+        "misconception": "未依題幹證據區分需求管理與部署效能問題"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:002",
+        "misconception": "把需求與時程問題主要歸因於語法錯誤"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:002",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:005",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:007"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        5,
+        7
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "教材列出模糊需求、不切實際的期限及不確定因素為軟體危機的重要成因。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2e2f2d43203a42c3113f05a2"
+    },
+    "question": "元件數增加一倍後，團隊發現互動組合與狀態數增加遠超過一倍。這最符合哪種軟體本質問題？",
+    "options": [
+      "隱藏性",
+      "易變性",
+      "一致性",
+      "複雜性"
+    ],
+    "answer": 3,
+    "analysis": "複雜性可能隨規模與元件數以非線性方式增加，不能只按程式行數推估理解難度。\n\nA：把互動組合增加與不可視性混淆。\nB：把結構複雜程度與需求變動混淆。\nC：把複雜程度與介面接合問題混淆。\nD：正確。",
+    "concept": "複雜性",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:003",
+    "assessment_target": "複雜性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:003",
+        "misconception": "把互動組合增加與不可視性混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:003",
+        "misconception": "把結構複雜程度與需求變動混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:003",
+        "misconception": "把複雜程度與介面接合問題混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:003",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:012"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        12
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "複雜性可能隨規模與元件數以非線性方式增加，不能只按程式行數推估理解難度。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "fedf33a6d479ed170ca0b867"
+    },
+    "question": "兩個團隊分別完成模組，但一方傳回金額的單位是元，另一方一律當成分。依本章分類，最直接反映哪個問題？",
+    "options": [
+      "隱藏性",
+      "一致性（Conformity）",
+      "複雜性",
+      "易變性"
+    ],
+    "answer": 1,
+    "analysis": "此處聚焦教材所述模組間介接的一致性；應先統一資料意義與介面規格。\n\nA：忽略已有明確線索的資料介接不一致。\nB：正確。\nC：以一般複雜度取代特定介面契約問題。\nD：把介面約定不一致當成需求頻繁改變。",
+    "concept": "介接一致性",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:004",
+    "assessment_target": "介接一致性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:004",
+        "misconception": "忽略已有明確線索的資料介接不一致"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:004",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:004",
+        "misconception": "以一般複雜度取代特定介面契約問題"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:004",
+        "misconception": "把介面約定不一致當成需求頻繁改變"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:013"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        13
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "此處聚焦教材所述模組間介接的一致性；應先統一資料意義與介面規格。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "219b75266f55ba7033447359"
+    },
+    "question": "客戶與開發者對同一句需求有不同想像，直到看到示意畫面才發現差異。這主要回應哪種本質問題？",
+    "options": [
+      "隱藏性",
+      "易變性",
+      "一致性",
+      "複雜性"
+    ],
+    "answer": 0,
+    "analysis": "軟體不易直接看見，會妨礙需求溝通；畫面或模型可讓不同理解更早浮現。\n\nA：正確。\nB：把原本理解不同誤認為客戶改變需求。\nC：把需求溝通誤解視為模組介接錯誤。\nD：把不可視造成的溝通困難只歸為規模過大。",
+    "concept": "隱藏性",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:005",
+    "assessment_target": "隱藏性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:005",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:005",
+        "misconception": "把原本理解不同誤認為客戶改變需求"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:005",
+        "misconception": "把需求溝通誤解視為模組介接錯誤"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:005",
+        "misconception": "把不可視造成的溝通困難只歸為規模過大"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:014"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        14
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "軟體不易直接看見，會妨礙需求溝通；畫面或模型可讓不同理解更早浮現。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "b18e6004200c6bb371414b70"
+    },
+    "question": "已上線系統因使用情境改變而需要增加新功能。哪項判斷最符合教材？",
+    "options": [
+      "維護只能修改語法錯誤",
+      "軟體交付後仍可能變更，維護也包含功能擴充",
+      "交付後新增需求表示原專案必然失敗",
+      "成功的系統交付後不需要修改"
+    ],
+    "answer": 1,
+    "analysis": "教材將加入新功能與效能優化也列入維護，軟體成功並不代表需求永久固定。\n\nA：把維護範圍限縮成錯誤修正。\nB：正確。\nC：把正常演進視為必然失敗。\nD：忽略軟體易變性與持續使用需求。",
+    "concept": "易變性與維護",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:006",
+    "assessment_target": "易變性與維護",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:006",
+        "misconception": "把維護範圍限縮成錯誤修正"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:006",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:006",
+        "misconception": "把正常演進視為必然失敗"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:006",
+        "misconception": "忽略軟體易變性與持續使用需求"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:015",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:025"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        15,
+        25
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "教材將加入新功能與效能優化也列入維護，軟體成功並不代表需求永久固定。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "175f975f9e7cb619748ee2f9"
+    },
+    "question": "團隊先確認「使用者可以取消預約」，接著決定取消流程使用的資料表與 API。前後兩項工作主要分別屬於什麼？",
+    "options": [
+      "測試、專案結案",
+      "需求分析、設計",
+      "實作、維護",
+      "設計、需求分析"
+    ],
+    "answer": 1,
+    "analysis": "需求分析重點是系統要做什麼；資料表與 API 的具體安排則屬於如何實現需求。\n\nA：把功能定義與技術方案誤當成驗證及結案。\nB：正確。\nC：把尚在討論規格的工作誤當成編碼與上線維護。\nD：把 What 與 How 的順序顛倒。",
+    "concept": "需求分析與設計",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:007",
+    "assessment_target": "需求分析與設計",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:007",
+        "misconception": "把功能定義與技術方案誤當成驗證及結案"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:007",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:007",
+        "misconception": "把尚在討論規格的工作誤當成編碼與上線維護"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:007",
+        "misconception": "把 What 與 How 的順序顛倒"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:018",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:021"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        18,
+        21
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "需求分析重點是系統要做什麼；資料表與 API 的具體安排則屬於如何實現需求。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6df27e7571ae5c82ff9a6e77"
+    },
+    "question": "「系統可匯出成績」與「匯出 1,000 筆成績需在 2 秒內完成」的主要分類依序為何？",
+    "options": [
+      "功能需求、非功能需求",
+      "功能需求、功能需求",
+      "非功能需求、非功能需求",
+      "非功能需求、功能需求"
+    ],
+    "answer": 0,
+    "analysis": "匯出是服務項目；在指定資料量下的完成時間是該服務的效能約束。\n\nA：正確。\nB：忽略時間限制是品質要求。\nC：忽略匯出本身是系統服務。\nD：把服務能力與效能限制顛倒。",
+    "concept": "功能與非功能需求",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:008",
+    "assessment_target": "功能與非功能需求",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:008",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:008",
+        "misconception": "忽略時間限制是品質要求"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:008",
+        "misconception": "忽略匯出本身是系統服務"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:008",
+        "misconception": "把服務能力與效能限制顛倒"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:020"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        20
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "匯出是服務項目；在指定資料量下的完成時間是該服務的效能約束。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "bb8f32d2c21f70cd2b20b991"
+    },
+    "question": "哪項活動最明確屬於實作與整合階段？",
+    "options": [
+      "安排專案開始與結束日期",
+      "訪談客戶釐清要解決的問題",
+      "比較資料庫方案並決定介面格式",
+      "依設計撰寫可執行程式，並接合不同成員完成的模組"
+    ],
+    "answer": 3,
+    "analysis": "實作把設計轉為可執行軟體，多人成果還需要整合；訪談、方案選擇與排程各有不同目的。\n\nA：把專案規劃當成程式實作。\nB：把需求擷取當成程式實作。\nC：把設計決策當成已完成的實作。\nD：正確。",
+    "concept": "設計與實作",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:009",
+    "assessment_target": "設計與實作",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:009",
+        "misconception": "把專案規劃當成程式實作"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:009",
+        "misconception": "把需求擷取當成程式實作"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:009",
+        "misconception": "把設計決策當成已完成的實作"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:009",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:021",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:022"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        21,
+        22
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "實作把設計轉為可執行軟體，多人成果還需要整合；訪談、方案選擇與排程各有不同目的。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2d64b622a755283e0cb0bee0"
+    },
+    "question": "測試團隊除了檢查功能，也量測回應時間與確認操作能否達成使用目的。這反映哪項觀念？",
+    "options": [
+      "品質只能靠程式語言選擇決定",
+      "測試同時用來發現錯誤與評估軟體品質",
+      "測試只需證明程式可以啟動",
+      "只有功能錯誤才算測試發現"
+    ],
+    "answer": 1,
+    "analysis": "本章將需求符合度、使用目的、效能、安全性與使用者經驗均列入品質評估。\n\nA：把品質歸因於單一技術選擇。\nB：正確。\nC：把測試範圍縮減成啟動檢查。\nD：忽略效能與使用目的也是評估範圍。",
+    "concept": "測試的目的",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:010",
+    "assessment_target": "測試的目的",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:010",
+        "misconception": "把品質歸因於單一技術選擇"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:010",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:010",
+        "misconception": "把測試範圍縮減成啟動檢查"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:010",
+        "misconception": "忽略效能與使用目的也是評估範圍"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:023",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:024"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        23,
+        24
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "本章將需求符合度、使用目的、效能、安全性與使用者經驗均列入品質評估。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3c62fabe96c9ed162f6605e2"
+    },
+    "question": "團隊先排定工作與交期，之後每週比較實際進度並調整安排。兩種活動依序屬於什麼？",
+    "options": [
+      "需求擷取、資料庫設計",
+      "專案規劃、專案監控",
+      "系統實作、系統測試",
+      "專案監控、專案規劃"
+    ],
+    "answer": 1,
+    "analysis": "規劃決定如何執行；監控比較實際與預期並採取調整措施。\n\nA：忽略題幹處理的是工作與進度。\nB：正確。\nC：把管理活動與技術活動混淆。\nD：把事前安排與事後追蹤顛倒。",
+    "concept": "專案規劃與監控",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:011",
+    "assessment_target": "專案規劃與監控",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:011",
+        "misconception": "忽略題幹處理的是工作與進度"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:011",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:011",
+        "misconception": "把管理活動與技術活動混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:011",
+        "misconception": "把事前安排與事後追蹤顛倒"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:026"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        26
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "規劃決定如何執行；監控比較實際與預期並採取調整措施。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "21cdc1de27ef2f55e64238ae"
+    },
+    "question": "開發者與維運者共同維護自動建置、測試及部署流程，最符合哪個目標？",
+    "options": [
+      "把所有部署責任移交給客戶",
+      "增加手動交接次數以證明工作量",
+      "以自動化取代所有需求討論",
+      "縮短交付週期並透過協作與自動化改善品質"
+    ],
+    "answer": 3,
+    "analysis": "DevOps 結合開發與維運，透過協作、自動化及持續改善提高交付效率。\n\nA：把協作誤解成責任外包。\nB：把頻繁交接誤當成 DevOps 的目標。\nC：把技術自動化擴大成不需人員溝通。\nD：正確。",
+    "concept": "DevOps 的價值",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:012",
+    "assessment_target": "DevOps 的價值",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:012",
+        "misconception": "把協作誤解成責任外包"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:012",
+        "misconception": "把頻繁交接誤當成 DevOps 的目標"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:012",
+        "misconception": "把技術自動化擴大成不需人員溝通"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:012",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:028"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        28
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "DevOps 結合開發與維運，透過協作、自動化及持續改善提高交付效率。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0846a6ae9afb25688bd448b0"
+    },
+    "question": "合約要求階段文件與正式審查，需求已相當穩定。依教材，哪個流程模型較符合這些條件？",
+    "options": [
+      "每次需求確認後都重新從零開始",
+      "只靠臨時口頭分工，不訂流程",
+      "瀑布式模型",
+      "捨棄式原型模型，且不保留任何正式規格"
+    ],
+    "answer": 2,
+    "analysis": "瀑布式模型有明確階段與文件，教材指出較適用於需求變更幅度不大的系統。\n\nA：把反覆重做誤當成流程模型的必要特性。\nB：把沒有流程當成穩定需求的適當做法。\nC：正確。\nD：忽略情境對文件與階段審查的要求。",
+    "concept": "瀑布式流程的適用條件",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:013",
+    "assessment_target": "瀑布式流程的適用條件",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:013",
+        "misconception": "把反覆重做誤當成流程模型的必要特性"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:013",
+        "misconception": "把沒有流程當成穩定需求的適當做法"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:013",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:013",
+        "misconception": "忽略情境對文件與階段審查的要求"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:030",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:033"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        30,
+        33
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "瀑布式模型有明確階段與文件，教材指出較適用於需求變更幅度不大的系統。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "85fc011458bd946c972706fd"
+    },
+    "question": "客戶須到開發末期才看到可操作成果，屆時發現早期需求理解有誤。最直接顯示哪項流程風險？",
+    "options": [
+      "需求回饋太晚，誤解可能累積至後期才被發現",
+      "階段越明確就必然無法管理",
+      "客戶參與越早一定越難確認需求",
+      "文件越多就必然消除所有誤解"
+    ],
+    "answer": 0,
+    "analysis": "教材指出瀑布式過程中需求端不易反應需求，跨角色傳遞訊息也可能造成誤解。\n\nA：正確。\nB：把瀑布式的管理優點誤當成缺點。\nC：否定早期回饋的作用。\nD：把文件數量等同於理解一致。",
+    "concept": "瀑布式流程的限制",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:014",
+    "assessment_target": "瀑布式流程的限制",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:014",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:014",
+        "misconception": "把瀑布式的管理優點誤當成缺點"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:014",
+        "misconception": "否定早期回饋的作用"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:014",
+        "misconception": "把文件數量等同於理解一致"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:033"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        33
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "教材指出瀑布式過程中需求端不易反應需求，跨角色傳遞訊息也可能造成誤解。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0bdb13e47a13e73558bf82c8"
+    },
+    "question": "團隊用快速原型釐清最不確定的需求，確認後不保留原型程式，另外建立正式系統。這是哪種作法？",
+    "options": [
+      "捨棄式原型法",
+      "只進行單元測試而不與客戶確認",
+      "漸進式原型法",
+      "直接將原型視為驗收完成的產品"
+    ],
+    "answer": 0,
+    "analysis": "捨棄式原型專供探索與確認需求，之後重新開發；漸進式則以原型持續擴充。\n\nA：正確。\nB：忽略原型在釐清需求上的目的。\nC：把捨棄原型重新開發與逐步擴充原型混淆。\nD：把需求探索成果當成最終產品。",
+    "concept": "捨棄式與漸進式原型",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:015",
+    "assessment_target": "捨棄式與漸進式原型",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:015",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:015",
+        "misconception": "忽略原型在釐清需求上的目的"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:015",
+        "misconception": "把捨棄原型重新開發與逐步擴充原型混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:015",
+        "misconception": "把需求探索成果當成最終產品"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:034",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:035"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        34,
+        35
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "捨棄式原型專供探索與確認需求，之後重新開發；漸進式則以原型持續擴充。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6814a23cd29a40d521999e8e"
+    },
+    "question": "團隊持續在原型上追加需求，但始終未整理架構。教材指出最值得關注的風險是什麼？",
+    "options": [
+      "原型一經確認就不能增加功能",
+      "所有介面會自動保持一致",
+      "結構逐漸混亂，增加後續維護困難",
+      "維護成本必定降為零"
+    ],
+    "answer": 2,
+    "analysis": "漸進式原型可持續擴充，但缺乏架構規劃時，累積修改容易造成維護問題。\n\nA：把漸進式原型當成不可變的成果。\nB：假設原型擴充會自行維持設計品質。\nC：正確。\nD：把快速擴充等同於沒有維護負擔。",
+    "concept": "漸進式原型的架構風險",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:016"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:016",
+    "assessment_target": "漸進式原型的架構風險",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:016",
+        "misconception": "把漸進式原型當成不可變的成果"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:016",
+        "misconception": "假設原型擴充會自行維持設計品質"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:016",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:016",
+        "misconception": "把快速擴充等同於沒有維護負擔"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:035"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-016",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        35
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "漸進式原型可持續擴充，但缺乏架構規劃時，累積修改容易造成維護問題。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0dd8e5c426dba76ee8c7466f"
+    },
+    "question": "團隊已知產品方向與第一批需求，但尚未列完未來所有功能。依教材，如何開始較合理？",
+    "options": [
+      "取消 Sprint 長度，直到所有需求完成才檢視",
+      "只完成文件，永遠不產出可操作成果",
+      "先設定固定 Sprint 長度，以現有需求展開迭代",
+      "等待全部產品需求永久不再變動才開始"
+    ],
+    "answer": 2,
+    "analysis": "教材指出 Scrum 不要求開始時已有完整產品待辦清單，可透過固定期間逐步推進。\n\nA：忽略固定迭代與回饋的意義。\nB：忽略敏捷開發以實際成果累積價值。\nC：正確。\nD：誤以為 Scrum 必須先掌握完整且固定的需求。",
+    "concept": "Scrum 的開始條件",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:017"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:017",
+    "assessment_target": "Scrum 的開始條件",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:017",
+        "misconception": "忽略固定迭代與回饋的意義"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:017",
+        "misconception": "忽略敏捷開發以實際成果累積價值"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:017",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:017",
+        "misconception": "誤以為 Scrum 必須先掌握完整且固定的需求"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:036"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-017",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        36
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "教材指出 Scrum 不要求開始時已有完整產品待辦清單，可透過固定期間逐步推進。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5078ea84daed5be5f1af0346"
+    },
+    "question": "哪項敘述最符合軟體工程與其他領域的關係？",
+    "options": [
+      "系統工程只處理軟體，不包含硬體與流程",
+      "軟體工程僅研究演算法的理論極限",
+      "軟體工程關注實用軟體的開發交付，也是系統工程的一部分",
+      "軟體只有程式碼，不包含相關文件"
+    ],
+    "answer": 2,
+    "analysis": "教材比較軟體工程與計算機科學、系統工程；前者重視可用軟體的實際生產與交付。\n\nA：忽略系統工程的更廣範圍。\nB：把軟體工程範圍限縮成計算機科學理論。\nC：正確。\nD：忽略軟體產品所包含的文件。",
+    "concept": "軟體工程的範圍",
+    "chapter": "[01]軟體危機與軟體流程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:01:018"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:01:018",
+    "assessment_target": "軟體工程的範圍",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:018",
+        "misconception": "忽略系統工程的更廣範圍"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:018",
+        "misconception": "把軟體工程範圍限縮成計算機科學理論"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:018",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:01:018",
+        "misconception": "忽略軟體產品所包含的文件"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:038",
+      "manual_pdf:00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb:page:039"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "course_unit_title": "[01]軟體危機與軟體流程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE01-018",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "pdf_git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "pdf_pages": [
+        38,
+        39
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[01]軟體危機與軟體流程.pdf",
+      "basis_summary": "教材比較軟體工程與計算機科學、系統工程；前者重視可用軟體的實際生產與交付。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

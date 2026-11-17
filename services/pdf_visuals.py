@@ -24,6 +24,8 @@ from services.image_captioning import (
     query_image_description,
     CAPTION_LEVEL_RULES,
     image_description_contract,
+    _basic_description_quality_reasons,
+    _project_document_type,
 )
 
 
@@ -687,8 +689,6 @@ def _enrich_from_document(
                     limit_reached = described_count >= settings.max_images
                     if limit_reached:
                         record["warnings"].append("超出圖例轉述上限")
-                        if not preserve_all_images:
-                            continue
                     if candidate["source"] == "pdf_embedded_image":
                         with Image.open(candidate["image_path"]) as original:
                             crop = original.copy()
@@ -704,225 +704,43 @@ def _enrich_from_document(
                     try:
                         figure_path = Path(temp_dir) / "figure.png"
                         crop.save(figure_path)
-                        review_failed = False
-                        diagnostics = {}
-                        try:
-                            review = query_image_description(
-                                    analyzer, figure_path,
-                                    _figure_prompt(
-                                        page_number,
-                                        category,
-                                        page_text,
-                                        markdown_context=page_context,
-                                        document_type=document_type,
-                                    ),
-                                    max_tokens=3000 if verify_text else 2000,
-                                    settings=settings, document_type=document_type,
-                                    schema=FigureReview,
-                            ) if settings.enabled and not limit_reached else FigureReview(
-                                instructional=True, content_category=category, evidence="Docling/PDF 圖片區塊，尚未語意核對",
-                                image_type="原圖", description="未啟用圖片文字辨識與轉述。",
-                                confidence=0.0,
-                                uncertainty="僅保存原圖，教學意義與圖中文字尚未核對。",
-                            )
-                            diagnostics = dict(getattr(analyzer, "last_diagnostics", {})) if settings.enabled and not limit_reached else {}
-                        except Exception as exc:
-                            diagnostics = dict(getattr(analyzer, "last_diagnostics", {}))
-                            if settings.fail_on_error:
-                                raise
-                            review_failed = True
-                            record["errors"].append({"stage": "description", "error": str(exc)[:500]})
-                            review = FigureReview(
-                                instructional=True, content_category=category,
-                                evidence="僅有版面/PDF 物件依據，語意判讀失敗",
-                                image_type="待查核原圖", description="保留原圖供查核。",
-                                context_connection=(
-                                    "圖片位於目前章節的前後文之間，但尚無法可靠判讀內容。"
-                                ),
-                                confidence=0.0,
-                                uncertainty="圖片判讀失敗，教學價值及圖中文字尚未確認。",
-                            )
-                        if (not preserve_all_images
-                                and review.content_category in {"table", "plain_text", "example_figure"}
-                                and _redundant_table(review, tables)):
-                            record["warnings"].append("圖例已由 Markdown 表格完整呈現")
-                            continue
-                        accepted = (
-                            (
-                                (review.instructional
-                                 and review.content_category in FIGURE_CATEGORIES)
-                                or (candidate["source"] == "pdf_embedded_image"
-                                    and review.content_category == "table")
-                            )
-                            and bool(review.evidence.strip())
-                            and bool(review.description.strip())
+                        from services.image_review import (
+                            describe_and_review, skipped_result, render_result, POLICY,
                         )
-                        trusted_slide_candidate = (
-                            page_layouts is not None
-                            and candidate["source"] in {
-                                "pdf_embedded_image", "page_region"
-                            }
-                        )
-                        text_verification = "failed" if review_failed else "not_checked"
-                        if accepted:
-                            description = ImageDescription.model_validate(review.model_dump())
-                            if verify_text and settings.enabled and not review_failed:
-                                from services.pdf_text_review import verify_figure
-                                try:
-                                    description = verify_figure(
-                                        analyzer, figure_path, description, document, page_index,
-                                        candidate["bbox"], settings=settings,
-                                        document_type=document_type,
-                                        context=page_context,
-                                    )
-                                    diagnostics["verification"] = dict(getattr(analyzer, "last_diagnostics", {}))
-                                    text_verification = "model_checked"
-                                except Exception as exc:
-                                    record["errors"].append({"stage": "text_verification", "error": str(exc)[:500]})
-                                    if settings.fail_on_error:
-                                        raise
-                                    text_verification = "failed"
-                                    diagnostics["verification"] = dict(getattr(analyzer, "last_diagnostics", {}))
-                                    description = description.model_copy(update={
-                                        "confidence": min(description.confidence, 0.5),
-                                        "uncertainty": "複核未通過；保留初稿供人工查核，不納入教材分析。",
-                                        "uncertainty_severity": "major",
-                                        "affects_core_meaning": True,
-                                    })
-                        elif preserve_all_images and review.description.strip():
-                            # 完整內容模式不在轉檔階段判斷重要性。模型即使認為是
-                            # 純文字、表格或裝飾，仍保留原圖及其實際描述，交由後續
-                            # 知識點／評量目標分析決定是否使用。
-                            description = ImageDescription.model_validate(
-                                review.model_dump()
+                        source_name = f"PDF 第 {page_number} 頁"
+                        if settings.enabled and not limit_reached:
+                            result = describe_and_review(
+                                analyzer, figure_path, context=page_context,
+                                source_name=source_name, settings=settings,
+                                document_type=document_type,
                             )
-                            record["warnings"].append(
-                                "完整內容模式：圖片不依教學重要性篩選"
-                            )
-                        elif preserve_all_images:
-                            description = ImageDescription(
-                                image_type="教材原圖",
-                                description="保留 PDF 中的原始圖片內容。",
-                                context_connection=(
-                                    "圖片保留在原頁脈絡中，待完成語意轉述後才能納入分析。"
-                                ),
-                                confidence=0.0,
-                                uncertainty="圖片模型未提供說明，留待後續分析。",
-                            )
-                            record["warnings"].append(
-                                "完整內容模式：圖片說明缺失，仍保留原圖"
-                            )
-                        elif trusted_slide_candidate:
-                            # Docling/PDF 已完成版面與圖片物件定位。多模態模型在
-                            # 文字很多的資訊圖、需求範例或 UI 截圖上，偶爾會誤判
-                            # 成 plain_text/decoration；模型只負責圖說，不得把已
-                            # 定位的教材圖片從 Markdown 無聲刪除。
-                            description = ImageDescription(
-                                image_type="待查核教材圖例",
-                                description="保留教材原圖；圖片說明需人工查核。",
-                                context_connection=(
-                                    "圖片屬於目前章節，但與本文的具體關係尚待查核。"
-                                ),
-                                confidence=0.0,
-                                uncertainty=(
-                                    "圖片已由 PDF/Docling 定位，但多模態模型未能"
-                                    "確認其圖例類型；未採用模型推測的文字與關係。"
-                                ),
-                            )
-                            record["warnings"].append(
-                                "已定位教材圖片不因語意誤判而刪除，圖說待查核"
-                            )
-                        elif (_important_visual_context(page_text)
-                              and candidate["source"] in {"pdf_embedded_image", "page_region"}
-                              and review.content_category not in {"table", "plain_text"}):
-                            # 圖與明確教學主題相符，但模型拒判時保留來源，避免無聲丟圖。
-                            description = ImageDescription(
-                                image_type="待查核圖例", description="保留教材內嵌原圖供查核。",
-                                context_connection=(
-                                    "圖片與目前章節主題相關，但具體內容尚待查核。"
-                                ),
-                                confidence=0.0,
-                                uncertainty="模型未能確認圖意；未採用其推測的文字與關係。",
-                            )
-                            record["warnings"].append("重要教學圖片保留原圖，圖意待查核")
                         else:
-                            record["warnings"].append("區塊缺少具體教學資訊，已排除")
-                            continue
-                        description.visible_text = [
-                            label for label in description.visible_text
-                            if label.strip() not in {str(page_number), f"第 {page_number} 頁", f"第{page_number}頁"}
-                        ]
+                            result = skipped_result("超出圖片描述上限" if limit_reached else "未啟用圖片描述")
+                        passed = result["status"] == "passed"
+                        description_data = result["description"]
                         figure_number = len(record["figures"]) + 1
                         output_name = f"page_{page_number:03d}_figure_{figure_number:02d}.png"
                         output_path = assets_dir / output_name
                         crop.save(output_path)
                         relative_path = f"{markdown_assets_path}/{output_name}"
-                        review_reasons, blocking_reasons = _description_quality_reasons(
-                            description, min_confidence=settings.min_confidence,
-                            document_type=document_type,
-                        )
-                        if review.content_category == "diagram" and not description.relationships:
-                            blocking_reasons.append("圖形關係描述未完成")
-                        if not settings.enabled:
-                            blocking_reasons.append("未啟用圖片描述")
-                        if limit_reached:
-                            blocking_reasons.append("超出圖片描述上限")
-                        if review_failed or text_verification == "failed":
-                            blocking_reasons.append("圖片描述或逐字複核失敗")
-                        if (review.content_category in FIGURE_CATEGORIES | {"table"}
-                                and not review.evidence.strip()):
-                            blocking_reasons.append("資訊圖片缺少直接可見依據")
-                        review_reasons = list(dict.fromkeys([
-                            *review_reasons, *blocking_reasons,
-                        ]))
-                        analysis_eligible = (
-                            settings.enabled
-                            and not review_failed
-                            and text_verification != "failed"
-                            and not blocking_reasons
-                            and review.content_category not in {
-                                "plain_text", "decoration"
-                            }
-                        )
+                        rendered = render_result(result, source_name, context_label=context_label,
+                                                 document_type=document_type)
                         record["figures"].append({
-                            "path": relative_path, "bbox": candidate["bbox"],
-                            "category": ("table_image" if review.content_category == "table" else category),
-                            "source": candidate["source"],
-                            "object_id": candidate.get("object_id"),
-                            "pixel_size": list(crop.size),
-                            "needs_review": bool(review_reasons) or not analysis_eligible,
-                            "review_reasons": review_reasons,
-                            "blocking_reasons": blocking_reasons,
-                            "diagnostics": diagnostics,
-                            "description_levels": {
-                                "visual_description": not any(
-                                    "樣板" in reason or "內容說明" in reason
-                                    for reason in blocking_reasons
-                                ) and bool(description.description.strip()) and not review_failed,
-                                "relationships": bool(description.relationships),
-                                "context_connection": bool(description.context_connection.strip())
-                                    and not any("context_connection" in reason for reason in blocking_reasons),
-                            },
-                            "analysis_eligible": analysis_eligible,
-                            "instructional": review.instructional,
-                            "review_content_category": review.content_category,
-                            "confidence": description.confidence,
-                            "context_label": context_label,
-                            "text_verification": text_verification,
-                            "evidence": review.evidence if accepted else "",
+                            "path": relative_path, "bbox": candidate["bbox"], "category": category,
+                            "source": candidate["source"], "object_id": candidate.get("object_id"),
+                            "pixel_size": list(crop.size), "needs_review": not passed,
+                            "review_reasons": [] if passed else [result["failure_reason"]],
+                            "blocking_reasons": [], "analysis_eligible": passed,
+                            "verification_policy": POLICY, "review_result": result,
+                            "quality_layers": result["quality_layers"],
+                            "confidence": (description_data or {}).get("confidence", 0),
+                            "text_verification": "model_checked" if passed else "failed",
+                            "context_label": context_label, "context": page_context,
+                            "description": description_data,
+                            "diagnostics": {"verification": result},
                             "sha256": hashlib.sha256(output_path.read_bytes()).hexdigest(),
-                            "description": description.model_dump(),
                         })
-                        sections.append(
-                            f"![第 {page_number} 頁教材圖例：{description.image_type}]"
-                            f"({relative_path})\n\n"
-                            + _description_markdown(
-                                description,
-                                f"PDF 第 {page_number} 頁",
-                                context_label=context_label,
-                                document_type=document_type, complete=True,
-                            )
-                        )
+                        sections.append(f"![第 {page_number} 頁原圖]({relative_path})\n\n" + rendered)
                         described_count += 1
                     except Exception as exc:
                         record["errors"].append({
@@ -966,6 +784,7 @@ def _enrich_from_document(
     manifest = {
         "schema_version": 5,
         "strategy": "page_layout_with_grounded_image_review",
+        "review_policy": "unified_image_review_v4",
         "document_type": document_type,
         "descriptions_enabled": settings.enabled,
         "min_confidence": settings.min_confidence,
@@ -984,8 +803,27 @@ def _enrich_from_document(
         "rechecked_count": sum(bool(item.get("layout_rechecked")) for item in records),
         "described_count": described_count,
         "review_required_count": sum(figure["needs_review"] for item in records for figure in item["figures"]),
+        "basic_checked_count": sum(
+            figure.get("quality_layers", {}).get("basic") == "supported"
+            for item in records for figure in item["figures"]
+        ),
+        "relation_review_required_count": sum(
+            figure.get("quality_layers", {}).get("relationships") in {"unsupported", "uncertain", "unverified"}
+            for item in records for figure in item["figures"]
+        ),
+        "excluded_from_analysis_count": sum(
+            figure.get("review_content_category") in {"plain_text", "decoration"}
+            for item in records for figure in item["figures"]
+        ),
         "excluded_closing_count": sum(item["status"] == "excluded_closing" for item in records),
-        "failed_count": sum(bool(item["errors"]) for item in records),
+        "passed_count": sum(f["analysis_eligible"] for item in records for f in item["figures"]),
+        "review_incomplete_count": sum(f.get("review_result", {}).get("content_review_status") == "incomplete"
+                                       for item in records for f in item["figures"]),
+        "content_rejected_count": sum(f.get("review_result", {}).get("content_review_status") == "rejected"
+                                      for item in records for f in item["figures"]),
+        "failed_image_count": sum(not f["analysis_eligible"] for item in records for f in item["figures"]),
+        "failed_count": sum(bool(item["errors"]) or any(not f["analysis_eligible"]
+                            for f in item["figures"]) for item in records),
         "limited_count": sum(
             warning == "超出圖例轉述上限"
             for item in records for warning in item["warnings"]

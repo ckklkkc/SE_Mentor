@@ -1,0 +1,3126 @@
+[
+  {
+    "question_code": "SE01-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:001",
+    "title": "方法、工具與流程",
+    "objective": "能正確辨析或應用「方法、工具與流程」。",
+    "pdf_pages": [
+      3,
+      4
+    ],
+    "misconceptions": [
+      "把開發流程與設計方法互換",
+      "把設計方法與支援工具互換",
+      "把版本控制工具當成流程"
+    ]
+  },
+  {
+    "question_code": "SE01-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:002",
+    "title": "軟體危機的成因",
+    "objective": "能正確辨析或應用「軟體危機的成因」。",
+    "pdf_pages": [
+      5,
+      7
+    ],
+    "misconceptions": [
+      "把程式語言更換當成需求問題解方",
+      "未依題幹證據區分需求管理與部署效能問題",
+      "把需求與時程問題主要歸因於語法錯誤"
+    ]
+  },
+  {
+    "question_code": "SE01-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:003",
+    "title": "複雜性",
+    "objective": "能正確辨析或應用「複雜性」。",
+    "pdf_pages": [
+      12
+    ],
+    "misconceptions": [
+      "把互動組合增加與不可視性混淆",
+      "把結構複雜程度與需求變動混淆",
+      "把複雜程度與介面接合問題混淆"
+    ]
+  },
+  {
+    "question_code": "SE01-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:004",
+    "title": "介接一致性",
+    "objective": "能正確辨析或應用「介接一致性」。",
+    "pdf_pages": [
+      13
+    ],
+    "misconceptions": [
+      "忽略已有明確線索的資料介接不一致",
+      "以一般複雜度取代特定介面契約問題",
+      "把介面約定不一致當成需求頻繁改變"
+    ]
+  },
+  {
+    "question_code": "SE01-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:005",
+    "title": "隱藏性",
+    "objective": "能正確辨析或應用「隱藏性」。",
+    "pdf_pages": [
+      14
+    ],
+    "misconceptions": [
+      "把原本理解不同誤認為客戶改變需求",
+      "把需求溝通誤解視為模組介接錯誤",
+      "把不可視造成的溝通困難只歸為規模過大"
+    ]
+  },
+  {
+    "question_code": "SE01-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:006",
+    "title": "易變性與維護",
+    "objective": "能正確辨析或應用「易變性與維護」。",
+    "pdf_pages": [
+      15,
+      25
+    ],
+    "misconceptions": [
+      "把維護範圍限縮成錯誤修正",
+      "把正常演進視為必然失敗",
+      "忽略軟體易變性與持續使用需求"
+    ]
+  },
+  {
+    "question_code": "SE01-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:007",
+    "title": "需求分析與設計",
+    "objective": "能正確辨析或應用「需求分析與設計」。",
+    "pdf_pages": [
+      18,
+      21
+    ],
+    "misconceptions": [
+      "把功能定義與技術方案誤當成驗證及結案",
+      "把尚在討論規格的工作誤當成編碼與上線維護",
+      "把 What 與 How 的順序顛倒"
+    ]
+  },
+  {
+    "question_code": "SE01-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:008",
+    "title": "功能與非功能需求",
+    "objective": "能正確辨析或應用「功能與非功能需求」。",
+    "pdf_pages": [
+      20
+    ],
+    "misconceptions": [
+      "忽略時間限制是品質要求",
+      "忽略匯出本身是系統服務",
+      "把服務能力與效能限制顛倒"
+    ]
+  },
+  {
+    "question_code": "SE01-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:009",
+    "title": "設計與實作",
+    "objective": "能正確辨析或應用「設計與實作」。",
+    "pdf_pages": [
+      21,
+      22
+    ],
+    "misconceptions": [
+      "把專案規劃當成程式實作",
+      "把需求擷取當成程式實作",
+      "把設計決策當成已完成的實作"
+    ]
+  },
+  {
+    "question_code": "SE01-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:010",
+    "title": "測試的目的",
+    "objective": "能正確辨析或應用「測試的目的」。",
+    "pdf_pages": [
+      23,
+      24
+    ],
+    "misconceptions": [
+      "把品質歸因於單一技術選擇",
+      "把測試範圍縮減成啟動檢查",
+      "忽略效能與使用目的也是評估範圍"
+    ]
+  },
+  {
+    "question_code": "SE01-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:011",
+    "title": "專案規劃與監控",
+    "objective": "能正確辨析或應用「專案規劃與監控」。",
+    "pdf_pages": [
+      26
+    ],
+    "misconceptions": [
+      "忽略題幹處理的是工作與進度",
+      "把管理活動與技術活動混淆",
+      "把事前安排與事後追蹤顛倒"
+    ]
+  },
+  {
+    "question_code": "SE01-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:012",
+    "title": "DevOps 的價值",
+    "objective": "能正確辨析或應用「DevOps 的價值」。",
+    "pdf_pages": [
+      28
+    ],
+    "misconceptions": [
+      "把協作誤解成責任外包",
+      "把頻繁交接誤當成 DevOps 的目標",
+      "把技術自動化擴大成不需人員溝通"
+    ]
+  },
+  {
+    "question_code": "SE01-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:013",
+    "title": "瀑布式流程的適用條件",
+    "objective": "能正確辨析或應用「瀑布式流程的適用條件」。",
+    "pdf_pages": [
+      30,
+      33
+    ],
+    "misconceptions": [
+      "把反覆重做誤當成流程模型的必要特性",
+      "把沒有流程當成穩定需求的適當做法",
+      "忽略情境對文件與階段審查的要求"
+    ]
+  },
+  {
+    "question_code": "SE01-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:014",
+    "title": "瀑布式流程的限制",
+    "objective": "能正確辨析或應用「瀑布式流程的限制」。",
+    "pdf_pages": [
+      33
+    ],
+    "misconceptions": [
+      "把瀑布式的管理優點誤當成缺點",
+      "否定早期回饋的作用",
+      "把文件數量等同於理解一致"
+    ]
+  },
+  {
+    "question_code": "SE01-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:015",
+    "title": "捨棄式與漸進式原型",
+    "objective": "能正確辨析或應用「捨棄式與漸進式原型」。",
+    "pdf_pages": [
+      34,
+      35
+    ],
+    "misconceptions": [
+      "忽略原型在釐清需求上的目的",
+      "把捨棄原型重新開發與逐步擴充原型混淆",
+      "把需求探索成果當成最終產品"
+    ]
+  },
+  {
+    "question_code": "SE01-016",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:016",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:016",
+    "title": "漸進式原型的架構風險",
+    "objective": "能正確辨析或應用「漸進式原型的架構風險」。",
+    "pdf_pages": [
+      35
+    ],
+    "misconceptions": [
+      "把漸進式原型當成不可變的成果",
+      "假設原型擴充會自行維持設計品質",
+      "把快速擴充等同於沒有維護負擔"
+    ]
+  },
+  {
+    "question_code": "SE01-017",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:017",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:017",
+    "title": "Scrum 的開始條件",
+    "objective": "能正確辨析或應用「Scrum 的開始條件」。",
+    "pdf_pages": [
+      36
+    ],
+    "misconceptions": [
+      "忽略固定迭代與回饋的意義",
+      "忽略敏捷開發以實際成果累積價值",
+      "誤以為 Scrum 必須先掌握完整且固定的需求"
+    ]
+  },
+  {
+    "question_code": "SE01-018",
+    "course_unit_id": "se_manual_20261117_v1:unit:01",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:01:018",
+    "assessment_target_id": "se_manual_20261117_v1:target:01:018",
+    "title": "軟體工程的範圍",
+    "objective": "能正確辨析或應用「軟體工程的範圍」。",
+    "pdf_pages": [
+      38,
+      39
+    ],
+    "misconceptions": [
+      "忽略系統工程的更廣範圍",
+      "把軟體工程範圍限縮成計算機科學理論",
+      "忽略軟體產品所包含的文件"
+    ]
+  },
+  {
+    "question_code": "SE02-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:001",
+    "title": "使用者需求與系統需求",
+    "objective": "能正確辨析或應用「使用者需求與系統需求」。",
+    "pdf_pages": [
+      5,
+      6,
+      7
+    ],
+    "misconceptions": [
+      "把需求抽象層次與需求種類混淆",
+      "把規格分析與執行測試混淆",
+      "把需求細化的方向顛倒"
+    ]
+  },
+  {
+    "question_code": "SE02-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:002",
+    "title": "需求分類的兩個面向",
+    "objective": "能正確辨析或應用「需求分類的兩個面向」。",
+    "pdf_pages": [
+      4,
+      8,
+      19
+    ],
+    "misconceptions": [
+      "把易用性的品質目標當成具體服務",
+      "同時混淆品質種類與需求抽象層次",
+      "忽略題幹仍是抽象目標而非可驗證規格"
+    ]
+  },
+  {
+    "question_code": "SE02-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:003",
+    "title": "服務與品質約束",
+    "objective": "能正確辨析或應用「服務與品質約束」。",
+    "pdf_pages": [
+      8,
+      11,
+      13
+    ],
+    "misconceptions": [
+      "把可用性要求當成功能需求",
+      "把流程約束當成功能需求",
+      "把效能限制當成服務項目"
+    ]
+  },
+  {
+    "question_code": "SE02-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:004",
+    "title": "非功能需求的來源",
+    "objective": "能正確辨析或應用「非功能需求的來源」。",
+    "pdf_pages": [
+      16,
+      17,
+      18
+    ],
+    "misconceptions": [
+      "把開發流程約束誤當成使用者可操作的服務",
+      "把組織政策誤當成產品運作特性",
+      "把內部政策誤當成外部法規"
+    ]
+  },
+  {
+    "question_code": "SE02-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:005",
+    "title": "非功能需求量化",
+    "objective": "能正確辨析或應用「非功能需求量化」。",
+    "pdf_pages": [
+      19,
+      20,
+      48
+    ],
+    "misconceptions": [
+      "以技術選擇取代可驗證結果",
+      "未給出可比較的條件與驗收門檻",
+      "沿用未量化的主觀品質目標"
+    ]
+  },
+  {
+    "question_code": "SE02-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:006",
+    "title": "整體可行性分析",
+    "objective": "能正確辨析或應用「整體可行性分析」。",
+    "pdf_pages": [
+      23
+    ],
+    "misconceptions": [
+      "把前期可行性議題延後至交付階段",
+      "把操作可行性當成成本與時程的替代條件",
+      "把技術可行性當成唯一判準"
+    ]
+  },
+  {
+    "question_code": "SE02-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:007",
+    "title": "需求擷取方法的選擇",
+    "objective": "能正確辨析或應用「需求擷取方法的選擇」。",
+    "pdf_pages": [
+      24,
+      25,
+      26
+    ],
+    "misconceptions": [
+      "以設計取代需求擷取",
+      "忽略情境需要當場追問與澄清",
+      "把尚未釐清的需求問題當成程式結構測試"
+    ]
+  },
+  {
+    "question_code": "SE02-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:008",
+    "title": "使用案例的黑盒觀點",
+    "objective": "能正確辨析或應用「使用案例的黑盒觀點」。",
+    "pdf_pages": [
+      27,
+      28,
+      29,
+      30
+    ],
+    "misconceptions": [
+      "把程式內部機制當成外部互動",
+      "把內部實作細節放進黑盒操作描述",
+      "把資料庫設計當成使用者操作情境"
+    ]
+  },
+  {
+    "question_code": "SE02-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:009",
+    "title": "人物誌的用途",
+    "objective": "能正確辨析或應用「人物誌的用途」。",
+    "pdf_pages": [
+      32
+    ],
+    "misconceptions": [
+      "把需求探索工具當成真實回饋的替代品",
+      "把技術選型當成使用者建模依據",
+      "把使用者建模與資料設計混淆"
+    ]
+  },
+  {
+    "question_code": "SE02-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:010",
+    "title": "線框圖的資訊範圍",
+    "objective": "能正確辨析或應用「線框圖的資訊範圍」。",
+    "pdf_pages": [
+      33,
+      34,
+      35
+    ],
+    "misconceptions": [
+      "把成品視覺細節當成早期溝通必要條件",
+      "把視覺裝飾當成早期線框圖的核心",
+      "把後台實作設定當成頁面骨架"
+    ]
+  },
+  {
+    "question_code": "SE02-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:011",
+    "title": "原型擷取需求的限制",
+    "objective": "能正確辨析或應用「原型擷取需求的限制」。",
+    "pdf_pages": [
+      37
+    ],
+    "misconceptions": [
+      "把畫面接受等同於全面驗證",
+      "把原型與文件錯誤地視為互斥",
+      "忽略原型也可支援需求確認"
+    ]
+  },
+  {
+    "question_code": "SE02-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:012",
+    "title": "3C 中的完整性",
+    "objective": "能正確辨析或應用「3C 中的完整性」。",
+    "pdf_pages": [
+      38,
+      39
+    ],
+    "misconceptions": [
+      "把程式品質檢查當成需求分析",
+      "把文字校對當成需求完整性分析",
+      "把設計選型當成需求涵蓋檢查"
+    ]
+  },
+  {
+    "question_code": "SE02-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:013",
+    "title": "3C 中的無衝突性",
+    "objective": "能正確辨析或應用「3C 中的無衝突性」。",
+    "pdf_pages": [
+      39
+    ],
+    "misconceptions": [
+      "把介面一致性當成權限需求衝突的解方",
+      "把識別需求當成解決矛盾",
+      "忽略需求衝突會延續到實作"
+    ]
+  },
+  {
+    "question_code": "SE02-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:014",
+    "title": "需求規格化與識別",
+    "objective": "能正確辨析或應用「需求規格化與識別」。",
+    "pdf_pages": [
+      40,
+      45
+    ],
+    "misconceptions": [
+      "把需求識別的用途限縮成編碼細節",
+      "把規格化誤當成需求永久凍結",
+      "把規格化誤當成容許多種不一致解讀"
+    ]
+  },
+  {
+    "question_code": "SE02-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:02:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:02:015",
+    "title": "需求確認",
+    "objective": "能正確辨析或應用「需求確認」。",
+    "pdf_pages": [
+      49,
+      51
+    ],
+    "misconceptions": [
+      "把前期需求查核當成產品發布工作",
+      "把使用者意圖確認當成資料結構整理",
+      "把規格確認當成執行程式模組"
+    ]
+  },
+  {
+    "question_code": "SE03-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:001",
+    "title": "故事的 Why 與 What",
+    "objective": "能正確辨析或應用「故事的 Why 與 What」。",
+    "pdf_pages": [
+      7,
+      8,
+      9
+    ],
+    "misconceptions": [
+      "把實作方式當成使用者意圖",
+      "把編碼細節當成需求故事",
+      "把內部程式結構當成客戶價值"
+    ]
+  },
+  {
+    "question_code": "SE03-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:002",
+    "title": "故事卡、對話與完成判準",
+    "objective": "能正確辨析或應用「故事卡、對話與完成判準」。",
+    "pdf_pages": [
+      7,
+      12,
+      13,
+      14
+    ],
+    "misconceptions": [
+      "把篇幅當成需求理解與確認",
+      "把設計決策當成驗收判準",
+      "忽略開發前澄清可降低誤解"
+    ]
+  },
+  {
+    "question_code": "SE03-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:003",
+    "title": "Epic 的拆解",
+    "objective": "能正確辨析或應用「Epic 的拆解」。",
+    "pdf_pages": [
+      10,
+      11
+    ],
+    "misconceptions": [
+      "把文字拆段當成功能拆解",
+      "把省略品質判準當成降低故事規模",
+      "把人數增加當成故事粒度改善"
+    ]
+  },
+  {
+    "question_code": "SE03-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:004",
+    "title": "故事模板的價值部分",
+    "objective": "能正確辨析或應用「故事模板的價值部分」。",
+    "pdf_pages": [
+      15
+    ],
+    "misconceptions": [
+      "把價值與成本混淆",
+      "把受益理由與角色欄位混淆",
+      "把價值與實作技術混淆"
+    ]
+  },
+  {
+    "question_code": "SE03-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:005",
+    "title": "INVEST 的獨立性",
+    "objective": "能正確辨析或應用「INVEST 的獨立性」。",
+    "pdf_pages": [
+      18,
+      19
+    ],
+    "misconceptions": [
+      "把視覺區隔當成需求獨立",
+      "把時間分隔當成移除功能相依",
+      "把程式複製當成故事獨立性的解方"
+    ]
+  },
+  {
+    "question_code": "SE03-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:006",
+    "title": "INVEST 的可協商性",
+    "objective": "能正確辨析或應用「INVEST 的可協商性」。",
+    "pdf_pages": [
+      20
+    ],
+    "misconceptions": [
+      "把對話提醒當成完成判準的替代品",
+      "把故事當成固定規格合約",
+      "把可協商誤當成不需做決策"
+    ]
+  },
+  {
+    "question_code": "SE03-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:007",
+    "title": "INVEST 的可估算性與 Spike",
+    "objective": "能正確辨析或應用「INVEST 的可估算性與 Spike」。",
+    "pdf_pages": [
+      18,
+      22
+    ],
+    "misconceptions": [
+      "把數值填入當成降低不確定性",
+      "忽略 Spike 的時間盒",
+      "忽略不同故事的複雜度與理解程度"
+    ]
+  },
+  {
+    "question_code": "SE03-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:008",
+    "title": "故事點與相對規模",
+    "objective": "能正確辨析或應用「故事點與相對規模」。",
+    "pdf_pages": [
+      23,
+      24,
+      29
+    ],
+    "misconceptions": [
+      "把努力估計與價值混淆",
+      "把描述長度當成實作努力",
+      "把團隊相對尺度當成通用工時計量"
+    ]
+  },
+  {
+    "question_code": "SE03-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:009",
+    "title": "故事壞味道：鍍金",
+    "objective": "能正確辨析或應用「故事壞味道：鍍金」。",
+    "pdf_pages": [
+      26
+    ],
+    "misconceptions": [
+      "把未設定假設與回饋的追加開發當成產品實驗",
+      "把無需求依據的功能追加當成降低技術未知",
+      "把未經價值討論自行加功能當成協商"
+    ]
+  },
+  {
+    "question_code": "SE03-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:010",
+    "title": "故事與非功能需求",
+    "objective": "能正確辨析或應用「故事與非功能需求」。",
+    "pdf_pages": [
+      27
+    ],
+    "misconceptions": [
+      "把表達格式當成需求種類的決定因素",
+      "把故事格式限制成只能表達功能",
+      "忽略量化品質限制可被測試"
+    ]
+  },
+  {
+    "question_code": "SE03-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:011",
+    "title": "故事地圖的軸向",
+    "objective": "能正確辨析或應用「故事地圖的軸向」。",
+    "pdf_pages": [
+      34,
+      37,
+      43
+    ],
+    "misconceptions": [
+      "把故事地圖誤當成個人排班表",
+      "把故事地圖的兩個方向顛倒",
+      "把使用流程建模與資料設計混淆"
+    ]
+  },
+  {
+    "question_code": "SE03-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:012",
+    "title": "故事地圖的例外探索",
+    "objective": "能正確辨析或應用「故事地圖的例外探索」。",
+    "pdf_pages": [
+      38,
+      45
+    ],
+    "misconceptions": [
+      "把例外流程探索當成工具選型",
+      "把需求理解增加一律視為無控制擴張",
+      "把補充例外流程當成推翻整體操作概念"
+    ]
+  },
+  {
+    "question_code": "SE03-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:013",
+    "title": "故事地圖的層級",
+    "objective": "能正確辨析或應用「故事地圖的層級」。",
+    "pdf_pages": [
+      39,
+      40,
+      41,
+      42,
+      52
+    ],
+    "misconceptions": [
+      "把拆解的粗細方向顛倒",
+      "把需求層級與實作結構混淆",
+      "忽略故事地圖本來可呈現不同粒度"
+    ]
+  },
+  {
+    "question_code": "SE03-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:014",
+    "title": "MVP 與驗證式學習",
+    "objective": "能正確辨析或應用「MVP 與驗證式學習」。",
+    "pdf_pages": [
+      46,
+      47,
+      48
+    ],
+    "misconceptions": [
+      "把技術層完成等同於可驗證產品",
+      "把最小驗證成果當成最終完整版",
+      "把最小可行誤解成沒有品質要求"
+    ]
+  },
+  {
+    "question_code": "SE03-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:03:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:03:015",
+    "title": "開局、中局與終局策略",
+    "objective": "能正確辨析或應用「開局、中局與終局策略」。",
+    "pdf_pages": [
+      50,
+      51
+    ],
+    "misconceptions": [
+      "把後期精煉與可有可無功能放在核心旅程之前",
+      "把早期風險處理延後",
+      "忽略開局應看清整體產品如何運作"
+    ]
+  },
+  {
+    "question_code": "SE04-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:001",
+    "title": "敏捷宣言的取捨",
+    "objective": "能正確辨析或應用「敏捷宣言的取捨」。",
+    "pdf_pages": [
+      4
+    ],
+    "misconceptions": [
+      "忽略回應變化的價值",
+      "把相對重視誤解成必須完成全部前置文件",
+      "把工具當成人員互動的替代品"
+    ]
+  },
+  {
+    "question_code": "SE04-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:002",
+    "title": "經驗式流程",
+    "objective": "能正確辨析或應用「經驗式流程」。",
+    "pdf_pages": [
+      6,
+      7,
+      8,
+      14,
+      15,
+      16
+    ],
+    "misconceptions": [
+      "把指令控制當成自我管理",
+      "把可預測流程的假設套在複雜問題",
+      "忽略頻繁檢視與及時調適"
+    ]
+  },
+  {
+    "question_code": "SE04-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:003",
+    "title": "Sprint 的固定期間",
+    "objective": "能正確辨析或應用「Sprint 的固定期間」。",
+    "pdf_pages": [
+      11,
+      12
+    ],
+    "misconceptions": [
+      "忽略迭代需要累積實際產品成果",
+      "把迭代交付誤作大型階段切割",
+      "把 Sprint 當成沒有時間盒的整個專案"
+    ]
+  },
+  {
+    "question_code": "SE04-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:004",
+    "title": "跨職能與自我管理",
+    "objective": "能正確辨析或應用「跨職能與自我管理」。",
+    "pdf_pages": [
+      13,
+      35
+    ],
+    "misconceptions": [
+      "把團隊具備所有技能誤作個人技能完全一致",
+      "把服務團隊角色當成技術派工主管",
+      "把跨職能誤解成職能隔離"
+    ]
+  },
+  {
+    "question_code": "SE04-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:005",
+    "title": "透明、檢視與調適",
+    "objective": "能正確辨析或應用「透明、檢視與調適」。",
+    "pdf_pages": [
+      14,
+      15,
+      16,
+      17
+    ],
+    "misconceptions": [
+      "把檢視的時機限制成最終驗收",
+      "把品質承諾與經驗主義支柱混淆",
+      "把資訊失真與禁止變更混為一談"
+    ]
+  },
+  {
+    "question_code": "SE04-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:006",
+    "title": "Product 與 Sprint Backlog",
+    "objective": "能正確辨析或應用「Product 與 Sprint Backlog」。",
+    "pdf_pages": [
+      18,
+      19,
+      34,
+      35
+    ],
+    "misconceptions": [
+      "誤解兩份清單的工作範圍",
+      "把待辦清單當成錯誤紀錄庫",
+      "混淆產品排序責任與開發計畫責任"
+    ]
+  },
+  {
+    "question_code": "SE04-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:007",
+    "title": "Increment 與 DoD",
+    "objective": "能正確辨析或應用「Increment 與 DoD」。",
+    "pdf_pages": [
+      20,
+      21
+    ],
+    "misconceptions": [
+      "把看板狀態當成實際品質證據",
+      "把展示效果當成品質要求已滿足",
+      "忽略共同品質定義的約束"
+    ]
+  },
+  {
+    "question_code": "SE04-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:008",
+    "title": "Sprint Planning 的產出",
+    "objective": "能正確辨析或應用「Sprint Planning 的產出」。",
+    "pdf_pages": [
+      25,
+      26,
+      27,
+      28
+    ],
+    "misconceptions": [
+      "把本次執行計畫延到流程回顧",
+      "把規劃的任務當成可用成果",
+      "把開發工作規劃與運維紀錄混淆"
+    ]
+  },
+  {
+    "question_code": "SE04-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:009",
+    "title": "Daily Scrum 的目的",
+    "objective": "能正確辨析或應用「Daily Scrum 的目的」。",
+    "pdf_pages": [
+      29
+    ],
+    "misconceptions": [
+      "把團隊調適會議當成單向考勤",
+      "把每日短會當成完整產品策略規劃",
+      "忽略短時間盒與聚焦進展的目的"
+    ]
+  },
+  {
+    "question_code": "SE04-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:010",
+    "title": "Review 與 Retrospective",
+    "objective": "能正確辨析或應用「Review 與 Retrospective」。",
+    "pdf_pages": [
+      31,
+      32
+    ],
+    "misconceptions": [
+      "把成果討論與合作改善誤作清單整理與程式測試",
+      "把期末成果與流程回顧誤認為每日及期初事件",
+      "把產品成果檢視與團隊流程回顧顛倒"
+    ]
+  },
+  {
+    "question_code": "SE04-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:011",
+    "title": "PO 與 Developer 的責任",
+    "objective": "能正確辨析或應用「PO 與 Developer 的責任」。",
+    "pdf_pages": [
+      34,
+      35
+    ],
+    "misconceptions": [
+      "顛倒產品與開發責任",
+      "忽略單一產品排序責任與團隊自我管理",
+      "把促進流程角色當成所有產品與技術決策者"
+    ]
+  },
+  {
+    "question_code": "SE04-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:012",
+    "title": "Scrum Master 的角色",
+    "objective": "能正確辨析或應用「Scrum Master 的角色」。",
+    "pdf_pages": [
+      36,
+      37
+    ],
+    "misconceptions": [
+      "把服務團隊工作限縮成行政外觀管理",
+      "把 Scrum Master 當成傳統指令式主管",
+      "把保護團隊誤解成阻斷必要合作"
+    ]
+  },
+  {
+    "question_code": "SE04-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:013",
+    "title": "Scrum 價值觀",
+    "objective": "能正確辨析或應用「Scrum 價值觀」。",
+    "pdf_pages": [
+      38
+    ],
+    "misconceptions": [
+      "把目標承諾誤作固守原計畫",
+      "把尊重誤作禁止建設性討論",
+      "把聚焦目標誤作隱瞞風險"
+    ]
+  },
+  {
+    "question_code": "SE04-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:014",
+    "title": "XP 的重構",
+    "objective": "能正確辨析或應用「XP 的重構」。",
+    "pdf_pages": [
+      44
+    ],
+    "misconceptions": [
+      "把結構改善與外部功能變更混淆",
+      "把品質改善與移除驗證混淆",
+      "把內部程式調整當成需求變更"
+    ]
+  },
+  {
+    "question_code": "SE04-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:04:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:04:015",
+    "title": "XP 實務的互補性",
+    "objective": "能正確辨析或應用「XP 實務的互補性」。",
+    "pdf_pages": [
+      43,
+      44,
+      45,
+      46,
+      48
+    ],
+    "misconceptions": [
+      "把單一實務當成全部品質機制的替代品",
+      "把整合頻率當成驗證充分性",
+      "把所有權方式當成品質保證"
+    ]
+  },
+  {
+    "question_code": "SE05-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:001",
+    "title": "專案與產品",
+    "objective": "能正確辨析或應用「專案與產品」。",
+    "pdf_pages": [
+      3,
+      4
+    ],
+    "misconceptions": [
+      "把產品生命週期與專案期限等同",
+      "忽略專案的時間範圍",
+      "否認重大升級等工作也可有專案邊界"
+    ]
+  },
+  {
+    "question_code": "SE05-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:002",
+    "title": "範疇、時間、成本與品質",
+    "objective": "能正確辨析或應用「範疇、時間、成本與品質」。",
+    "pdf_pages": [
+      5,
+      21
+    ],
+    "misconceptions": [
+      "忽略新增範疇與資源限制的關係",
+      "把文件更新當成可行性與資源調整",
+      "忽略品質是需平衡的管理面向"
+    ]
+  },
+  {
+    "question_code": "SE05-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:003",
+    "title": "監控與結案",
+    "objective": "能正確辨析或應用「監控與結案」。",
+    "pdf_pages": [
+      6,
+      7,
+      21
+    ],
+    "misconceptions": [
+      "把監控活動當成完工證明",
+      "把管理檢視與發布混淆",
+      "把持續追蹤誤作一次性的初始活動"
+    ]
+  },
+  {
+    "question_code": "SE05-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:004",
+    "title": "WBS 的工作層級",
+    "objective": "能正確辨析或應用「WBS 的工作層級」。",
+    "pdf_pages": [
+      8,
+      9,
+      10
+    ],
+    "misconceptions": [
+      "把上層分類與底層工作重複加總",
+      "把部分工作當成整個分類的估計",
+      "把文字長度當成工作規模"
+    ]
+  },
+  {
+    "question_code": "SE05-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:005",
+    "title": "WBS 的粒度",
+    "objective": "能正確辨析或應用「WBS 的粒度」。",
+    "pdf_pages": [
+      9
+    ],
+    "misconceptions": [
+      "把壓縮期限當成可追蹤性改善",
+      "把重新命名當成粒度改善",
+      "把重複指派當成工作分解"
+    ]
+  },
+  {
+    "question_code": "SE05-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:006",
+    "title": "工時與工期",
+    "objective": "能正確辨析或應用「工時與工期」。",
+    "pdf_pages": [
+      10
+    ],
+    "misconceptions": [
+      "把人時直接當成天數",
+      "把總工時與每日投入量相乘",
+      "把每日可投入時數當成總工期"
+    ]
+  },
+  {
+    "question_code": "SE05-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:007",
+    "title": "排程與依賴",
+    "objective": "能正確辨析或應用「排程與依賴」。",
+    "pdf_pages": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "misconceptions": [
+      "忽略排程所需的工作資訊",
+      "把估計當成無誤差的事實",
+      "忽略工作依賴的存在"
+    ]
+  },
+  {
+    "question_code": "SE05-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:008",
+    "title": "PERT 加權估計",
+    "objective": "能正確辨析或應用「PERT 加權估計」。",
+    "pdf_pages": [
+      13,
+      14
+    ],
+    "misconceptions": [
+      "把三個估計直接取算術平均",
+      "只取最可能時間而忽略其他估計",
+      "把三個時間直接相加"
+    ]
+  },
+  {
+    "question_code": "SE05-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:009",
+    "title": "PERT 的事件與活動",
+    "objective": "能正確辨析或應用「PERT 的事件與活動」。",
+    "pdf_pages": [
+      14
+    ],
+    "misconceptions": [
+      "把本章圖法的節點與邊意義顛倒",
+      "把活動網路當成組織關係圖",
+      "把里程碑事件當成執行工作"
+    ]
+  },
+  {
+    "question_code": "SE05-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:010",
+    "title": "關鍵路徑的長度",
+    "objective": "能正確辨析或應用「關鍵路徑的長度」。",
+    "pdf_pages": [
+      15
+    ],
+    "misconceptions": [
+      "選擇較短路徑而未等待全部必要工作",
+      "把可並行的兩條路徑全數相加",
+      "只取單一最長活動而忽略連續依賴"
+    ]
+  },
+  {
+    "question_code": "SE05-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:011",
+    "title": "浮動時間",
+    "objective": "能正確辨析或應用「浮動時間」。",
+    "pdf_pages": [
+      15
+    ],
+    "misconceptions": [
+      "把專案總工期當成任一路徑的浮動時間",
+      "把路徑工期當成可延遲天數",
+      "誤以為所有路徑都沒有浮動時間"
+    ]
+  },
+  {
+    "question_code": "SE05-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:012",
+    "title": "甘特圖與里程碑",
+    "objective": "能正確辨析或應用「甘特圖與里程碑」。",
+    "pdf_pages": [
+      18,
+      19
+    ],
+    "misconceptions": [
+      "把時程呈現當成成果已完成的證明",
+      "把重要事件誤作持續活動",
+      "把專案管理與程式結構建模混淆"
+    ]
+  },
+  {
+    "question_code": "SE05-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:013",
+    "title": "團隊發展階段",
+    "objective": "能正確辨析或應用「團隊發展階段」。",
+    "pdf_pages": [
+      20
+    ],
+    "misconceptions": [
+      "把共識規範逐漸形成與衝突階段混淆",
+      "把協作順暢與高衝突階段混淆",
+      "把初次認識與衝突出現的階段混淆"
+    ]
+  },
+  {
+    "question_code": "SE05-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:014",
+    "title": "WIP 限制與拉動",
+    "objective": "能正確辨析或應用「WIP 限制與拉動」。",
+    "pdf_pages": [
+      22,
+      25,
+      26
+    ],
+    "misconceptions": [
+      "把增加在製品當成解決阻塞",
+      "忽略教材指出阻塞卡通常仍計入 WIP",
+      "忽略下游容量與拉動原則"
+    ]
+  },
+  {
+    "question_code": "SE05-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:05:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:05:015",
+    "title": "看板卡片的可追蹤性",
+    "objective": "能正確辨析或應用「看板卡片的可追蹤性」。",
+    "pdf_pages": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "misconceptions": [
+      "把整個專案混成無法分工追蹤的單一項目",
+      "無法追蹤正在進行與未開始的工作",
+      "忽略工作責任與進度的可視性"
+    ]
+  },
+  {
+    "question_code": "SE06-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:001",
+    "title": "SCM 與版本控制",
+    "objective": "能正確辨析或應用「SCM 與版本控制」。",
+    "pdf_pages": [
+      4,
+      8
+    ],
+    "misconceptions": [
+      "把 SCM 範圍過度限縮",
+      "忽略版本控制的核心目的",
+      "把版控工具當成組態管理全部工作的替代品"
+    ]
+  },
+  {
+    "question_code": "SE06-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:002",
+    "title": "分散式版控與快照",
+    "objective": "能正確辨析或應用「分散式版控與快照」。",
+    "pdf_pages": [
+      11,
+      16,
+      17,
+      18
+    ],
+    "misconceptions": [
+      "忽略本地快照與遠端更新可能不同步",
+      "把本機操作與遠端傳輸混淆",
+      "誤以為未連線也能同步新資料"
+    ]
+  },
+  {
+    "question_code": "SE06-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:003",
+    "title": "工作區、暫存區與提交",
+    "objective": "能正確辨析或應用「工作區、暫存區與提交」。",
+    "pdf_pages": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      25
+    ],
+    "misconceptions": [
+      "誤以為未暫存變更會阻止提交已暫存內容",
+      "把一次 commit 誤作自動建立多版歷程",
+      "忽略工作區與暫存區可保存不同內容"
+    ]
+  },
+  {
+    "question_code": "SE06-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:004",
+    "title": "狀態與歷史查詢",
+    "objective": "能正確辨析或應用「狀態與歷史查詢」。",
+    "pdf_pages": [
+      20,
+      27,
+      28
+    ],
+    "misconceptions": [
+      "把狀態查詢當成遠端同步",
+      "把工作區變更與分支標籤清單混淆",
+      "把工作區狀態與提交歷史的用途顛倒"
+    ]
+  },
+  {
+    "question_code": "SE06-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:005",
+    "title": "commit -a 的範圍",
+    "objective": "能正確辨析或應用「commit -a 的範圍」。",
+    "pdf_pages": [
+      25,
+      26
+    ],
+    "misconceptions": [
+      "把 -a 與 --amend 混淆",
+      "顛倒 -a 對追蹤狀態的作用",
+      "把 -a 當成加入所有新檔的 add --all"
+    ]
+  },
+  {
+    "question_code": "SE06-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:006",
+    "title": "刪除與重新命名的暫存",
+    "objective": "能正確辨析或應用「刪除與重新命名的暫存」。",
+    "pdf_pages": [
+      29,
+      30,
+      31,
+      32
+    ],
+    "misconceptions": [
+      "把新版本刪檔當成清除歷史",
+      "把本地暫存當成遠端同步",
+      "把一般 git rm 與 --cached 混淆"
+    ]
+  },
+  {
+    "question_code": "SE06-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:007",
+    "title": "提交訊息與逐行追溯",
+    "objective": "能正確辨析或應用「提交訊息與逐行追溯」。",
+    "pdf_pages": [
+      24,
+      33
+    ],
+    "misconceptions": [
+      "把命名改善當成既有變更追溯",
+      "把規模資訊當成變更來源",
+      "把檔案時間當成可靠的逐行版控證據"
+    ]
+  },
+  {
+    "question_code": "SE06-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:008",
+    "title": "revert 與 reset",
+    "objective": "能正確辨析或應用「revert 與 reset」。",
+    "pdf_pages": [
+      35,
+      36,
+      37
+    ],
+    "misconceptions": [
+      "把本地刪除當成共享歷史修復",
+      "把訊息修改與內容撤銷混淆",
+      "忽略重寫共享歷史與他人工作的影響"
+    ]
+  },
+  {
+    "question_code": "SE06-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:009",
+    "title": "分支建立與合併方向",
+    "objective": "能正確辨析或應用「分支建立與合併方向」。",
+    "pdf_pages": [
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "misconceptions": [
+      "把將 main 合入 feature 與將 feature 合入 main 混淆",
+      "把分支建立當成內容整合",
+      "把重新命名當成合併歷程"
+    ]
+  },
+  {
+    "question_code": "SE06-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:010",
+    "title": "合併衝突處理",
+    "objective": "能正確辨析或應用「合併衝突處理」。",
+    "pdf_pages": [
+      43,
+      44
+    ],
+    "misconceptions": [
+      "把未解衝突當成有效程式內容",
+      "把自動工具當成能決定語意衝突的主體",
+      "把衝突解決簡化成無條件捨棄一方"
+    ]
+  },
+  {
+    "question_code": "SE06-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:011",
+    "title": "rebase 的參考基準",
+    "objective": "能正確辨析或應用「rebase 的參考基準」。",
+    "pdf_pages": [
+      45
+    ],
+    "misconceptions": [
+      "把重設基準當成分支改名",
+      "把 rebase 當成 tag",
+      "把 rebase 與一般合併提交混淆"
+    ]
+  },
+  {
+    "question_code": "SE06-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:012",
+    "title": "Tag 與分支用途",
+    "objective": "能正確辨析或應用「Tag 與分支用途」。",
+    "pdf_pages": [
+      46,
+      47
+    ],
+    "misconceptions": [
+      "把未受版控的註記當成可追溯版本定位",
+      "把作者設定當成版本標記",
+      "忽略分支會隨新提交推進"
+    ]
+  },
+  {
+    "question_code": "SE06-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:013",
+    "title": "fetch、pull 與 push",
+    "objective": "能正確辨析或應用「fetch、pull 與 push」。",
+    "pdf_pages": [
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "misconceptions": [
+      "把建立本地快照當成同步遠端資訊",
+      "忽略 pull 除取得資料外還會進行整合",
+      "把上傳本地提交與取得遠端資料混淆"
+    ]
+  },
+  {
+    "question_code": "SE06-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:014",
+    "title": "Fork 與 Pull Request",
+    "objective": "能正確辨析或應用「Fork 與 Pull Request」。",
+    "pdf_pages": [
+      61,
+      76,
+      78
+    ],
+    "misconceptions": [
+      "把讀取複製權限當成遠端寫入權限",
+      "把本地提交當成遠端貢獻通知",
+      "把變更提案當成無條件寫入"
+    ]
+  },
+  {
+    "question_code": "SE06-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:06",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:06:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:06:015",
+    "title": "gitignore 與已追蹤檔",
+    "objective": "能正確辨析或應用「gitignore 與已追蹤檔」。",
+    "pdf_pages": [
+      70
+    ],
+    "misconceptions": [
+      "把單一忽略規則擴大成整庫停止版控",
+      "把忽略規則當成加密機制",
+      "把忽略規則當成歷史清除工具"
+    ]
+  },
+  {
+    "question_code": "SE07-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:001",
+    "title": "抽象層次與設計",
+    "objective": "能正確辨析或應用「抽象層次與設計」。",
+    "pdf_pages": [
+      4,
+      9,
+      10
+    ],
+    "misconceptions": [
+      "把設計轉換方向顛倒",
+      "把設計決策當成實際完成產品",
+      "忽略模組與資料結構正是設計內容"
+    ]
+  },
+  {
+    "question_code": "SE07-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:002",
+    "title": "模組化的取捨",
+    "objective": "能正確辨析或應用「模組化的取捨」。",
+    "pdf_pages": [
+      12,
+      13,
+      14
+    ],
+    "misconceptions": [
+      "忽略大型模組的設計與重用困難",
+      "把模組分割當成不需互動契約",
+      "忽略模組間互動成本"
+    ]
+  },
+  {
+    "question_code": "SE07-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:003",
+    "title": "高凝聚低耦合",
+    "objective": "能正確辨析或應用「高凝聚低耦合」。",
+    "pdf_pages": [
+      15,
+      16
+    ],
+    "misconceptions": [
+      "把功能數量增加當成責任集中",
+      "把跨模組直接依賴誤作低耦合",
+      "把理想方向完全顛倒"
+    ]
+  },
+  {
+    "question_code": "SE07-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:004",
+    "title": "架構的靜態與動態面",
+    "objective": "能正確辨析或應用「架構的靜態與動態面」。",
+    "pdf_pages": [
+      17,
+      18
+    ],
+    "misconceptions": [
+      "把結構與執行行為顛倒",
+      "把架構構面與容量及風格混淆",
+      "把系統內部架構與需求背景混淆"
+    ]
+  },
+  {
+    "question_code": "SE07-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:005",
+    "title": "4+1 的 Physical View",
+    "objective": "能正確辨析或應用「4+1 的 Physical View」。",
+    "pdf_pages": [
+      19,
+      20
+    ],
+    "misconceptions": [
+      "把使用情境當成硬體部署視圖",
+      "把核心抽象與類別結構當成部署配置",
+      "把開發拆分與執行硬體配置混淆"
+    ]
+  },
+  {
+    "question_code": "SE07-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:006",
+    "title": "階層與儲存庫架構",
+    "objective": "能正確辨析或應用「階層與儲存庫架構」。",
+    "pdf_pages": [
+      22,
+      23,
+      24
+    ],
+    "misconceptions": [
+      "把共用資料中心與階層呼叫規則混淆",
+      "把共用儲存庫當成對等角色",
+      "把資料共享當成事件發布訂閱"
+    ]
+  },
+  {
+    "question_code": "SE07-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:007",
+    "title": "Client-Server 與 Peer-to-Peer",
+    "objective": "能正確辨析或應用「Client-Server 與 Peer-to-Peer」。",
+    "pdf_pages": [
+      25
+    ],
+    "misconceptions": [
+      "把提供服務與資料中心角色混淆",
+      "把分散節點角色當成程序內分層",
+      "忽略角色可同時提供與要求服務"
+    ]
+  },
+  {
+    "question_code": "SE07-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:008",
+    "title": "事件驅動與微服務",
+    "objective": "能正確辨析或應用「事件驅動與微服務」。",
+    "pdf_pages": [
+      27,
+      28
+    ],
+    "misconceptions": [
+      "把服務溝通與物件繼承混淆",
+      "把微服務或事件溝通與共用資料庫綁定",
+      "把事件溝通當成共享內部狀態"
+    ]
+  },
+  {
+    "question_code": "SE07-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:009",
+    "title": "REST 資源與方法",
+    "objective": "能正確辨析或應用「REST 資源與方法」。",
+    "pdf_pages": [
+      33,
+      34
+    ],
+    "misconceptions": [
+      "把讀取與刪除的方法顛倒",
+      "忽略統一介面中方法的用途",
+      "把局部更新與讀取刪除混淆"
+    ]
+  },
+  {
+    "question_code": "SE07-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:010",
+    "title": "C4 的 Context 與 Container",
+    "objective": "能正確辨析或應用「C4 的 Context 與 Container」。",
+    "pdf_pages": [
+      38,
+      39,
+      40
+    ],
+    "misconceptions": [
+      "把過細的程式細節放在全局溝通起點",
+      "把部署產物清單當成使用者與系統脈絡",
+      "把資料結構當成系統全景"
+    ]
+  },
+  {
+    "question_code": "SE07-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:011",
+    "title": "C4 各層的涵蓋範圍",
+    "objective": "能正確辨析或應用「C4 各層的涵蓋範圍」。",
+    "pdf_pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "misconceptions": [
+      "把 C4 container 與特定容器技術等同",
+      "把 Code 層的類別當成應用層單位",
+      "忽略此圖的高階技術資訊用途"
+    ]
+  },
+  {
+    "question_code": "SE07-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:012",
+    "title": "介面契約與平行開發",
+    "objective": "能正確辨析或應用「介面契約與平行開發」。",
+    "pdf_pages": [
+      51,
+      52,
+      53,
+      54
+    ],
+    "misconceptions": [
+      "把開發環境外觀當成介接契約",
+      "把語言相同當成資料及呼叫規格一致",
+      "把必要契約延後到整合失敗風險最高時"
+    ]
+  },
+  {
+    "question_code": "SE07-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:013",
+    "title": "資料、活動與循序設計",
+    "objective": "能正確辨析或應用「資料、活動與循序設計」。",
+    "pdf_pages": [
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "misconceptions": [
+      "混淆資料結構、流程與動態訊息的用途",
+      "把專案規劃及使用者背景當成內部設計圖",
+      "把互動順序與靜態資料設計對調"
+    ]
+  },
+  {
+    "question_code": "SE07-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:014",
+    "title": "上層架構與細部設計一致性",
+    "objective": "能正確辨析或應用「上層架構與細部設計一致性」。",
+    "pdf_pages": [
+      60,
+      62,
+      63
+    ],
+    "misconceptions": [
+      "忽略跨層契約一致性",
+      "把細部設計當成可取消上層互動契約",
+      "誤以為架構與程式單元必須一對一"
+    ]
+  },
+  {
+    "question_code": "SE07-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:07:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:07:015",
+    "title": "設計議題與決策理由",
+    "objective": "能正確辨析或應用「設計議題與決策理由」。",
+    "pdf_pages": [
+      64,
+      65,
+      66,
+      67
+    ],
+    "misconceptions": [
+      "把結果呈現當成完整決策紀錄",
+      "缺少需求取捨與候選方案的脈絡",
+      "忽略替代方案有助於理解取捨"
+    ]
+  },
+  {
+    "question_code": "SE08-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:001",
+    "title": "類別與物件",
+    "objective": "能正確辨析或應用「類別與物件」。",
+    "pdf_pages": [
+      4,
+      6
+    ],
+    "misconceptions": [
+      "把模板與實體當成操作與關係",
+      "混淆整個類型及實例與其中的資訊",
+      "把抽象模板與具體實體顛倒"
+    ]
+  },
+  {
+    "question_code": "SE08-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:002",
+    "title": "類別圖的用途",
+    "objective": "能正確辨析或應用「類別圖的用途」。",
+    "pdf_pages": [
+      4
+    ],
+    "misconceptions": [
+      "把專案時程當成程式結構",
+      "把訊息時間順序當成靜態類型結構",
+      "把使用者畫面骨架當成類別關係"
+    ]
+  },
+  {
+    "question_code": "SE08-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:003",
+    "title": "可見性符號",
+    "objective": "能正確辨析或應用「可見性符號」。",
+    "pdf_pages": [
+      8
+    ],
+    "misconceptions": [
+      "把保護與公開符號混淆",
+      "把私有與保護符號混淆",
+      "把加號與減號的意義顛倒"
+    ]
+  },
+  {
+    "question_code": "SE08-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:004",
+    "title": "短期相依關係",
+    "objective": "能正確辨析或應用「短期相依關係」。",
+    "pdf_pages": [
+      10,
+      11,
+      12
+    ],
+    "misconceptions": [
+      "把暫時使用參數誤作持久保存參考",
+      "把暫時使用當成排他擁有生命週期",
+      "把使用另一個物件當成 is-a"
+    ]
+  },
+  {
+    "question_code": "SE08-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:005",
+    "title": "長期關聯關係",
+    "objective": "能正確辨析或應用「長期關聯關係」。",
+    "pdf_pages": [
+      10,
+      13,
+      14
+    ],
+    "misconceptions": [
+      "把欄位參考本身當成排他擁有的證據",
+      "忽略欄位保存物件參考的事實",
+      "把包含參考當成種類關係"
+    ]
+  },
+  {
+    "question_code": "SE08-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:006",
+    "title": "關聯的導覽方向",
+    "objective": "能正確辨析或應用「關聯的導覽方向」。",
+    "pdf_pages": [
+      15,
+      16
+    ],
+    "misconceptions": [
+      "把導覽與繼承混淆",
+      "把參考方向顛倒",
+      "把語意關聯自動當成雙向程式參考"
+    ]
+  },
+  {
+    "question_code": "SE08-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:007",
+    "title": "Multiplicity 的端點意義",
+    "objective": "能正確辨析或應用「Multiplicity 的端點意義」。",
+    "pdf_pages": [
+      17
+    ],
+    "misconceptions": [
+      "把單一關聯的數量當成全系統實例總數",
+      "把端點所描述的對象反過來解讀",
+      "忽略 0..10 的下限及可變範圍"
+    ]
+  },
+  {
+    "question_code": "SE08-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:008",
+    "title": "Aggregation 的共享與存續",
+    "objective": "能正確辨析或應用「Aggregation 的共享與存續」。",
+    "pdf_pages": [
+      18
+    ],
+    "misconceptions": [
+      "忽略部分可共享且不隨單一整體銷毀",
+      "把擁有參考誤當成履行介面契約",
+      "把圖形擁有樣式誤當成圖形是一種樣式"
+    ]
+  },
+  {
+    "question_code": "SE08-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:009",
+    "title": "Composition 的所有權",
+    "objective": "能正確辨析或應用「Composition 的所有權」。",
+    "pdf_pages": [
+      18
+    ],
+    "misconceptions": [
+      "忽略長期所有權與生命週期條件",
+      "把訂單明細當成訂單的一種",
+      "忽略題幹規定排他擁有及隨整體刪除"
+    ]
+  },
+  {
+    "question_code": "SE08-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:010",
+    "title": "程式欄位不足以決定組合",
+    "objective": "能正確辨析或應用「程式欄位不足以決定組合」。",
+    "pdf_pages": [
+      18,
+      20,
+      21
+    ],
+    "misconceptions": [
+      "把可見性當成所有權語意",
+      "把資料型別與 is-a 混淆",
+      "把關聯判斷綁定於特定銷毀方法"
+    ]
+  },
+  {
+    "question_code": "SE08-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:011",
+    "title": "is-a 與 has-a",
+    "objective": "能正確辨析或應用「is-a 與 has-a」。",
+    "pdf_pages": [
+      22,
+      23,
+      24
+    ],
+    "misconceptions": [
+      "忽略題幹已明定種類關係",
+      "把零件關係當成相互 is-a",
+      "把種類與部分關係顛倒"
+    ]
+  },
+  {
+    "question_code": "SE08-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:012",
+    "title": "介面實作",
+    "objective": "能正確辨析或應用「介面實作」。",
+    "pdf_pages": [
+      23,
+      25
+    ],
+    "misconceptions": [
+      "把型別能力當成共享物件參考",
+      "把介面契約當成組合所有權",
+      "把共同實作介面當成兩個實作類別互相繼承"
+    ]
+  },
+  {
+    "question_code": "SE08-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:013",
+    "title": "共同屬性與特化",
+    "objective": "能正確辨析或應用「共同屬性與特化」。",
+    "pdf_pages": [
+      28,
+      29,
+      30,
+      31
+    ],
+    "misconceptions": [
+      "把並列特化類別誤作先後繼承",
+      "忽略共同特性與不同責任可以並存",
+      "把特化屬性強制套用於全部類型"
+    ]
+  },
+  {
+    "question_code": "SE08-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:014",
+    "title": "領域模型與實作模型",
+    "objective": "能正確辨析或應用「領域模型與實作模型」。",
+    "pdf_pages": [
+      29,
+      30,
+      31,
+      32
+    ],
+    "misconceptions": [
+      "把分析起點誤作無用成果",
+      "把領域概念完整等同於實作設計完整",
+      "把名詞擷取當成固定的程式檔案對應"
+    ]
+  },
+  {
+    "question_code": "SE08-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:08:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:08:015",
+    "title": "類別圖與上層元件對應",
+    "objective": "能正確辨析或應用「類別圖與上層元件對應」。",
+    "pdf_pages": [
+      33,
+      34,
+      35
+    ],
+    "misconceptions": [
+      "忽略跨層設計一致性",
+      "忽略 stereotype 可補充單元種類",
+      "把跨層對應限制成一對一"
+    ]
+  },
+  {
+    "question_code": "SE09-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:001",
+    "title": "測試與除錯",
+    "objective": "能正確辨析或應用「測試與除錯」。",
+    "pdf_pages": [
+      4,
+      6
+    ],
+    "misconceptions": [
+      "把發現與修復的主要工作顛倒",
+      "忽略測試可系統化揭露缺陷",
+      "把單次修復當成充分驗證"
+    ]
+  },
+  {
+    "question_code": "SE09-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:002",
+    "title": "窮舉測試與選擇性測試",
+    "objective": "能正確辨析或應用「窮舉測試與選擇性測試」。",
+    "pdf_pages": [
+      9,
+      11,
+      12
+    ],
+    "misconceptions": [
+      "把執行次數當成輸入及路徑涵蓋",
+      "忽略系統化選擇與資源有效運用",
+      "把有限測試推論為不存在缺陷"
+    ]
+  },
+  {
+    "question_code": "SE09-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:003",
+    "title": "黑箱與白箱",
+    "objective": "能正確辨析或應用「黑箱與白箱」。",
+    "pdf_pages": [
+      15,
+      16
+    ],
+    "misconceptions": [
+      "把測試階段當成案例設計技術的替代分類",
+      "把黑箱誤認為不執行程式",
+      "把需求外部行為與內部結構依據顛倒"
+    ]
+  },
+  {
+    "question_code": "SE09-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:004",
+    "title": "敘述覆蓋與分支覆蓋",
+    "objective": "能正確辨析或應用「敘述覆蓋與分支覆蓋」。",
+    "pdf_pages": [
+      17,
+      18,
+      19
+    ],
+    "misconceptions": [
+      "把執行所有敘述當成所有分支都走過",
+      "忽略真分支的賦值確實執行",
+      "把變數有值當成路徑充分的證據"
+    ]
+  },
+  {
+    "question_code": "SE09-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:005",
+    "title": "條件覆蓋不保證分支覆蓋",
+    "objective": "能正確辨析或應用「條件覆蓋不保證分支覆蓋」。",
+    "pdf_pages": [
+      20,
+      21
+    ],
+    "misconceptions": [
+      "忽略兩組 OR 結果都是真",
+      "忽略各條件在兩個案例中的不同值",
+      "把案例數量當成邏輯涵蓋的充分證據"
+    ]
+  },
+  {
+    "question_code": "SE09-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:006",
+    "title": "等價劃分",
+    "objective": "能正確辨析或應用「等價劃分」。",
+    "pdf_pages": [
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "misconceptions": [
+      "錯誤分類有效範圍",
+      "把單一有效值當成所有行為代表",
+      "忽略相同有效性下仍有不同輸出規則"
+    ]
+  },
+  {
+    "question_code": "SE09-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:007",
+    "title": "整數邊界值分析",
+    "objective": "能正確辨析或應用「整數邊界值分析」。",
+    "pdf_pages": [
+      29,
+      30,
+      31
+    ],
+    "misconceptions": [
+      "只測區間內一般值而未碰邊界",
+      "只有有效邊界與一般值，沒有界外案例",
+      "包含一般與界外值，但未緊貼邊界"
+    ]
+  },
+  {
+    "question_code": "SE09-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:008",
+    "title": "V 模型的測試依據",
+    "objective": "能正確辨析或應用「V 模型的測試依據」。",
+    "pdf_pages": [
+      34,
+      35,
+      36,
+      45,
+      48,
+      49
+    ],
+    "misconceptions": [
+      "把介接一致性當成使用者驗收全部目的",
+      "把局部程式邏輯當成商業目的確認",
+      "把可編譯當成使用者需求被滿足"
+    ]
+  },
+  {
+    "question_code": "SE09-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:009",
+    "title": "Test Driver 與 Test Double",
+    "objective": "能正確辨析或應用「Test Driver 與 Test Double」。",
+    "pdf_pages": [
+      36,
+      37,
+      38
+    ],
+    "misconceptions": [
+      "把可執行測試支援與文件混淆",
+      "把測試輔助程式當成受測標的與正式相依實作",
+      "把驅動受測程式與替代相依元件的角色顛倒"
+    ]
+  },
+  {
+    "question_code": "SE09-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:010",
+    "title": "Stub 與 Fake",
+    "objective": "能正確辨析或應用「Stub 與 Fake」。",
+    "pdf_pages": [
+      40,
+      41
+    ],
+    "misconceptions": [
+      "把固定回傳與可運作簡化實作顛倒",
+      "把實際提供資料或行為的替身當成未被使用的占位物",
+      "把替代相依的物件當成驅動器與受測系統"
+    ]
+  },
+  {
+    "question_code": "SE09-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:011",
+    "title": "Mock 的互動驗證",
+    "objective": "能正確辨析或應用「Mock 的互動驗證」。",
+    "pdf_pages": [
+      40,
+      41
+    ],
+    "misconceptions": [
+      "把視覺檢查當成互動契約驗證",
+      "忽略測試要驗證的互動與隔離需求",
+      "把占位物當成可檢查互動的替身"
+    ]
+  },
+  {
+    "question_code": "SE09-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:012",
+    "title": "JUnit 的生命週期與斷言",
+    "objective": "能正確辨析或應用「JUnit 的生命週期與斷言」。",
+    "pdf_pages": [
+      42,
+      43,
+      44
+    ],
+    "misconceptions": [
+      "忽略測試間共享狀態可能互相干擾",
+      "把略過測試當成測試隔離",
+      "把日誌輸出當成自動驗證"
+    ]
+  },
+  {
+    "question_code": "SE09-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:013",
+    "title": "整合測試的必要性",
+    "objective": "能正確辨析或應用「整合測試的必要性」。",
+    "pdf_pages": [
+      45
+    ],
+    "misconceptions": [
+      "把局部驗證當成跨模組驗證",
+      "把可在整合階段發現的問題延後",
+      "否認單元隔離測試與跨模組行為的差異"
+    ]
+  },
+  {
+    "question_code": "SE09-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:014",
+    "title": "由下而上整合",
+    "objective": "能正確辨析或應用「由下而上整合」。",
+    "pdf_pages": [
+      46,
+      47
+    ],
+    "misconceptions": [
+      "把設計文件當成動態整合驗證",
+      "忽略增量整合的可能性",
+      "把由上而下常用的支援方式套錯方向"
+    ]
+  },
+  {
+    "question_code": "SE09-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:015",
+    "title": "系統測試與驗收測試",
+    "objective": "能正確辨析或應用「系統測試與驗收測試」。",
+    "pdf_pages": [
+      48,
+      49
+    ],
+    "misconceptions": [
+      "忽略系統符合規格與符合實際目的可能不同",
+      "把技術與階段的關係絕對化",
+      "錯誤限縮兩種測試的範圍"
+    ]
+  },
+  {
+    "question_code": "SE09-016",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:016",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:016",
+    "title": "修正確認與迴歸",
+    "objective": "能正確辨析或應用「修正確認與迴歸」。",
+    "pdf_pages": [
+      50,
+      64
+    ],
+    "misconceptions": [
+      "把迴歸測試當成需求全面重訂",
+      "把修正確認與周邊迴歸的目的混淆",
+      "把重複執行當成擴大行為涵蓋"
+    ]
+  },
+  {
+    "question_code": "SE09-017",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:017",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:017",
+    "title": "測試案例與預期結果",
+    "objective": "能正確辨析或應用「測試案例與預期結果」。",
+    "pdf_pages": [
+      53,
+      54,
+      55,
+      56
+    ],
+    "misconceptions": [
+      "把主觀印象當成可重現規格",
+      "把命名長度當成判定依據",
+      "把被測行為當成自己的正確性標準"
+    ]
+  },
+  {
+    "question_code": "SE09-018",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:018",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:018",
+    "title": "缺陷回報後的閉環",
+    "objective": "能正確辨析或應用「缺陷回報後的閉環」。",
+    "pdf_pages": [
+      60,
+      65,
+      66
+    ],
+    "misconceptions": [
+      "把開發者宣告當成修復證據",
+      "把指派流程當成驗證完成",
+      "忽略交付前的修復確認"
+    ]
+  },
+  {
+    "question_code": "SE09-019",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:019",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:019",
+    "title": "自動化測試的成本",
+    "objective": "能正確辨析或應用「自動化測試的成本」。",
+    "pdf_pages": [
+      69,
+      70
+    ],
+    "misconceptions": [
+      "忽略系統或介面變更造成維護成本",
+      "否認自動化對重複驗證的支援",
+      "把執行工具當成測試設計的替代品"
+    ]
+  },
+  {
+    "question_code": "SE09-020",
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:09:020",
+    "assessment_target_id": "se_manual_20261117_v1:target:09:020",
+    "title": "E2E 測試工具的用途",
+    "objective": "能正確辨析或應用「E2E 測試工具的用途」。",
+    "pdf_pages": [
+      71,
+      72,
+      73
+    ],
+    "misconceptions": [
+      "把局部邏輯當成完整瀏覽器旅程",
+      "把靜態風格檢查當成跨瀏覽器行為驗證",
+      "把單一相依連線當成整個使用流程"
+    ]
+  },
+  {
+    "question_code": "SE10-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:001",
+    "title": "負載與壓力測試",
+    "objective": "能正確辨析或應用「負載與壓力測試」。",
+    "pdf_pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "misconceptions": [
+      "把多使用者承載評估當成局部邏輯或需求蒐集",
+      "把負載實驗當成版本比較或靜態審查",
+      "把超載評估與介面易用性混淆"
+    ]
+  },
+  {
+    "question_code": "SE10-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:002",
+    "title": "單元效能與系統效能",
+    "objective": "能正確辨析或應用「單元效能與系統效能」。",
+    "pdf_pages": [
+      6
+    ],
+    "misconceptions": [
+      "忽略整合相依與資源競爭",
+      "把系統驗證的必要性誤作禁止局部量測",
+      "把案例數與併發承載能力混淆"
+    ]
+  },
+  {
+    "question_code": "SE10-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:003",
+    "title": "錯誤率",
+    "objective": "能正確辨析或應用「錯誤率」。",
+    "pdf_pages": [
+      9,
+      26
+    ],
+    "misconceptions": [
+      "把比例轉百分比時少乘一百",
+      "把成功率當成錯誤率",
+      "將百分比小數點錯移一位"
+    ]
+  },
+  {
+    "question_code": "SE10-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:004",
+    "title": "吞吐量",
+    "objective": "能正確辨析或應用「吞吐量」。",
+    "pdf_pages": [
+      9,
+      26
+    ],
+    "misconceptions": [
+      "把時間除以請求數並標成每秒請求數",
+      "把總請求數當成每秒處理量",
+      "把觀察秒數當成吞吐量"
+    ]
+  },
+  {
+    "question_code": "SE10-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:005",
+    "title": "Latency 與 Elapsed Time",
+    "objective": "能正確辨析或應用「Latency 與 Elapsed Time」。",
+    "pdf_pages": [
+      26
+    ],
+    "misconceptions": [
+      "把首段與完整回應時間顛倒",
+      "把最後片段時間減首段時間當成總經過時間",
+      "把首段之後的傳輸期間當成 Latency"
+    ]
+  },
+  {
+    "question_code": "SE10-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:006",
+    "title": "百分位數",
+    "objective": "能正確辨析或應用「百分位數」。",
+    "pdf_pages": [
+      26,
+      27
+    ],
+    "misconceptions": [
+      "把百分位數當成併發人數",
+      "把百分位數當成所有樣本相同值",
+      "把百分位數與平均數等同"
+    ]
+  },
+  {
+    "question_code": "SE10-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:007",
+    "title": "平均與尾端延遲",
+    "objective": "能正確辨析或應用「平均與尾端延遲」。",
+    "pdf_pages": [
+      26,
+      27,
+      31
+    ],
+    "misconceptions": [
+      "忽略實際 P95 已超出 1 秒",
+      "否認百分位數正是延遲分布指標",
+      "把平均值當成所有分布條件的替代品"
+    ]
+  },
+  {
+    "question_code": "SE10-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:008",
+    "title": "標準差的解讀",
+    "objective": "能正確辨析或應用「標準差的解讀」。",
+    "pdf_pages": [
+      26,
+      27
+    ],
+    "misconceptions": [
+      "把延遲變異與處理量視為同一指標",
+      "把分散程度誤作每筆值的大小排序",
+      "把延遲分散當成正確性證據"
+    ]
+  },
+  {
+    "question_code": "SE10-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:009",
+    "title": "JMeter 的測試元件",
+    "objective": "能正確辨析或應用「JMeter 的測試元件」。",
+    "pdf_pages": [
+      14,
+      18,
+      19,
+      20
+    ],
+    "misconceptions": [
+      "把請求與報表的配置角色顛倒",
+      "把負載測試元件當成資料庫結構",
+      "把使用者模擬、請求執行與結果呈現混淆"
+    ]
+  },
+  {
+    "question_code": "SE10-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:010",
+    "title": "執行緒、迴圈與請求總數",
+    "objective": "能正確辨析或應用「執行緒、迴圈與請求總數」。",
+    "pdf_pages": [
+      19,
+      20,
+      21,
+      22
+    ],
+    "misconceptions": [
+      "漏算五次迴圈",
+      "漏算每次迴圈有兩個 Sampler",
+      "漏算四十個執行緒"
+    ]
+  },
+  {
+    "question_code": "SE10-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:011",
+    "title": "Ramp-up 與總耗時",
+    "objective": "能正確辨析或應用「Ramp-up 與總耗時」。",
+    "pdf_pages": [
+      19
+    ],
+    "misconceptions": [
+      "把 ramp-up 乘迴圈數當成總耗時公式",
+      "把使用者啟動安排當成伺服器延遲",
+      "把陸續啟動當成共同延遲"
+    ]
+  },
+  {
+    "question_code": "SE10-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:012",
+    "title": "JMeter 監聽器的選擇",
+    "objective": "能正確辨析或應用「JMeter 監聽器的選擇」。",
+    "pdf_pages": [
+      15
+    ],
+    "misconceptions": [
+      "把單一總量指標當成錯誤內容紀錄",
+      "把彙整統計當成單筆請求內容",
+      "把負載設定當成實際回應證據"
+    ]
+  },
+  {
+    "question_code": "SE10-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:013",
+    "title": "效能實驗的可比較性",
+    "objective": "能正確辨析或應用「效能實驗的可比較性」。",
+    "pdf_pages": [
+      10,
+      11
+    ],
+    "misconceptions": [
+      "把共同變更後的結果歸因於每個單一因素",
+      "把單一速度改善當成品質全面改善",
+      "忽略效能報告需要環境與負載脈絡"
+    ]
+  },
+  {
+    "question_code": "SE10-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:014",
+    "title": "瓶頸定位與改善",
+    "objective": "能正確辨析或應用「瓶頸定位與改善」。",
+    "pdf_pages": [
+      8,
+      32,
+      33,
+      34
+    ],
+    "misconceptions": [
+      "採取與已觀察瓶頸無直接關聯的修改",
+      "把局部證據擴大成全系統失效",
+      "忽略關鍵服務已出現效能問題"
+    ]
+  },
+  {
+    "question_code": "SE10-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:015",
+    "title": "嚴格門檻與報告證據",
+    "objective": "能正確辨析或應用「嚴格門檻與報告證據」。",
+    "pdf_pages": [
+      29,
+      30,
+      31
+    ],
+    "misconceptions": [
+      "把證據不足誤作指標沒有任何價值",
+      "把九成門檻推論為全部樣本",
+      "把平均當成最大值"
+    ]
+  },
+  {
+    "question_code": "SE10-016",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:016",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:016",
+    "title": "易用性準則",
+    "objective": "能正確辨析或應用「易用性準則」。",
+    "pdf_pages": [
+      36
+    ],
+    "misconceptions": [
+      "把缺少進度回饋當成專家效率問題",
+      "把外觀一致與狀態可見性混淆",
+      "把內部欄位命名當成可見使用體驗"
+    ]
+  },
+  {
+    "question_code": "SE10-017",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:017",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:017",
+    "title": "A/B Testing 的解讀",
+    "objective": "能正確辨析或應用「A/B Testing 的解讀」。",
+    "pdf_pages": [
+      37
+    ],
+    "misconceptions": [
+      "把主觀偏好當成實驗結果",
+      "把版本順序當成使用者證據",
+      "忽略多項差異妨礙單一因素解讀"
+    ]
+  },
+  {
+    "question_code": "SE10-018",
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:10:018",
+    "assessment_target_id": "se_manual_20261117_v1:target:10:018",
+    "title": "安全性測試與稽核",
+    "objective": "能正確辨析或應用「安全性測試與稽核」。",
+    "pdf_pages": [
+      38,
+      39,
+      40
+    ],
+    "misconceptions": [
+      "把效能指標當成安全性證據",
+      "破壞追查安全事件所需證據",
+      "把復原措施當成防止未授權存取的充分條件"
+    ]
+  },
+  {
+    "question_code": "SE11-001",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:001",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:001",
+    "title": "DevOps 與困惑牆",
+    "objective": "能正確辨析或應用「DevOps 與困惑牆」。",
+    "pdf_pages": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "misconceptions": [
+      "把減少衝突誤作隔離團隊",
+      "忽略交付效率與品質需要一起改善",
+      "把協作整合簡化成增加行政交接"
+    ]
+  },
+  {
+    "question_code": "SE11-002",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:002",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:002",
+    "title": "自動化流程的階段關係",
+    "objective": "能正確辨析或應用「自動化流程的階段關係」。",
+    "pdf_pages": [
+      9
+    ],
+    "misconceptions": [
+      "把提交成功當成品質通過",
+      "把移除驗證當成修復問題",
+      "忽略部署前驗證的目的"
+    ]
+  },
+  {
+    "question_code": "SE11-003",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:003",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:003",
+    "title": "測試環境與正式環境",
+    "objective": "能正確辨析或應用「測試環境與正式環境」。",
+    "pdf_pages": [
+      9
+    ],
+    "misconceptions": [
+      "把相似環境測試當成永久無錯保證",
+      "把環境相近誤作命名相同",
+      "把環境層驗證當成局部邏輯測試的替代品"
+    ]
+  },
+  {
+    "question_code": "SE11-004",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:004",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:004",
+    "title": "Jenkins 與建置工具",
+    "objective": "能正確辨析或應用「Jenkins 與建置工具」。",
+    "pdf_pages": [
+      10,
+      11,
+      12,
+      23
+    ],
+    "misconceptions": [
+      "把建置工具當成版本控制系統",
+      "忽略流程協調與建置工具的角色差異",
+      "忽略自動化伺服器的核心功能"
+    ]
+  },
+  {
+    "question_code": "SE11-005",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:005",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:005",
+    "title": "Jenkins 的控制與執行分工",
+    "objective": "能正確辨析或應用「Jenkins 的控制與執行分工」。",
+    "pdf_pages": [
+      12,
+      17,
+      18
+    ],
+    "misconceptions": [
+      "忽略排程與監控責任",
+      "忽略集中協調與分派的關係",
+      "把任務執行者當成需求分析角色"
+    ]
+  },
+  {
+    "question_code": "SE11-006",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:006",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:006",
+    "title": "SCM 輪詢觸發",
+    "objective": "能正確辨析或應用「SCM 輪詢觸發」。",
+    "pdf_pages": [
+      19
+    ],
+    "misconceptions": [
+      "把偵測來源變更當成修改原始碼",
+      "把觸發方式當成 SCM 替代品",
+      "忽略輪詢是定期執行的機制"
+    ]
+  },
+  {
+    "question_code": "SE11-007",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:007",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:007",
+    "title": "建置輸出與失敗調查",
+    "objective": "能正確辨析或應用「建置輸出與失敗調查」。",
+    "pdf_pages": [
+      20,
+      21,
+      22
+    ],
+    "misconceptions": [
+      "把狀態摘要當成足以定位原因的資訊",
+      "把版本參照名稱當成執行錯誤證據",
+      "把重新命名當成修復執行失敗"
+    ]
+  },
+  {
+    "question_code": "SE11-008",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:008",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:008",
+    "title": "測試工具在 Pipeline 的角色",
+    "objective": "能正確辨析或應用「測試工具在 Pipeline 的角色」。",
+    "pdf_pages": [
+      23
+    ],
+    "misconceptions": [
+      "把測試工具當成發布標籤工具",
+      "把可執行測試工具當成分析或管理活動",
+      "把三種工具的典型責任錯置"
+    ]
+  },
+  {
+    "question_code": "SE11-009",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:009",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:009",
+    "title": "Pipeline as Code",
+    "objective": "能正確辨析或應用「Pipeline as Code」。",
+    "pdf_pages": [
+      24
+    ],
+    "misconceptions": [
+      "把版本控制當成禁止變更",
+      "把流程定義追溯當成執行證據的替代品",
+      "把流程程式化當成環境完全相同的保證"
+    ]
+  },
+  {
+    "question_code": "SE11-010",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:010",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:010",
+    "title": "Declarative 與 Scripted Pipeline",
+    "objective": "能正確辨析或應用「Declarative 與 Scripted Pipeline」。",
+    "pdf_pages": [
+      25,
+      26
+    ],
+    "misconceptions": [
+      "忽略抽象程度與控制彈性差異",
+      "否認兩者都能描述自動化流程",
+      "把流水線語法與其他工具類別混淆"
+    ]
+  },
+  {
+    "question_code": "SE11-011",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:011",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:011",
+    "title": "Stage View",
+    "objective": "能正確辨析或應用「Stage View」。",
+    "pdf_pages": [
+      25,
+      27
+    ],
+    "misconceptions": [
+      "把建置設定識別當成實際階段狀態",
+      "無法直接定位本次流水線失敗階段",
+      "把帳號外觀當成流程執行資訊"
+    ]
+  },
+  {
+    "question_code": "SE11-012",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:012",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:012",
+    "title": "SonarQube 與動態測試",
+    "objective": "能正確辨析或應用「SonarQube 與動態測試」。",
+    "pdf_pages": [
+      9,
+      28
+    ],
+    "misconceptions": [
+      "把不能全面取代誤解成沒有任何價值",
+      "把原始碼檢查當成全面行為證明",
+      "把工具分析當成需求端確認"
+    ]
+  },
+  {
+    "question_code": "SE11-013",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:013",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:013",
+    "title": "品質掃描的流程位置",
+    "objective": "能正確辨析或應用「品質掃描的流程位置」。",
+    "pdf_pages": [
+      28,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "misconceptions": [
+      "把變更描述當成原始碼分析",
+      "把文件連結當成實際執行結果",
+      "把舊版本分析當成所有後續版本的證據"
+    ]
+  },
+  {
+    "question_code": "SE11-014",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:014",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:014",
+    "title": "GitHub Actions 的事件",
+    "objective": "能正確辨析或應用「GitHub Actions 的事件」。",
+    "pdf_pages": [
+      39,
+      40
+    ],
+    "misconceptions": [
+      "把觸發條件當成執行環境",
+      "把整個流程的觸發當成內部步驟",
+      "把事件種類當成可執行元件"
+    ]
+  },
+  {
+    "question_code": "SE11-015",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:015",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:015",
+    "title": "Job、Step 與 Runner",
+    "objective": "能正確辨析或應用「Job、Step 與 Runner」。",
+    "pdf_pages": [
+      40
+    ],
+    "misconceptions": [
+      "把步驟與執行環境的層次倒置",
+      "把自動化工作與版本標籤混淆",
+      "混淆 Action 與 Runner"
+    ]
+  },
+  {
+    "question_code": "SE11-016",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:016",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:016",
+    "title": "Action 與命令步驟",
+    "objective": "能正確辨析或應用「Action 與命令步驟」。",
+    "pdf_pages": [
+      40
+    ],
+    "misconceptions": [
+      "忽略直接執行命令也是步驟形式",
+      "忽略 Step 可使用 Action",
+      "把可重用任務與執行環境混淆"
+    ]
+  },
+  {
+    "question_code": "SE11-017",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:017",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:017",
+    "title": "自動化流程失敗的意義",
+    "objective": "能正確辨析或應用「自動化流程失敗的意義」。",
+    "pdf_pages": [
+      9,
+      24,
+      39,
+      40
+    ],
+    "misconceptions": [
+      "把移除回饋當成提高可靠性",
+      "忽略環境差異或隱含相依可能揭露問題",
+      "把單一環境通過當成跨環境保證"
+    ]
+  },
+  {
+    "question_code": "SE11-018",
+    "course_unit_id": "se_manual_20261117_v1:unit:11",
+    "knowledge_point_id": "se_manual_20261117_v1:kp:11:018",
+    "assessment_target_id": "se_manual_20261117_v1:target:11:018",
+    "title": "自動化與交付品質",
+    "objective": "能正確辨析或應用「自動化與交付品質」。",
+    "pdf_pages": [
+      7,
+      9,
+      24
+    ],
+    "misconceptions": [
+      "把交付頻率當成品質充分條件",
+      "把工具替換當成流程與驗證改善",
+      "把自動化等同於內容與行為正確"
+    ]
+  }
+]

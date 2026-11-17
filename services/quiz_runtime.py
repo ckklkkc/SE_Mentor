@@ -4,6 +4,7 @@ import random
 from collections import defaultdict
 
 from database.mongo_controller import DiagnosisQuiz
+from services.quiz_course_units import resolve_course_unit
 
 
 async def get_approved_quizzes(
@@ -13,6 +14,9 @@ async def get_approved_quizzes(
     """同一次小測驗優先讓每題對應不同評量目標。"""
     if not 5 <= count <= 10:
         raise ValueError("小測驗題數必須介於 5 到 10 題")
+
+    requested_scope = (course_unit or "").strip()
+    course_unit = resolve_course_unit(course_unit)
 
     query: dict = {"review_status": "approved"}
     if course_unit:
@@ -54,7 +58,7 @@ async def get_approved_quizzes(
         by_target[key].append(question)
 
     if len(by_target) < count:
-        scope = f"CourseUnit「{course_unit}」" if course_unit else "全部 CourseUnit"
+        scope = f"教材範圍「{requested_scope}」" if course_unit else "全部 CourseUnit"
         raise ValueError(
             f"{scope}只有 {len(by_target)} 個具核准題目的不同評量目標，"
             f"無法組成 {count} 題小測驗"
@@ -75,7 +79,7 @@ async def get_quizzes(
     del user_id
     questions = await get_approved_quizzes(count, course_unit)
     selected_title = questions[0].course_unit_title or questions[0].chapter
-    scope = course_unit or selected_title
+    scope = selected_title
     return (
         questions,
         f"小測驗範圍：{scope}；共 {count} 題，且每題對應不同評量目標。",

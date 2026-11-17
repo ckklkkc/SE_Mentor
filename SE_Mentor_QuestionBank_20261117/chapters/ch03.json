@@ -1,0 +1,1182 @@
+[
+  {
+    "_id": {
+      "$oid": "04dddc924e097ad3425c5938"
+    },
+    "question": "下列哪項最適合作為面向客戶的使用者故事？",
+    "options": [
+      "所有搜尋都透過某個資料存取框架執行",
+      "搜尋模組統一使用指定的迴圈語法",
+      "身為旅客，我能依出發日搜尋班次，以安排抵達時間",
+      "班次資料必須存入指定名稱的類別"
+    ],
+    "answer": 2,
+    "analysis": "好的故事表達使用者想做什麼及原因，讓客戶和團隊都能理解，而非只描述技術實作。\n\nA：把實作方式當成使用者意圖。\nB：把編碼細節當成需求故事。\nC：正確。\nD：把內部程式結構當成客戶價值。",
+    "concept": "故事的 Why 與 What",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:001",
+    "assessment_target": "故事的 Why 與 What",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:001",
+        "misconception": "把實作方式當成使用者意圖"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:001",
+        "misconception": "把編碼細節當成需求故事"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:001",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:001",
+        "misconception": "把內部程式結構當成客戶價值"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:007",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:008",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:009"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        7,
+        8,
+        9
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "好的故事表達使用者想做什麼及原因，讓客戶和團隊都能理解，而非只描述技術實作。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "02d0ffd2672a6c18eb56f1c2"
+    },
+    "question": "故事卡只寫「賣家可刪除賣場」。團隊要補足何時算完成，哪種作法最適當？",
+    "options": [
+      "和客戶討論細節，記錄不存在編號、確認及取消等可驗證情境",
+      "只把故事卡字數加倍而不與客戶討論",
+      "先固定資料庫技術即可視為故事完整",
+      "等程式上線後才詢問取消的預期結果"
+    ],
+    "answer": 0,
+    "analysis": "故事卡是提醒與規劃起點，對話充實細節，測試提醒讓完成程度可被確認。\n\nA：正確。\nB：把篇幅當成需求理解與確認。\nC：把設計決策當成驗收判準。\nD：忽略開發前澄清可降低誤解。",
+    "concept": "故事卡、對話與完成判準",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:002",
+    "assessment_target": "故事卡、對話與完成判準",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:002",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:002",
+        "misconception": "把篇幅當成需求理解與確認"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:002",
+        "misconception": "把設計決策當成驗收判準"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:002",
+        "misconception": "忽略開發前澄清可降低誤解"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:007",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:012",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:013",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:014"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        7,
+        12,
+        13,
+        14
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "故事卡是提醒與規劃起點，對話充實細節，測試提醒讓完成程度可被確認。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "a94be055c5aefeaeb79d58d4"
+    },
+    "question": "「完成整個求職網站」無法在單次迭代內設計、實作與測試。較適當的處理是什麼？",
+    "options": [
+      "只把文字分成三段而保持相同交付範圍",
+      "取消驗收情境以縮短故事描述",
+      "保持一張故事卡，只把所有人列為負責人",
+      "視為 Epic，依可理解的使用者功能拆成較小故事"
+    ],
+    "answer": 3,
+    "analysis": "Epic 應拆成較小且可開發、可測試的故事，例如依條件搜尋與查看職缺資訊。\n\nA：把文字拆段當成功能拆解。\nB：把省略品質判準當成降低故事規模。\nC：把人數增加當成故事粒度改善。\nD：正確。",
+    "concept": "Epic 的拆解",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:003",
+    "assessment_target": "Epic 的拆解",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:003",
+        "misconception": "把文字拆段當成功能拆解"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:003",
+        "misconception": "把省略品質判準當成降低故事規模"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:003",
+        "misconception": "把人數增加當成故事粒度改善"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:003",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:010",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:011"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        10,
+        11
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "Epic 應拆成較小且可開發、可測試的故事，例如依條件搜尋與查看職缺資訊。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4b5e18cabadfb5ba0533b295"
+    },
+    "question": "「身為賣家，我可以下架已售完商品，讓顧客不再下單缺貨品。」其中最後一段表達什麼？",
+    "options": [
+      "活動帶來的使用或商業價值",
+      "開發此故事所需的工時",
+      "操作該功能的角色名稱",
+      "執行該功能所需的程式語言"
+    ],
+    "answer": 0,
+    "analysis": "模板分為角色、活動與價值；避免缺貨訂單說明此活動為什麼值得提供。\n\nA：正確。\nB：把價值與成本混淆。\nC：把受益理由與角色欄位混淆。\nD：把價值與實作技術混淆。",
+    "concept": "故事模板的價值部分",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:004",
+    "assessment_target": "故事模板的價值部分",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:004",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:004",
+        "misconception": "把價值與成本混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:004",
+        "misconception": "把受益理由與角色欄位混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:004",
+        "misconception": "把價值與實作技術混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:015"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        15
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "模板分為角色、活動與價值；避免缺貨訂單說明此活動為什麼值得提供。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "399740dd019f2de135129669"
+    },
+    "question": "三張故事卡分別寫不同信用卡品牌的相同付款功能，強烈共用同一套流程。依教材範例，怎樣調整較能改善獨立性？",
+    "options": [
+      "只更改三張卡的標題顏色",
+      "將三張卡強制安排在不同年度完成",
+      "要求每張故事複製完整付款程式",
+      "整合成信用卡付款故事，再明確討論支援卡別"
+    ],
+    "answer": 3,
+    "analysis": "教材以卡別付款故事示範不適當的強相依切割，可整合共同目的並保留支援範圍的討論。\n\nA：把視覺區隔當成需求獨立。\nB：把時間分隔當成移除功能相依。\nC：把程式複製當成故事獨立性的解方。\nD：正確。",
+    "concept": "INVEST 的獨立性",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:005",
+    "assessment_target": "INVEST 的獨立性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:005",
+        "misconception": "把視覺區隔當成需求獨立"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:005",
+        "misconception": "把時間分隔當成移除功能相依"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:005",
+        "misconception": "把程式複製當成故事獨立性的解方"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:005",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:018",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:019"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        18,
+        19
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "教材以卡別付款故事示範不適當的強相依切割，可整合共同目的並保留支援範圍的討論。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "8d63712fb22ea05f402a6467"
+    },
+    "question": "故事卡註記「是否支援 JCB 尚待確認」。這最能體現哪項原則？",
+    "options": [
+      "只要有註記就不需要任何驗收情境",
+      "故事內容等同已簽訂且不可修改的完整合約",
+      "未確定的細節永遠不需確認",
+      "故事容許透過後續對話協商與釐清細節"
+    ],
+    "answer": 3,
+    "analysis": "可協商表示故事是討論基礎；待釐清問題可加註記，並應在適當時機確認。\n\nA：把對話提醒當成完成判準的替代品。\nB：把故事當成固定規格合約。\nC：把可協商誤當成不需做決策。\nD：正確。",
+    "concept": "INVEST 的可協商性",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:006",
+    "assessment_target": "INVEST 的可協商性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:006",
+        "misconception": "把對話提醒當成完成判準的替代品"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:006",
+        "misconception": "把故事當成固定規格合約"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:006",
+        "misconception": "把可協商誤當成不需做決策"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:006",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:020"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        20
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "可協商表示故事是討論基礎；待釐清問題可加註記，並應在適當時機確認。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "be118d7aa08a8abe8bcfa1f5"
+    },
+    "question": "團隊因不熟悉新技術而無法合理估算故事。哪個做法最符合教材？",
+    "options": [
+      "任意指定點數，禁止後續討論",
+      "讓研究無期限持續，直到掌握所有可能技術",
+      "安排固定時間的 Spike 研究，再估算或拆分實際功能故事",
+      "直接把所有故事估成相同點數"
+    ],
+    "answer": 2,
+    "analysis": "Spike 用受限時間蒐集與分析資訊，降低技術未知後再規劃真正的功能工作。\n\nA：把數值填入當成降低不確定性。\nB：忽略 Spike 的時間盒。\nC：正確。\nD：忽略不同故事的複雜度與理解程度。",
+    "concept": "INVEST 的可估算性與 Spike",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:007",
+    "assessment_target": "INVEST 的可估算性與 Spike",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:007",
+        "misconception": "把數值填入當成降低不確定性"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:007",
+        "misconception": "忽略 Spike 的時間盒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:007",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:007",
+        "misconception": "忽略不同故事的複雜度與理解程度"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:018",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:022"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        18,
+        22
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "Spike 用受限時間蒐集與分析資訊，降低技術未知後再規劃真正的功能工作。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "94386eb6a841e2acb6c602d9"
+    },
+    "question": "團隊把基準故事估為 3 點，另一故事估為 8 點。哪項解讀最合理？",
+    "options": [
+      "8 點必定帶來比 3 點更高的商業價值",
+      "在該團隊的尺度下，後者預期所需努力較大",
+      "故事點等於故事卡的字數",
+      "8 點在所有團隊都固定等於 8 小時"
+    ],
+    "answer": 1,
+    "analysis": "故事點沒有固定時間單位，透過基準故事相對比較，會考量技術複雜度與團隊理解。\n\nA：把努力估計與價值混淆。\nB：正確。\nC：把描述長度當成實作努力。\nD：把團隊相對尺度當成通用工時計量。",
+    "concept": "故事點與相對規模",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:008",
+    "assessment_target": "故事點與相對規模",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:008",
+        "misconception": "把努力估計與價值混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:008",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:008",
+        "misconception": "把描述長度當成實作努力"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:008",
+        "misconception": "把團隊相對尺度當成通用工時計量"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:023",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:024",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:029"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        23,
+        24,
+        29
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "故事點沒有固定時間單位，透過基準故事相對比較，會考量技術複雜度與團隊理解。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "7a8aacba84195ad133686d40"
+    },
+    "question": "開發者自行加入客戶未要求且無明確價值的動畫功能，導致必要故事延誤。教材將此稱為什麼？",
+    "options": [
+      "鍍金",
+      "驗證式學習",
+      "探針研究",
+      "可協商性"
+    ],
+    "answer": 0,
+    "analysis": "鍍金是添加不需要的功能，會耗用資源；故事應聚焦使用者或客戶重視的價值。\n\nA：正確。\nB：把未設定假設與回饋的追加開發當成產品實驗。\nC：把無需求依據的功能追加當成降低技術未知。\nD：把未經價值討論自行加功能當成協商。",
+    "concept": "故事壞味道：鍍金",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:009",
+    "assessment_target": "故事壞味道：鍍金",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:009",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:009",
+        "misconception": "把未設定假設與回饋的追加開發當成產品實驗"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:009",
+        "misconception": "把無需求依據的功能追加當成降低技術未知"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:009",
+        "misconception": "把未經價值討論自行加功能當成協商"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:026"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        26
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "鍍金是添加不需要的功能，會耗用資源；故事應聚焦使用者或客戶重視的價值。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "684935627d54f977b43c607a"
+    },
+    "question": "「身為使用者，我希望搜尋結果在 2 秒內回傳。」依教材，應如何看待這張卡？",
+    "options": [
+      "只要寫成故事，回應時間就變成功能需求",
+      "故事也可承載非功能需求，回應時間仍需具體確認測試條件",
+      "使用者故事只能描述功能，這種寫法一律不成立",
+      "2 秒只表示商業價值，與驗收無關"
+    ],
+    "answer": 1,
+    "analysis": "故事常偏向功能，但也可表達品質要求；格式不會改變回應時間作為非功能限制的性質。\n\nA：把表達格式當成需求種類的決定因素。\nB：正確。\nC：把故事格式限制成只能表達功能。\nD：忽略量化品質限制可被測試。",
+    "concept": "故事與非功能需求",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:010",
+    "assessment_target": "故事與非功能需求",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:010",
+        "misconception": "把表達格式當成需求種類的決定因素"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:010",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:010",
+        "misconception": "把故事格式限制成只能表達功能"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:010",
+        "misconception": "忽略量化品質限制可被測試"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:027"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        27
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "故事常偏向功能，但也可表達品質要求；格式不會改變回應時間作為非功能限制的性質。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3e901489de79bc5fb898b175"
+    },
+    "question": "整理故事地圖時，團隊由左至右排列「搜尋、選擇、付款」，在下方放較低優先或更細的故事。這如何解讀？",
+    "options": [
+      "左右只表示開發人員姓名，上下只表示工時",
+      "左右只表示商業價值高低，上下表示時間順序",
+      "左右呈現敘事順序，上下呈現優先順序或分解",
+      "左右表示資料庫欄位，上下表示型別"
+    ],
+    "answer": 2,
+    "analysis": "教材以左右安排敘事流，以上下安排優先順序或細部分解，保留使用者旅程的整體性。\n\nA：把故事地圖誤當成個人排班表。\nB：把故事地圖的兩個方向顛倒。\nC：正確。\nD：把使用流程建模與資料設計混淆。",
+    "concept": "故事地圖的軸向",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:011",
+    "assessment_target": "故事地圖的軸向",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:011",
+        "misconception": "把故事地圖誤當成個人排班表"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:011",
+        "misconception": "把故事地圖的兩個方向顛倒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:011",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:011",
+        "misconception": "把使用流程建模與資料設計混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:034",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:037",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:043"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        34,
+        37,
+        43
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "教材以左右安排敘事流，以上下安排優先順序或細部分解，保留使用者旅程的整體性。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "fc47c6aff635c91435c55b8a"
+    },
+    "question": "團隊檢視購物故事地圖，問「若付款失敗，庫存和訂單會如何？」這項討論主要用於什麼？",
+    "options": [
+      "發現例外流程與遺漏，補足需求理解",
+      "決定採用哪種程式編譯器",
+      "確認所有新增便利貼都是無價值的範疇蔓延",
+      "取消原本的使用者旅程"
+    ],
+    "answer": 0,
+    "analysis": "What about 問題能檢查出錯、未完成操作及其他角色看到的結果，揭露尚未理解的需求。\n\nA：正確。\nB：把例外流程探索當成工具選型。\nC：把需求理解增加一律視為無控制擴張。\nD：把補充例外流程當成推翻整體操作概念。",
+    "concept": "故事地圖的例外探索",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:012",
+    "assessment_target": "故事地圖的例外探索",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:012",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:012",
+        "misconception": "把例外流程探索當成工具選型"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:012",
+        "misconception": "把需求理解增加一律視為無控制擴張"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:012",
+        "misconception": "把補充例外流程當成推翻整體操作概念"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:038",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:045"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        38,
+        45
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "What about 問題能檢查出錯、未完成操作及其他角色看到的結果，揭露尚未理解的需求。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "fb8ac7ccc5921e913beb6a0d"
+    },
+    "question": "故事地圖中的「宣傳活動」、「客製化文宣」、「上傳圖片」依教材範例，最合理的層級依序是什麼？",
+    "options": [
+      "細節步驟、大活動、整個產品",
+      "故事、技術類別、資料庫欄位",
+      "大活動、步驟、細節步驟或故事",
+      "三者都必須是相同大小的獨立故事"
+    ],
+    "answer": 2,
+    "analysis": "地圖由目標或大活動逐步拆為使用者步驟及細節故事，協助保留整體脈絡。\n\nA：把拆解的粗細方向顛倒。\nB：把需求層級與實作結構混淆。\nC：正確。\nD：忽略故事地圖本來可呈現不同粒度。",
+    "concept": "故事地圖的層級",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:013",
+    "assessment_target": "故事地圖的層級",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:013",
+        "misconception": "把拆解的粗細方向顛倒"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:013",
+        "misconception": "把需求層級與實作結構混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:013",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:013",
+        "misconception": "忽略故事地圖本來可呈現不同粒度"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:039",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:040",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:041",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:042",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:052"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        39,
+        40,
+        41,
+        42,
+        52
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "地圖由目標或大活動逐步拆為使用者步驟及細節故事，協助保留整體脈絡。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "b671b8de4299e3b43eaec749"
+    },
+    "question": "團隊首版只支援一種付款方式，但使用者能完成選購到付款的核心旅程，並可蒐集回饋。這樣安排的主要理由是什麼？",
+    "options": [
+      "首版應只交付資料庫，無須支持使用者成果",
+      "MVP 必須一次具備所有規劃功能",
+      "只要功能少就一定不必測試",
+      "以最小可行成果驗證核心假設，再依回饋擴充"
+    ],
+    "answer": 3,
+    "analysis": "MVP 著重能表達核心概念並讓使用者實際回饋的最小成果，不以功能數量單獨判定。\n\nA：把技術層完成等同於可驗證產品。\nB：把最小驗證成果當成最終完整版。\nC：把最小可行誤解成沒有品質要求。\nD：正確。",
+    "concept": "MVP 與驗證式學習",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:014",
+    "assessment_target": "MVP 與驗證式學習",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:014",
+        "misconception": "把技術層完成等同於可驗證產品"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:014",
+        "misconception": "把最小驗證成果當成最終完整版"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:014",
+        "misconception": "把最小可行誤解成沒有品質要求"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:014",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:046",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:047",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:048"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        46,
+        47,
+        48
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "MVP 著重能表達核心概念並讓使用者實際回饋的最小成果，不以功能數量單獨判定。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "88c6248136944ff07b9fb302"
+    },
+    "question": "團隊處於開局階段，時間有限。依教材，最應優先投入哪項工作？",
+    "options": [
+      "先精修所有非必要圖示與裝飾效果",
+      "打通必要使用步驟，並處理關鍵技術風險",
+      "等核心功能完成後才開始辨識技術風險",
+      "先完成每個次要故事的全部細節"
+    ],
+    "answer": 1,
+    "analysis": "開局應建立從頭到尾可運作的基本功能並處理高風險；中局填補細節，終局再精煉與優化。\n\nA：把後期精煉與可有可無功能放在核心旅程之前。\nB：正確。\nC：把早期風險處理延後。\nD：忽略開局應看清整體產品如何運作。",
+    "concept": "開局、中局與終局策略",
+    "chapter": "[03]使用者故事分析",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:03:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:03:015",
+    "assessment_target": "開局、中局與終局策略",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:015",
+        "misconception": "把後期精煉與可有可無功能放在核心旅程之前"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:015",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:015",
+        "misconception": "把早期風險處理延後"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:03:015",
+        "misconception": "忽略開局應看清整體產品如何運作"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:050",
+      "manual_pdf:e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0:page:051"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:03",
+    "course_unit_title": "[03]使用者故事分析",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE03-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[03]使用者故事分析.pdf",
+      "pdf_git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "pdf_pages": [
+        50,
+        51
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[03]使用者故事分析.pdf",
+      "basis_summary": "開局應建立從頭到尾可運作的基本功能並處理高風險；中局填補細節，終局再精煉與優化。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

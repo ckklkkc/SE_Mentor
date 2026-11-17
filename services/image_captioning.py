@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import base64
+from copy import deepcopy
 import hashlib
 import json
 import mimetypes
@@ -202,7 +203,13 @@ def image_description_contract(schema: type[ImageDescription] = ImageDescription
             variant.get("type", "") for variant in field.get("anyOf", [])
         )
         if kind == "array":
-            kind = "字串陣列"
+            items = field.get("items", {})
+            kind = "物件陣列" if "$ref" in items else "字串陣列"
+            if "$ref" in items:
+                definition = schema.model_json_schema().get("$defs", {}).get(items["$ref"].split("/")[-1], {})
+                for child, spec in definition.get("properties", {}).items():
+                    choices = "／".join(spec.get("enum", []))
+                    fields.append(f"  {name} 每項的 {child}：{choices or spec.get('type', 'string')}")
         choices = "；僅可使用 " + "、".join(field["enum"]) if "enum" in field else ""
         fields.append(f"- {name}：{kind}{choices}")
     return (
@@ -234,7 +241,8 @@ def _caption_structure_reasons(description: ImageDescription) -> list[str]:
         "flow", "architecture", "diagram", "graph", "kanban", "board",
     )
     if any(token in kind for token in relation_types) and not description.relationships:
-        reasons.append("關係型圖片缺少元素順序、方向、配對或歸屬關係")
+        if not getattr(description, "allow_visual_fallback", False):
+            reasons.append("關係型圖片缺少元素順序、方向、配對或歸屬關係")
     if description.uncertainty and any(term in description.uncertainty for term in (
         "箭頭方向不明", "箭頭方向無法", "無法確認箭頭", "無法判斷箭頭",
         "無法確認對應", "配對不明",
@@ -672,6 +680,15 @@ def _description_quality_reasons(
     return review_reasons, list(dict.fromkeys(blocking_reasons))
 
 
+def _basic_description_quality_reasons(description: ImageDescription, *, min_confidence: float):
+    """Judge the visual layer independently of graph/context completeness."""
+    visual = description.model_copy(update={
+        "image_type": "照片", "relationships": [], "meaning": "",
+        "context_connection": "", "teaching_points": [], "document_facts": [],
+    })
+    return _description_quality_reasons(visual, min_confidence=min_confidence, document_type=None)
+
+
 def _parse_json_object(text: str) -> dict[str, Any]:
     text = text.strip()
     if text.startswith("```"):
@@ -733,15 +750,20 @@ class ExternalMultimodalCaptioner:
         return self._client
 
     def query_image_json(
-        self, image_path: Path, prompt: str, *, max_tokens: int = 1400
+        self, image_path: Path, prompt: str, *, max_tokens: int = 1400,
+        response_schema: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         """共用模型傳輸層；PDF 頁面與 Marker 圖片使用不同的判讀提示詞。"""
         if self.settings.provider == "openai":
             response = self._openai_client().chat.completions.create(
                 model=self.settings.model,
-                temperature=0,
-                max_tokens=max_tokens,
-                response_format={"type": "json_object"},
+                reasoning_effort="low",
+                max_completion_tokens=max_tokens,
+                response_format=(
+                    {"type": "json_schema", "json_schema": {
+                        "name": "image_response", "strict": True, "schema": response_schema,
+                    }} if response_schema is not None else {"type": "json_object"}
+                ),
                 messages=[
                     {
                         "role": "user",
@@ -760,6 +782,10 @@ class ExternalMultimodalCaptioner:
             )
             content = response.choices[0].message.content or ""
         elif self.settings.provider == "anthropic":
+            # Preserve the existing Claude transport. Field types are provided
+            # without filled examples; the shared validator repairs bad replies.
+            if response_schema is not None:
+                prompt += "\nJSON 欄位規格：\n" + json.dumps(response_schema, ensure_ascii=False)
             media_type = mimetypes.guess_type(image_path.name)[0] or "image/png"
             encoded = base64.b64encode(image_path.read_bytes()).decode("ascii")
             response = self._anthropic_client().messages.create(
@@ -799,12 +825,16 @@ class ExternalMultimodalCaptioner:
         context: str,
         source_name: str,
     ) -> ImageDescription:
-        base_prompt = _model_prompt(context, source_name, self.document_type)
-        return query_image_description(
-            self, image_path, base_prompt, settings=self.settings,
-            document_type=self.document_type,
-            max_tokens=2200 if _project_document_type(self.document_type) else 1400,
+        from services.image_review import describe_and_review, ContextualDescription
+        result = describe_and_review(
+            self, image_path, context=context, source_name=source_name,
+            settings=self.settings, document_type=self.document_type,
         )
+        self.last_diagnostics = {"attempts": result["attempts"], "review_result": result}
+        if result["description"]:
+            return ContextualDescription.model_validate(result["description"])
+        return ImageDescription(image_type="待查核圖片", description="原圖已保留；自動描述失敗。",
+                                confidence=0, uncertainty="待人工處理", uncertainty_severity="major")
 
 
 def query_image_description(
@@ -1005,6 +1035,9 @@ def _context_near(
     after_budget = content_budget - before_budget
     before = markdown[max(page_start, start - before_budget) : start]
     after = markdown[end : min(page_end, end + after_budget)]
+    # Internal figure/page placeholders are not teaching context or citations.
+    before = re.sub(r"<!--.*?-->", "", before, flags=re.S)
+    after = re.sub(r"<!--.*?-->", "", after, flags=re.S)
     before = re.sub(r"\s+", " ", IMAGE_PATTERN.sub("", before)).strip()
     after = re.sub(r"\s+", " ", IMAGE_PATTERN.sub("", after)).strip()
 
@@ -1096,6 +1129,8 @@ def enrich_markdown_with_marker_images(
 ) -> tuple[str, dict[str, Any]]:
     """保存 Marker 圖片、重寫路徑、插入圖說並寫出可追溯 manifest。"""
 
+    from services.image_review import POLICY, render_result
+
     marker_images = dict(images or {})
     assets_dir.mkdir(parents=True, exist_ok=True)
     captioner = captioner or ExternalMultimodalCaptioner(
@@ -1176,7 +1211,7 @@ def enrich_markdown_with_marker_images(
             context_label,
             document_type=document_type,
         )
-        if exclusion_reason:
+        if exclusion_reason and not isinstance(captioner, ExternalMultimodalCaptioner):
             record["occurrences"].append({
                 "context_hash": context_hash,
                 "context": context,
@@ -1203,12 +1238,38 @@ def enrich_markdown_with_marker_images(
             ),
             None,
         )
+        if existing and existing.get("review_result"):
+            rendered = render_result(existing["review_result"], record["source_key"],
+                                     context_label=context_label, document_type=document_type)
+            record["occurrences"].append(dict(existing))
+            return image_markdown + "\n\n" + rendered
         if existing:
             description = ImageDescription.model_validate(existing["description"])
             return (
                 f"{image_markdown}\n\n"
-                f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type, complete=not document_type)}"
+                f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type, complete=True)}"
             )
+        if isinstance(captioner, ExternalMultimodalCaptioner):
+            width, height = record["width"], record["height"]
+            skip_reason = (
+                "圖片描述功能未啟用" if not settings.enabled else
+                "超過圖片描述數量上限" if description_count >= settings.max_images else
+                "圖片尺寸低於可可靠判讀範圍" if width is not None and height is not None
+                and (width < settings.min_width or height < settings.min_height) else ""
+            )
+            if skip_reason:
+                from services.image_review import skipped_result
+                result = skipped_result(skip_reason)
+                rendered = render_result(result, record["source_key"], context_label=context_label,
+                                         document_type=document_type)
+                record["occurrences"].append({
+                    "context_hash": context_hash, "context": context,
+                    "status": "description_failed", "description": None,
+                    "review_result": result, "analysis_eligible": False,
+                })
+                record.update(status="description_failed", needs_review=True,
+                              review_recommended=True)
+                return image_markdown + "\n\n" + rendered
         if not settings.enabled:
             record["status"] = "preserved_description_disabled"
             record["review_reasons"].append("圖片描述功能未啟用")
@@ -1253,10 +1314,8 @@ def enrich_markdown_with_marker_images(
                     getattr(captioner, "last_diagnostics", {}) or {}
                 )
                 description, meaning_fallback_applied = (
-                    _descriptive_meaning_fallback(
-                        description,
-                        document_type=document_type,
-                    )
+                    (description, False) if diagnostics.get("review_result") else
+                    _descriptive_meaning_fallback(description, document_type=document_type)
                 )
                 if meaning_fallback_applied:
                     diagnostics["meaning_fallback_applied"] = True
@@ -1268,6 +1327,27 @@ def enrich_markdown_with_marker_images(
                 description_count += 1
             else:
                 description, diagnostics = cached
+            result = deepcopy(diagnostics.get("review_result"))
+            if result:
+                rendered = render_result(result, record["source_key"],
+                                         context_label=context_label, document_type=document_type)
+                passed = result["status"] == "passed"
+                occurrence = {
+                    "context_hash": context_hash, "context": context,
+                    "status": "described" if passed else "description_failed",
+                    "description": result["description"], "review_result": result,
+                    "diagnostics": diagnostics, "analysis_eligible": passed,
+                    "review_recommended": not passed, "blocks_ingestion": False,
+                    "review_reasons": [] if passed else [result["failure_reason"]],
+                    "blocking_reasons": [],
+                }
+                record["occurrences"].append(occurrence)
+                record["status"] = occurrence["status"]
+                record["description"] = record["description"] or result["description"]
+                record["needs_review"] = record["needs_review"] or not passed
+                record["review_recommended"] = record["needs_review"]
+                record["analysis_eligible"] = any(o.get("analysis_eligible") for o in record["occurrences"])
+                return image_markdown + "\n\n" + rendered
             record["status"] = "described"
             description_data = description.model_dump()
             if record["description"] is None:
@@ -1395,7 +1475,8 @@ def enrich_markdown_with_marker_images(
             record["analysis_eligible"] = False
 
     manifest = {
-        "schema_version": 3,
+        "schema_version": 5,
+        "review_policy": POLICY if isinstance(captioner, ExternalMultimodalCaptioner) else "legacy",
         "document_type": document_type,
         "descriptions_enabled": settings.enabled,
         "min_confidence": settings.min_confidence,
@@ -1427,7 +1508,8 @@ def enrich_markdown_with_marker_images(
             bool(record["review_recommended"]) for record in records
         ),
         "blocking_count": sum(bool(record["blocks_ingestion"]) for record in records),
-        "failed_count": sum(bool(record["errors"]) for record in records),
+        "passed_occurrence_count": sum(o.get("analysis_eligible", False) for r in records for o in r["occurrences"]),
+        "failed_count": sum(bool(record["errors"]) or any(o.get("review_result", {}).get("status") == "failed" for o in record["occurrences"]) for record in records),
         "failure_event_count": sum(len(record["errors"]) for record in records),
         "images": records,
     }
