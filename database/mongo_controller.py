@@ -4,7 +4,7 @@ from beanie import Document, init_beanie
 from beanie.odm.fields import Link
 from pydantic import BaseModel, Field, model_validator
 from typing import Optional, Literal
-from datetime import datetime
+from datetime import datetime, timedelta
 
 ReviewStatus = Literal["pending", "approved", "rejected"]
 
@@ -270,7 +270,7 @@ async def get_recent_chat_history_str(
 
     # $slice: -limit 直接在資料庫層截取最後 10 筆，避免撈出整包歷史
     log_field = "course_logs" if agent_type == "course" else "project_logs"
-    collection = ChatLogs.get_motor_collection()
+    collection = ChatLogs.get_pymongo_collection()
     doc = await collection.find_one(
         {"student.$id": student.id},
         {log_field: {"$slice": -limit}, "_id": 0}
