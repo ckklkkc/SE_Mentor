@@ -96,8 +96,10 @@ def pdf2md(
                 f"條列 {slide['bullet_count']} 項；表格 {slide['table_count']} 個；"
                 f"完整網址 {slide['url_count']} 個；"
                 f"完整內容圖片 {manifest['described_count']} 個"
-                f"（待查核 {manifest['review_required_count']}）；"
+                f"（AI 審核成功 {manifest.get('passed_count', 0)}、失敗待人工處理 {manifest['review_required_count']}）；"
                 f"失敗 {manifest['failed_count']} 頁"
+                f"；內容審核不通過 {manifest.get('content_rejected_count', 0)} 張"
+                f"；審核未完成 {manifest.get('review_incomplete_count', 0)} 張"
             )
             fallback_pages = [
                 str(page["page"])
@@ -113,6 +115,7 @@ def pdf2md(
                 )
             failed_pages = [
                 page for page in manifest.get("pages", []) if page.get("errors")
+                or any(not f.get("analysis_eligible", False) for f in page.get("figures", []))
             ]
             if failed_pages:
                 print("圖片處理失敗頁明細：")
@@ -121,6 +124,9 @@ def pdf2md(
                         f"{error.get('stage', 'unknown')}: {error.get('error', '')}"
                         for error in page["errors"]
                     )
+                    image_details = [f.get("review_result", {}).get("failure_reason", "")
+                                     for f in page.get("figures", []) if not f.get("analysis_eligible", False)]
+                    details = "；".join(filter(None, [details, *image_details]))
                     print(f"  第 {page['page']} 頁：{details}")
         else:
             print(
@@ -187,6 +193,8 @@ def pdf2md(
     #     f.write(markdown_output)
 
 def md_splitter(md_content: str, with_recursive: bool = False):
+    from services.image_review import analysis_markdown
+    md_content = analysis_markdown(md_content)
     headers_to_split_on = [  
         ("#", "Header 1"),  
         ("##", "Header 2"),  
@@ -207,6 +215,8 @@ def md_splitter(md_content: str, with_recursive: bool = False):
     return md_header_splits
 
 def clean_markdown(text):
+    from services.image_review import analysis_markdown
+    text = analysis_markdown(text)
     # 移除圖片語法: ![替代文字](圖片連結)
     text = re.sub(r'!\[.*?\]\(.*?\)', '', text)
     # 移除連結語法，保留文字: [連結文字](連結) -> text

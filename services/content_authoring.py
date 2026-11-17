@@ -161,6 +161,8 @@ async def ingest_textbook(
     )
     if Path(source).suffix.lower() == ".pdf":
         validate_textbook_image_conversion(markdown_path)
+    from services.image_review import analysis_markdown
+    markdown = analysis_markdown(markdown)
     analyzer = TextbookAnalyzer()
     analysis = await asyncio.to_thread(
         analyzer.analyze,

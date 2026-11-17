@@ -136,106 +136,38 @@ class _LayeredReview(ImageDescription):
     context_image_evidence: str = ""
 
 
+class _VisualReview(ImageDescription):
+    # Semantic payload errors must not change the existing visual/OCR result.
+    # Relationships and context receive their own strict schema below.
+    allow_visual_fallback: ClassVar[bool] = True
+
+
 def _normalized(value):
     return re.sub(r"[^\w\u3400-\u9fff]", "", value.casefold())
 
 
-def _claim_text(claim):
-    separator = {
-        "arrow": " → ", "pairing": " 對應 ", "contains": " 包含 ",
-        "spatial": " 與 ", "comparison": " 對照 ", "annotation": " 標註 ",
-    }[claim.kind]
-    return claim.source + separator + claim.target + (
-        f"（{claim.evidence}）" if claim.kind in {"spatial", "comparison"} else ""
-    )
-
-
-def _claim_consistent_with_draft(claim, draft):
-    """Cross-check claims; agreement is not advertised as ground-truth proof."""
-    if claim.kind == "arrow" and "annotation" in {claim.source_role, claim.target_role}:
-        return False
-    source, target = _normalized(claim.source), _normalized(claim.target)
-    if not source or not target or source == target:
-        return False
-    for relation in draft.relationships:
-        if re.search(r"沒有|並未|未見|未畫|無法|不確定|不明|不存在|可能|推測|或許|似乎|假設", relation):
-            continue
-        text = _normalized(relation)
-        if source not in text or target not in text:
-            continue
-        if claim.kind == "arrow":
-            if re.search(r"↔|<[-=]>|雙向", relation):
-                continue
-            if re.search(r"→|->|指向|連到", relation) and text.index(source) < text.index(target):
-                return True
-        elif claim.kind == "pairing":
-            if re.search(r"→|->|指向|對應|產出|產物|生成|配對", relation):
-                return True
-        elif not re.search(r"→|->|↔|指向|雙向", relation):
-            return True
-    return False
-
-
-def _resolve_layers(review, draft, *, context, min_confidence):
-    records, accepted, seen = [], [], set()
-    for claim in review.relation_details:
-        key = (claim.kind, _normalized(claim.source), _normalized(claim.target))
-        if key in seen:
-            continue
-        seen.add(key)
-        consistent = _claim_consistent_with_draft(claim, draft)
-        text = _claim_text(claim)
-        records.append({**claim.model_dump(), "text": text,
-                        "status": "consistent" if consistent else "needs_review"})
-        if consistent:
-            accepted.append(text)
-    proposed = bool(draft.relationships or review.relationships or records)
-    relation_status = (
-        "consistent" if records and all(r["status"] == "consistent" for r in records)
-        else "needs_review" if proposed else "not_applicable"
-    )
-    # Both extraction passes must retain the same main endpoints; a shorter
-    # second pass must not silently erase a disputed part of the diagram.
-    for relation in draft.relationships:
-        if not any(_normalized(c.source) in _normalized(relation)
-                   and _normalized(c.target) in _normalized(relation)
-                   for c in review.relation_details):
-            relation_status = "needs_review"
+def _resolve_visual(review, draft, *, min_confidence):
+    """The unchanged v3 basic visual/OCR policy, without semantic filtering."""
     draft_text = {_normalized(text) for text in draft.visible_text}
     visible_text = [text for text in review.visible_text if _normalized(text) in draft_text]
     omitted_text = [text for text in review.visible_text if _normalized(text) not in draft_text]
-    quote = _normalized(review.context_quote)
-    image_evidence = _normalized(review.context_image_evidence)
-    image_content = _normalized(review.description + " ".join(visible_text))
-    grounded_context = bool(
-        review.context_connection and quote and quote in _normalized(context)
-        and image_evidence and image_evidence in image_content
-    )
     result = ImageDescription.model_validate({
-        **review.model_dump(), "relationships": accepted,
-        "visible_text": visible_text,
-        "context_connection": review.context_connection if grounded_context else "",
-        "meaning": review.meaning if grounded_context else "",
-        "teaching_points": [], "document_facts": [],
+        **review.model_dump(), "relationships": [], "visible_text": visible_text,
+        "context_connection": "", "meaning": "", "teaching_points": [], "document_facts": [],
     })
     _, basic_blocks = _basic_description_quality_reasons(result, min_confidence=min_confidence)
     return result, {
-        "policy": "layered_v3", "basic_status": "checked" if not basic_blocks else "needs_review",
+        "basic_status": "checked" if not basic_blocks else "needs_review",
         "basic_blocking_reasons": basic_blocks,
-        "relation_status": relation_status, "relation_details": records,
         "ocr_status": "needs_review" if omitted_text else "consistent" if visible_text else "not_applicable",
-        "withheld_visible_text": omitted_text,
-        "accepted_visible_text": visible_text,
-        "context_status": "grounded" if grounded_context else "unconfirmed" if review.context_connection else "absent",
-        "context_quote": review.context_quote, "context_image_evidence": review.context_image_evidence,
-        "approved_context_connection": result.context_connection,
+        "withheld_visible_text": omitted_text, "accepted_visible_text": visible_text,
         "draft": draft.model_dump(), "review_candidate": review.model_dump(),
     }
 
 
 def verify_figure(analyzer, path, draft, document, page_index, bbox, *,
                   settings=None, document_type=None, context=""):
-    """Preserve visual output, resolve typed relations, and ground context separately."""
+    """Preserve the v3 visual/OCR pass; automatically adjudicate semantics."""
     if _project_document_type(document_type):
         return _verify_project_figure(analyzer, path, draft, document, page_index, bbox,
                                       settings=settings, document_type=document_type, context=context)
@@ -262,7 +194,17 @@ context_image_evidence 逐字引用本次 description 或 visible_text 的圖片
 章節及圖片前後文：{context[:1800]}
 """
     review = query_image_description(analyzer, path, prompt, settings=settings,
-                                     schema=_LayeredReview, max_tokens=4500)
-    result, layers = _resolve_layers(review, draft, context=context, min_confidence=settings.min_confidence)
+                                     schema=_VisualReview, max_tokens=4500)
+    # Keep the existing basic description, confidence and OCR intersection.
+    # The v3 semantic intersection is no longer an acceptance gate.
+    basic, layers = _resolve_visual(review, draft, min_confidence=settings.min_confidence)
+    from services.pdf_semantic_review import verify_semantics
+    result, semantics = verify_semantics(
+        analyzer, path, basic, draft, context=context, native=native, settings=settings,
+    )
+    layers.update(semantics)
+    if layers["basic_status"] != "checked":
+        layers["auto_status"] = "failed"
+        layers["failure_reasons"].extend(layers["basic_blocking_reasons"])
     analyzer.last_diagnostics.update(layers)
     return result

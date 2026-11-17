@@ -25,6 +25,10 @@ def validate_textbook_image_conversion(markdown_path: str | Path) -> None:
             or isinstance(manifest.get("images"), list)
         ):
             raise ValueError("缺少 pages/images 紀錄")
+        if manifest.get("review_policy") in {"unified_image_review_v1", "unified_image_review_v2", "unified_image_review_v3", "unified_image_review_v4"}:
+            from services.image_review import validate_unified_manifest
+            validate_unified_manifest(markdown_path.read_text(encoding="utf-8"), manifest)
+            return
         blocking = []
         for page in manifest.get("pages", []):
             number = page.get("page", "?")
@@ -112,6 +116,13 @@ def validate_project_image_conversion(markdown_path: str | Path) -> None:
         )
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("review_policy") in {"unified_image_review_v1", "unified_image_review_v2", "unified_image_review_v3", "unified_image_review_v4"}:
+        from services.image_review import validate_unified_manifest
+        try:
+            validate_unified_manifest(markdown_path.read_text(encoding="utf-8"), manifest)
+        except (ValueError, TypeError, KeyError) as exc:
+            raise ProjectImageQualityError(f"圖片共用審核紀錄無效：{exc}") from exc
+        return
     blocking: list[str] = []
 
     for page in manifest.get("pages", []):
