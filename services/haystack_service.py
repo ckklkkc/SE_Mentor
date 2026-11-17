@@ -162,6 +162,12 @@ class DescriptionBasedReasoning:
                     UNWIND keywords AS keyword
                     MATCH (entity)
                     WHERE apoc.text.fuzzyMatch(entity.name, keyword)
+                    OR entity.name CONTAINS keyword
+                    OR keyword CONTAINS entity.name
+
+                    WITH DISTINCT entity
+                    LIMIT 10
+
                     OPTIONAL MATCH (entity)-[rel]-(neighbor)
                     RETURN 
                         entity as entity,
@@ -171,7 +177,7 @@ class DescriptionBasedReasoning:
                         neighbor.name AS neighborName,
                         neighbor.description AS neighborDesc,
                         labels(neighbor)[0] AS neighborLabel
-                    LIMIT 20;
+                    LIMIT 50;
                     """
                     result = list(session.run(cypher, keywords=kw_list))
 
@@ -183,6 +189,7 @@ class DescriptionBasedReasoning:
                 if not knowledge_text:
                     return {"knowledge_base": "查無資料"}
                 
+                print(f"[debug] knowledge text: \n{knowledge_text}")
                 print(f"[debug] knowledge text: \n{knowledge_text}")
                 return {
                     "knowledge_base": knowledge_text,
@@ -532,7 +539,10 @@ def _build_retriever_pipeline(prompt_builder: ChatPromptBuilder) -> Pipeline:
 
 def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     answer_prompt_template = """
-    你是一位專業的軟體工程教學助教。請根據以下檢索到的資料，用台灣繁體中文回答學生的問題。
+    你是一位專業的軟體工程教學助教。請根據以下檢索到的資料以及聊天記錄，用台灣繁體中文回答學生的問題。
+
+    【聊天記錄】
+    {{chat_history}}
 
     【資料】
     {{documents}}
@@ -551,8 +561,8 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     pipeline.add_component("kw_prompt", kw_prompt_builder)
     pipeline.add_component("kw_llm", AnthropicGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="claude-haiku-4-5"))
     pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
-    pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question"]))
-    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini"))
+    pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question", "chat_history"]))
+    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-6-luna"))
 
     pipeline.connect("kw_prompt.prompt", "kw_llm.prompt")
     pipeline.connect("kw_llm.replies", "desc_reasoner.keywords")
@@ -885,26 +895,31 @@ def handle_user_question(question: str):
     
    
 
-def neo4j_textbook_kg_retriever(question: str) -> dict[str, Any]:
+def neo4j_textbook_kg_retriever(question: str, chat_history: str = "(無)") -> dict[str, Any]:
     # 教材知識圖譜檢索
     keyword_prompt_template = """
-        請根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+       請參考【聊天記錄】的上下文脈絡（用來還原「它、這個」等代名詞）並且若無特別指定皆以時間最新的問題作為脈絡參考，
+       根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+        此外，請執行術語標準化：先移除專有名詞中不必要的中英空白；若遇到希臘字母或特殊符號相關術語（如 alpha、beta），請同時輸出符號版與英文版關鍵字。
         
-            【Schema 資訊】
-            - Labels: Concept, Technology, Methodology
-            - Properties: name, source_files, description
-            - Relationships: 是, 包含於, 實作, 使用, 操作, 依賴, 改善, 解決
+        【Schema 資訊】
+        - Labels: Concept, Technology, Methodology
+        - Properties: name, source_files, description
+        - Relationships: 是, 包含於, 實作, 使用, 操作, 依賴, 改善, 解決
+
+        【聊天記錄】
+        {{chat_history}}
         
-            使用者的問題: {{question}}
-            生成的關鍵字:
+        使用者的問題: {{question}}
+        生成的關鍵字:
         """
 
-    pipeline = _build_kg_pipeline(PromptBuilder(template=keyword_prompt_template, required_variables=["question"]))
+    pipeline = _build_kg_pipeline(PromptBuilder(template=keyword_prompt_template, required_variables=["question", "chat_history"]))
 
     result = pipeline.run(
         data={
-            "kw_prompt": {"question": question},
-            "answer_prompt": {"question": question},
+            "kw_prompt": {"question": question, "chat_history": chat_history},
+            "answer_prompt": {"question": question, "chat_history": chat_history},
             # "vector_filter": {"question": question}
         },
         include_outputs_from=[

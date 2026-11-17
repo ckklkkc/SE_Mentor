@@ -25,10 +25,13 @@ def validate_textbook_image_conversion(markdown_path: str | Path) -> None:
             or isinstance(manifest.get("images"), list)
         ):
             raise ValueError("缺少 pages/images 紀錄")
+<<<<<<< HEAD
         if manifest.get("review_policy") in {"unified_image_review_v1", "unified_image_review_v2", "unified_image_review_v3", "unified_image_review_v4"}:
             from services.image_review import validate_unified_manifest
             validate_unified_manifest(markdown_path.read_text(encoding="utf-8"), manifest)
             return
+=======
+>>>>>>> 495f729d41ad11702f05bc1b90aade817a86e2e4
         blocking = []
         for page in manifest.get("pages", []):
             number = page.get("page", "?")

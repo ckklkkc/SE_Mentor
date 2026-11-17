@@ -68,7 +68,11 @@ def region_text(document, page_index, bbox):
             )
 
 
+<<<<<<< HEAD
 def _verify_project_figure(analyzer, path, draft, document, page_index, bbox, *,
+=======
+def verify_figure(analyzer, path, draft, document, page_index, bbox, *,
+>>>>>>> 495f729d41ad11702f05bc1b90aade817a86e2e4
                   settings=None, document_type=None, context=""):
     native = region_text(document, page_index, bbox)
     prompt = f"""請重新核對這張原始圖片，這是獨立的圖意與逐字核對步驟。

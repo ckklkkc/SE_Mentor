@@ -50,6 +50,8 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+pullrequest.md
+
 
 # Translations
 *.mo
@@ -226,3 +228,5 @@ backups/
 
 #MongoDB runtime data
 mongo_data/
+
+files/

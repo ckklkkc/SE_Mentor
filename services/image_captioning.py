@@ -203,6 +203,7 @@ def image_description_contract(schema: type[ImageDescription] = ImageDescription
             variant.get("type", "") for variant in field.get("anyOf", [])
         )
         if kind == "array":
+<<<<<<< HEAD
             items = field.get("items", {})
             kind = "物件陣列" if "$ref" in items else "字串陣列"
             if "$ref" in items:
@@ -210,6 +211,9 @@ def image_description_contract(schema: type[ImageDescription] = ImageDescription
                 for child, spec in definition.get("properties", {}).items():
                     choices = "／".join(spec.get("enum", []))
                     fields.append(f"  {name} 每項的 {child}：{choices or spec.get('type', 'string')}")
+=======
+            kind = "字串陣列"
+>>>>>>> 495f729d41ad11702f05bc1b90aade817a86e2e4
         choices = "；僅可使用 " + "、".join(field["enum"]) if "enum" in field else ""
         fields.append(f"- {name}：{kind}{choices}")
     return (
@@ -241,8 +245,12 @@ def _caption_structure_reasons(description: ImageDescription) -> list[str]:
         "flow", "architecture", "diagram", "graph", "kanban", "board",
     )
     if any(token in kind for token in relation_types) and not description.relationships:
+<<<<<<< HEAD
         if not getattr(description, "allow_visual_fallback", False):
             reasons.append("關係型圖片缺少元素順序、方向、配對或歸屬關係")
+=======
+        reasons.append("關係型圖片缺少元素順序、方向、配對或歸屬關係")
+>>>>>>> 495f729d41ad11702f05bc1b90aade817a86e2e4
     if description.uncertainty and any(term in description.uncertainty for term in (
         "箭頭方向不明", "箭頭方向無法", "無法確認箭頭", "無法判斷箭頭",
         "無法確認對應", "配對不明",
@@ -1247,7 +1255,11 @@ def enrich_markdown_with_marker_images(
             description = ImageDescription.model_validate(existing["description"])
             return (
                 f"{image_markdown}\n\n"
+<<<<<<< HEAD
                 f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type, complete=True)}"
+=======
+                f"{_description_markdown(description, record['source_key'], context_label=context_label, document_type=document_type, complete=not document_type)}"
+>>>>>>> 495f729d41ad11702f05bc1b90aade817a86e2e4
             )
         if isinstance(captioner, ExternalMultimodalCaptioner):
             width, height = record["width"], record["height"]
