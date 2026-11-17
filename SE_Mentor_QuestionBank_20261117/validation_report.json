@@ -1,0 +1,56 @@
+{
+  "questions": 179,
+  "chapters": 11,
+  "field_model_compatibility": "179 records passed repository annotations (BaseModel stand-in; not live Beanie)",
+  "runtime_sampling_cases_passed": 155,
+  "json_and_jsonl_equivalent": true,
+  "bson_objectid_datetime_and_encoding_verified": true,
+  "importer_idempotence_and_teacher_edit_preservation": "passed with memory MongoClient adapter and real PyMongo operations; not live MongoDB",
+  "per_chapter_counts": {
+    "[01]軟體危機與軟體流程": 18,
+    "[02]基礎需求工程": 15,
+    "[03]使用者故事分析": 15,
+    "[04]敏捷開發方法": 15,
+    "[05]基礎專案管理與看板": 15,
+    "[06]版本控制": 15,
+    "[07]軟體設計-系統設計": 15,
+    "[08]軟體設計-模組設計": 15,
+    "[09]軟體測試": 20,
+    "[10]進階軟體測試": 18,
+    "[11]DevOps自動化建置管理": 18
+  },
+  "level_counts": {
+    "理解": 49,
+    "應用": 122,
+    "計算": 8
+  },
+  "answer_distribution": {
+    "A": 44,
+    "D": 45,
+    "B": 45,
+    "C": 45
+  },
+  "max_single_question_message_chars": 353,
+  "ten_wrong_answer_report_length_by_chapter": {
+    "[01]軟體危機與軟體流程": 2216,
+    "[02]基礎需求工程": 2218,
+    "[03]使用者故事分析": 2276,
+    "[04]敏捷開發方法": 2476,
+    "[05]基礎專案管理與看板": 2314,
+    "[06]版本控制": 2554,
+    "[07]軟體設計-系統設計": 2377,
+    "[08]軟體設計-模組設計": 2628,
+    "[09]軟體測試": 2487,
+    "[10]進階軟體測試": 2551,
+    "[11]DevOps自動化建置管理": 2565
+  },
+  "result_message_patch_syntax_valid": true,
+  "actual_split_message_reassembly_verified": true,
+  "not_performed": [
+    "live MongoDB import",
+    "live Discord session",
+    "teacher approval",
+    "student item analysis or discrimination statistics",
+    "existing KG node mapping"
+  ]
+}

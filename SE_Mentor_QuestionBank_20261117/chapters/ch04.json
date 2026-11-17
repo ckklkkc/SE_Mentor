@@ -1,0 +1,1190 @@
+[
+  {
+    "_id": {
+      "$oid": "2be40143f7b19f0f817b6bfd"
+    },
+    "question": "團隊說「敏捷比較重視可運作軟體，所以任何文件都不用寫」。哪項修正最符合教材？",
+    "options": [
+      "所有計畫一經制定就不應更改",
+      "既然文件有價值，就應先寫完所有細節才能開發",
+      "文件仍有價值，但應服務溝通與交付可運作軟體",
+      "只要採用敏捷工具，就不需要成員對話"
+    ],
+    "answer": 2,
+    "analysis": "敏捷宣言是價值上的相對重視，並不表示流程、工具、文件或計畫毫無價值。\n\nA：忽略回應變化的價值。\nB：把相對重視誤解成必須完成全部前置文件。\nC：正確。\nD：把工具當成人員互動的替代品。",
+    "concept": "敏捷宣言的取捨",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:001",
+    "assessment_target": "敏捷宣言的取捨",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:001",
+        "misconception": "忽略回應變化的價值"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:001",
+        "misconception": "把相對重視誤解成必須完成全部前置文件"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:001",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:001",
+        "misconception": "把工具當成人員互動的替代品"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:004"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        4
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "敏捷宣言是價值上的相對重視，並不表示流程、工具、文件或計畫毫無價值。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4677db153bad32fbdc03bed2"
+    },
+    "question": "面對需求與解法皆有不確定性的產品，哪種做法最符合經驗式流程？",
+    "options": [
+      "由主管逐步指定每個成員的所有操作",
+      "持續觀察產出與回饋，再調整計畫與作法",
+      "事前固定所有細節，即使證據改變也照原計畫做",
+      "只在專案最後一天檢查成果"
+    ],
+    "answer": 1,
+    "analysis": "經驗式方法透過歷程學習，在複雜或不可預期的情況下檢視並調適。\n\nA：把指令控制當成自我管理。\nB：正確。\nC：把可預測流程的假設套在複雜問題。\nD：忽略頻繁檢視與及時調適。",
+    "concept": "經驗式流程",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:002",
+    "assessment_target": "經驗式流程",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:002",
+        "misconception": "把指令控制當成自我管理"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:002",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:002",
+        "misconception": "把可預測流程的假設套在複雜問題"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:002",
+        "misconception": "忽略頻繁檢視與及時調適"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:006",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:007",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:008",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:014",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:015",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:016"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        6,
+        7,
+        8,
+        14,
+        15,
+        16
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "經驗式方法透過歷程學習，在複雜或不可預期的情況下檢視並調適。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4ab4397b21cd3ef1fec77668"
+    },
+    "question": "哪個安排最符合本章描述的 Sprint？",
+    "options": [
+      "所有 Sprint 都只用於整理未來需求而不產出成果",
+      "先進行一個需求 Sprint，再等數月後的測試 Sprint",
+      "每次都等產品全部完成才決定何時結束",
+      "先設定固定期間，在反覆迭代中累積成果"
+    ],
+    "answer": 3,
+    "analysis": "Sprint 為固定期間的迭代，包含規劃、執行、展示與學習，而非等整個產品完成才檢查。\n\nA：忽略迭代需要累積實際產品成果。\nB：把迭代交付誤作大型階段切割。\nC：把 Sprint 當成沒有時間盒的整個專案。\nD：正確。",
+    "concept": "Sprint 的固定期間",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:003",
+    "assessment_target": "Sprint 的固定期間",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:003",
+        "misconception": "忽略迭代需要累積實際產品成果"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:003",
+        "misconception": "把迭代交付誤作大型階段切割"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:003",
+        "misconception": "把 Sprint 當成沒有時間盒的整個專案"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:003",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:011",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:012"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        11,
+        12
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "Sprint 為固定期間的迭代，包含規劃、執行、展示與學習，而非等整個產品完成才檢查。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4fe5dc4541db8ed29c55174c"
+    },
+    "question": "團隊能共同處理分析、設計、實作與測試，並自行決定任務分配。這同時反映哪兩項特徵？",
+    "options": [
+      "跨職能與自我管理",
+      "每位成員必須擁有完全相同技能",
+      "只由 Scrum Master 決定所有人的技術做法",
+      "每個職能必須分屬不同團隊與逐級指揮"
+    ],
+    "answer": 0,
+    "analysis": "跨職能針對團隊整體的能力，自我管理則讓團隊內部決定誰做、何時做及如何做。\n\nA：正確。\nB：把團隊具備所有技能誤作個人技能完全一致。\nC：把服務團隊角色當成技術派工主管。\nD：把跨職能誤解成職能隔離。",
+    "concept": "跨職能與自我管理",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:004",
+    "assessment_target": "跨職能與自我管理",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:004",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:004",
+        "misconception": "把團隊具備所有技能誤作個人技能完全一致"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:004",
+        "misconception": "把服務團隊角色當成技術派工主管"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:004",
+        "misconception": "把跨職能誤解成職能隔離"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:013",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:035"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        13,
+        35
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "跨職能針對團隊整體的能力，自我管理則讓團隊內部決定誰做、何時做及如何做。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3c410062d9b882fda0a2a45b"
+    },
+    "question": "看板一直顯示正常，實際卻有多項阻塞未揭露，導致會議做出錯誤判斷。最先受到破壞的是哪個支柱？",
+    "options": [
+      "檢視性，因為檢視只能在完工後進行",
+      "透明性",
+      "完成之定義，因為它是三支柱之一",
+      "調適性，因為任何計畫變動都不被允許"
+    ],
+    "answer": 1,
+    "analysis": "工作與成果必須真實可見，缺乏透明的檢視會造成誤導，並妨礙有效調適。\n\nA：把檢視的時機限制成最終驗收。\nB：正確。\nC：把品質承諾與經驗主義支柱混淆。\nD：把資訊失真與禁止變更混為一談。",
+    "concept": "透明、檢視與調適",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:005",
+    "assessment_target": "透明、檢視與調適",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:005",
+        "misconception": "把檢視的時機限制成最終驗收"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:005",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:005",
+        "misconception": "把品質承諾與經驗主義支柱混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:005",
+        "misconception": "把資訊失真與禁止變更混為一談"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:014",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:015",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:016",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:017"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "工作與成果必須真實可見，缺乏透明的檢視會造成誤導，並妨礙有效調適。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "41ddae25178a61e685a11673"
+    },
+    "question": "哪項配對正確？",
+    "options": [
+      "Product Backlog 只放已完成工作；Sprint Backlog 只放未來年度構想",
+      "兩份清單都只記錄測試失敗的程式碼",
+      "Product Backlog 支持 Product Goal；Sprint Backlog 支持 Sprint Goal",
+      "Product Backlog 由 Developer 決定產品優先序；Sprint Backlog 由客戶指定所有技術步驟"
+    ],
+    "answer": 2,
+    "analysis": "產品待辦清單承載產品目標所需工作，Sprint Backlog 則包含本次選取工作與實現目標的計畫。\n\nA：誤解兩份清單的工作範圍。\nB：把待辦清單當成錯誤紀錄庫。\nC：正確。\nD：混淆產品排序責任與開發計畫責任。",
+    "concept": "Product 與 Sprint Backlog",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:006",
+    "assessment_target": "Product 與 Sprint Backlog",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:006",
+        "misconception": "誤解兩份清單的工作範圍"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:006",
+        "misconception": "把待辦清單當成錯誤紀錄庫"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:006",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:006",
+        "misconception": "混淆產品排序責任與開發計畫責任"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:018",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:019",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:034",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:035"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        18,
+        19,
+        34,
+        35
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "產品待辦清單承載產品目標所需工作，Sprint Backlog 則包含本次選取工作與實現目標的計畫。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0ca951b7ea8f1cb439e6d20a"
+    },
+    "question": "功能雖能展示，但尚未通過團隊 DoD 要求的整合測試。應如何認定？",
+    "options": [
+      "只需把卡片移到 Done 即可補足測試",
+      "只要展示成功就可自動視為 Done",
+      "由開發者口頭宣稱完成即可取代既定 DoD",
+      "尚不能算符合 DoD 的 Increment"
+    ],
+    "answer": 3,
+    "analysis": "Increment 須可用且符合完成之定義；完成狀態應反映品質證據，而非先改標籤。\n\nA：把看板狀態當成實際品質證據。\nB：把展示效果當成品質要求已滿足。\nC：忽略共同品質定義的約束。\nD：正確。",
+    "concept": "Increment 與 DoD",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:007",
+    "assessment_target": "Increment 與 DoD",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:007",
+        "misconception": "把看板狀態當成實際品質證據"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:007",
+        "misconception": "把展示效果當成品質要求已滿足"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:007",
+        "misconception": "忽略共同品質定義的約束"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:007",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:020",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:021"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        20,
+        21
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "Increment 須可用且符合完成之定義；完成狀態應反映品質證據，而非先改標籤。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4be4400567a765b02a431010"
+    },
+    "question": "團隊在 Sprint Planning 選定故事後，把它拆成資料設計、API 實作及測試任務。這些任務主要應記錄在哪裡？",
+    "options": [
+      "只記在下一次 Retrospective 的結論中",
+      "Sprint Backlog",
+      "直接當成已完成 Increment",
+      "只放在正式環境的操作日誌"
+    ],
+    "answer": 1,
+    "analysis": "Sprint Planning 討論價值、要完成什麼與如何完成，選定工作可分解為 Sprint Backlog 的任務。\n\nA：把本次執行計畫延到流程回顧。\nB：正確。\nC：把規劃的任務當成可用成果。\nD：把開發工作規劃與運維紀錄混淆。",
+    "concept": "Sprint Planning 的產出",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:008",
+    "assessment_target": "Sprint Planning 的產出",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:008",
+        "misconception": "把本次執行計畫延到流程回顧"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:008",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:008",
+        "misconception": "把規劃的任務當成可用成果"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:008",
+        "misconception": "把開發工作規劃與運維紀錄混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:025",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:026",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:027",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:028"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "Sprint Planning 討論價值、要完成什麼與如何完成，選定工作可分解為 Sprint Backlog 的任務。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "eaf554a0ccd4426d329fbd04"
+    },
+    "question": "Daily Scrum 中發現一項阻塞會影響 Sprint Goal。最符合本章的處理方向是什麼？",
+    "options": [
+      "逐人向主管報告工時後結束，無須討論影響",
+      "重新決定整個產品的市場定位",
+      "檢視目標進展並調整接下來的協作計畫",
+      "在會議內完成數小時的所有技術除錯"
+    ],
+    "answer": 2,
+    "analysis": "Daily Scrum 用短時間檢視進展與障礙，讓 Developers 調適邁向 Sprint Goal 的計畫。\n\nA：把團隊調適會議當成單向考勤。\nB：把每日短會當成完整產品策略規劃。\nC：正確。\nD：忽略短時間盒與聚焦進展的目的。",
+    "concept": "Daily Scrum 的目的",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:009",
+    "assessment_target": "Daily Scrum 的目的",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:009",
+        "misconception": "把團隊調適會議當成單向考勤"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:009",
+        "misconception": "把每日短會當成完整產品策略規劃"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:009",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:009",
+        "misconception": "忽略短時間盒與聚焦進展的目的"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:029"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        29
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "Daily Scrum 用短時間檢視進展與障礙，讓 Developers 調適邁向 Sprint Goal 的計畫。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "7c361a1b565bdbf577522660"
+    },
+    "question": "團隊先和利害關係人檢視新功能與產品下一步，之後再討論協作不順與改進方式。依序是哪兩項事件？",
+    "options": [
+      "Sprint Review、Sprint Retrospective",
+      "Backlog Refinement、單元測試",
+      "Daily Scrum、Sprint Planning",
+      "Sprint Retrospective、Sprint Review"
+    ],
+    "answer": 0,
+    "analysis": "Review 關注增量及產品發展；Retrospective 關注團隊如何工作、遇到什麼問題及如何改善。\n\nA：正確。\nB：把成果討論與合作改善誤作清單整理與程式測試。\nC：把期末成果與流程回顧誤認為每日及期初事件。\nD：把產品成果檢視與團隊流程回顧顛倒。",
+    "concept": "Review 與 Retrospective",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:010",
+    "assessment_target": "Review 與 Retrospective",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:010",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:010",
+        "misconception": "把成果討論與合作改善誤作清單整理與程式測試"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:010",
+        "misconception": "把期末成果與流程回顧誤認為每日及期初事件"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:010",
+        "misconception": "把產品成果檢視與團隊流程回顧顛倒"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:031",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:032"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        31,
+        32
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "Review 關注增量及產品發展；Retrospective 關注團隊如何工作、遇到什麼問題及如何改善。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "657bba0f9401a8e67ecbed43"
+    },
+    "question": "市場回饋要求重新排序產品功能，同時團隊需決定如何實作。哪個責任分配較適當？",
+    "options": [
+      "PO 負責產品排序，Developers 決定實作方式",
+      "Developers 自行決定客戶價值，PO 指定每行程式",
+      "利害關係人各自直接變更成員任務，不經共同計畫",
+      "Scrum Master 同時決定市場排序與所有程式細節"
+    ],
+    "answer": 0,
+    "analysis": "PO 對產品目標、價值與待辦排序負責；Developers 負責如何建構增量及調適執行計畫。\n\nA：正確。\nB：顛倒產品與開發責任。\nC：忽略單一產品排序責任與團隊自我管理。\nD：把促進流程角色當成所有產品與技術決策者。",
+    "concept": "PO 與 Developer 的責任",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:011",
+    "assessment_target": "PO 與 Developer 的責任",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:011",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:011",
+        "misconception": "顛倒產品與開發責任"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:011",
+        "misconception": "忽略單一產品排序責任與團隊自我管理"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:011",
+        "misconception": "把促進流程角色當成所有產品與技術決策者"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:034",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:035"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        34,
+        35
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "PO 對產品目標、價值與待辦排序負責；Developers 負責如何建構增量及調適執行計畫。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "e48c993a1b5412923113068f"
+    },
+    "question": "外部人員不斷插入臨時工作，團隊無法專注；Scrum 事件也經常失去焦點。SM 最適合做什麼？",
+    "options": [
+      "協助移除障礙、促進合作，讓事件有效且維持時間盒",
+      "只負責將每張卡片的字體統一",
+      "直接接管每位成員的日常派工與考核",
+      "取消與 PO 的所有交流"
+    ],
+    "answer": 0,
+    "analysis": "SM 幫助團隊理解與實踐 Scrum，促進有效事件並協助排除干擾與障礙。\n\nA：正確。\nB：把服務團隊工作限縮成行政外觀管理。\nC：把 Scrum Master 當成傳統指令式主管。\nD：把保護團隊誤解成阻斷必要合作。",
+    "concept": "Scrum Master 的角色",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:012",
+    "assessment_target": "Scrum Master 的角色",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:012",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:012",
+        "misconception": "把服務團隊工作限縮成行政外觀管理"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:012",
+        "misconception": "把 Scrum Master 當成傳統指令式主管"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:012",
+        "misconception": "把保護團隊誤解成阻斷必要合作"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:036",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:037"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        36,
+        37
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "SM 幫助團隊理解與實踐 Scrum，促進有效事件並協助排除干擾與障礙。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "40fcef59ac64d7dcedb0776c"
+    },
+    "question": "成員主動揭露尚未解決的風險，即使消息可能不好聽，團隊也願意共同處理。最直接體現哪組價值？",
+    "options": [
+      "承諾代表無論證據如何都不得調整作法",
+      "尊重代表不可以對任何方案提出疑問",
+      "專注代表不應讓其他人知道問題",
+      "開放與勇氣"
+    ],
+    "answer": 3,
+    "analysis": "開放讓工作與問題能被討論，勇氣讓成員願意面對棘手情況，兩者有助於檢視與調適。\n\nA：把目標承諾誤作固守原計畫。\nB：把尊重誤作禁止建設性討論。\nC：把聚焦目標誤作隱瞞風險。\nD：正確。",
+    "concept": "Scrum 價值觀",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:013",
+    "assessment_target": "Scrum 價值觀",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:013",
+        "misconception": "把目標承諾誤作固守原計畫"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:013",
+        "misconception": "把尊重誤作禁止建設性討論"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:013",
+        "misconception": "把聚焦目標誤作隱瞞風險"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:013",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:038"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        38
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "開放讓工作與問題能被討論，勇氣讓成員願意面對棘手情況，兩者有助於檢視與調適。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6cd1a26c4c000f83f0e47209"
+    },
+    "question": "開發者在不改變可接受輸入與可觀察輸出的前提下，整理重複程式並改善類別結構。這屬於什麼？",
+    "options": [
+      "追加新的產品功能",
+      "重構",
+      "停用測試以提高建置速度",
+      "改寫需求的商業目的"
+    ],
+    "answer": 1,
+    "analysis": "重構改善內部程式結構，前提是維持外部行為；應有測試支持行為仍一致。\n\nA：把結構改善與外部功能變更混淆。\nB：正確。\nC：把品質改善與移除驗證混淆。\nD：把內部程式調整當成需求變更。",
+    "concept": "XP 的重構",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:014",
+    "assessment_target": "XP 的重構",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:014",
+        "misconception": "把結構改善與外部功能變更混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:014",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:014",
+        "misconception": "把品質改善與移除驗證混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:014",
+        "misconception": "把內部程式調整當成需求變更"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:044"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        44
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "重構改善內部程式結構，前提是維持外部行為；應有測試支持行為仍一致。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "76afdad899e98734e60b1b4a"
+    },
+    "question": "團隊每天整合並頻繁釋出，但單元測試極不完整。依教材，最合理的風險判斷是什麼？",
+    "options": [
+      "只要採配對程式開發，就能省略其他驗證",
+      "整合次數足夠多就自然不需要測試",
+      "程式碼共有可保證所有版本一定正確",
+      "缺乏測試支持，頻繁修改難以維持穩定性"
+    ],
+    "answer": 3,
+    "analysis": "XP 實務互相支持，測試不足會削弱頻繁整合、重構與改版的可靠性。\n\nA：把單一實務當成全部品質機制的替代品。\nB：把整合頻率當成驗證充分性。\nC：把所有權方式當成品質保證。\nD：正確。",
+    "concept": "XP 實務的互補性",
+    "chapter": "[04]敏捷開發方法",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:04:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:04:015",
+    "assessment_target": "XP 實務的互補性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:015",
+        "misconception": "把單一實務當成全部品質機制的替代品"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:015",
+        "misconception": "把整合頻率當成驗證充分性"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:015",
+        "misconception": "把所有權方式當成品質保證"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:04:015",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:043",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:044",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:045",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:046",
+      "manual_pdf:82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb:page:048"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:04",
+    "course_unit_title": "[04]敏捷開發方法",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE04-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[04]敏捷開發方法.pdf",
+      "pdf_git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "pdf_pages": [
+        43,
+        44,
+        45,
+        46,
+        48
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[04]敏捷開發方法.pdf",
+      "basis_summary": "XP 實務互相支持，測試不足會削弱頻繁整合、重構與改版的可靠性。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

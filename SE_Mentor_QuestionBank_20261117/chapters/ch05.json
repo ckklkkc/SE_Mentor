@@ -1,0 +1,1178 @@
+[
+  {
+    "_id": {
+      "$oid": "4fa0f82a81970091a05510c8"
+    },
+    "question": "一個團隊用三個月完成手機服務首版，服務之後持續維護更新。哪項判斷較符合教材？",
+    "options": [
+      "首版開發可是一個有期限的專案，產品可持續演進",
+      "產品必須和首版專案在同一天結束",
+      "專案只要是軟體就不需設定結束時間",
+      "產品的每次維護都不可能形成專案"
+    ],
+    "answer": 0,
+    "analysis": "專案有明確目標與預計期間；產品則可持續存在，透過不同專案或維護活動演進。\n\nA：正確。\nB：把產品生命週期與專案期限等同。\nC：忽略專案的時間範圍。\nD：否認重大升級等工作也可有專案邊界。",
+    "concept": "專案與產品",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:001",
+    "assessment_target": "專案與產品",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:001",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:001",
+        "misconception": "把產品生命週期與專案期限等同"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:001",
+        "misconception": "忽略專案的時間範圍"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:001",
+        "misconception": "否認重大升級等工作也可有專案邊界"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:003",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:004"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        3,
+        4
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "專案有明確目標與預計期間；產品則可持續存在，透過不同專案或維護活動演進。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "e6ac1bd342b5a315634611c5"
+    },
+    "question": "交期與人力都不變，客戶卻追加一批重要功能。專案管理者最合理的下一步是什麼？",
+    "options": [
+      "直接承諾全部完成，不重新檢查計畫",
+      "只增加需求文件頁數便視為問題解決",
+      "評估新增範疇對時間、成本與品質的影響，再協調取捨",
+      "維持所有承諾，將測試工作視為可任意刪除的餘額"
+    ],
+    "answer": 2,
+    "analysis": "專案管理需平衡範疇、時間、成本與品質，變更應納入評估與控制。\n\nA：忽略新增範疇與資源限制的關係。\nB：把文件更新當成可行性與資源調整。\nC：正確。\nD：忽略品質是需平衡的管理面向。",
+    "concept": "範疇、時間、成本與品質",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:002",
+    "assessment_target": "範疇、時間、成本與品質",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:002",
+        "misconception": "忽略新增範疇與資源限制的關係"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:002",
+        "misconception": "把文件更新當成可行性與資源調整"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:002",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:002",
+        "misconception": "忽略品質是需平衡的管理面向"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:005",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:021"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        5,
+        21
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "專案管理需平衡範疇、時間、成本與品質，變更應納入評估與控制。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "15ed2b67b28d25e227b994c9"
+    },
+    "question": "專案執行中，每週將實際進度與里程碑比較，並修正下一週工作安排。這主要是哪個流程？",
+    "options": [
+      "專案結案，因為比較進度表示已完成產品",
+      "產品發布，因為只要開會就代表新版本上線",
+      "專案初始，因為所有進度比較都只在開案時做",
+      "專案監控"
+    ],
+    "answer": 3,
+    "analysis": "監控在執行期間度量績效與調整規劃，結案則整理成果與經驗。\n\nA：把監控活動當成完工證明。\nB：把管理檢視與發布混淆。\nC：把持續追蹤誤作一次性的初始活動。\nD：正確。",
+    "concept": "監控與結案",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:003",
+    "assessment_target": "監控與結案",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:003",
+        "misconception": "把監控活動當成完工證明"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:003",
+        "misconception": "把管理檢視與發布混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:003",
+        "misconception": "把持續追蹤誤作一次性的初始活動"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:003",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:006",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:007",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:021"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        6,
+        7,
+        21
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "監控在執行期間度量績效與調整規劃，結案則整理成果與經驗。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "067bf87e3f42de2622db194e"
+    },
+    "question": "WBS 中「會員管理」已拆成登入、註冊與修改資料三個底層工作。要彙總工時時如何避免重複計算？",
+    "options": [
+      "將會員管理總工時再加上三個底層工時",
+      "先估三個底層工作，再彙總為會員管理的估計",
+      "只估最容易完成的一個底層工作",
+      "只估上層名稱長度，忽略實際工作"
+    ],
+    "answer": 1,
+    "analysis": "教材指出需實際執行的是最底層工作，上層主要是分類；應由底層彙整，避免雙重計算。\n\nA：把上層分類與底層工作重複加總。\nB：正確。\nC：把部分工作當成整個分類的估計。\nD：把文字長度當成工作規模。",
+    "concept": "WBS 的工作層級",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:004",
+    "assessment_target": "WBS 的工作層級",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:004",
+        "misconception": "把上層分類與底層工作重複加總"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:004",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:004",
+        "misconception": "把部分工作當成整個分類的估計"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:004",
+        "misconception": "把文字長度當成工作規模"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:008",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:009",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:010"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        8,
+        9,
+        10
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "教材指出需實際執行的是最底層工作，上層主要是分類；應由底層彙整，避免雙重計算。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "83504504a5209405ae739f31"
+    },
+    "question": "某 WBS 最底層工作仍寫「完成整個後端」，預計需兩個月且難以分工。較適當的調整是什麼？",
+    "options": [
+      "只把截止日提前而不檢查工作內容",
+      "將工作名稱改為「重要後端」而不改範圍",
+      "把同一項工作複製給每位組員",
+      "再拆成可估算、可分派且能在較短期間完成的工作"
+    ],
+    "answer": 3,
+    "analysis": "WBS 的底層應是可執行的工作，教材建議最底層工作最多約兩週完成，以利估算與控管。\n\nA：把壓縮期限當成可追蹤性改善。\nB：把重新命名當成粒度改善。\nC：把重複指派當成工作分解。\nD：正確。",
+    "concept": "WBS 的粒度",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:005",
+    "assessment_target": "WBS 的粒度",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:005",
+        "misconception": "把壓縮期限當成可追蹤性改善"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:005",
+        "misconception": "把重新命名當成粒度改善"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:005",
+        "misconception": "把重複指派當成工作分解"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:005",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:009"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        9
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "WBS 的底層應是可執行的工作，教材建議最底層工作最多約兩週完成，以利估算與控管。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6e0936306ed2d7c5cf09c6de"
+    },
+    "question": "某工作估計需 18 個人時，由一人每天投入此工作 3 小時，且不受其他等待影響。預估工期為幾個工作天？",
+    "options": [
+      "6 天",
+      "18 天",
+      "54 天",
+      "3 天"
+    ],
+    "answer": 0,
+    "analysis": "工期為總努力除以每天可投入努力，18 ÷ 3 = 6 個工作天。\n\nA：正確。\nB：把人時直接當成天數。\nC：把總工時與每日投入量相乘。\nD：把每日可投入時數當成總工期。",
+    "concept": "工時與工期",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:006",
+    "assessment_target": "工時與工期",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:006",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:006",
+        "misconception": "把人時直接當成天數"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:006",
+        "misconception": "把總工時與每日投入量相乘"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:006",
+        "misconception": "把每日可投入時數當成總工期"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:010"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        10
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "工期為總努力除以每天可投入努力，18 ÷ 3 = 6 個工作天。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e3af785f463fc6f9fc280de"
+    },
+    "question": "兩項工作都估為 3 天，但第二項必須等第一項完成才能開始。為何不能只依人數認定兩天內可完成？",
+    "options": [
+      "排程只需看專案名稱，不需工作量",
+      "工作有先後依賴，增加人數不必然消除等待關係",
+      "每項工作估計都必定完全精確",
+      "任何兩項工作都只能同時開始"
+    ],
+    "answer": 1,
+    "analysis": "排程需同時考慮工作量與依賴關係，工時總量並不能單獨決定最短日曆期間。\n\nA：忽略排程所需的工作資訊。\nB：正確。\nC：把估計當成無誤差的事實。\nD：忽略工作依賴的存在。",
+    "concept": "排程與依賴",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:007",
+    "assessment_target": "排程與依賴",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:007",
+        "misconception": "忽略排程所需的工作資訊"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:007",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:007",
+        "misconception": "把估計當成無誤差的事實"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:007",
+        "misconception": "忽略工作依賴的存在"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:012",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:013",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:014",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:015"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "排程需同時考慮工作量與依賴關係，工時總量並不能單獨決定最短日曆期間。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a8e484336634680a27fdfa1"
+    },
+    "question": "一項活動的樂觀時間 O=2 天、最可能時間 M=5 天、悲觀時間 P=14 天。依教材 PERT 公式，期望時間為何？",
+    "options": [
+      "7 天",
+      "6 天",
+      "5 天",
+      "21 天"
+    ],
+    "answer": 1,
+    "analysis": "PERT 期望時間為 (O + 4M + P) ÷ 6 = (2 + 20 + 14) ÷ 6 = 6 天。\n\nA：把三個估計直接取算術平均。\nB：正確。\nC：只取最可能時間而忽略其他估計。\nD：把三個時間直接相加。",
+    "concept": "PERT 加權估計",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:008",
+    "assessment_target": "PERT 加權估計",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:008",
+        "misconception": "把三個估計直接取算術平均"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:008",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:008",
+        "misconception": "只取最可能時間而忽略其他估計"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:008",
+        "misconception": "把三個時間直接相加"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:013",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:014"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        13,
+        14
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "PERT 期望時間為 (O + 4M + P) ÷ 6 = (2 + 20 + 14) ÷ 6 = 6 天。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "48a7b50a3ee93a26d1d1d8d3"
+    },
+    "question": "在教材採用的 activity-on-arrow PERT 圖中，哪個敘述正確？",
+    "options": [
+      "有向邊代表消耗時間的活動，頂點表示活動開始或完成的事件",
+      "頂點一定是消耗時間的工作，有向邊不代表活動",
+      "所有邊都只代表工作負責人",
+      "事件一定要佔用與活動相同的工時"
+    ],
+    "answer": 0,
+    "analysis": "本題限定教材的箭線式圖法：活動位於邊上，事件位於頂點且本身不耗時或資源。\n\nA：正確。\nB：把本章圖法的節點與邊意義顛倒。\nC：把活動網路當成組織關係圖。\nD：把里程碑事件當成執行工作。",
+    "concept": "PERT 的事件與活動",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:009",
+    "assessment_target": "PERT 的事件與活動",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:009",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:009",
+        "misconception": "把本章圖法的節點與邊意義顛倒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:009",
+        "misconception": "把活動網路當成組織關係圖"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:009",
+        "misconception": "把里程碑事件當成執行工作"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:014"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        14
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "本題限定教材的箭線式圖法：活動位於邊上，事件位於頂點且本身不耗時或資源。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "54bf1436e78a19efd9fbd8f7"
+    },
+    "question": "專案只有兩條從開始到結束的路徑：A→B 分別需 4、6 天；C→D 分別需 3、5 天。無資源衝突時，最短專案工期為何？",
+    "options": [
+      "8 天",
+      "18 天",
+      "10 天",
+      "6 天"
+    ],
+    "answer": 2,
+    "analysis": "兩條路徑長度分別為 10 與 8 天，必須等待最長必要路徑完成，因此工期為 10 天。\n\nA：選擇較短路徑而未等待全部必要工作。\nB：把可並行的兩條路徑全數相加。\nC：正確。\nD：只取單一最長活動而忽略連續依賴。",
+    "concept": "關鍵路徑的長度",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:010",
+    "assessment_target": "關鍵路徑的長度",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:010",
+        "misconception": "選擇較短路徑而未等待全部必要工作"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:010",
+        "misconception": "把可並行的兩條路徑全數相加"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:010",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:010",
+        "misconception": "只取單一最長活動而忽略連續依賴"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:015"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        15
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "兩條路徑長度分別為 10 與 8 天，必須等待最長必要路徑完成，因此工期為 10 天。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "be86c42e8da5b07e2ea9d17a"
+    },
+    "question": "兩條平行必要路徑分別需 12 天與 9 天，無其他依賴或資源限制。第二條路徑整體最多延後幾天仍不影響專案完工日？",
+    "options": [
+      "12 天",
+      "9 天",
+      "3 天",
+      "0 天"
+    ],
+    "answer": 2,
+    "analysis": "較短路徑與關鍵路徑相差 12 − 9 = 3 天；超過此差距才會延後整個專案。\n\nA：把專案總工期當成任一路徑的浮動時間。\nB：把路徑工期當成可延遲天數。\nC：正確。\nD：誤以為所有路徑都沒有浮動時間。",
+    "concept": "浮動時間",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:011",
+    "assessment_target": "浮動時間",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:011",
+        "misconception": "把專案總工期當成任一路徑的浮動時間"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:011",
+        "misconception": "把路徑工期當成可延遲天數"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:011",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:011",
+        "misconception": "誤以為所有路徑都沒有浮動時間"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:015"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        15
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "較短路徑與關鍵路徑相差 12 − 9 = 3 天；超過此差距才會延後整個專案。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "dd4bde5429a88dd3b4073ff4"
+    },
+    "question": "哪項描述正確區分甘特圖與里程碑？",
+    "options": [
+      "只要有甘特圖就不需確認里程碑產出",
+      "里程碑必須是一段持續數週的工作量",
+      "甘特圖呈現活動起訖時程，里程碑標示重要成果或階段事件",
+      "甘特圖只呈現類別繼承，里程碑記錄程式變數"
+    ],
+    "answer": 2,
+    "analysis": "甘特圖讓工作時間可視化；里程碑則用來確認特定時間應達成的重要產出。\n\nA：把時程呈現當成成果已完成的證明。\nB：把重要事件誤作持續活動。\nC：正確。\nD：把專案管理與程式結構建模混淆。",
+    "concept": "甘特圖與里程碑",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:012",
+    "assessment_target": "甘特圖與里程碑",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:012",
+        "misconception": "把時程呈現當成成果已完成的證明"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:012",
+        "misconception": "把重要事件誤作持續活動"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:012",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:012",
+        "misconception": "把專案管理與程式結構建模混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:018",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:019"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        18,
+        19
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "甘特圖讓工作時間可視化；里程碑則用來確認特定時間應達成的重要產出。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "d79900f2db8efbf295b29b6c"
+    },
+    "question": "團隊成員開始表達相異意見，對角色與作法出現明顯衝突。依教材四階段分類，最接近哪一期？",
+    "options": [
+      "Norming（規範期）",
+      "Performing（表現期）",
+      "Forming（形成期）",
+      "Storming（震盪期）"
+    ],
+    "answer": 3,
+    "analysis": "形成期是初次聚集；震盪期常出現分歧；之後逐步建立規範並進入有效協作。\n\nA：把共識規範逐漸形成與衝突階段混淆。\nB：把協作順暢與高衝突階段混淆。\nC：把初次認識與衝突出現的階段混淆。\nD：正確。",
+    "concept": "團隊發展階段",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:013",
+    "assessment_target": "團隊發展階段",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:013",
+        "misconception": "把共識規範逐漸形成與衝突階段混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:013",
+        "misconception": "把協作順暢與高衝突階段混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:013",
+        "misconception": "把初次認識與衝突出現的階段混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:013",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:020"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        20
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "形成期是初次聚集；震盪期常出現分歧；之後逐步建立規範並進入有效協作。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4fd3f594d404c01c536f906a"
+    },
+    "question": "Testing 欄 WIP 上限為 2，目前已有兩張卡，其中一張標為 Blocked。依教材的一般規則，下一步較適當的是什麼？",
+    "options": [
+      "先協助排除阻塞，待欄位有空位再拉入新卡",
+      "把上限改大即可認定流程瓶頸消失",
+      "Blocked 一律不計入 WIP，可再拉一張卡",
+      "上游完成多少就無條件推入 Testing"
+    ],
+    "answer": 0,
+    "analysis": "WIP 限制控制同時進行數，Blocked 通常仍佔容量；應優先解阻塞並依下游空位拉動。\n\nA：正確。\nB：把增加在製品當成解決阻塞。\nC：忽略教材指出阻塞卡通常仍計入 WIP。\nD：忽略下游容量與拉動原則。",
+    "concept": "WIP 限制與拉動",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:014",
+    "assessment_target": "WIP 限制與拉動",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:014",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:014",
+        "misconception": "把增加在製品當成解決阻塞"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:014",
+        "misconception": "忽略教材指出阻塞卡通常仍計入 WIP"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:014",
+        "misconception": "忽略下游容量與拉動原則"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:022",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:025",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:026"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        22,
+        25,
+        26
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "WIP 限制控制同時進行數，Blocked 通常仍佔容量；應優先解阻塞並依下游空位拉動。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2c851ad78180ded99ae6aee0"
+    },
+    "question": "團隊希望一眼知道近期工作由誰負責、何時完成及目前進度。哪種卡片設計最合適？",
+    "options": [
+      "所有工作共用一張無細項的卡片",
+      "每個工作有負責人、到期日與狀態，細項及檢核項放入 checklist",
+      "只有完成後才建立卡片",
+      "只在卡片上寫專案名稱，口頭記住其餘資訊"
+    ],
+    "answer": 1,
+    "analysis": "卡片代表工作項，負責人、近期到期日與狀態讓責任和進展可見，checklist 可承載細項。\n\nA：把整個專案混成無法分工追蹤的單一項目。\nB：正確。\nC：無法追蹤正在進行與未開始的工作。\nD：忽略工作責任與進度的可視性。",
+    "concept": "看板卡片的可追蹤性",
+    "chapter": "[05]基礎專案管理與看板",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:05:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:05:015",
+    "assessment_target": "看板卡片的可追蹤性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:015",
+        "misconception": "把整個專案混成無法分工追蹤的單一項目"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:015",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:015",
+        "misconception": "無法追蹤正在進行與未開始的工作"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:05:015",
+        "misconception": "忽略工作責任與進度的可視性"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:028",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:029",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:030",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:031",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:032",
+      "manual_pdf:230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea:page:033"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:05",
+    "course_unit_title": "[05]基礎專案管理與看板",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE05-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "pdf_git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "pdf_pages": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[05]基礎專案管理與看板.pdf",
+      "basis_summary": "卡片代表工作項，負責人、近期到期日與狀態讓責任和進展可見，checklist 可承載細項。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

@@ -1,0 +1,106 @@
+--- a/dc_chatbot.py
++++ b/dc_chatbot.py
+@@ -16,6 +16,7 @@
+ from opencc import OpenCC
+ 
+ from services import haystack_service, quiz_runtime
++from services.quiz_course_units import COURSE_UNIT_TITLES
+ from services.project_security import (
+     ProjectAccessError,
+     ProjectDocumentRejectedError,
+@@ -548,9 +549,13 @@
+ 
+ @bot.tree.command(name="quiz", description="開始測驗")
+ @app_commands.describe(
+-    course_unit="教材單元名稱或 CourseUnit ID，例如 [02]基礎需求工程",
++    course_unit="選擇教材章節（1～11）；留空則隨機選章",
+     questions="本次小測驗題數（5～10）",
+ )
++@app_commands.choices(course_unit=[
++    app_commands.Choice(name=f"{number}. {title}", value=str(number))
++    for number, title in COURSE_UNIT_TITLES.items()
++])
+ async def quiz(
+     interaction: discord.Interaction,
+     course_unit: str | None = None,
+--- a/services/quiz_runtime.py
++++ b/services/quiz_runtime.py
+@@ -4,6 +4,7 @@
+ from collections import defaultdict
+ 
+ from database.mongo_controller import DiagnosisQuiz
++from services.quiz_course_units import resolve_course_unit
+ 
+ 
+ async def get_approved_quizzes(
+@@ -13,6 +14,9 @@
+     """同一次小測驗優先讓每題對應不同評量目標。"""
+     if not 5 <= count <= 10:
+         raise ValueError("小測驗題數必須介於 5 到 10 題")
++
++    requested_scope = (course_unit or "").strip()
++    course_unit = resolve_course_unit(course_unit)
+ 
+     query: dict = {"review_status": "approved"}
+     if course_unit:
+@@ -54,7 +58,7 @@
+         by_target[key].append(question)
+ 
+     if len(by_target) < count:
+-        scope = f"CourseUnit「{course_unit}」" if course_unit else "全部 CourseUnit"
++        scope = f"教材範圍「{requested_scope}」" if course_unit else "全部 CourseUnit"
+         raise ValueError(
+             f"{scope}只有 {len(by_target)} 個具核准題目的不同評量目標，"
+             f"無法組成 {count} 題小測驗"
+@@ -75,7 +79,7 @@
+     del user_id
+     questions = await get_approved_quizzes(count, course_unit)
+     selected_title = questions[0].course_unit_title or questions[0].chapter
+-    scope = course_unit or selected_title
++    scope = selected_title
+     return (
+         questions,
+         f"小測驗範圍：{scope}；共 {count} 題，且每題對應不同評量目標。",
+--- /dev/null
++++ b/services/quiz_course_units.py
+@@ -0,0 +1,40 @@
++"""Human-facing chapter numbers for the curated 11-unit question bank.
++
++Keep the MongoDB identifiers unchanged: old quiz attempts and target evidence
++can still refer to the original bank IDs.
++"""
++
++MANUAL_BANK_PREFIX = "se_manual_20261117_v1"
++
++COURSE_UNIT_TITLES = {
++    1: "[01]軟體危機與軟體流程",
++    2: "[02]基礎需求工程",
++    3: "[03]使用者故事分析",
++    4: "[04]敏捷開發方法",
++    5: "[05]基礎專案管理與看板",
++    6: "[06]版本控制",
++    7: "[07]軟體設計-系統設計",
++    8: "[08]軟體設計-模組設計",
++    9: "[09]軟體測試",
++    10: "[10]進階軟體測試",
++    11: "[11]DevOps自動化建置管理",
++}
++
++
++def resolve_course_unit(course_unit: str | None) -> str | None:
++    """Resolve a chapter number while preserving exact title/ID lookups.
++
++    Numeric requests deliberately use the curated bank ID, not the title:
++    a title lookup would also select older approved questions of that chapter.
++    """
++    if course_unit is None:
++        return None
++    value = course_unit.strip()
++    if not value:
++        return None
++    if value.isdecimal():
++        # Bound the input before integer conversion; API calls need no giant ints.
++        if len(value) > 2 or int(value) not in COURSE_UNIT_TITLES:
++            raise ValueError("章節數字必須介於 1～11，或從章節選單選擇。")
++        return f"{MANUAL_BANK_PREFIX}:unit:{int(value):02d}"
++    return value

@@ -16,6 +16,7 @@ from discord import app_commands
 from opencc import OpenCC
 
 from services import haystack_service, quiz_runtime
+from services.quiz_course_units import COURSE_UNIT_TITLES
 from services.project_security import (
     ProjectAccessError,
     ProjectDocumentRejectedError,
@@ -548,9 +549,13 @@ class QuizView(discord.ui.View):
 
 @bot.tree.command(name="quiz", description="開始測驗")
 @app_commands.describe(
-    course_unit="教材單元名稱或 CourseUnit ID，例如 [02]基礎需求工程",
+    course_unit="選擇教材章節（1～11）；留空則隨機選章",
     questions="本次小測驗題數（5～10）",
 )
+@app_commands.choices(course_unit=[
+    app_commands.Choice(name=f"{number}. {title}", value=str(number))
+    for number, title in COURSE_UNIT_TITLES.items()
+])
 async def quiz(
     interaction: discord.Interaction,
     course_unit: str | None = None,

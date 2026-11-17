@@ -1,0 +1,1202 @@
+[
+  {
+    "_id": {
+      "$oid": "eaba7625b2e1d5dfd4bbc974"
+    },
+    "question": "需求已確認「使用者可搜尋商品」，團隊接著討論模組分工與資料結構。這個轉換主要表示什麼？",
+    "options": [
+      "從實作層回到未定義的業務目標",
+      "已完成所有程式與部署工作",
+      "從描述 What 進入安排 How 的設計層次",
+      "從系統設計轉成與產品無關的管理工作"
+    ],
+    "answer": 2,
+    "analysis": "需求關注外部服務，設計則將需求轉成內部結構與實現方式，不等同於程式已寫完。\n\nA：把設計轉換方向顛倒。\nB：把設計決策當成實際完成產品。\nC：正確。\nD：忽略模組與資料結構正是設計內容。",
+    "concept": "抽象層次與設計",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:001",
+    "assessment_target": "抽象層次與設計",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:001",
+        "misconception": "把設計轉換方向顛倒"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:001",
+        "misconception": "把設計決策當成實際完成產品"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:001",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:001",
+        "misconception": "忽略模組與資料結構正是設計內容"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:004",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:009",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:010"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        4,
+        9,
+        10
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "需求關注外部服務，設計則將需求轉成內部結構與實現方式，不等同於程式已寫完。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e6094c1ea15f11da200bb9d"
+    },
+    "question": "團隊主張「模組越小越多，總開發成本一定越低」。哪項反駁最符合教材？",
+    "options": [
+      "應把所有功能放在單一模組才能重用",
+      "拆出模組後就不需要定義介面",
+      "模組數量只影響檔案名稱，不影響整合",
+      "小模組雖較易理解，過多模組也會增加介面與溝通成本"
+    ],
+    "answer": 3,
+    "analysis": "模組大小與數量需權衡單一模組設計成本和跨模組介面成本，並非單調越多越好。\n\nA：忽略大型模組的設計與重用困難。\nB：把模組分割當成不需互動契約。\nC：忽略模組間互動成本。\nD：正確。",
+    "concept": "模組化的取捨",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:002",
+    "assessment_target": "模組化的取捨",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:002",
+        "misconception": "忽略大型模組的設計與重用困難"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:002",
+        "misconception": "把模組分割當成不需互動契約"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:002",
+        "misconception": "忽略模組間互動成本"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:002",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:012",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:013",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:014"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        12,
+        13,
+        14
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "模組大小與數量需權衡單一模組設計成本和跨模組介面成本，並非單調越多越好。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3b97acd9b7d7dc16be64c066"
+    },
+    "question": "付款模組集中處理付款規則，其他模組只透過明確 API 使用它。此設計主要追求什麼？",
+    "options": [
+      "把不相關功能放在付款模組以提高凝聚",
+      "所有模組直接修改付款模組的內部資料",
+      "模組內高凝聚，模組間低耦合",
+      "模組內低凝聚，模組間高耦合"
+    ],
+    "answer": 2,
+    "analysis": "凝聚關注模組內部責任的相關性；耦合關注模組間依賴，高凝聚低耦合通常有利維護與重用。\n\nA：把功能數量增加當成責任集中。\nB：把跨模組直接依賴誤作低耦合。\nC：正確。\nD：把理想方向完全顛倒。",
+    "concept": "高凝聚低耦合",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:003",
+    "assessment_target": "高凝聚低耦合",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:003",
+        "misconception": "把功能數量增加當成責任集中"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:003",
+        "misconception": "把跨模組直接依賴誤作低耦合"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:003",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:003",
+        "misconception": "把理想方向完全顛倒"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:015",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:016"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        15,
+        16
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "凝聚關注模組內部責任的相關性；耦合關注模組間依賴，高凝聚低耦合通常有利維護與重用。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "a702669ce3271ca02ff533c5"
+    },
+    "question": "一份設計先畫出服務及連線，再描述請求如何穿過各服務處理。兩部分依序對應什麼？",
+    "options": [
+      "靜態組織、動態互動",
+      "動態互動、靜態組織",
+      "資料庫容量、程式碼排版",
+      "使用者人物誌、合約價款"
+    ],
+    "answer": 0,
+    "analysis": "靜態架構呈現元件分割與介面連結；動態架構呈現資料傳遞、處理與執行行為。\n\nA：正確。\nB：把結構與執行行為顛倒。\nC：把架構構面與容量及風格混淆。\nD：把系統內部架構與需求背景混淆。",
+    "concept": "架構的靜態與動態面",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:004",
+    "assessment_target": "架構的靜態與動態面",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:004",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:004",
+        "misconception": "把結構與執行行為顛倒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:004",
+        "misconception": "把架構構面與容量及風格混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:004",
+        "misconception": "把系統內部架構與需求背景混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:017",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:018"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        17,
+        18
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "靜態架構呈現元件分割與介面連結；動態架構呈現資料傳遞、處理與執行行為。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "fb9943aedc70d881bc71ec38"
+    },
+    "question": "要說明哪些軟體服務部署在哪些主機或處理器上，4+1 模型中最直接使用哪個視圖？",
+    "options": [
+      "Use Cases 或 Scenarios",
+      "Logical View",
+      "Development View",
+      "Physical View"
+    ],
+    "answer": 3,
+    "analysis": "Physical View 關注硬體及軟體在處理器上的分布；其他視圖分別關注抽象、流程、開發或情境。\n\nA：把使用情境當成硬體部署視圖。\nB：把核心抽象與類別結構當成部署配置。\nC：把開發拆分與執行硬體配置混淆。\nD：正確。",
+    "concept": "4+1 的 Physical View",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:005",
+    "assessment_target": "4+1 的 Physical View",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:005",
+        "misconception": "把使用情境當成硬體部署視圖"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:005",
+        "misconception": "把核心抽象與類別結構當成部署配置"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:005",
+        "misconception": "把開發拆分與執行硬體配置混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:005",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:019",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:020"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        19,
+        20
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "Physical View 關注硬體及軟體在處理器上的分布；其他視圖分別關注抽象、流程、開發或情境。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "7f5f1f6b39aa22bc79921034"
+    },
+    "question": "多個工具模組透過共同的中央資料庫交換資訊，主要符合哪種架構模式？",
+    "options": [
+      "嚴格的階層架構，因為所有資料庫都代表分層",
+      "儲存庫架構",
+      "點對點架構，因為每個模組一定同時是客戶與伺服器",
+      "事件驅動架構，因為任何資料寫入都必然是發布事件"
+    ],
+    "answer": 1,
+    "analysis": "儲存庫架構以共同資料儲存中心讓模組共享資訊；不能只因有多個模組就判定為事件或對等架構。\n\nA：把共用資料中心與階層呼叫規則混淆。\nB：正確。\nC：把共用儲存庫當成對等角色。\nD：把資料共享當成事件發布訂閱。",
+    "concept": "階層與儲存庫架構",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:006",
+    "assessment_target": "階層與儲存庫架構",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:006",
+        "misconception": "把共用資料中心與階層呼叫規則混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:006",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:006",
+        "misconception": "把共用儲存庫當成對等角色"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:006",
+        "misconception": "把資料共享當成事件發布訂閱"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:022",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:023",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:024"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        22,
+        23,
+        24
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "儲存庫架構以共同資料儲存中心讓模組共享資訊；不能只因有多個模組就判定為事件或對等架構。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2e2e9db40035bd85399f953d"
+    },
+    "question": "系統節點既可請求其他節點的服務，也可提供服務給其他節點，沒有固定的純客戶端角色。最接近哪種架構？",
+    "options": [
+      "只讀中央儲存庫架構",
+      "單一程序內的嚴格分層",
+      "固定主從式架構，且節點永遠只能是客戶端",
+      "點對點架構"
+    ],
+    "answer": 3,
+    "analysis": "Peer-to-Peer 不嚴格固定客戶與伺服器角色，節點可兼具兩者。\n\nA：把提供服務與資料中心角色混淆。\nB：把分散節點角色當成程序內分層。\nC：忽略角色可同時提供與要求服務。\nD：正確。",
+    "concept": "Client-Server 與 Peer-to-Peer",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:007",
+    "assessment_target": "Client-Server 與 Peer-to-Peer",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:007",
+        "misconception": "把提供服務與資料中心角色混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:007",
+        "misconception": "把分散節點角色當成程序內分層"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:007",
+        "misconception": "忽略角色可同時提供與要求服務"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:007",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:025"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        25
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "Peer-to-Peer 不嚴格固定客戶與伺服器角色，節點可兼具兩者。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "070024dd148a106723f573a4"
+    },
+    "question": "訂單服務發布「訂單成立」事件，庫存與通知服務各自訂閱處理。最直接描述其溝通方式的是什麼？",
+    "options": [
+      "前端畫面直接繼承後端類別",
+      "所有服務必須共用同一個資料庫才成立",
+      "事件驅動的發布與訂閱",
+      "每個訂閱者必須直接讀寫發布者內部記憶體"
+    ],
+    "answer": 2,
+    "analysis": "事件驅動架構藉由發布與訂閱事件溝通；微服務可採事件方式，也可使用其他 API 互動。\n\nA：把服務溝通與物件繼承混淆。\nB：把微服務或事件溝通與共用資料庫綁定。\nC：正確。\nD：把事件溝通當成共享內部狀態。",
+    "concept": "事件驅動與微服務",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:008",
+    "assessment_target": "事件驅動與微服務",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:008",
+        "misconception": "把服務溝通與物件繼承混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:008",
+        "misconception": "把微服務或事件溝通與共用資料庫綁定"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:008",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:008",
+        "misconception": "把事件溝通當成共享內部狀態"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:027",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:028"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        27,
+        28
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "事件驅動架構藉由發布與訂閱事件溝通；微服務可採事件方式，也可使用其他 API 互動。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "d589e175180b843fca405351"
+    },
+    "question": "API 以 /orders/45524 代表某張訂單，要讀取與刪除此訂單時，依教材通常分別使用哪些 HTTP 方法？",
+    "options": [
+      "DELETE 與 GET",
+      "GET 與 DELETE",
+      "POST 與 POST，且方法不需表達操作意義",
+      "PATCH 與 GET"
+    ],
+    "answer": 1,
+    "analysis": "教材以資源 URI 識別目標，並以 GET 讀取、DELETE 刪除；URI 本身不取代方法語意。\n\nA：把讀取與刪除的方法顛倒。\nB：正確。\nC：忽略統一介面中方法的用途。\nD：把局部更新與讀取刪除混淆。",
+    "concept": "REST 資源與方法",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:009",
+    "assessment_target": "REST 資源與方法",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:009",
+        "misconception": "把讀取與刪除的方法顛倒"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:009",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:009",
+        "misconception": "忽略統一介面中方法的用途"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:009",
+        "misconception": "把局部更新與讀取刪除混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:033",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:034"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        33,
+        34
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "教材以資源 URI 識別目標，並以 GET 讀取、DELETE 刪除；URI 本身不取代方法語意。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6bba9655087e2ca22dd06a34"
+    },
+    "question": "想向非技術利害關係人說明誰使用系統、系統和哪些外部系統互動，應先提供哪一層圖？",
+    "options": [
+      "System Context Diagram",
+      "Code Diagram，列出全部屬性與方法",
+      "只列出所有 Docker 映像名稱",
+      "只呈現資料庫實體關係的 ERD"
+    ],
+    "answer": 0,
+    "analysis": "Context 層聚焦人與軟體系統的全局關係，不以技術協定和底層程式細節為核心。\n\nA：正確。\nB：把過細的程式細節放在全局溝通起點。\nC：把部署產物清單當成使用者與系統脈絡。\nD：把資料結構當成系統全景。",
+    "concept": "C4 的 Context 與 Container",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:010",
+    "assessment_target": "C4 的 Context 與 Container",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:010",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:010",
+        "misconception": "把過細的程式細節放在全局溝通起點"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:010",
+        "misconception": "把部署產物清單當成使用者與系統脈絡"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:010",
+        "misconception": "把資料結構當成系統全景"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:038",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:039",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:040"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        38,
+        39,
+        40
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "Context 層聚焦人與軟體系統的全局關係，不以技術協定和底層程式細節為核心。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "63e7e83007d5136176d4c489"
+    },
+    "question": "依 C4 的 Container 定義，下列哪項判斷正確？",
+    "options": [
+      "只有 Docker 容器才可出現在 Container Diagram",
+      "獨立 Web 應用或資料儲存都可作為 Container，不必使用 Docker",
+      "每個類別都必須畫成獨立 Container",
+      "Container Diagram 不應描述技術選擇與溝通方式"
+    ],
+    "answer": 1,
+    "analysis": "C4 container 是應用或資料儲存的架構抽象，Component 再拆其內部，Code 則深入重要元件的程式結構。\n\nA：把 C4 container 與特定容器技術等同。\nB：正確。\nC：把 Code 層的類別當成應用層單位。\nD：忽略此圖的高階技術資訊用途。",
+    "concept": "C4 各層的涵蓋範圍",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:011",
+    "assessment_target": "C4 各層的涵蓋範圍",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:011",
+        "misconception": "把 C4 container 與特定容器技術等同"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:011",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:011",
+        "misconception": "把 Code 層的類別當成應用層單位"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:011",
+        "misconception": "忽略此圖的高階技術資訊用途"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:040",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:041",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:042",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:043",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:044"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "C4 container 是應用或資料儲存的架構抽象，Component 再拆其內部，Code 則深入重要元件的程式結構。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "720dae79d8c07fb1cf81cac0"
+    },
+    "question": "前後端希望分頭開發後能順利整合，介面設計最應先共同確定什麼？",
+    "options": [
+      "只共同選定編輯器配色",
+      "只要求兩邊使用相同程式語言",
+      "呼叫方式、輸入參數、輸出資料與相關規則",
+      "等兩邊全部完成後才決定 JSON 欄位"
+    ],
+    "answer": 2,
+    "analysis": "介面規格需在實作前約定，呼叫方與提供方才能依共同契約平行開發。\n\nA：把開發環境外觀當成介接契約。\nB：把語言相同當成資料及呼叫規格一致。\nC：正確。\nD：把必要契約延後到整合失敗風險最高時。",
+    "concept": "介面契約與平行開發",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:012",
+    "assessment_target": "介面契約與平行開發",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:012",
+        "misconception": "把開發環境外觀當成介接契約"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:012",
+        "misconception": "把語言相同當成資料及呼叫規格一致"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:012",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:012",
+        "misconception": "把必要契約延後到整合失敗風險最高時"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:051",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:052",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:053",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:054"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "介面規格需在實作前約定，呼叫方與提供方才能依共同契約平行開發。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "1dff440f559764157ecbaae6"
+    },
+    "question": "設計者要分別描述「資料表關聯」、「含決策與並行的業務流程」、「物件間訊息先後」。哪組表示法依序最合適？",
+    "options": [
+      "ERD、活動圖、循序圖",
+      "活動圖、ERD、類別圖",
+      "甘特圖、人物誌、WBS",
+      "循序圖、類別圖、ERD"
+    ],
+    "answer": 0,
+    "analysis": "ERD 描述資料關係，活動圖描述流程與分支並行，循序圖則呈現物件之間的訊息互動順序。\n\nA：正確。\nB：混淆資料結構、流程與動態訊息的用途。\nC：把專案規劃及使用者背景當成內部設計圖。\nD：把互動順序與靜態資料設計對調。",
+    "concept": "資料、活動與循序設計",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:013",
+    "assessment_target": "資料、活動與循序設計",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:013",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:013",
+        "misconception": "混淆資料結構、流程與動態訊息的用途"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:013",
+        "misconception": "把專案規劃及使用者背景當成內部設計圖"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:013",
+        "misconception": "把互動順序與靜態資料設計對調"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:055",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:056",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:057",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:058",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:059",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:060"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "ERD 描述資料關係，活動圖描述流程與分支並行，循序圖則呈現物件之間的訊息互動順序。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3590527851704770193ce946"
+    },
+    "question": "架構圖說搜尋元件對外提供一個搜尋介面，但類別圖把它拆成三個類別。如何維持兩層設計的一致性？",
+    "options": [
+      "說清楚介面由哪些類別實現，以及類別與上層元件的對應",
+      "在類別圖任意改變外部介面而不更新架構",
+      "刪除所有上層介面，只保留類別名稱",
+      "要求每個元件永遠只能對應一個類別"
+    ],
+    "answer": 0,
+    "analysis": "元件可拆成一到多個程式單元，但應保留介面契約及可追溯的結構對應。\n\nA：正確。\nB：忽略跨層契約一致性。\nC：把細部設計當成可取消上層互動契約。\nD：誤以為架構與程式單元必須一對一。",
+    "concept": "上層架構與細部設計一致性",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:014",
+    "assessment_target": "上層架構與細部設計一致性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:014",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:014",
+        "misconception": "忽略跨層契約一致性"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:014",
+        "misconception": "把細部設計當成可取消上層互動契約"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:014",
+        "misconception": "誤以為架構與程式單元必須一對一"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:060",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:062",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:063"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        60,
+        62,
+        63
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "元件可拆成一到多個程式單元，但應保留介面契約及可追溯的結構對應。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "e917cf96f76205fd2762070d"
+    },
+    "question": "團隊比較三種購物車儲存方案，最後選擇混合式。為了讓後續維護者能重新評估，最應留下什麼？",
+    "options": [
+      "只保留最後一張架構圖，不留選擇原因",
+      "只記選定產品的商標與版本號",
+      "把未採用方案刪除，避免任何人提出疑問",
+      "問題、候選方案、最終選擇與決策理由"
+    ],
+    "answer": 3,
+    "analysis": "設計議題紀錄應包含議題、替代方案、最後方案與 rationale，供條件改變時重新判斷。\n\nA：把結果呈現當成完整決策紀錄。\nB：缺少需求取捨與候選方案的脈絡。\nC：忽略替代方案有助於理解取捨。\nD：正確。",
+    "concept": "設計議題與決策理由",
+    "chapter": "[07]軟體設計-系統設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:07:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:07:015",
+    "assessment_target": "設計議題與決策理由",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:015",
+        "misconception": "把結果呈現當成完整決策紀錄"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:015",
+        "misconception": "缺少需求取捨與候選方案的脈絡"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:015",
+        "misconception": "忽略替代方案有助於理解取捨"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:07:015",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:064",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:065",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:066",
+      "manual_pdf:576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a:page:067"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:07",
+    "course_unit_title": "[07]軟體設計-系統設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE07-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "pdf_git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "pdf_pages": [
+        64,
+        65,
+        66,
+        67
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[07]軟體設計-系統設計.pdf",
+      "basis_summary": "設計議題紀錄應包含議題、替代方案、最後方案與 rationale，供條件改變時重新判斷。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

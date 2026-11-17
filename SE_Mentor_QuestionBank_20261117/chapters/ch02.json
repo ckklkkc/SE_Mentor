@@ -1,0 +1,1182 @@
+[
+  {
+    "_id": {
+      "$oid": "2de80a8dbf8e2a65696a2608"
+    },
+    "question": "客戶說「教師能在線上閱卷」，分析師再補上配分設定與總分顯示規則。後者相較於前者的主要差異是什麼？",
+    "options": [
+      "將功能需求全部轉成非功能需求",
+      "將需求確認直接改成程式測試",
+      "將系統需求改回較抽象的企業目標",
+      "將高階目標細化成較明確的系統需求"
+    ],
+    "answer": 3,
+    "analysis": "使用者需求較抽象，系統需求細述服務與限制，兩者並不是功能與非功能的對立分類。\n\nA：把需求抽象層次與需求種類混淆。\nB：把規格分析與執行測試混淆。\nC：把需求細化的方向顛倒。\nD：正確。",
+    "concept": "使用者需求與系統需求",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:001",
+    "assessment_target": "使用者需求與系統需求",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:001",
+        "misconception": "把需求抽象層次與需求種類混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:001",
+        "misconception": "把規格分析與執行測試混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:001",
+        "misconception": "把需求細化的方向顛倒"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:001",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:005",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:006",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:007"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        5,
+        6,
+        7
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "使用者需求較抽象，系統需求細述服務與限制，兩者並不是功能與非功能的對立分類。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2b9f95d588d11eaf979f4cfe"
+    },
+    "question": "「醫務人員希望系統容易使用」依教材的兩個分類面向，最適合歸在哪一類？",
+    "options": [
+      "功能性使用者需求",
+      "功能性系統需求",
+      "非功能性使用者需求",
+      "非功能性系統需求"
+    ],
+    "answer": 2,
+    "analysis": "容易使用是品質目標，且尚未細化為訓練時數或錯誤率等系統規格。\n\nA：把易用性的品質目標當成具體服務。\nB：同時混淆品質種類與需求抽象層次。\nC：正確。\nD：忽略題幹仍是抽象目標而非可驗證規格。",
+    "concept": "需求分類的兩個面向",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:002",
+    "assessment_target": "需求分類的兩個面向",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:002",
+        "misconception": "把易用性的品質目標當成具體服務"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:002",
+        "misconception": "同時混淆品質種類與需求抽象層次"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:002",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:002",
+        "misconception": "忽略題幹仍是抽象目標而非可驗證規格"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:004",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:008",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:019"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        4,
+        8,
+        19
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "容易使用是品質目標，且尚未細化為訓練時數或錯誤率等系統規格。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "a0feab03eb4ad9cd95ae37d1"
+    },
+    "question": "下列哪項最明確是在描述功能需求？",
+    "options": [
+      "系統需在營業時間維持指定可用率",
+      "開發過程須遵循組織內部流程標準",
+      "在 1,000 人同時操作時平均回應低於 1 秒",
+      "系統應提供逐題配分設定，並即時顯示總分"
+    ],
+    "answer": 3,
+    "analysis": "設定配分與顯示總分是系統服務；回應時間、可用率與開發標準則是品質或流程約束。\n\nA：把可用性要求當成功能需求。\nB：把流程約束當成功能需求。\nC：把效能限制當成服務項目。\nD：正確。",
+    "concept": "服務與品質約束",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:003",
+    "assessment_target": "服務與品質約束",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:003",
+        "misconception": "把可用性要求當成功能需求"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:003",
+        "misconception": "把流程約束當成功能需求"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:003",
+        "misconception": "把效能限制當成服務項目"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:003",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:008",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:011",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:013"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        8,
+        11,
+        13
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "設定配分與顯示總分是系統服務；回應時間、可用率與開發標準則是品質或流程約束。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "42db3c9d31146d669d27c28d"
+    },
+    "question": "公司要求所有開發活動遵循自訂的 SDLC 流程標準。此要求依來源應歸為哪一類？",
+    "options": [
+      "功能性使用者需求",
+      "產品需求",
+      "外部需求",
+      "組織需求"
+    ],
+    "answer": 3,
+    "analysis": "教材以組織政策與程序所造成的限制作為組織需求；法律等外部因素則另歸外部需求。\n\nA：把開發流程約束誤當成使用者可操作的服務。\nB：把組織政策誤當成產品運作特性。\nC：把內部政策誤當成外部法規。\nD：正確。",
+    "concept": "非功能需求的來源",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:004",
+    "assessment_target": "非功能需求的來源",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:004",
+        "misconception": "把開發流程約束誤當成使用者可操作的服務"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:004",
+        "misconception": "把組織政策誤當成產品運作特性"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:004",
+        "misconception": "把內部政策誤當成外部法規"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:004",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:016",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:017",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:018"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        16,
+        17,
+        18
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "教材以組織政策與程序所造成的限制作為組織需求；法律等外部因素則另歸外部需求。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "73add4b3d3ef595f5922bf50"
+    },
+    "question": "要將「搜尋要快」改成日後能驗收的需求，哪個版本最完整？",
+    "options": [
+      "搜尋功能應採用知名的高效能框架",
+      "搜尋應比舊系統更快且更流暢",
+      "搜尋速度應盡量接近使用者期待",
+      "在 500 人同時操作、資料量 10 萬筆時，95% 搜尋需在 2 秒內完成"
+    ],
+    "answer": 3,
+    "analysis": "可驗證的效能規格應交代負載條件、量測指標與門檻，才能設計具體測試。\n\nA：以技術選擇取代可驗證結果。\nB：未給出可比較的條件與驗收門檻。\nC：沿用未量化的主觀品質目標。\nD：正確。",
+    "concept": "非功能需求量化",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:005",
+    "assessment_target": "非功能需求量化",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:005",
+        "misconception": "以技術選擇取代可驗證結果"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:005",
+        "misconception": "未給出可比較的條件與驗收門檻"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:005",
+        "misconception": "沿用未量化的主觀品質目標"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:005",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:019",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:020",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:048"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        19,
+        20,
+        48
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "可驗證的效能規格應交代負載條件、量測指標與門檻，才能設計具體測試。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "52e697f011ead3bdb536e8e2"
+    },
+    "question": "團隊已有可實作的技術，但預估維運成本遠高於預期效益，期限內也無法交付。可行性評估應如何判斷？",
+    "options": [
+      "成本問題應全部留到驗收時處理",
+      "只要使用者願意使用，就不需考量資源",
+      "仍須評估經濟與時程，技術可行不代表整體可行",
+      "只要技術可行，就可直接認定專案可行"
+    ],
+    "answer": 2,
+    "analysis": "可行性包含技術、經濟、操作、時程與法律，單一面向成立不足以支持整體決策。\n\nA：把前期可行性議題延後至交付階段。\nB：把操作可行性當成成本與時程的替代條件。\nC：正確。\nD：把技術可行性當成唯一判準。",
+    "concept": "整體可行性分析",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:006",
+    "assessment_target": "整體可行性分析",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:006",
+        "misconception": "把前期可行性議題延後至交付階段"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:006",
+        "misconception": "把操作可行性當成成本與時程的替代條件"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:006",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:006",
+        "misconception": "把技術可行性當成唯一判準"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:023"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        23
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "可行性包含技術、經濟、操作、時程與法律，單一面向成立不足以支持整體決策。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "aabfe33b8861d66e12f76dde"
+    },
+    "question": "分析師已知需求窗口，但對方的一項限制描述含糊，希望當場追問並釐清。哪個方法最直接？",
+    "options": [
+      "先替需求窗口決定系統內部演算法",
+      "只寄送無法補充說明的封閉式問卷",
+      "安排面談並針對限制進行往返確認",
+      "先執行程式碼覆蓋率分析"
+    ],
+    "answer": 2,
+    "analysis": "面談提供直接溝通與追問機會，適合釐清需求窗口口述的期望與限制。\n\nA：以設計取代需求擷取。\nB：忽略情境需要當場追問與澄清。\nC：正確。\nD：把尚未釐清的需求問題當成程式結構測試。",
+    "concept": "需求擷取方法的選擇",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:007",
+    "assessment_target": "需求擷取方法的選擇",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:007",
+        "misconception": "以設計取代需求擷取"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:007",
+        "misconception": "忽略情境需要當場追問與澄清"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:007",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:007",
+        "misconception": "把尚未釐清的需求問題當成程式結構測試"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:024",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:025",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:026"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        24,
+        25,
+        26
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "面談提供直接溝通與追問機會，適合釐清需求窗口口述的期望與限制。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5ed47a430bf8d58b69774027"
+    },
+    "question": "撰寫購票系統的操作概念時，哪一段最符合黑盒觀點？",
+    "options": [
+      "工作執行緒以佇列傳送資料庫連線",
+      "乘客選擇班次，系統顯示票價；付款成功後顯示車票",
+      "控制器建立交易物件，再呼叫資料存取方法",
+      "資料表以三個索引加速查詢"
+    ],
+    "answer": 1,
+    "analysis": "黑盒觀點描述使用者動作及系統可觀察回應，先不分析後台實作細節。\n\nA：把程式內部機制當成外部互動。\nB：正確。\nC：把內部實作細節放進黑盒操作描述。\nD：把資料庫設計當成使用者操作情境。",
+    "concept": "使用案例的黑盒觀點",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:008",
+    "assessment_target": "使用案例的黑盒觀點",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:008",
+        "misconception": "把程式內部機制當成外部互動"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:008",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:008",
+        "misconception": "把內部實作細節放進黑盒操作描述"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:008",
+        "misconception": "把資料庫設計當成使用者操作情境"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:027",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:028",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:029",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:030"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "黑盒觀點描述使用者動作及系統可觀察回應，先不分析後台實作細節。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "cfbfc406b7c610b9a4fada7f"
+    },
+    "question": "團隊建立主要與次要 Persona，主要是為了什麼？",
+    "options": [
+      "用虛構人物取代所有需求確認",
+      "釐清典型使用者及其需求，引導故事與操作概念",
+      "依程式語言把使用者分成不同類別",
+      "決定每個資料表的主鍵型別"
+    ],
+    "answer": 1,
+    "analysis": "人物誌代表典型使用者，有助於聚焦誰需要系統、為什麼使用，以及如何操作。\n\nA：把需求探索工具當成真實回饋的替代品。\nB：正確。\nC：把技術選型當成使用者建模依據。\nD：把使用者建模與資料設計混淆。",
+    "concept": "人物誌的用途",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:009",
+    "assessment_target": "人物誌的用途",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:009",
+        "misconception": "把需求探索工具當成真實回饋的替代品"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:009",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:009",
+        "misconception": "把技術選型當成使用者建模依據"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:009",
+        "misconception": "把使用者建模與資料設計混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:032"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        32
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "人物誌代表典型使用者，有助於聚焦誰需要系統、為什麼使用，以及如何操作。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "1da3525c527c0a50725610f4"
+    },
+    "question": "團隊要用低細節線框圖討論早期頁面設計。哪組資訊應優先呈現？",
+    "options": [
+      "頁面元素位置、大小與導覽關係",
+      "所有動畫影格與最終圖示材質",
+      "品牌色碼、字型授權與精修插圖",
+      "資料庫索引、執行緒數與部署腳本"
+    ],
+    "answer": 0,
+    "analysis": "教材強調線框圖呈現配置與導覽，不需先決定色彩、字型、圖像或品牌元素。\n\nA：正確。\nB：把成品視覺細節當成早期溝通必要條件。\nC：把視覺裝飾當成早期線框圖的核心。\nD：把後台實作設定當成頁面骨架。",
+    "concept": "線框圖的資訊範圍",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:010",
+    "assessment_target": "線框圖的資訊範圍",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:010",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:010",
+        "misconception": "把成品視覺細節當成早期溝通必要條件"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:010",
+        "misconception": "把視覺裝飾當成早期線框圖的核心"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:010",
+        "misconception": "把後台實作設定當成頁面骨架"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:033",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:034",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:035"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        33,
+        34,
+        35
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "教材強調線框圖呈現配置與導覽，不需先決定色彩、字型、圖像或品牌元素。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "287dea10f4ca45d1eb61a1e4"
+    },
+    "question": "使用者看完快速原型後，要求下週直接上線。分析師首先應釐清什麼？",
+    "options": [
+      "既然使用者接受畫面，就可視為完成所有需求確認與測試",
+      "只有捨棄整份需求文件才能繼續開發",
+      "原型用於探索需求，尚須確認是否具備正式產品的品質與完整性",
+      "原型只能展示，不能再用來確認需求"
+    ],
+    "answer": 2,
+    "analysis": "原型能降低溝通門檻，但使用者容易誤認為最終系統；需說清其用途與完成程度。\n\nA：把畫面接受等同於全面驗證。\nB：把原型與文件錯誤地視為互斥。\nC：正確。\nD：忽略原型也可支援需求確認。",
+    "concept": "原型擷取需求的限制",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:011",
+    "assessment_target": "原型擷取需求的限制",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:011",
+        "misconception": "把畫面接受等同於全面驗證"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:011",
+        "misconception": "把原型與文件錯誤地視為互斥"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:011",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:011",
+        "misconception": "忽略原型也可支援需求確認"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:037"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        37
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "原型能降低溝通門檻，但使用者容易誤認為最終系統；需說清其用途與完成程度。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "e95d7acdac9efce7a98a97c9"
+    },
+    "question": "新聞平台已列出新增與瀏覽新聞，卻未考慮管理者刪除不當新聞。哪種檢查最能直接發現此遺漏？",
+    "options": [
+      "只比較程式碼是否符合命名規範",
+      "依角色與核心資料生命週期檢查需求完整性",
+      "只檢查每句需求是否有錯字",
+      "只檢查是否指定資料庫品牌"
+    ],
+    "answer": 1,
+    "analysis": "教材建議從 actor 與資料生命週期檢查遺漏，管理角色及刪除操作都是常見缺口。\n\nA：把程式品質檢查當成需求分析。\nB：正確。\nC：把文字校對當成需求完整性分析。\nD：把設計選型當成需求涵蓋檢查。",
+    "concept": "3C 中的完整性",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:012",
+    "assessment_target": "3C 中的完整性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:012",
+        "misconception": "把程式品質檢查當成需求分析"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:012",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:012",
+        "misconception": "把文字校對當成需求完整性分析"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:012",
+        "misconception": "把設計選型當成需求涵蓋檢查"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:038",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:039"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        38,
+        39
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "教材建議從 actor 與資料生命週期檢查遺漏，管理角色及刪除操作都是常見缺口。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6870d6362d907a7f6853733f"
+    },
+    "question": "同一份規格分別寫「成績僅本人可見」與「任何訪客可查詢所有學生姓名及成績」。應優先進行哪項工作？",
+    "options": [
+      "分析兩項需求的衝突，與需求端協調存取範圍",
+      "先把所有成績頁改成相同色彩",
+      "只替兩句配置不同編號即可",
+      "將兩句都保留，交由不同開發者各自決定"
+    ],
+    "answer": 0,
+    "analysis": "兩項要求對同一資料的可見性互相矛盾，須先協調規則，不能只交給實作者自行解讀。\n\nA：正確。\nB：把介面一致性當成權限需求衝突的解方。\nC：把識別需求當成解決矛盾。\nD：忽略需求衝突會延續到實作。",
+    "concept": "3C 中的無衝突性",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:013",
+    "assessment_target": "3C 中的無衝突性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:013",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:013",
+        "misconception": "把介面一致性當成權限需求衝突的解方"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:013",
+        "misconception": "把識別需求當成解決矛盾"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:013",
+        "misconception": "忽略需求衝突會延續到實作"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:039"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        39
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "兩項要求對同一資料的可見性互相矛盾，須先協調規則，不能只交給實作者自行解讀。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "933cda24dac41f18a3487d62"
+    },
+    "question": "將分析後的需求寫成具體規格並給予唯一編號，主要有何作用？",
+    "options": [
+      "提供後續設計、合約與追溯各項需求的明確依據",
+      "只用來決定程式中變數的名稱",
+      "保證從此不會再收到變更要求",
+      "讓每個開發者可自行改寫需求意義"
+    ],
+    "answer": 0,
+    "analysis": "規格化將需求明確記錄為共同依據；唯一編號讓不同文件與測試能指向同一需求。\n\nA：正確。\nB：把需求識別的用途限縮成編碼細節。\nC：把規格化誤當成需求永久凍結。\nD：把規格化誤當成容許多種不一致解讀。",
+    "concept": "需求規格化與識別",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:014",
+    "assessment_target": "需求規格化與識別",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:014",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:014",
+        "misconception": "把需求識別的用途限縮成編碼細節"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:014",
+        "misconception": "把規格化誤當成需求永久凍結"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:014",
+        "misconception": "把規格化誤當成容許多種不一致解讀"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:040",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:045"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        40,
+        45
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "規格化將需求明確記錄為共同依據；唯一編號讓不同文件與測試能指向同一需求。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "91811eb4fdcd8f6320b63233"
+    },
+    "question": "團隊完成需求文件後，與使用者逐段走查，並用情境演練檢查是否符合原意及可驗收。這主要是哪個活動？",
+    "options": [
+      "版本發布管理",
+      "需求確認",
+      "資料庫正規化",
+      "程式單元測試"
+    ],
+    "answer": 1,
+    "analysis": "需求確認檢查規格是否符合使用者本意且可驗證；提早發現問題可降低後期重工。\n\nA：把前期需求查核當成產品發布工作。\nB：正確。\nC：把使用者意圖確認當成資料結構整理。\nD：把規格確認當成執行程式模組。",
+    "concept": "需求確認",
+    "chapter": "[02]基礎需求工程",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:02:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:02:015",
+    "assessment_target": "需求確認",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:015",
+        "misconception": "把前期需求查核當成產品發布工作"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:015",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:015",
+        "misconception": "把使用者意圖確認當成資料結構整理"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:02:015",
+        "misconception": "把規格確認當成執行程式模組"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:049",
+      "manual_pdf:963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457:page:051"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:02",
+    "course_unit_title": "[02]基礎需求工程",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE02-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[02]基礎需求工程.pdf",
+      "pdf_git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "pdf_pages": [
+        49,
+        51
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[02]基礎需求工程.pdf",
+      "basis_summary": "需求確認檢查規格是否符合使用者本意且可驗證；提早發現問題可降低後期重工。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]
