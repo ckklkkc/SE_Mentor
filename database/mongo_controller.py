@@ -294,7 +294,7 @@ async def get_recent_chat_history_str(
         if len(b_text) > max_reply_chars:
             b_text = b_text[:max_reply_chars] + "...（後略）"
 
-        lines.append(f"[第 {turn} 輪]\n學生：{u_text}\n助教：{b_text}")
+        lines.append(f"[第 {turn} 輪]\n學生：{u_text}\n助教：{b_text}\n時間：{user_ts}")
         turn += 1
 
     return "\n".join(lines) if lines else "（無近期有效對話紀錄）"
