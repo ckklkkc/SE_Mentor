@@ -257,8 +257,8 @@ async def get_recent_chat_history_str(
     discord_id: int,
     agent_type: Literal["course", "project"] = "course",
     limit: int = 10,
-    timeout_minutes: int = 60,
-    max_reply_chars: int = 200
+    timeout_minutes: int = 720,
+    max_reply_chars: int = 500
 ) -> str:
     """
     透過 discord_id 讀取最近 N 筆對話紀錄，並直接格式化為給 LLM 參考的純文字
