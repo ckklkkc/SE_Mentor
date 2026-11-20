@@ -4,7 +4,7 @@ from beanie import Document, init_beanie
 from beanie.odm.fields import Link
 from pydantic import BaseModel, Field, model_validator
 from typing import Optional, Literal
-from datetime import datetime
+from datetime import datetime, timedelta
 
 ReviewStatus = Literal["pending", "approved", "rejected"]
 
@@ -270,7 +270,7 @@ async def get_recent_chat_history_str(
 
     # $slice: -limit 直接在資料庫層截取最後 10 筆，避免撈出整包歷史
     log_field = "course_logs" if agent_type == "course" else "project_logs"
-    collection = ChatLogs.get_motor_collection()
+    collection = ChatLogs.get_pymongo_collection()
     doc = await collection.find_one(
         {"student.$id": student.id},
         {log_field: {"$slice": -limit}, "_id": 0}
@@ -294,7 +294,7 @@ async def get_recent_chat_history_str(
         if len(b_text) > max_reply_chars:
             b_text = b_text[:max_reply_chars] + "...（後略）"
 
-        lines.append(f"[第 {turn} 輪]\n學生：{u_text}\n助教：{b_text}")
+        lines.append(f"[第 {turn} 輪]\n學生：{u_text}\n助教：{b_text}\n時間：{user_ts}")
         turn += 1
 
     return "\n".join(lines) if lines else "（無近期有效對話紀錄）"

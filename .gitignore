@@ -228,3 +228,5 @@ backups/
 
 #MongoDB runtime data
 mongo_data/
+
+files/

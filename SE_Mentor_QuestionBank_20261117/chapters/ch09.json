@@ -1,0 +1,1592 @@
+[
+  {
+    "_id": {
+      "$oid": "2c6b4fd7a6d73396197a22f5"
+    },
+    "question": "測試人員重現「取消訂單後仍被扣款」，開發者追出原因並修正。前後兩項工作的主要區分是什麼？",
+    "options": [
+      "測試揭露問題，除錯定位根源並修正",
+      "測試負責修改程式，除錯只記錄操作",
+      "測試只能驗證正常路徑，不能展示錯誤",
+      "只要已除錯就代表完成系統化測試"
+    ],
+    "answer": 0,
+    "analysis": "測試可透過案例展示錯誤；除錯分析成因並修正，修正後仍須重新驗證。\n\nA：正確。\nB：把發現與修復的主要工作顛倒。\nC：忽略測試可系統化揭露缺陷。\nD：把單次修復當成充分驗證。",
+    "concept": "測試與除錯",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:001",
+    "assessment_target": "測試與除錯",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:001",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:001",
+        "misconception": "把發現與修復的主要工作顛倒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:001",
+        "misconception": "忽略測試可系統化揭露缺陷"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:001",
+        "misconception": "把單次修復當成充分驗證"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:004",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:006"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        4,
+        6
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "測試可透過案例展示錯誤；除錯分析成因並修正，修正後仍須重新驗證。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4a0c6f6d0af569b1fd65cbb0"
+    },
+    "question": "輸入與執行路徑組合極多，團隊無法全部測完。最合理的策略是什麼？",
+    "options": [
+      "依測試方法、風險與覆蓋準則選擇有代表性的案例",
+      "只重複相同正常案例直到期限結束",
+      "將測試資料完全交由個人臨時隨意挑選",
+      "只要案例全部通過就能證明沒有任何錯誤"
+    ],
+    "answer": 0,
+    "analysis": "窮舉通常不可行，應有方法地選擇案例；測試通過也不足以證明所有可能情況都正確。\n\nA：正確。\nB：把執行次數當成輸入及路徑涵蓋。\nC：忽略系統化選擇與資源有效運用。\nD：把有限測試推論為不存在缺陷。",
+    "concept": "窮舉測試與選擇性測試",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:002",
+    "assessment_target": "窮舉測試與選擇性測試",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:002",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:002",
+        "misconception": "把執行次數當成輸入及路徑涵蓋"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:002",
+        "misconception": "忽略系統化選擇與資源有效運用"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:002",
+        "misconception": "把有限測試推論為不存在缺陷"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:009",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:011",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:012"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        9,
+        11,
+        12
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "窮舉通常不可行，應有方法地選擇案例；測試通過也不足以證明所有可能情況都正確。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "17fb16b469bcb472dfe58692"
+    },
+    "question": "甲依需求規格的輸入輸出設計案例，乙依程式條件與迴圈設計案例。兩者依序是什麼？",
+    "options": [
+      "單元、驗收，且與黑白箱無關",
+      "靜態、動態，且甲不得執行程式",
+      "白箱、黑箱",
+      "黑箱、白箱"
+    ],
+    "answer": 3,
+    "analysis": "黑白箱區別在設計案例的依據，黑箱看外部規格，白箱看內部結構；不等同於特定測試階段。\n\nA：把測試階段當成案例設計技術的替代分類。\nB：把黑箱誤認為不執行程式。\nC：把需求外部行為與內部結構依據顛倒。\nD：正確。",
+    "concept": "黑箱與白箱",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:003",
+    "assessment_target": "黑箱與白箱",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:003",
+        "misconception": "把測試階段當成案例設計技術的替代分類"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:003",
+        "misconception": "把黑箱誤認為不執行程式"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:003",
+        "misconception": "把需求外部行為與內部結構依據顛倒"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:003",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:015",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:016"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        15,
+        16
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "黑白箱區別在設計案例的依據，黑箱看外部規格，白箱看內部結構；不等同於特定測試階段。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "f420e6ada7273ae664e0528d"
+    },
+    "question": "程式為 if (x > 0) y = 1;，初始 y=0。測試只有 x=1。對此 if 的涵蓋情況，哪項正確？",
+    "options": [
+      "已同時涵蓋真、假兩種分支",
+      "完全沒有執行任何可執行敘述",
+      "可執行賦值敘述，但尚未涵蓋判斷為假的分支",
+      "只要 y 有值就已完成全面路徑覆蓋"
+    ],
+    "answer": 2,
+    "analysis": "x=1 使真分支執行；若要涵蓋此決策的假結果，還需 x≤0 的案例。\n\nA：把執行所有敘述當成所有分支都走過。\nB：忽略真分支的賦值確實執行。\nC：正確。\nD：把變數有值當成路徑充分的證據。",
+    "concept": "敘述覆蓋與分支覆蓋",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:004",
+    "assessment_target": "敘述覆蓋與分支覆蓋",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:004",
+        "misconception": "把執行所有敘述當成所有分支都走過"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:004",
+        "misconception": "忽略真分支的賦值確實執行"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:004",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:004",
+        "misconception": "把變數有值當成路徑充分的證據"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:017",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:018",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:019"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        17,
+        18,
+        19
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "x=1 使真分支執行；若要涵蓋此決策的假結果，還需 x≤0 的案例。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0cee2f072a027c4121806fd9"
+    },
+    "question": "決策為 A OR B，A、B 都是已提供的布林值；以 (真,假) 與 (假,真) 記錄條件值，不考慮短路求值。哪項判斷正確？",
+    "options": [
+      "整體決策已出現真與假",
+      "A 與 B 都只出現真",
+      "只要有兩個案例就必然達到所有路徑覆蓋",
+      "每個條件都出現真與假，但整體決策尚未出現假"
+    ],
+    "answer": 3,
+    "analysis": "兩個原子條件皆各有真與假，但 OR 的兩次結果都為真；補 (假,假) 才能得到整體假結果。\n\nA：忽略兩組 OR 結果都是真。\nB：忽略各條件在兩個案例中的不同值。\nC：把案例數量當成邏輯涵蓋的充分證據。\nD：正確。",
+    "concept": "條件覆蓋不保證分支覆蓋",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:005",
+    "assessment_target": "條件覆蓋不保證分支覆蓋",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:005",
+        "misconception": "忽略兩組 OR 結果都是真"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:005",
+        "misconception": "忽略各條件在兩個案例中的不同值"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:005",
+        "misconception": "把案例數量當成邏輯涵蓋的充分證據"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:005",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:020",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:021"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        20,
+        21
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "兩個原子條件皆各有真與假，但 OR 的兩次結果都為真；補 (假,假) 才能得到整體假結果。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "38fc2c50db82bf1e5b7b4083"
+    },
+    "question": "整數成績 0～100 有效，且依 0～59、60～69、70～79、80～89、90～100 對應五種等第。要同時檢查等第與範圍拒絕，哪種劃分較完整？",
+    "options": [
+      "五個有效等第區間，加上小於 0 與大於 100 兩個無效區間",
+      "把每個分數都稱為同一個無效等價類",
+      "只測 100 分，其他分數視為完全同義",
+      "只把 0～100 當一類，無需測試不同等第"
+    ],
+    "answer": 0,
+    "analysis": "等價類應反映預期行為：有效輸入還可依輸出規則細分，範圍外則需測拒絕行為。\n\nA：正確。\nB：錯誤分類有效範圍。\nC：把單一有效值當成所有行為代表。\nD：忽略相同有效性下仍有不同輸出規則。",
+    "concept": "等價劃分",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:006",
+    "assessment_target": "等價劃分",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:006",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:006",
+        "misconception": "錯誤分類有效範圍"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:006",
+        "misconception": "把單一有效值當成所有行為代表"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:006",
+        "misconception": "忽略相同有效性下仍有不同輸出規則"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:023",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:024",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:025",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:026",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:027"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "等價類應反映預期行為：有效輸入還可依輸出規則細分，範圍外則需測拒絕行為。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "e8e3c96c1b1bd7e21cf775db"
+    },
+    "question": "欄位只接受整數 4≤x≤10。要同時測上下界及各界相鄰的內外側，哪組資料最直接？",
+    "options": [
+      "3、4、5、9、10、11",
+      "5、6、7、8、9",
+      "4、7、10",
+      "0、7、100"
+    ],
+    "answer": 0,
+    "analysis": "題目指定上下界的內外鄰值，因此分別取 3、4、5 及 9、10、11；不主張所有 BVA 方法都固定需要六點。\n\nA：正確。\nB：只測區間內一般值而未碰邊界。\nC：只有有效邊界與一般值，沒有界外案例。\nD：包含一般與界外值，但未緊貼邊界。",
+    "concept": "整數邊界值分析",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:007",
+    "assessment_target": "整數邊界值分析",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:007",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:007",
+        "misconception": "只測區間內一般值而未碰邊界"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:007",
+        "misconception": "只有有效邊界與一般值，沒有界外案例"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:007",
+        "misconception": "包含一般與界外值，但未緊貼邊界"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:029",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:030",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:031"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        29,
+        30,
+        31
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "題目指定上下界的內外鄰值，因此分別取 3、4、5 及 9、10、11；不主張所有 BVA 方法都固定需要六點。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "620c8417613551749cb14472"
+    },
+    "question": "團隊要確認軟體能達成使用者的商業目的，並請熟悉業務的使用者代表參與。最直接對應哪個層級？",
+    "options": [
+      "只測模組介面資料格式的整合測試",
+      "只測方法內部邏輯的單元測試",
+      "使用者驗收測試",
+      "只檢查編譯是否成功的建置工作"
+    ],
+    "answer": 2,
+    "analysis": "UAT 由使用者代表確認產品是否達成商業目的；單元與整合測試各有較局部的驗證範圍。\n\nA：把介接一致性當成使用者驗收全部目的。\nB：把局部程式邏輯當成商業目的確認。\nC：正確。\nD：把可編譯當成使用者需求被滿足。",
+    "concept": "V 模型的測試依據",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:008",
+    "assessment_target": "V 模型的測試依據",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:008",
+        "misconception": "把介接一致性當成使用者驗收全部目的"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:008",
+        "misconception": "把局部程式邏輯當成商業目的確認"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:008",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:008",
+        "misconception": "把可編譯當成使用者需求被滿足"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:034",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:035",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:036",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:045",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:048",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:049"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        34,
+        35,
+        36,
+        45,
+        48,
+        49
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "UAT 由使用者代表確認產品是否達成商業目的；單元與整合測試各有較局部的驗證範圍。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "a4bbca99a124599336f1636b"
+    },
+    "question": "測試程式把資料送進 SUT 並比較結果，另用替身取代尚未可用的外部服務。兩者依序是什麼？",
+    "options": [
+      "需求文件、設計文件",
+      "Test Driver、Test Double",
+      "SUT、正式 DOC",
+      "Test Double、Test Driver"
+    ],
+    "answer": 1,
+    "analysis": "Driver 驅動 SUT 並檢查結果；Double 代替 DOC，讓受測程式可在隔離相依的情況下執行。\n\nA：把可執行測試支援與文件混淆。\nB：正確。\nC：把測試輔助程式當成受測標的與正式相依實作。\nD：把驅動受測程式與替代相依元件的角色顛倒。",
+    "concept": "Test Driver 與 Test Double",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:009",
+    "assessment_target": "Test Driver 與 Test Double",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:009",
+        "misconception": "把可執行測試支援與文件混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:009",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:009",
+        "misconception": "把測試輔助程式當成受測標的與正式相依實作"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:009",
+        "misconception": "把驅動受測程式與替代相依元件的角色顛倒"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:036",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:037",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:038"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        36,
+        37,
+        38
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "Driver 驅動 SUT 並檢查結果；Double 代替 DOC，讓受測程式可在隔離相依的情況下執行。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4403f9daf32bb44249fb103a"
+    },
+    "question": "測試甲用固定回傳「庫存 5」的替身；測試乙使用可新增、刪除及查詢的簡化記憶體資料庫。依教材，依序較接近什麼？",
+    "options": [
+      "Stub、Fake",
+      "Fake、Stub",
+      "Dummy、Dummy",
+      "Driver、SUT"
+    ],
+    "answer": 0,
+    "analysis": "Stub 提供預先安排的回應；Fake 具有可運作但較簡化的實作，例如記憶體資料庫。\n\nA：正確。\nB：把固定回傳與可運作簡化實作顛倒。\nC：把實際提供資料或行為的替身當成未被使用的占位物。\nD：把替代相依的物件當成驅動器與受測系統。",
+    "concept": "Stub 與 Fake",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:010",
+    "assessment_target": "Stub 與 Fake",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:010",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:010",
+        "misconception": "把固定回傳與可運作簡化實作顛倒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:010",
+        "misconception": "把實際提供資料或行為的替身當成未被使用的占位物"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:010",
+        "misconception": "把替代相依的物件當成驅動器與受測系統"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:040",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:041"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        40,
+        41
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "Stub 提供預先安排的回應；Fake 具有可運作但較簡化的實作，例如記憶體資料庫。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2fe28e92f759a9b881322e8b"
+    },
+    "question": "付款成功後應呼叫通知服務一次，測試重點是驗證呼叫次數與參數，而不是實際寄信。哪種安排最貼近教材所述的 Mock 用途？",
+    "options": [
+      "只檢查電子郵件畫面的配色",
+      "每次都寄真實郵件，卻不檢查呼叫內容",
+      "只傳入不會使用的 Dummy 就認定完成驗證",
+      "以替身驗證協作者是否依預期被呼叫"
+    ],
+    "answer": 3,
+    "analysis": "Mock 的重點是預期互動的驗證；Spy 也可記錄呼叫，但本題聚焦教材中 Mock 的用途而非工具的唯一分類。\n\nA：把視覺檢查當成互動契約驗證。\nB：忽略測試要驗證的互動與隔離需求。\nC：把占位物當成可檢查互動的替身。\nD：正確。",
+    "concept": "Mock 的互動驗證",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:011",
+    "assessment_target": "Mock 的互動驗證",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:011",
+        "misconception": "把視覺檢查當成互動契約驗證"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:011",
+        "misconception": "忽略測試要驗證的互動與隔離需求"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:011",
+        "misconception": "把占位物當成可檢查互動的替身"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:011",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:040",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:041"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        40,
+        41
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "Mock 的重點是預期互動的驗證；Spy 也可記錄呼叫，但本題聚焦教材中 Mock 的用途而非工具的唯一分類。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "1333ffacf4602370e296ac46"
+    },
+    "question": "三個 @Test 都需要全新的測試物件，避免前一個測試留下狀態。哪種安排最合適？",
+    "options": [
+      "只在 @BeforeAll 建立同一個可變物件，且不做狀態重設",
+      "在 @BeforeEach 建立物件，並在各測試中斷言結果",
+      "將三個 @Test 全加上 @Disabled",
+      "只印出結果，不設定任何預期判斷"
+    ],
+    "answer": 1,
+    "analysis": "BeforeEach 在每個測試前執行，有助於建立獨立初始狀態；斷言則讓預期與實際結果可自動比較。\n\nA：忽略測試間共享狀態可能互相干擾。\nB：正確。\nC：把略過測試當成測試隔離。\nD：把日誌輸出當成自動驗證。",
+    "concept": "JUnit 的生命週期與斷言",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:012",
+    "assessment_target": "JUnit 的生命週期與斷言",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:012",
+        "misconception": "忽略測試間共享狀態可能互相干擾"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:012",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:012",
+        "misconception": "把略過測試當成測試隔離"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:012",
+        "misconception": "把日誌輸出當成自動驗證"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:042",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:043",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:044"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        42,
+        43,
+        44
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "BeforeEach 在每個測試前執行，有助於建立獨立初始狀態；斷言則讓預期與實際結果可自動比較。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "7d35dc6635f3ae26c2778bf6"
+    },
+    "question": "各模組單元測試都通過，但串接後發現日期格式互不相容。最能說明什麼？",
+    "options": [
+      "只要重跑相同單元測試就能涵蓋所有介接",
+      "日期格式問題只能在使用者驗收時發現",
+      "所有單元測試一定寫錯，才可能有介面問題",
+      "單元正確不代表介面整合正確，仍需整合測試"
+    ],
+    "answer": 3,
+    "analysis": "整合測試檢查模組間資料傳遞、介面一致性及交互影響，補足單元測試的範圍限制。\n\nA：把局部驗證當成跨模組驗證。\nB：把可在整合階段發現的問題延後。\nC：否認單元隔離測試與跨模組行為的差異。\nD：正確。",
+    "concept": "整合測試的必要性",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:013",
+    "assessment_target": "整合測試的必要性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:013",
+        "misconception": "把局部驗證當成跨模組驗證"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:013",
+        "misconception": "把可在整合階段發現的問題延後"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:013",
+        "misconception": "否認單元隔離測試與跨模組行為的差異"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:013",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:045"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        45
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "整合測試檢查模組間資料傳遞、介面一致性及交互影響，補足單元測試的範圍限制。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "d3dd3de16abf126dae280938"
+    },
+    "question": "底層資料模組已完成，高層控制模組尚未完成。採由下而上的整合策略時，最可能需要哪項支援？",
+    "options": [
+      "只以類別圖取代任何可執行測試",
+      "等所有高層模組完成才准測試底層",
+      "撰寫 Driver 驅動已完成的底層模組",
+      "必須先用 Stub 取代已完成且正要測試的所有底層模組"
+    ],
+    "answer": 2,
+    "analysis": "由下而上先整合低層模組，常需 Driver 提供尚缺的呼叫端；隨上層完成再逐步整合。\n\nA：把設計文件當成動態整合驗證。\nB：忽略增量整合的可能性。\nC：正確。\nD：把由上而下常用的支援方式套錯方向。",
+    "concept": "由下而上整合",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:014",
+    "assessment_target": "由下而上整合",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:014",
+        "misconception": "把設計文件當成動態整合驗證"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:014",
+        "misconception": "忽略增量整合的可能性"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:014",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:014",
+        "misconception": "把由上而下常用的支援方式套錯方向"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:046",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:047"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        46,
+        47
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "由下而上先整合低層模組，常需 Driver 提供尚缺的呼叫端；隨上層完成再逐步整合。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5524f727f253a5f3cbeba762"
+    },
+    "question": "哪項比較較正確？",
+    "options": [
+      "完成系統測試就能取代所有使用者確認",
+      "系統測試依系統需求檢查整體行為；UAT 聚焦使用者業務需求與驗收準則",
+      "系統測試只可白箱；UAT 不可觀察實際操作",
+      "系統測試只看單一函式；UAT 只看是否編譯成功"
+    ],
+    "answer": 1,
+    "analysis": "系統層檢查整體需求符合度，UAT 則確認產品在使用情境中能達成預定商業目的。\n\nA：忽略系統符合規格與符合實際目的可能不同。\nB：正確。\nC：把技術與階段的關係絕對化。\nD：錯誤限縮兩種測試的範圍。",
+    "concept": "系統測試與驗收測試",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:015",
+    "assessment_target": "系統測試與驗收測試",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:015",
+        "misconception": "忽略系統符合規格與符合實際目的可能不同"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:015",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:015",
+        "misconception": "把技術與階段的關係絕對化"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:015",
+        "misconception": "錯誤限縮兩種測試的範圍"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:048",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:049"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        48,
+        49
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "系統層檢查整體需求符合度，UAT 則確認產品在使用情境中能達成預定商業目的。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "9aedb559caf550ca99566170"
+    },
+    "question": "修正折扣錯誤後，原案例已通過，但團隊也測試其他結帳與退款功能。後者主要目的為何？",
+    "options": [
+      "重新定義所有需求而不檢查程式",
+      "確認修改未對既有功能造成副作用",
+      "只證明原先錯誤案例已修好",
+      "測試原案例越多次，就自然涵蓋退款功能"
+    ],
+    "answer": 1,
+    "analysis": "原案例重跑用來確認修復；迴歸測試進一步檢查變更是否破壞其他原有行為。\n\nA：把迴歸測試當成需求全面重訂。\nB：正確。\nC：把修正確認與周邊迴歸的目的混淆。\nD：把重複執行當成擴大行為涵蓋。",
+    "concept": "修正確認與迴歸",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:016"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:016",
+    "assessment_target": "修正確認與迴歸",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:016",
+        "misconception": "把迴歸測試當成需求全面重訂"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:016",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:016",
+        "misconception": "把修正確認與周邊迴歸的目的混淆"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:016",
+        "misconception": "把重複執行當成擴大行為涵蓋"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:050",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:064"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-016",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        50,
+        64
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "原案例重跑用來確認修復；迴歸測試進一步檢查變更是否破壞其他原有行為。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6fbb7e24794f376063efac3f"
+    },
+    "question": "測試步驟只寫「按送出，看看有沒有問題」。最需要補足哪項資訊，才能讓結果可判定且可重現？",
+    "options": [
+      "只記測試者當天的主觀心情",
+      "把案例名稱改得更長即可",
+      "明確前置條件、測試資料及預期可觀察結果",
+      "把實際結果直接複製成預期結果"
+    ],
+    "answer": 2,
+    "analysis": "完整案例需說清楚起始條件、輸入、步驟與預期結果，不能只靠測試者臨場感覺判斷。\n\nA：把主觀印象當成可重現規格。\nB：把命名長度當成判定依據。\nC：正確。\nD：把被測行為當成自己的正確性標準。",
+    "concept": "測試案例與預期結果",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:017"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:017",
+    "assessment_target": "測試案例與預期結果",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:017",
+        "misconception": "把主觀印象當成可重現規格"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:017",
+        "misconception": "把命名長度當成判定依據"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:017",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:017",
+        "misconception": "把被測行為當成自己的正確性標準"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:053",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:054",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:055",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:056"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-017",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "完整案例需說清楚起始條件、輸入、步驟與預期結果，不能只靠測試者臨場感覺判斷。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "d9ec938167658f0c334c3ea3"
+    },
+    "question": "開發者回報「已修正」後，較完整的缺陷處理流程應如何繼續？",
+    "options": [
+      "直接把所有相關缺陷關閉，不重跑案例",
+      "由測試者或回報者驗證修復，再依結果關閉或回饋問題",
+      "只更換缺陷負責人而不確認結果",
+      "等下次客戶抱怨才知道是否修好"
+    ],
+    "answer": 1,
+    "analysis": "缺陷處理需包含回報、確認指派、修正與驗證；未解決時應回饋，而非只看狀態文字。\n\nA：把開發者宣告當成修復證據。\nB：正確。\nC：把指派流程當成驗證完成。\nD：忽略交付前的修復確認。",
+    "concept": "缺陷回報後的閉環",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:018"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:018",
+    "assessment_target": "缺陷回報後的閉環",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:018",
+        "misconception": "把開發者宣告當成修復證據"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:018",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:018",
+        "misconception": "把指派流程當成驗證完成"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:018",
+        "misconception": "忽略交付前的修復確認"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:060",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:065",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:066"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-018",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        60,
+        65,
+        66
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "缺陷處理需包含回報、確認指派、修正與驗證；未解決時應回饋，而非只看狀態文字。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "45646b72ef8d7dfc8c615876"
+    },
+    "question": "介面穩定且每版都需重跑大量相同案例，團隊考慮自動化。哪項評估最平衡？",
+    "options": [
+      "自動化腳本一旦寫好就永遠不需更新",
+      "任何案例都只適合人工，無法自動記錄結果",
+      "可降低反覆執行成本，但仍須投入腳本建立與維護",
+      "採用自動化後便不需設計預期結果"
+    ],
+    "answer": 2,
+    "analysis": "自動化適合重複執行與紀錄，但建立及維護腳本仍有成本，選擇應考量穩定性與重跑頻率。\n\nA：忽略系統或介面變更造成維護成本。\nB：否認自動化對重複驗證的支援。\nC：正確。\nD：把執行工具當成測試設計的替代品。",
+    "concept": "自動化測試的成本",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:019"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:019",
+    "assessment_target": "自動化測試的成本",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:019",
+        "misconception": "忽略系統或介面變更造成維護成本"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:019",
+        "misconception": "否認自動化對重複驗證的支援"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:019",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:019",
+        "misconception": "把執行工具當成測試設計的替代品"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:069",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:070"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-019",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        69,
+        70
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "自動化適合重複執行與紀錄，但建立及維護腳本仍有成本，選擇應考量穩定性與重跑頻率。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "7950473dff67ca02be60cb60"
+    },
+    "question": "要檢查使用者在多種瀏覽器完成登入與購物流程是否一致，應優先安排哪種測試？",
+    "options": [
+      "只執行單一後端函式的單元測試",
+      "只檢查程式碼格式是否整齊",
+      "只確認資料庫可建立連線",
+      "以瀏覽器自動化執行端對端情境，驗證可觀察結果"
+    ],
+    "answer": 3,
+    "analysis": "Selenium、Cypress、Playwright 等支援 Web 自動化；本題的核心是從瀏覽器驗證整體旅程，而非僅驗證單一模組。\n\nA：把局部邏輯當成完整瀏覽器旅程。\nB：把靜態風格檢查當成跨瀏覽器行為驗證。\nC：把單一相依連線當成整個使用流程。\nD：正確。",
+    "concept": "E2E 測試工具的用途",
+    "chapter": "[09]軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:09:020"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:09:020",
+    "assessment_target": "E2E 測試工具的用途",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:020",
+        "misconception": "把局部邏輯當成完整瀏覽器旅程"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:020",
+        "misconception": "把靜態風格檢查當成跨瀏覽器行為驗證"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:020",
+        "misconception": "把單一相依連線當成整個使用流程"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:09:020",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:071",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:072",
+      "manual_pdf:693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6:page:073"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:09",
+    "course_unit_title": "[09]軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE09-020",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[09]軟體測試.pdf",
+      "pdf_git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "pdf_pages": [
+        71,
+        72,
+        73
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[09]軟體測試.pdf",
+      "basis_summary": "Selenium、Cypress、Playwright 等支援 Web 自動化；本題的核心是從瀏覽器驗證整體旅程，而非僅驗證單一模組。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

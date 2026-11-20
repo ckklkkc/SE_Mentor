@@ -1,0 +1,175 @@
+{
+  "bank_batch": "se_manual_20261117_v1",
+  "repository": "https://github.com/ckklkkc/SE_Mentor",
+  "revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+  "database": "TABotAI_quiz",
+  "collection": "diagnosis_quiz",
+  "total_questions": 179,
+  "chapters": [
+    {
+      "chapter": "[01]軟體危機與軟體流程",
+      "questions": 18,
+      "distinct_targets": 18,
+      "pdf_pages": 42,
+      "pdf_sha256": "00aaa775fac0e7fbcc1f9df38b801e9569d749fbe87ccf2f4c2cd9f7de56d5bb",
+      "git_blob_sha": "a68a5746309a59b2d3a6135e42bf58c8f402b116",
+      "source_file": "textbook/[01]軟體危機與軟體流程.pdf",
+      "answer_distribution": {
+        "A": 5,
+        "B": 5,
+        "C": 4,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[02]基礎需求工程",
+      "questions": 15,
+      "distinct_targets": 15,
+      "pdf_pages": 53,
+      "pdf_sha256": "963a93db554f0270ebfd92c844695824ab10847c8c82beda4bb7e170073c7457",
+      "git_blob_sha": "c4f4b92e69814ee6130a9401a1788efd4baad413",
+      "source_file": "textbook/[02]基礎需求工程.pdf",
+      "answer_distribution": {
+        "A": 3,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[03]使用者故事分析",
+      "questions": 15,
+      "distinct_targets": 15,
+      "pdf_pages": 57,
+      "pdf_sha256": "e640226eae839e9ac855a71f81687075adad6d9b5f75a169b7ef5b551a4a73c0",
+      "git_blob_sha": "6f745568b1bb8180dbc0068e732ba028e5c84396",
+      "source_file": "textbook/[03]使用者故事分析.pdf",
+      "answer_distribution": {
+        "A": 4,
+        "B": 3,
+        "C": 4,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[04]敏捷開發方法",
+      "questions": 15,
+      "distinct_targets": 15,
+      "pdf_pages": 49,
+      "pdf_sha256": "82c5d1cc5d053aecd8ceb229446ae7566508ebb8c948d78d6319fc73ab5ee1fb",
+      "git_blob_sha": "e26f742e078c980e0c82edc584a43f97a1b9ea0b",
+      "source_file": "textbook/[04]敏捷開發方法.pdf",
+      "answer_distribution": {
+        "A": 4,
+        "B": 4,
+        "C": 3,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[05]基礎專案管理與看板",
+      "questions": 15,
+      "distinct_targets": 15,
+      "pdf_pages": 34,
+      "pdf_sha256": "230c05ba47b98a6936484794fdf0015b919a969031e657b30cca76baa4f7bcea",
+      "git_blob_sha": "5dc973a8c1c9615c79006c71fb0555dfc521bcaf",
+      "source_file": "textbook/[05]基礎專案管理與看板.pdf",
+      "answer_distribution": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 3
+      }
+    },
+    {
+      "chapter": "[06]版本控制",
+      "questions": 15,
+      "distinct_targets": 15,
+      "pdf_pages": 98,
+      "pdf_sha256": "98d87df62b4cc095ddbd37540f1e3400877aaf7e36f51a710210144782ec1965",
+      "git_blob_sha": "62d30054b96407488b9820397317b4dcb22ee716",
+      "source_file": "textbook/[06]版本控制.pdf",
+      "answer_distribution": {
+        "A": 3,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[07]軟體設計-系統設計",
+      "questions": 15,
+      "distinct_targets": 15,
+      "pdf_pages": 69,
+      "pdf_sha256": "576f23a63d5f1a502c855158023ed327f92ca1c1f52e8aeab296387b28c5418a",
+      "git_blob_sha": "a5eb0d4861af7f24d760bc07e0aecfec23538069",
+      "source_file": "textbook/[07]軟體設計-系統設計.pdf",
+      "answer_distribution": {
+        "A": 4,
+        "B": 3,
+        "C": 4,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[08]軟體設計-模組設計",
+      "questions": 15,
+      "distinct_targets": 15,
+      "pdf_pages": 36,
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "source_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "answer_distribution": {
+        "A": 4,
+        "B": 4,
+        "C": 3,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[09]軟體測試",
+      "questions": 20,
+      "distinct_targets": 20,
+      "pdf_pages": 75,
+      "pdf_sha256": "693ebecf9d984c4ba16a01c34e1b616707cac5be7549ee89a2f69c1eec3c89e6",
+      "git_blob_sha": "f93169731855d29a85eadced376f214a4ba2a8dc",
+      "source_file": "textbook/[09]軟體測試.pdf",
+      "answer_distribution": {
+        "A": 5,
+        "B": 5,
+        "C": 5,
+        "D": 5
+      }
+    },
+    {
+      "chapter": "[10]進階軟體測試",
+      "questions": 18,
+      "distinct_targets": 18,
+      "pdf_pages": 41,
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "source_file": "textbook/[10]進階軟體測試.pdf",
+      "answer_distribution": {
+        "A": 4,
+        "B": 5,
+        "C": 5,
+        "D": 4
+      }
+    },
+    {
+      "chapter": "[11]DevOps自動化建置管理",
+      "questions": 18,
+      "distinct_targets": 18,
+      "pdf_pages": 42,
+      "pdf_sha256": "584e9660d39fcdb51ce7ba848e5d87666682384aaa936e0df55b948d617ed67f",
+      "git_blob_sha": "e7c0107a4bd42c19e25024b31c2c49cc098cdd83",
+      "source_file": "textbook/[11]DevOps自動化建置管理.pdf",
+      "answer_distribution": {
+        "A": 4,
+        "B": 4,
+        "C": 5,
+        "D": 5
+      }
+    }
+  ]
+}

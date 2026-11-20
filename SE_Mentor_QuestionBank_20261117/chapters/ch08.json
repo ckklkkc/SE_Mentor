@@ -1,0 +1,1180 @@
+[
+  {
+    "_id": {
+      "$oid": "558f873e846ea65776a126c2"
+    },
+    "question": "「Student」定義姓名屬性與選課方法，而「學號 A001、姓名小林的學生」是實際建立的資料。兩者依序是什麼？",
+    "options": [
+      "方法、繼承關係",
+      "屬性值、介面規格",
+      "物件實例、類別",
+      "類別、物件實例"
+    ],
+    "answer": 3,
+    "analysis": "類別描述共同屬性與行為的模板；物件是由類別建立並帶有實際值的具體實例。\n\nA：把模板與實體當成操作與關係。\nB：混淆整個類型及實例與其中的資訊。\nC：把抽象模板與具體實體顛倒。\nD：正確。",
+    "concept": "類別與物件",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:001",
+    "assessment_target": "類別與物件",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:001",
+        "misconception": "把模板與實體當成操作與關係"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:001",
+        "misconception": "混淆整個類型及實例與其中的資訊"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:001",
+        "misconception": "把抽象模板與具體實體顛倒"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:001",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:004",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:006"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        4,
+        6
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "類別描述共同屬性與行為的模板；物件是由類別建立並帶有實際值的具體實例。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "ec0b20d6c981aaebcff9d28d"
+    },
+    "question": "要描述系統有哪些類型，以及類型間的靜態關係，哪種圖最直接？",
+    "options": [
+      "甘特圖",
+      "類別圖",
+      "循序圖",
+      "操作概念線框圖"
+    ],
+    "answer": 1,
+    "analysis": "Class Diagram 聚焦類型、責任及靜態關係，並非以執行時間順序或專案排程為主。\n\nA：把專案時程當成程式結構。\nB：正確。\nC：把訊息時間順序當成靜態類型結構。\nD：把使用者畫面骨架當成類別關係。",
+    "concept": "類別圖的用途",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:002",
+    "assessment_target": "類別圖的用途",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:002",
+        "misconception": "把專案時程當成程式結構"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:002",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:002",
+        "misconception": "把訊息時間順序當成靜態類型結構"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:002",
+        "misconception": "把使用者畫面骨架當成類別關係"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:004"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        4
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "Class Diagram 聚焦類型、責任及靜態關係，並非以執行時間順序或專案排程為主。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "a98e4162954ee06f701cac46"
+    },
+    "question": "UML 類別成員標成 -balance、#validate()、+deposit()。其可見性依序為何？",
+    "options": [
+      "private、public、protected",
+      "protected、private、public",
+      "private、protected、public",
+      "public、protected、private"
+    ],
+    "answer": 2,
+    "analysis": "教材符號為減號私有、井字號保護、加號公開；屬性與操作皆可使用這些可見性標記。\n\nA：把保護與公開符號混淆。\nB：把私有與保護符號混淆。\nC：正確。\nD：把加號與減號的意義顛倒。",
+    "concept": "可見性符號",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:003",
+    "assessment_target": "可見性符號",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:003",
+        "misconception": "把保護與公開符號混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:003",
+        "misconception": "把私有與保護符號混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:003",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:003",
+        "misconception": "把加號與減號的意義顛倒"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:008"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        8
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "教材符號為減號私有、井字號保護、加號公開；屬性與操作皆可使用這些可見性標記。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "46f9e41e22a94a3467404b2b"
+    },
+    "question": "ReportPrinter 的 print(User u) 僅在呼叫期間使用 u，沒有把 User 參考保存在欄位中。最直接的關係是什麼？",
+    "options": [
+      "Association（長期關聯）",
+      "Dependency（相依）",
+      "Composition（組合）",
+      "Inheritance（繼承）"
+    ],
+    "answer": 1,
+    "analysis": "教材以方法參數或區域物件示範 uses-a；若未保存長期參考，首先表達為 dependency。\n\nA：把暫時使用參數誤作持久保存參考。\nB：正確。\nC：把暫時使用當成排他擁有生命週期。\nD：把使用另一個物件當成 is-a。",
+    "concept": "短期相依關係",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:004",
+    "assessment_target": "短期相依關係",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:004",
+        "misconception": "把暫時使用參數誤作持久保存參考"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:004",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:004",
+        "misconception": "把暫時使用當成排他擁有生命週期"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:004",
+        "misconception": "把使用另一個物件當成 is-a"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:010",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:011",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:012"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        10,
+        11,
+        12
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "教材以方法參數或區域物件示範 uses-a；若未保存長期參考，首先表達為 dependency。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "7c44f0fe6334d485ced55b7d"
+    },
+    "question": "Book 類別包含 private Author author 欄位，且未宣告排他擁有 Author 的生命週期。哪個關係最直接？",
+    "options": [
+      "Association（關聯）",
+      "必然是 Composition（組合）",
+      "僅是沒有長期參考的 Dependency",
+      "Inheritance（繼承）"
+    ],
+    "answer": 0,
+    "analysis": "Book 保存 Author 參考，符合 knows-a；單憑欄位無法推論其是否控制對方生命週期。\n\nA：正確。\nB：把欄位參考本身當成排他擁有的證據。\nC：忽略欄位保存物件參考的事實。\nD：把包含參考當成種類關係。",
+    "concept": "長期關聯關係",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:005",
+    "assessment_target": "長期關聯關係",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:005",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:005",
+        "misconception": "把欄位參考本身當成排他擁有的證據"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:005",
+        "misconception": "忽略欄位保存物件參考的事實"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:005",
+        "misconception": "把包含參考當成種類關係"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:010",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:013",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:014"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        10,
+        13,
+        14
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "Book 保存 Author 參考，符合 knows-a；單憑欄位無法推論其是否控制對方生命週期。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2387f5ba9dfdf5a4bb7e0b21"
+    },
+    "question": "Student 保存 Course 參考，但 Course 沒有 Student 參考。若要明確畫出可導覽性，應如何表達？",
+    "options": [
+      "必須改畫成繼承才能表示可見性",
+      "Course 可導覽至 Student，Student 看不到 Course",
+      "只要有任何關聯，必定雙向可導覽",
+      "Student 可導覽至 Course，無需假設反向也成立"
+    ],
+    "answer": 3,
+    "analysis": "可導覽性表示一端可存取另一端，題幹只提供 Student 持有 Course 參考的證據。\n\nA：把導覽與繼承混淆。\nB：把參考方向顛倒。\nC：把語意關聯自動當成雙向程式參考。\nD：正確。",
+    "concept": "關聯的導覽方向",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:006",
+    "assessment_target": "關聯的導覽方向",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:006",
+        "misconception": "把導覽與繼承混淆"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:006",
+        "misconception": "把參考方向顛倒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:006",
+        "misconception": "把語意關聯自動當成雙向程式參考"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:006",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:015",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:016"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        15,
+        16
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "可導覽性表示一端可存取另一端，題幹只提供 Student 持有 Course 參考的證據。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6b053eb5e7f13222cddc5697"
+    },
+    "question": "Student 與 Course 關聯中，Course 端標示 0..10。以一位 Student 為觀察單位，表示什麼？",
+    "options": [
+      "可關聯零至十個 Course",
+      "Student 類別最多只能建立十個實例",
+      "每個 Course 必須關聯十位 Student",
+      "每位 Student 必須剛好修十門課"
+    ],
+    "answer": 0,
+    "analysis": "端點數量表示對面一個物件可關聯此端多少物件，0..10 也包含未關聯任何課程。\n\nA：正確。\nB：把單一關聯的數量當成全系統實例總數。\nC：把端點所描述的對象反過來解讀。\nD：忽略 0..10 的下限及可變範圍。",
+    "concept": "Multiplicity 的端點意義",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:007",
+    "assessment_target": "Multiplicity 的端點意義",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:007",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:007",
+        "misconception": "把單一關聯的數量當成全系統實例總數"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:007",
+        "misconception": "把端點所描述的對象反過來解讀"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:007",
+        "misconception": "忽略 0..10 的下限及可變範圍"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:017"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        17
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "端點數量表示對面一個物件可關聯此端多少物件，0..10 也包含未關聯任何課程。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "fd955d051088374194c809f8"
+    },
+    "question": "多個圖形可共用同一個 Style，刪除一個圖形不會刪除 Style。依本章定義，這種整體與部分關係較適合哪一類？",
+    "options": [
+      "Composition（組合）",
+      "Aggregation（聚合）",
+      "Implementation（實作）",
+      "Inheritance（繼承）"
+    ],
+    "answer": 1,
+    "analysis": "依教材聚合的定義，部分可被共享，也可在某個整體消失後繼續存在；本題已明確給出生命週期條件。\n\nA：忽略部分可共享且不隨單一整體銷毀。\nB：正確。\nC：把擁有參考誤當成履行介面契約。\nD：把圖形擁有樣式誤當成圖形是一種樣式。",
+    "concept": "Aggregation 的共享與存續",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:008",
+    "assessment_target": "Aggregation 的共享與存續",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:008",
+        "misconception": "忽略部分可共享且不隨單一整體銷毀"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:008",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:008",
+        "misconception": "把擁有參考誤當成履行介面契約"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:008",
+        "misconception": "把圖形擁有樣式誤當成圖形是一種樣式"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:018"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        18
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "依教材聚合的定義，部分可被共享，也可在某個整體消失後繼續存在；本題已明確給出生命週期條件。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "b031c06ea00bd4b9d5cf0b5f"
+    },
+    "question": "模型規定 OrderLine 同時只能屬於一張 Order，且刪除該 Order 時，其 OrderLine 也必須刪除。應採哪種關係？",
+    "options": [
+      "僅因方法參數產生的短期 Dependency",
+      "Composition（組合）",
+      "Inheritance（繼承）",
+      "Aggregation（聚合）"
+    ],
+    "answer": 1,
+    "analysis": "組合表達較強的整體部分關係；本題用排他所屬及刪除責任明確界定，不靠現實物件名稱猜測。\n\nA：忽略長期所有權與生命週期條件。\nB：正確。\nC：把訂單明細當成訂單的一種。\nD：忽略題幹規定排他擁有及隨整體刪除。",
+    "concept": "Composition 的所有權",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:009",
+    "assessment_target": "Composition 的所有權",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:009",
+        "misconception": "忽略長期所有權與生命週期條件"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:009",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:009",
+        "misconception": "把訂單明細當成訂單的一種"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:009",
+        "misconception": "忽略題幹規定排他擁有及隨整體刪除"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:018"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        18
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "組合表達較強的整體部分關係；本題用排他所屬及刪除責任明確界定，不靠現實物件名稱猜測。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "48c0db433ab5585c73a7acda"
+    },
+    "question": "只看到 Java 欄位 private Bitmap bitmap，尚未知道建立、共享與銷毀規則。哪項結論最嚴謹？",
+    "options": [
+      "只要欄位是 private 就必定為組合",
+      "只要型別是物件就必定為繼承",
+      "可知保存了參考，但仍需生命週期與所有權資訊才能判定是否為組合",
+      "只要沒有 finalize 方法就必定沒有關聯"
+    ],
+    "answer": 2,
+    "analysis": "程式中持有參考能支持關聯判斷，組合或聚合仍取決於領域與設計的所有權語意。\n\nA：把可見性當成所有權語意。\nB：把資料型別與 is-a 混淆。\nC：正確。\nD：把關聯判斷綁定於特定銷毀方法。",
+    "concept": "程式欄位不足以決定組合",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:010",
+    "assessment_target": "程式欄位不足以決定組合",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:010",
+        "misconception": "把可見性當成所有權語意"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:010",
+        "misconception": "把資料型別與 is-a 混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:010",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:010",
+        "misconception": "把關聯判斷綁定於特定銷毀方法"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:018",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:020",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:021"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        18,
+        20,
+        21
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "程式中持有參考能支持關聯判斷，組合或聚合仍取決於領域與設計的所有權語意。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2e47ec8f53fb088142aab7ec"
+    },
+    "question": "F16 是 Fighter 的一種，而 Fighter 具有 Engine。若模型確定前者是種類關係，最合理的表達是什麼？",
+    "options": [
+      "F16 與 Fighter 必須用聚合，不可用繼承",
+      "Fighter 與 Engine 必須互相繼承",
+      "Fighter 繼承 Engine；F16 只是 Engine 的欄位",
+      "F16 繼承 Fighter；Fighter 與 Engine 建立整體部分關係"
+    ],
+    "answer": 3,
+    "analysis": "繼承表示是一種；具有零件屬於 has-a，至於強弱所有權仍需另看生命週期規則。\n\nA：忽略題幹已明定種類關係。\nB：把零件關係當成相互 is-a。\nC：把種類與部分關係顛倒。\nD：正確。",
+    "concept": "is-a 與 has-a",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:011",
+    "assessment_target": "is-a 與 has-a",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:011",
+        "misconception": "忽略題幹已明定種類關係"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:011",
+        "misconception": "把零件關係當成相互 is-a"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:011",
+        "misconception": "把種類與部分關係顛倒"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:011",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:022",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:023",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:024"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        22,
+        23,
+        24
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "繼承表示是一種；具有零件屬於 has-a，至於強弱所有權仍需另看生命週期規則。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "faded20502e45bc7fb0d9abc"
+    },
+    "question": "MyDate 與 MyTime 都 implements Comparable，各自實作 compareTo。最直接表達了什麼？",
+    "options": [
+      "兩個類別必須保存同一個 Comparable 實例",
+      "Comparable 是 MyDate 的專屬零件",
+      "兩個類別都履行 Comparable 的操作契約",
+      "MyDate 必須繼承 MyTime 的所有欄位"
+    ],
+    "answer": 2,
+    "analysis": "Implementation 表示類別提供介面規定的能力，不代表兩個實作類別彼此繼承或共享某個實例。\n\nA：把型別能力當成共享物件參考。\nB：把介面契約當成組合所有權。\nC：正確。\nD：把共同實作介面當成兩個實作類別互相繼承。",
+    "concept": "介面實作",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:012",
+    "assessment_target": "介面實作",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:012",
+        "misconception": "把型別能力當成共享物件參考"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:012",
+        "misconception": "把介面契約當成組合所有權"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:012",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:012",
+        "misconception": "把共同實作介面當成兩個實作類別互相繼承"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:023",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:025"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        23,
+        25
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "Implementation 表示類別提供介面規定的能力，不代表兩個實作類別彼此繼承或共享某個實例。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "036fcffdf232be6d902d6737"
+    },
+    "question": "公司客戶與個人客戶都有名稱、住址，僅後者有信用卡帳號。哪項建模較符合教材範例？",
+    "options": [
+      "在 Customer 放共同屬性，於 PersonalCustomer 放信用卡帳號",
+      "公司客戶必須繼承個人客戶才能取得名稱",
+      "只要屬性相同，就必須把兩種客戶合併且禁止特化",
+      "在 Customer 放個人客戶專用信用卡帳號，規定所有客戶都必須填寫"
+    ],
+    "answer": 0,
+    "analysis": "可抽出共同 Customer 模板，再由特化類別保存其專屬資料，避免把特殊要求套用到所有客戶。\n\nA：正確。\nB：把並列特化類別誤作先後繼承。\nC：忽略共同特性與不同責任可以並存。\nD：把特化屬性強制套用於全部類型。",
+    "concept": "共同屬性與特化",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:013",
+    "assessment_target": "共同屬性與特化",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:013",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:013",
+        "misconception": "把並列特化類別誤作先後繼承"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:013",
+        "misconception": "忽略共同特性與不同責任可以並存"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:013",
+        "misconception": "把特化屬性強制套用於全部類型"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:028",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:029",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:030",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:031"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "可抽出共同 Customer 模板，再由特化類別保存其專屬資料，避免把特殊要求套用到所有客戶。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0b4c9d6a3951694e66a5a509"
+    },
+    "question": "從需求名詞找出客戶、訂單與產品，再設定屬性與關係後，是否已必然完成全部實作設計？",
+    "options": [
+      "尚未，因此領域模型完全沒有價值",
+      "已完成，所有資料存取與介面責任都自然存在",
+      "已完成，因為名詞與程式檔案永遠一對一",
+      "尚未，領域模型通常還需擴充為更接近程式實作的設計"
+    ],
+    "answer": 3,
+    "analysis": "教材將名詞、關係、屬性及方法的分析作為領域模型，後續仍可加入實作所需單元與責任。\n\nA：把分析起點誤作無用成果。\nB：把領域概念完整等同於實作設計完整。\nC：把名詞擷取當成固定的程式檔案對應。\nD：正確。",
+    "concept": "領域模型與實作模型",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:014",
+    "assessment_target": "領域模型與實作模型",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:014",
+        "misconception": "把分析起點誤作無用成果"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:014",
+        "misconception": "把領域概念完整等同於實作設計完整"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:014",
+        "misconception": "把名詞擷取當成固定的程式檔案對應"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:014",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:029",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:030",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:031",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:032"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "教材將名詞、關係、屬性及方法的分析作為領域模型，後續仍可加入實作所需單元與責任。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "dc4372ed16f7ba7366f30322"
+    },
+    "question": "架構圖的搜尋元件細化為 GUI、內部搜尋處理器與外部搜尋處理器，且包含非 OO 程式單元。哪種做法合理？",
+    "options": [
+      "保留與上層介面的對應，必要時用 stereotype 標示程式單元類型",
+      "細化後可任意移除外部系統介面而不用更新文件",
+      "非 OO 程式單元完全不能出現在設計表示中",
+      "每個元件只能有一個類別，否則必須取消架構圖"
+    ],
+    "answer": 0,
+    "analysis": "上層元件可細化成多個程式單元，類別圖仍應維持介面對應，並可用 stereotype 補充特殊種類。\n\nA：正確。\nB：忽略跨層設計一致性。\nC：忽略 stereotype 可補充單元種類。\nD：把跨層對應限制成一對一。",
+    "concept": "類別圖與上層元件對應",
+    "chapter": "[08]軟體設計-模組設計",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:08:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:08:015",
+    "assessment_target": "類別圖與上層元件對應",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:015",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:015",
+        "misconception": "忽略跨層設計一致性"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:015",
+        "misconception": "忽略 stereotype 可補充單元種類"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:08:015",
+        "misconception": "把跨層對應限制成一對一"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:033",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:034",
+      "manual_pdf:7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527:page:035"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:08",
+    "course_unit_title": "[08]軟體設計-模組設計",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE08-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[08]軟體設計-模組設計.pdf",
+      "pdf_git_blob_sha": "3903fa91dfb583125cf75e1f9b3dd6fa939696e1",
+      "pdf_sha256": "7bc9e9be80b4ab46c388747281addc5aa3b403fd3cee8290d376fe4c05268527",
+      "pdf_pages": [
+        33,
+        34,
+        35
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[08]軟體設計-模組設計.pdf",
+      "basis_summary": "上層元件可細化成多個程式單元，類別圖仍應維持介面對應，並可用 stereotype 補充特殊種類。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

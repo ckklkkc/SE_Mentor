@@ -1,0 +1,15 @@
+--- a/dc_chatbot.py
++++ b/dc_chatbot.py
+@@ -485,9 +485,11 @@
+             # 直接編輯原本的測驗訊息。
+             await interaction.edit_original_response(view=self)
+ 
+-            await interaction.followup.send(
++            result_message = (
+                 f"\n測驗結束q(≧▽≦q) 你的分數：{self.score}/{len(self.questions)}\n答題記錄：\n{self.answer_history}\n"
+             )
++            for chunk in self.split_message(result_message):
++                await interaction.followup.send(chunk)
+             print(f"學生學習弱項：{self.learning_pp}")
+ 
+             # 無論題目來源為何，都保存本次測驗摘要作為學習紀錄。

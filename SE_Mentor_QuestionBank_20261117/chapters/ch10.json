@@ -1,0 +1,1420 @@
+[
+  {
+    "_id": {
+      "$oid": "d6f023ce5598e1bf2459d020"
+    },
+    "question": "系統預期尖峰為 500 人。甲在此負載下確認需求；乙持續加壓直到系統超出承載能力。兩者依序較接近什麼？",
+    "options": [
+      "單元測試、需求訪談",
+      "A/B 測試、程式碼審查",
+      "負載測試、壓力測試",
+      "壓力測試、只做易用性測試"
+    ],
+    "answer": 2,
+    "analysis": "本章以預期或尖峰負載的評估區別於超載反應與極限探索；兩者都屬效能測試範圍。\n\nA：把多使用者承載評估當成局部邏輯或需求蒐集。\nB：把負載實驗當成版本比較或靜態審查。\nC：正確。\nD：把超載評估與介面易用性混淆。",
+    "concept": "負載與壓力測試",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:001"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:001",
+    "assessment_target": "負載與壓力測試",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:001",
+        "misconception": "把多使用者承載評估當成局部邏輯或需求蒐集"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:001",
+        "misconception": "把負載實驗當成版本比較或靜態審查"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:001",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:001",
+        "misconception": "把超載評估與介面易用性混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:003",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:004",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:005",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:006",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:007",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:008"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-001",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "本章以預期或尖峰負載的評估區別於超載反應與極限探索；兩者都屬效能測試範圍。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0f7f03ed8a0721e10e0d86cf"
+    },
+    "question": "各個函式在單獨測試時都很快，是否足以證明完整系統在尖峰負載下符合效能需求？",
+    "options": [
+      "不足，仍需量測模組整合及實際相依互動下的系統表現",
+      "足夠，網路與資料庫不會改變效能",
+      "不足，因此單元階段完全不應量測效能",
+      "足夠，只要單元測試案例數超過使用者人數"
+    ],
+    "answer": 0,
+    "analysis": "各測試階段都可測效能，但整體行為受整合、部署與相依資源影響，不能只靠局部速度推定。\n\nA：正確。\nB：忽略整合相依與資源競爭。\nC：把系統驗證的必要性誤作禁止局部量測。\nD：把案例數與併發承載能力混淆。",
+    "concept": "單元效能與系統效能",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:002"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:002",
+    "assessment_target": "單元效能與系統效能",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:002",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:002",
+        "misconception": "忽略整合相依與資源競爭"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:002",
+        "misconception": "把系統驗證的必要性誤作禁止局部量測"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:002",
+        "misconception": "把案例數與併發承載能力混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:006"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-002",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        6
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "各測試階段都可測效能，但整體行為受整合、部署與相依資源影響，不能只靠局部速度推定。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "340611bee9a709a61a09314b"
+    },
+    "question": "測試共送出 2,000 個請求，其中 30 個被判定失敗。依教材公式，錯誤率是多少？",
+    "options": [
+      "1.5%",
+      "0.015%",
+      "98.5%",
+      "15%"
+    ],
+    "answer": 0,
+    "analysis": "錯誤率 = 30 ÷ 2,000 × 100% = 1.5%，需先明確定義何種結果算失敗。\n\nA：正確。\nB：把比例轉百分比時少乘一百。\nC：把成功率當成錯誤率。\nD：將百分比小數點錯移一位。",
+    "concept": "錯誤率",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:003"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:003",
+    "assessment_target": "錯誤率",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:003",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:003",
+        "misconception": "把比例轉百分比時少乘一百"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:003",
+        "misconception": "把成功率當成錯誤率"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:003",
+        "misconception": "將百分比小數點錯移一位"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:009",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:026"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-003",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        9,
+        26
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "錯誤率 = 30 ÷ 2,000 × 100% = 1.5%，需先明確定義何種結果算失敗。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "f0f82aa2080c701bab73f145"
+    },
+    "question": "報告觀察期間為 60 秒，共完成 1,800 個請求。本題以完成請求數計算吞吐量，結果為何？",
+    "options": [
+      "30 requests/sec",
+      "0.033 requests/sec",
+      "1,800 requests/sec",
+      "60 requests/sec"
+    ],
+    "answer": 0,
+    "analysis": "吞吐量依題目指定單位為 1,800 ÷ 60 = 30 requests/sec，勿與每個請求耗時混用。\n\nA：正確。\nB：把時間除以請求數並標成每秒請求數。\nC：把總請求數當成每秒處理量。\nD：把觀察秒數當成吞吐量。",
+    "concept": "吞吐量",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:004"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:004",
+    "assessment_target": "吞吐量",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:004",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:004",
+        "misconception": "把時間除以請求數並標成每秒請求數"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:004",
+        "misconception": "把總請求數當成每秒處理量"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:004",
+        "misconception": "把觀察秒數當成吞吐量"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:009",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:026"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-004",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        9,
+        26
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "吞吐量依題目指定單位為 1,800 ÷ 60 = 30 requests/sec，勿與每個請求耗時混用。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "37c2ef0ca08ec5c97c32cddf"
+    },
+    "question": "請求於 t=0 發出，t=120 ms 收到第一個回應片段，t=500 ms 收完最後片段。忽略其他計時差異，Latency 與 Elapsed Time 依序為何？",
+    "options": [
+      "500 ms、120 ms",
+      "120 ms、380 ms",
+      "380 ms、500 ms",
+      "120 ms、500 ms"
+    ],
+    "answer": 3,
+    "analysis": "Latency 至首個回應片段，Elapsed Time 至最後回應片段；本題兩者均自發送前起算。\n\nA：把首段與完整回應時間顛倒。\nB：把最後片段時間減首段時間當成總經過時間。\nC：把首段之後的傳輸期間當成 Latency。\nD：正確。",
+    "concept": "Latency 與 Elapsed Time",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:005"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:005",
+    "assessment_target": "Latency 與 Elapsed Time",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:005",
+        "misconception": "把首段與完整回應時間顛倒"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:005",
+        "misconception": "把最後片段時間減首段時間當成總經過時間"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:005",
+        "misconception": "把首段之後的傳輸期間當成 Latency"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:005",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:026"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-005",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        26
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "Latency 至首個回應片段，Elapsed Time 至最後回應片段；本題兩者均自發送前起算。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "2ddeacdcd78b10177588bb60"
+    },
+    "question": "報告中 P90 回應時間為 800 ms。以其通常的統計意義，哪個解讀最合理？",
+    "options": [
+      "系統最多只能同時服務 90 人",
+      "每個請求都必定恰好花 800 ms",
+      "約 90% 樣本的回應時間不超過 800 ms",
+      "平均回應時間必定等於 800 ms"
+    ],
+    "answer": 2,
+    "analysis": "P90 描述回應時間分布的位置，不能單靠此值推出平均數、全部樣本時間或承載人數。\n\nA：把百分位數當成併發人數。\nB：把百分位數當成所有樣本相同值。\nC：正確。\nD：把百分位數與平均數等同。",
+    "concept": "百分位數",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:006"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:006",
+    "assessment_target": "百分位數",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:006",
+        "misconception": "把百分位數當成併發人數"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:006",
+        "misconception": "把百分位數當成所有樣本相同值"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:006",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:006",
+        "misconception": "把百分位數與平均數等同"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:026",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:027"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-006",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        26,
+        27
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "P90 描述回應時間分布的位置，不能單靠此值推出平均數、全部樣本時間或承載人數。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "80f926e9de26697e847bbd4a"
+    },
+    "question": "規格要求「95% 請求在 1 秒內完成」。報告平均為 0.7 秒，P95 為 1.8 秒。哪項結論正確？",
+    "options": [
+      "已達門檻，因為剩餘 5% 可以任意慢",
+      "未達該百分位門檻，平均合格不能取代 P95 條件",
+      "無法比較，因為 P95 與回應時間沒有關係",
+      "已達門檻，因為平均小於 1 秒"
+    ],
+    "answer": 1,
+    "analysis": "驗收應比對規格指定的指標，P95=1.8 秒超過 1 秒，不能只以平均 0.7 秒宣告通過。\n\nA：忽略實際 P95 已超出 1 秒。\nB：正確。\nC：否認百分位數正是延遲分布指標。\nD：把平均值當成所有分布條件的替代品。",
+    "concept": "平均與尾端延遲",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:007"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:007",
+    "assessment_target": "平均與尾端延遲",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:007",
+        "misconception": "忽略實際 P95 已超出 1 秒"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:007",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:007",
+        "misconception": "否認百分位數正是延遲分布指標"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:007",
+        "misconception": "把平均值當成所有分布條件的替代品"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:026",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:027",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:031"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-007",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        26,
+        27,
+        31
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "驗收應比對規格指定的指標，P95=1.8 秒超過 1 秒，不能只以平均 0.7 秒宣告通過。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "0b61862192552dd8aa9a85ab"
+    },
+    "question": "兩服務平均回應時間相同，但甲的標準差明顯較大。最合理的解讀是什麼？",
+    "options": [
+      "甲一定有較高吞吐量",
+      "甲的每一筆請求都比乙慢",
+      "甲一定完全沒有錯誤",
+      "甲的回應時間分散程度較大，仍需查看分布與慢請求"
+    ],
+    "answer": 3,
+    "analysis": "標準差衡量離散程度，不能直接推出吞吐量或錯誤率，應配合百分位與樣本分析。\n\nA：把延遲變異與處理量視為同一指標。\nB：把分散程度誤作每筆值的大小排序。\nC：把延遲分散當成正確性證據。\nD：正確。",
+    "concept": "標準差的解讀",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:008"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:008",
+    "assessment_target": "標準差的解讀",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:008",
+        "misconception": "把延遲變異與處理量視為同一指標"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:008",
+        "misconception": "把分散程度誤作每筆值的大小排序"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:008",
+        "misconception": "把延遲分散當成正確性證據"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:008",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:026",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:027"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-008",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        26,
+        27
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "標準差衡量離散程度，不能直接推出吞吐量或錯誤率，應配合百分位與樣本分析。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f1c92b686e3f417aa473d1"
+    },
+    "question": "要設定虛擬使用者、指定 HTTP 呼叫，再呈現彙整結果。應依序使用哪類元件？",
+    "options": [
+      "Thread Group、HTTP Request Sampler、Listener",
+      "Sampler、Listener、Thread Group",
+      "三者都只需設定在資料庫 schema",
+      "Listener、Thread Group、Sampler"
+    ],
+    "answer": 0,
+    "analysis": "Thread Group 控制使用者執行模式，Sampler 定義請求，Listener 收集與呈現測試結果。\n\nA：正確。\nB：把請求與報表的配置角色顛倒。\nC：把負載測試元件當成資料庫結構。\nD：把使用者模擬、請求執行與結果呈現混淆。",
+    "concept": "JMeter 的測試元件",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:009"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:009",
+    "assessment_target": "JMeter 的測試元件",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:009",
+        "misconception": null
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:009",
+        "misconception": "把請求與報表的配置角色顛倒"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:009",
+        "misconception": "把負載測試元件當成資料庫結構"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:009",
+        "misconception": "把使用者模擬、請求執行與結果呈現混淆"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:014",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:018",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:019",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:020"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-009",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        14,
+        18,
+        19,
+        20
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "Thread Group 控制使用者執行模式，Sampler 定義請求，Listener 收集與呈現測試結果。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "c98d3309431af50522ddc144"
+    },
+    "question": "JMeter 設 40 個執行緒，每個執行緒跑 5 次迴圈，每次迴圈依序執行 2 個 HTTP Sampler 各一次。無額外重試或條件略過，共執行多少次取樣？",
+    "options": [
+      "80 次",
+      "200 次",
+      "10 次",
+      "400 次"
+    ],
+    "answer": 3,
+    "analysis": "總取樣次數 = 40 × 5 × 2 = 400；題目明定沒有重試或略過，避免數量依賴其他控制條件。\n\nA：漏算五次迴圈。\nB：漏算每次迴圈有兩個 Sampler。\nC：漏算四十個執行緒。\nD：正確。",
+    "concept": "執行緒、迴圈與請求總數",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:010"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:010",
+    "assessment_target": "執行緒、迴圈與請求總數",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:010",
+        "misconception": "漏算五次迴圈"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:010",
+        "misconception": "漏算每次迴圈有兩個 Sampler"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:010",
+        "misconception": "漏算四十個執行緒"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:010",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:019",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:020",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:021",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:022"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-010",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "計算",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "總取樣次數 = 40 × 5 × 2 = 400；題目明定沒有重試或略過，避免數量依賴其他控制條件。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "dd1830a51fddaf8b462ad139"
+    },
+    "question": "100 個執行緒的 ramp-up 設為 10 秒，迴圈數為 10。哪項判斷最嚴謹？",
+    "options": [
+      "整個測試必定剛好執行 100 秒",
+      "執行緒在約 10 秒內陸續啟動，總耗時還受請求時間等設定影響",
+      "每個請求的回應時間一定是 10 秒",
+      "每個執行緒都必須等待 10 秒才一起啟動"
+    ],
+    "answer": 1,
+    "analysis": "Ramp-up 控制啟動展開時間，不是每輪固定耗時；不能只乘迴圈數推出測試總期間。\n\nA：把 ramp-up 乘迴圈數當成總耗時公式。\nB：正確。\nC：把使用者啟動安排當成伺服器延遲。\nD：把陸續啟動當成共同延遲。",
+    "concept": "Ramp-up 與總耗時",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:011"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:011",
+    "assessment_target": "Ramp-up 與總耗時",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:011",
+        "misconception": "把 ramp-up 乘迴圈數當成總耗時公式"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:011",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:011",
+        "misconception": "把使用者啟動安排當成伺服器延遲"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:011",
+        "misconception": "把陸續啟動當成共同延遲"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:019"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-011",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "理解",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        19
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "Ramp-up 控制啟動展開時間，不是每輪固定耗時；不能只乘迴圈數推出測試總期間。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "8c5b6dbb67e7ead00769a1ab"
+    },
+    "question": "調查一個失敗取樣，需要查看該請求與回應的詳細內容。依教材，哪個監聽器最直接？",
+    "options": [
+      "只看總吞吐量數字",
+      "View Results as Tree",
+      "Aggregate Report 的平均值欄位",
+      "只看執行緒群組的人數設定"
+    ],
+    "answer": 1,
+    "analysis": "結果樹可查看個別樣本的請求與回應；彙整報告適合整體指標，兩者目的不同。\n\nA：把單一總量指標當成錯誤內容紀錄。\nB：正確。\nC：把彙整統計當成單筆請求內容。\nD：把負載設定當成實際回應證據。",
+    "concept": "JMeter 監聽器的選擇",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:012"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:012",
+    "assessment_target": "JMeter 監聽器的選擇",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:012",
+        "misconception": "把單一總量指標當成錯誤內容紀錄"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:012",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:012",
+        "misconception": "把彙整統計當成單筆請求內容"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:012",
+        "misconception": "把負載設定當成實際回應證據"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:015"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-012",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        15
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "結果樹可查看個別樣本的請求與回應；彙整報告適合整體指標，兩者目的不同。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "9d53663ebaedeed518d5fef9"
+    },
+    "question": "兩次測試同時改了 CPU、資料量、請求內容與快取設定，回應變快。下一步如何讓瓶頸判斷更可靠？",
+    "options": [
+      "直接認定任何一項變更都各自造成全部改善",
+      "只要平均變快就不必看錯誤率",
+      "只挑最好的一次結果，不記錄測試條件",
+      "保留可比較基準，控制或記錄各項變更，再逐項驗證影響"
+    ],
+    "answer": 3,
+    "analysis": "教材要求設定需求、資源、執行監控與分析報告；條件可追溯才有助於判斷調整是否有效。\n\nA：把共同變更後的結果歸因於每個單一因素。\nB：把單一速度改善當成品質全面改善。\nC：忽略效能報告需要環境與負載脈絡。\nD：正確。",
+    "concept": "效能實驗的可比較性",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:013"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:013",
+    "assessment_target": "效能實驗的可比較性",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:013",
+        "misconception": "把共同變更後的結果歸因於每個單一因素"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:013",
+        "misconception": "把單一速度改善當成品質全面改善"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:013",
+        "misconception": "忽略效能報告需要環境與負載脈絡"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:013",
+        "misconception": null
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:010",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:011"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-013",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        10,
+        11
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "教材要求設定需求、資源、執行監控與分析報告；條件可追溯才有助於判斷調整是否有效。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3af1db0753edc7b71e5c3dfe"
+    },
+    "question": "加壓時只有 Checkout 的延遲與錯誤率明顯升高，其他 API 大致穩定。最合理的後續是什麼？",
+    "options": [
+      "只放大首頁圖片以提高使用體驗",
+      "直接推論所有頁面都必須重寫",
+      "先調查 Checkout 的資料庫、外部相依及資源使用，再針對原因改善",
+      "既然其他 API 正常，就認定整體滿足所有需求"
+    ],
+    "answer": 2,
+    "analysis": "分 API 觀察有助定位瓶頸，但特定原因仍需監控證據，不能只憑延遲直接斷定是哪一層故障。\n\nA：採取與已觀察瓶頸無直接關聯的修改。\nB：把局部證據擴大成全系統失效。\nC：正確。\nD：忽略關鍵服務已出現效能問題。",
+    "concept": "瓶頸定位與改善",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:014"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:014",
+    "assessment_target": "瓶頸定位與改善",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:014",
+        "misconception": "採取與已觀察瓶頸無直接關聯的修改"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:014",
+        "misconception": "把局部證據擴大成全系統失效"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:014",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:014",
+        "misconception": "忽略關鍵服務已出現效能問題"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:008",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:032",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:033",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:034"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-014",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        8,
+        32,
+        33,
+        34
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "分 API 觀察有助定位瓶頸，但特定原因仍需監控證據，不能只憑延遲直接斷定是哪一層故障。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6eef32745d80e9db3335cb49"
+    },
+    "question": "規格寫「所有請求都需在 1 秒內完成」，某報告只顯示平均 0.6 秒、P90 為 0.9 秒。可否據此確認符合？",
+    "options": [
+      "不能，因此平均與百分位統計完全無用",
+      "不能，這些統計不足以證明本次所有樣本都在 1 秒內",
+      "可以，P90 合格等同 100% 合格",
+      "可以，因為平均小於 1 秒代表每筆都小於 1 秒"
+    ],
+    "answer": 1,
+    "analysis": "所有請求是更嚴格的條件，需檢查完整樣本或最大值等證據；有限測試也不能保證未來任意負載。\n\nA：把證據不足誤作指標沒有任何價值。\nB：正確。\nC：把九成門檻推論為全部樣本。\nD：把平均當成最大值。",
+    "concept": "嚴格門檻與報告證據",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:015"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:015",
+    "assessment_target": "嚴格門檻與報告證據",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:015",
+        "misconception": "把證據不足誤作指標沒有任何價值"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:015",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:015",
+        "misconception": "把九成門檻推論為全部樣本"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:015",
+        "misconception": "把平均當成最大值"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:029",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:030",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:031"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-015",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        29,
+        30,
+        31
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "所有請求是更嚴格的條件，需檢查完整樣本或最大值等證據；有限測試也不能保證未來任意負載。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "3ec6c08cf0660d8c789d2c68"
+    },
+    "question": "使用者按下送出後，頁面長時間沒有任何回饋，使用者反覆點擊。最直接違反哪項易用性準則？",
+    "options": [
+      "彈性快捷操作，因為沒有提供專家快捷鍵",
+      "一致風格，因為所有按鈕顏色都相同",
+      "清楚的系統狀態",
+      "與真實世界對應，因為資料庫用了英文欄名"
+    ],
+    "answer": 2,
+    "analysis": "系統應讓使用者知道操作是否已收到及目前狀態，避免不確定而重複操作。\n\nA：把缺少進度回饋當成專家效率問題。\nB：把外觀一致與狀態可見性混淆。\nC：正確。\nD：把內部欄位命名當成可見使用體驗。",
+    "concept": "易用性準則",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:016"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:016",
+    "assessment_target": "易用性準則",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:016",
+        "misconception": "把缺少進度回饋當成專家效率問題"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:016",
+        "misconception": "把外觀一致與狀態可見性混淆"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:016",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:016",
+        "misconception": "把內部欄位命名當成可見使用體驗"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:036"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-016",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        36
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "系統應讓使用者知道操作是否已收到及目前狀態，避免不確定而重複操作。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "1187c07c8fa25e6125f5887f"
+    },
+    "question": "為比較兩款結帳按鈕，團隊把可比使用者分到 A、B 版本並記錄完成率。最合理的分析方向是什麼？",
+    "options": [
+      "只憑設計者喜歡哪個顏色判定勝負",
+      "比較事先選定的使用行為指標，評估哪版較符合目標",
+      "以版本較新的先驗認定必然更好",
+      "同時任意更換價格、流程與客群，再只歸因於按鈕顏色"
+    ],
+    "answer": 1,
+    "analysis": "A/B Testing 透過版本比較與行為紀錄評估效果，需有可比較條件及明確指標，不能只靠設計者印象。\n\nA：把主觀偏好當成實驗結果。\nB：正確。\nC：把版本順序當成使用者證據。\nD：忽略多項差異妨礙單一因素解讀。",
+    "concept": "A/B Testing 的解讀",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:017"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:017",
+    "assessment_target": "A/B Testing 的解讀",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:017",
+        "misconception": "把主觀偏好當成實驗結果"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:017",
+        "misconception": null
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:017",
+        "misconception": "把版本順序當成使用者證據"
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:017",
+        "misconception": "忽略多項差異妨礙單一因素解讀"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:037"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-017",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        37
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "A/B Testing 透過版本比較與行為紀錄評估效果，需有可比較條件及明確指標，不能只靠設計者印象。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "ff91d0c931cfb88216433171"
+    },
+    "question": "團隊要確認登入與資料存取是否存在未授權風險，哪組活動最符合教材方向？",
+    "options": [
+      "只量測平均回應時間便宣告安全",
+      "為避免暴露問題而刪除所有稽核紀錄",
+      "檢查權限行為與已知漏洞，並分析可追溯的系統紀錄",
+      "只確認備份存在便省略權限測試"
+    ],
+    "answer": 2,
+    "analysis": "安全驗證需關注漏洞與未授權存取，備份、修補和日誌等措施互補，不能彼此直接取代。\n\nA：把效能指標當成安全性證據。\nB：破壞追查安全事件所需證據。\nC：正確。\nD：把復原措施當成防止未授權存取的充分條件。",
+    "concept": "安全性測試與稽核",
+    "chapter": "[10]進階軟體測試",
+    "knowledge_point_ids": [
+      "se_manual_20261117_v1:kp:10:018"
+    ],
+    "assessment_target_id": "se_manual_20261117_v1:target:10:018",
+    "assessment_target": "安全性測試與稽核",
+    "option_diagnoses": [
+      {
+        "option_index": 0,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:018",
+        "misconception": "把效能指標當成安全性證據"
+      },
+      {
+        "option_index": 1,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:018",
+        "misconception": "破壞追查安全事件所需證據"
+      },
+      {
+        "option_index": 2,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:018",
+        "misconception": null
+      },
+      {
+        "option_index": 3,
+        "knowledge_point_id": "se_manual_20261117_v1:kp:10:018",
+        "misconception": "把復原措施當成防止未授權存取的充分條件"
+      }
+    ],
+    "source_chunk_ids": [
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:038",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:039",
+      "manual_pdf:ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2:page:040"
+    ],
+    "source_analysis_id": null,
+    "course_unit_id": "se_manual_20261117_v1:unit:10",
+    "course_unit_title": "[10]進階軟體測試",
+    "section_ids": [],
+    "variant_number": 1,
+    "review_status": "approved",
+    "review_note": "ChatGPT 依教材編寫並進行內容、選項與格式檢核；非教師人工審核，未做學生試測。approved 為本套可抽題版本的系統狀態。",
+    "reviewed_by": "ChatGPT (AI content review; not teacher approval)",
+    "reviewed_at": {
+      "$date": "2026-11-17T14:20:46Z"
+    },
+    "version": 1,
+    "question_code": "SE10-018",
+    "bank_batch": "se_manual_20261117_v1",
+    "difficulty": "應用",
+    "authoring_method": "direct_authored_from_pdf",
+    "source_evidence": {
+      "repository_revision": "495f729d41ad11702f05bc1b90aade817a86e2e4",
+      "pdf_file": "textbook/[10]進階軟體測試.pdf",
+      "pdf_git_blob_sha": "1bfdca83540dc0b5a4ef7193adbf51e748929530",
+      "pdf_sha256": "ac1fdff41f88dabc5bcee57f58904889aff97725b89c986711e59a7e93c4ade2",
+      "pdf_pages": [
+        38,
+        39,
+        40
+      ],
+      "page_reference_type": "physical_pdf_page_1_based",
+      "source_url": "https://github.com/ckklkkc/SE_Mentor/blob/495f729d41ad11702f05bc1b90aade817a86e2e4/textbook/[10]進階軟體測試.pdf",
+      "basis_summary": "安全驗證需關注漏洞與未授權存取，備份、修補和日誌等措施互補，不能彼此直接取代。",
+      "basis_type": "教材概念及情境應用；非教材逐字引文",
+      "identifier_note": "manual_pdf 與本套 kp/target/unit 為新增離線識別，不代表既有 KG 或 textbook_analyses 中的識別。"
+    }
+  }
+]

@@ -562,7 +562,7 @@ def _build_kg_pipeline(kw_prompt_builder: PromptBuilder) -> Pipeline:
     pipeline.add_component("kw_llm", AnthropicGenerator(api_key=Secret.from_token(CLAUDE_API_KEY), model="claude-haiku-4-5"))
     pipeline.add_component("desc_reasoner",  DescriptionBasedReasoning("bolt://localhost:7687", "neo4j", NEO4J_PASSWORD))
     pipeline.add_component("answer_prompt", PromptBuilder(template=answer_prompt_template, required_variables=["question", "chat_history"]))
-    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-4o-mini",generation_kwargs={"temperature": 0.2 }))
+    pipeline.add_component("answer_llm", OpenAIGenerator(api_key=Secret.from_env_var("OPENAI_API_KEY"), model="gpt-6-luna"))
 
     pipeline.connect("kw_prompt.prompt", "kw_llm.prompt")
     pipeline.connect("kw_llm.replies", "desc_reasoner.keywords")
@@ -898,7 +898,8 @@ def handle_user_question(question: str):
 def neo4j_textbook_kg_retriever(question: str, chat_history: str = "(無)") -> dict[str, Any]:
     # 教材知識圖譜檢索
     keyword_prompt_template = """
-       請參考【聊天記錄】的上下文脈絡（用來還原「它、這個」等代名詞），根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
+       請參考【聊天記錄】的上下文脈絡（用來還原「它、這個」等代名詞）並且若無特別指定皆以時間最新的問題作為脈絡參考，
+       根據以下 Neo4j Schema 替使用者的問題生成 5 個關鍵字，用來檢索知識圖譜中的實體。請僅輸出關鍵字，且關鍵字之間請用頓號(、)隔開。
         此外，請執行術語標準化：先移除專有名詞中不必要的中英空白；若遇到希臘字母或特殊符號相關術語（如 alpha、beta），請同時輸出符號版與英文版關鍵字。
         
         【Schema 資訊】
