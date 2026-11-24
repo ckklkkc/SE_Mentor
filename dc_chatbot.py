@@ -487,7 +487,7 @@ class QuizView(discord.ui.View):
             await interaction.edit_original_response(view=self)
 
             await interaction.followup.send(
-                f"\n測驗結束q(≧▽≦q) 你的分數：{self.score}/{len(self.questions)}\n答題記錄：\n{self.answer_history}\n"
+                f"\n測驗結束q(≧▽≦q) 你的分數：{self.score}/{len(self.questions)}\n答題記錄：\n{self.answer_history}\n", ephemeral=True
             )
             print(f"學生學習弱項：{self.learning_pp}")
 
@@ -498,7 +498,7 @@ class QuizView(discord.ui.View):
             # - 本次只要有錯題，就立即依題目的評量目標／選項迷思提供複習筆記。
             # - 是否寫入 learning profile 的弱點，仍由多次作答證據門檻決定。
             if self.learning_pp:
-                msg = await interaction.followup.send("正在生成本次錯題的複習筆記…")
+                msg = await interaction.followup.send("正在生成本次錯題的複習筆記…", ephemeral=True)
                 generated_note = await self.get_note()
                 review_points = '、'.join(dict.fromkeys(self.learning_pp))
                 if confirmed_weaknesses:
@@ -521,7 +521,7 @@ class QuizView(discord.ui.View):
                 await msg.edit(content=chunks[0])
 
                 for chunk in chunks[1:]:
-                    await interaction.followup.send(chunk)
+                    await interaction.followup.send(chunk, ephemeral=True)
         else:
             # 已在函式開頭 defer；用 edit_original_response 顯示下一題。
             await interaction.edit_original_response(
