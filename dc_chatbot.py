@@ -486,9 +486,16 @@ class QuizView(discord.ui.View):
             # 直接編輯原本的測驗訊息。
             await interaction.edit_original_response(view=self)
 
-            await interaction.followup.send(
-                f"\n測驗結束q(≧▽≦q) 你的分數：{self.score}/{len(self.questions)}\n答題記錄：\n{self.answer_history}\n", ephemeral=True
+            answer_record = (
+                f"\n測驗結束q(≧▽≦q) 你的分數：{self.score}/{len(self.questions)}"
+                f"\n答題記錄：\n{self.answer_history}\n"
             )
+
+            for chunk in self.split_message(answer_record):
+                await interaction.followup.send(
+                    chunk,
+                    ephemeral=True,
+                )
             print(f"學生學習弱項：{self.learning_pp}")
 
             # 無論題目來源為何，都保存本次測驗摘要作為學習紀錄。
@@ -549,8 +556,7 @@ class QuizView(discord.ui.View):
 
 @bot.tree.command(name="quiz", description="開始測驗")
 @app_commands.describe(
-    course_unit="選擇教材章節（1～11）；留空則隨機選章",
-    questions="本次小測驗題數（5～10）",
+    course_unit="選擇教材章節（1～11）",
 )
 @app_commands.choices(course_unit=[
     app_commands.Choice(name=f"{number}. {title}", value=str(number))
@@ -559,13 +565,12 @@ class QuizView(discord.ui.View):
 async def quiz(
     interaction: discord.Interaction,
     course_unit: str | None = None,
-    questions: app_commands.Range[int, 5, 10] = 5,
 ):
     await interaction.response.defer(ephemeral=True)
     try:
         question_list, source_message = await quiz_runtime.get_quizzes(
             user_id=interaction.user.id,
-            count=questions,
+            count=quiz_runtime.QUIZ_QUESTION_COUNT,
             course_unit=course_unit,
         )
 

@@ -6,14 +6,15 @@ from collections import defaultdict
 from database.mongo_controller import DiagnosisQuiz
 from services.quiz_course_units import resolve_course_unit
 
+QUIZ_QUESTION_COUNT = 5
 
 async def get_approved_quizzes(
-    count: int = 5,
+    count: int = QUIZ_QUESTION_COUNT,
     course_unit: str | None = None,
 ) -> list[DiagnosisQuiz]:
     """同一次小測驗優先讓每題對應不同評量目標。"""
-    if not 5 <= count <= 10:
-        raise ValueError("小測驗題數必須介於 5 到 10 題")
+    if count != QUIZ_QUESTION_COUNT:
+        raise ValueError("每次小測驗固定為 5 題")
 
     requested_scope = (course_unit or "").strip()
     course_unit = resolve_course_unit(course_unit)
@@ -72,7 +73,7 @@ async def get_approved_quizzes(
 
 async def get_quizzes(
     user_id: int,
-    count: int = 5,
+    count: int = QUIZ_QUESTION_COUNT,
     course_unit: str | None = None,
 ) -> tuple[list[DiagnosisQuiz], str]:
     """Teaching boundary：只讀取教師核准題目。"""
