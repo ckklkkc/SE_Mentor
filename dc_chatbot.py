@@ -50,25 +50,70 @@ async def run_blocking(func, *args, **kwargs):
     loop = asyncio.get_running_loop()
     return await loop.run_in_executor(executor, partial(func, *args, **kwargs))
 
-
 async def _authorized_project_student(
     discord_id: int,
 ) -> tuple[StudentProfile | None, str | None]:
-    """Resolve project scope from server-side identity, never command input."""
+    """從指定 Discord 伺服器取得最新組別，再同步 MongoDB。"""
+
     student = await StudentProfile.find_one(
         StudentProfile.discord_id == discord_id
     )
-    normalized_group = (student.group or "").strip() if student else ""
-    if (
-        not normalized_group
-        or len(normalized_group) > 80
-        or normalized_group in {".", ".."}
-        or "/" in normalized_group
-        or "\\" in normalized_group
-        or any(ord(char) < 32 for char in normalized_group)
-    ):
+
+    guild = bot.get_guild(config.ROLE_SYNC_GUILD_ID)
+    if guild is None:
+        logger.warning("找不到組別驗證伺服器")
         return student, None
-    return student, normalized_group
+
+    # 使用 API 取得最新成員資料，不只依賴本機快取。
+    try:
+        member = await guild.fetch_member(discord_id)
+
+    except discord.NotFound:
+        # 已不在指定伺服器，清除原本組別。
+        if student is not None:
+            student.group = None
+            await student.save()
+
+        return student, None
+
+    except discord.HTTPException:
+        # 無法確認最新身分時，不使用資料庫舊組別放行。
+        logger.exception("取得使用者 %s 的 Discord 身分組失敗", discord_id)
+        return student, None
+
+    # 只接受名稱完全相同的「1」～「11」身分組。
+    valid_groups = {str(number) for number in range(1, 12)}
+
+    matched_groups = {
+        role.name
+        for role in member.roles
+        if role.name in valid_groups
+    }
+
+    group = (
+        next(iter(matched_groups))
+        if len(matched_groups) == 1
+        else None
+    )
+
+    if len(matched_groups) > 1:
+        logger.warning(
+            "使用者 %s 同時具有多個組別：%s",
+            discord_id,
+            sorted(matched_groups),
+        )
+
+    if student is None:
+        student = StudentProfile(
+            discord_id=member.id,
+            name=member.name,
+        )
+
+    student.name = member.name
+    student.group = group
+    await student.save()
+
+    return student, group
 
 QUIZ_MODE_LABELS = {
     "reviewed": "教師審核題庫",
@@ -628,7 +673,7 @@ async def upload_document(
     )
     if not student or not normalized_group:
         await interaction.followup.send(
-            "你的帳號尚未由教師綁定專案組別，不能上傳專案文件。",
+            "無法確認你的專題組別，請確認你在指定伺服器中僅有一個名稱為 1～11 的組別身分組；若設定正確，請稍後重試。",
             ephemeral=True,
         )
         return
@@ -752,7 +797,7 @@ async def project_qa(interaction: discord.Interaction, question: str):
     )
     if not student or not normalized_group:
         await interaction.followup.send(
-            "你的帳號尚未由教師綁定專案組別，不能使用專案問答。",
+            "無法確認你的專題組別，請確認你在指定伺服器中僅有一個名稱為 1～11 的組別身分組；若設定正確，請稍後重試。",
             ephemeral=True,
         )
         return
@@ -906,15 +951,66 @@ async def on_ready():
     print(f"目前登入身份：{bot.user}")
     print("Discord 教學 Bot 已上線")
 
+    guild = bot.get_guild(config.ROLE_SYNC_GUILD_ID)
+    if guild is None:
+        print("找不到組別同步伺服器，請確認 ROLE_SYNC_GUILD_ID")
+        return
+
+    assigned = 0
+    unconfirmed = 0
+    failed = 0
+
+    try:
+        async for member in guild.fetch_members(limit=None):
+            if member.bot:
+                continue
+
+            try:
+                student, group = await _authorized_project_student(
+                    member.id
+                )
+
+                if group is not None:
+                    assigned += 1
+                    print(f"組別確認：{member.name} → 第 {group} 組")
+                else:
+                    unconfirmed += 1
+                    print(f"未取得有效組別：{member.name}")
+
+            except Exception:
+                failed += 1
+                logger.exception(
+                    "同步成員 %s 的組別失敗",
+                    member.id,
+                )
+
+    except discord.HTTPException:
+        logger.exception("取得伺服器成員清單失敗")
+        return
+
+    print(
+        f"組別確認完成：有效組別 {assigned} 人；"
+        f"未取得有效組別 {unconfirmed} 人；"
+        f"處理失敗 {failed} 人"
+    )
+
+@bot.event
 @bot.event
 async def on_member_join(member):
-    # DM 給進入指定頻道的使用者
+    if member.bot:
+        return
+
+    if member.guild.id != config.ROLE_SYNC_GUILD_ID:
+        return
+
     print(f"{member.name} has joined the server!")
 
-    await StudentProfile(
-        discord_id=member.id,
-        name=member.name
-    ).insert()
+    student, group = await _authorized_project_student(
+        member.id
+    )
+
+    if student is None:
+        return
 
     try:
         await member.send(prompts.DCCHATBOT_WELCOME_MESSAGE)
@@ -947,7 +1043,6 @@ async def on_message(message):
 
     await bot.process_commands(message)
     print(welcomed_users)
-
 # @bot.event
 # # # 當頻道有新訊息
 # async def on_message(message):
