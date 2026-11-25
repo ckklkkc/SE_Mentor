@@ -255,7 +255,7 @@ async def init_mongo(database_name):
 
 async def get_recent_chat_history_str(
     discord_id: int,
-    agent_type: Literal["course", "project"] = "course",
+    agent_type: Literal["course", "project"],
     limit: int = 10,
     timeout_minutes: int = 720,
     max_reply_chars: int = 500
@@ -298,3 +298,4 @@ async def get_recent_chat_history_str(
         turn += 1
 
     return "\n".join(lines) if lines else "（無近期有效對話紀錄）"
+
