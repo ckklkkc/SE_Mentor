@@ -1285,7 +1285,7 @@ def neo4j_doc_retriever(question: str, group_id: str, chat_history: str = "(無)
 回答："""
     result = OpenAIChatGenerator(
         api_key=Secret.from_env_var("OPENAI_API_KEY"),
-        model="gpt-4o-mini",
+        model="gpt-6-luna",
     ).run(
         messages=[
             ChatMessage.from_system(system_prompt),
