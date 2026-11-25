@@ -1291,7 +1291,7 @@ def neo4j_doc_retriever(question: str, group_id: str, chat_history: str = "(無)
             ChatMessage.from_system(system_prompt),
             ChatMessage.from_user(user_prompt),
         ],
-        generation_kwargs={"max_tokens": PROJECT_QA_MAX_OUTPUT_TOKENS},
+        generation_kwargs={"max_completion_tokens": PROJECT_QA_MAX_OUTPUT_TOKENS},
     )
     return _reply_text(result["replies"][0])
 
