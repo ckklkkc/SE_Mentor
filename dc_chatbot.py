@@ -81,8 +81,10 @@ async def _authorized_project_student(
         logger.exception("取得使用者 %s 的 Discord 身分組失敗", discord_id)
         return student, None
 
-    # 只接受名稱完全相同的「1」～「11」身分組。
+    # 只接受名稱完全相同的「1」～「11」身分組，加入TA組別。
     valid_groups = {str(number) for number in range(1, 12)}
+    valid_groups.add("TA")  
+
 
     matched_groups = {
         role.name
