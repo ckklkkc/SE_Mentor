@@ -25,7 +25,7 @@ from services.project_security import (
 from database.mongo_controller import (
     LearningProfile, StudentProfile, QuizAttempt, QuizResponse,
     TargetEvidence, ChatLogs, LogInfo, init_mongo,
-    get_recent_chat_history_str
+    get_recent_chat_history_str,
 )
 import config, prompts
 
@@ -812,11 +812,14 @@ async def project_qa(interaction: discord.Interaction, question: str):
         )
         return
 
+    project_chat_history_str = await get_recent_chat_history_str(discord_id = interaction.user.id, agent_type="project", limit=10)
+
     try:
         llm_response = await run_blocking(
             haystack_service.neo4j_doc_retriever,
             question,
             normalized_group,
+            project_chat_history_str,
         )
         # content = f"> {question}\n\n{response['answer_llm']['replies'][0]}"
         response = cc.convert(llm_response)

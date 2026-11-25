@@ -1183,7 +1183,7 @@ def _bounded_project_markdown_context(documents: list[Document]) -> str:
     return "\n\n".join(blocks)
 
 
-def neo4j_doc_retriever(question: str, group_id: str) -> str:
+def neo4j_doc_retriever(question: str, group_id: str, chat_history: str = "(無)") -> str:
     """Answer from independently retrieved project graph and source Markdown."""
     question = validate_project_question(question)
     kg_context = "查無資料"
@@ -1250,6 +1250,7 @@ def neo4j_doc_retriever(question: str, group_id: str) -> str:
 1. 知識圖譜：需求、設計、測試實體及其關係。
 2. Markdown 原文片段：包含插回原章節的圖片文字描述、圖中文字、元素關係、
    圖片表達的意義、與本文的連接及可供文件分析的事實。
+3. 學生問題的歷史記錄：包含上下文脈絡，若無特別指定皆以時間最新的問題作為脈絡參考。
 
 回答規則：
 - 同時交叉檢查文字與圖片描述，不要只摘要其中一方。
@@ -1271,6 +1272,9 @@ def neo4j_doc_retriever(question: str, group_id: str) -> str:
 
 【Markdown 與圖片描述證據】
 {markdown_context or '查無向量片段'}
+
+【學生問題的歷史記錄】
+{chat_history}
 
 【檢索狀態】
 {'；'.join(retrieval_notes) or '兩類檢索均正常'}
